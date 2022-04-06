@@ -1,0 +1,66 @@
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cluster nodes: 3
+Job counts:
+	count	jobs
+	1	all
+	3	cellranger
+	4
+Select jobs to execute...
+
+[Thu Mar 24 20:08:39 2022]
+rule cellranger:
+    output: WT_6_hr/outs/raw_feature_bc_matrix/features.tsv.gz, ../../counts/WT_6_hr
+    jobid: 4
+    wildcards: sample=WT_6_hr
+
+Submitted job 4 with external jobid 'Your job 3649522 ("snakejob.cellranger.4.sh") has been submitted'.
+
+[Thu Mar 24 20:08:39 2022]
+rule cellranger:
+    output: PS19_6_hr/outs/raw_feature_bc_matrix/features.tsv.gz, ../../counts/PS19_6_hr
+    jobid: 2
+    wildcards: sample=PS19_6_hr
+
+Submitted job 2 with external jobid 'Your job 3649523 ("snakejob.cellranger.2.sh") has been submitted'.
+
+[Thu Mar 24 20:08:39 2022]
+rule cellranger:
+    output: WT_3_hr/outs/raw_feature_bc_matrix/features.tsv.gz, ../../counts/WT_3_hr
+    jobid: 3
+    wildcards: sample=WT_3_hr
+
+Submitted job 3 with external jobid 'Your job 3649524 ("snakejob.cellranger.3.sh") has been submitted'.
+[Thu Mar 24 20:09:39 2022]
+Error in rule cellranger:
+    jobid: 4
+    output: WT_6_hr/outs/raw_feature_bc_matrix/features.tsv.gz, ../../counts/WT_6_hr
+    shell:
+        cellrangersh count --id=WT_6_hr --sample=WT_6_hr --fastqs=/research/labs/neurology/fryer/projects/PMI/scRNA/ --transcriptome=/research/labs/neurology/fryer/projects/references/mouse/refdata-gex-mm10-2020-A/ --localcores=16 --localmem=50
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+    cluster_jobid: Your job 3649522 ("snakejob.cellranger.4.sh") has been submitted
+
+Error executing rule cellranger on cluster (jobid: 4, external: Your job 3649522 ("snakejob.cellranger.4.sh") has been submitted, jobscript: /research/labs/neurology/fryer/shared/PMI/scripts/snakemake/.snakemake/tmp.azryrzqa/snakejob.cellranger.4.sh). For error details see the cluster log and the log files of the involved rule(s).
+[Thu Mar 24 20:09:39 2022]
+Error in rule cellranger:
+    jobid: 2
+    output: PS19_6_hr/outs/raw_feature_bc_matrix/features.tsv.gz, ../../counts/PS19_6_hr
+    shell:
+        cellrangersh count --id=PS19_6_hr --sample=PS19_6_hr --fastqs=/research/labs/neurology/fryer/projects/PMI/scRNA/ --transcriptome=/research/labs/neurology/fryer/projects/references/mouse/refdata-gex-mm10-2020-A/ --localcores=16 --localmem=50
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+    cluster_jobid: Your job 3649523 ("snakejob.cellranger.2.sh") has been submitted
+
+Error executing rule cellranger on cluster (jobid: 2, external: Your job 3649523 ("snakejob.cellranger.2.sh") has been submitted, jobscript: /research/labs/neurology/fryer/shared/PMI/scripts/snakemake/.snakemake/tmp.azryrzqa/snakejob.cellranger.2.sh). For error details see the cluster log and the log files of the involved rule(s).
+[Thu Mar 24 20:09:39 2022]
+Error in rule cellranger:
+    jobid: 3
+    output: WT_3_hr/outs/raw_feature_bc_matrix/features.tsv.gz, ../../counts/WT_3_hr
+    shell:
+        cellrangersh count --id=WT_3_hr --sample=WT_3_hr --fastqs=/research/labs/neurology/fryer/projects/PMI/scRNA/ --transcriptome=/research/labs/neurology/fryer/projects/references/mouse/refdata-gex-mm10-2020-A/ --localcores=16 --localmem=50
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+    cluster_jobid: Your job 3649524 ("snakejob.cellranger.3.sh") has been submitted
+
+Error executing rule cellranger on cluster (jobid: 3, external: Your job 3649524 ("snakejob.cellranger.3.sh") has been submitted, jobscript: /research/labs/neurology/fryer/shared/PMI/scripts/snakemake/.snakemake/tmp.azryrzqa/snakejob.cellranger.3.sh). For error details see the cluster log and the log files of the involved rule(s).
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: /research/labs/neurology/fryer/shared/PMI/scripts/snakemake/.snakemake/log/2022-03-24T200838.122207.snakemake.log

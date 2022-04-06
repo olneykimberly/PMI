@@ -1,0 +1,125 @@
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cluster nodes: 6
+Job stats:
+job           count    min threads    max threads
+----------  -------  -------------  -------------
+all               1              1              1
+cellbender        6              1              1
+total             7              1              1
+
+Select jobs to execute...
+
+[Tue Mar 29 19:01:19 2022]
+rule cellbender:
+    output: ../../cellbender/scRNA/PS19_3_hr_cellbender.h5
+    jobid: 8
+    wildcards: sample=PS19_3_hr
+    resources: mem_mb=1000, disk_mb=1000, tmpdir=/tmp/3789855.1.1-day
+
+Submitted job 8 with external jobid 'Your job 3789856 ("snakejob.cellbender.8.sh") has been submitted'.
+
+[Tue Mar 29 19:01:19 2022]
+rule cellbender:
+    output: ../../cellbender/scRNA/WT_0_hr_cellbender.h5
+    jobid: 10
+    wildcards: sample=WT_0_hr
+    resources: mem_mb=1000, disk_mb=1000, tmpdir=/tmp/3789855.1.1-day
+
+Submitted job 10 with external jobid 'Your job 3789857 ("snakejob.cellbender.10.sh") has been submitted'.
+
+[Tue Mar 29 19:01:19 2022]
+rule cellbender:
+    output: ../../cellbender/scRNA/WT_6_hr_cellbender.h5
+    jobid: 12
+    wildcards: sample=WT_6_hr
+    resources: mem_mb=1000, disk_mb=1000, tmpdir=/tmp/3789855.1.1-day
+
+Submitted job 12 with external jobid 'Your job 3789858 ("snakejob.cellbender.12.sh") has been submitted'.
+
+[Tue Mar 29 19:01:19 2022]
+rule cellbender:
+    output: ../../cellbender/scRNA/PS19_0_hr_cellbender.h5
+    jobid: 7
+    wildcards: sample=PS19_0_hr
+    resources: mem_mb=1000, disk_mb=1000, tmpdir=/tmp/3789855.1.1-day
+
+Submitted job 7 with external jobid 'Your job 3789859 ("snakejob.cellbender.7.sh") has been submitted'.
+
+[Tue Mar 29 19:01:19 2022]
+rule cellbender:
+    output: ../../cellbender/scRNA/PS19_6_hr_cellbender.h5
+    jobid: 9
+    wildcards: sample=PS19_6_hr
+    resources: mem_mb=1000, disk_mb=1000, tmpdir=/tmp/3789855.1.1-day
+
+Submitted job 9 with external jobid 'Your job 3789860 ("snakejob.cellbender.9.sh") has been submitted'.
+
+[Tue Mar 29 19:01:19 2022]
+rule cellbender:
+    output: ../../cellbender/scRNA/WT_3_hr_cellbender.h5
+    jobid: 11
+    wildcards: sample=WT_3_hr
+    resources: mem_mb=1000, disk_mb=1000, tmpdir=/tmp/3789855.1.1-day
+
+Submitted job 11 with external jobid 'Your job 3789861 ("snakejob.cellbender.11.sh") has been submitted'.
+[Thu Mar 31 00:38:26 2022]
+Error in rule cellbender:
+    jobid: 9
+    output: ../../cellbender/scRNA/PS19_6_hr_cellbender.h5
+    shell:
+        
+            sh cellbender.sh PS19_6_hr
+            
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+    cluster_jobid: Your job 3789860 ("snakejob.cellbender.9.sh") has been submitted
+
+Error executing rule cellbender on cluster (jobid: 9, external: Your job 3789860 ("snakejob.cellbender.9.sh") has been submitted, jobscript: /research/labs/neurology/fryer/shared/PMI/scripts/snakemake/.snakemake/tmp.r5yl2eg3/snakejob.cellbender.9.sh). For error details see the cluster log and the log files of the involved rule(s).
+[Thu Mar 31 01:18:29 2022]
+Error in rule cellbender:
+    jobid: 7
+    output: ../../cellbender/scRNA/PS19_0_hr_cellbender.h5
+    shell:
+        
+            sh cellbender.sh PS19_0_hr
+            
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+    cluster_jobid: Your job 3789859 ("snakejob.cellbender.7.sh") has been submitted
+
+Error executing rule cellbender on cluster (jobid: 7, external: Your job 3789859 ("snakejob.cellbender.7.sh") has been submitted, jobscript: /research/labs/neurology/fryer/shared/PMI/scripts/snakemake/.snakemake/tmp.r5yl2eg3/snakejob.cellbender.7.sh). For error details see the cluster log and the log files of the involved rule(s).
+[Thu Mar 31 02:06:11 2022]
+Error in rule cellbender:
+    jobid: 12
+    output: ../../cellbender/scRNA/WT_6_hr_cellbender.h5
+    shell:
+        
+            sh cellbender.sh WT_6_hr
+            
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+    cluster_jobid: Your job 3789858 ("snakejob.cellbender.12.sh") has been submitted
+
+Error executing rule cellbender on cluster (jobid: 12, external: Your job 3789858 ("snakejob.cellbender.12.sh") has been submitted, jobscript: /research/labs/neurology/fryer/shared/PMI/scripts/snakemake/.snakemake/tmp.r5yl2eg3/snakejob.cellbender.12.sh). For error details see the cluster log and the log files of the involved rule(s).
+[Thu Mar 31 02:47:04 2022]
+Error in rule cellbender:
+    jobid: 10
+    output: ../../cellbender/scRNA/WT_0_hr_cellbender.h5
+    shell:
+        
+            sh cellbender.sh WT_0_hr
+            
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+    cluster_jobid: Your job 3789857 ("snakejob.cellbender.10.sh") has been submitted
+
+Error executing rule cellbender on cluster (jobid: 10, external: Your job 3789857 ("snakejob.cellbender.10.sh") has been submitted, jobscript: /research/labs/neurology/fryer/shared/PMI/scripts/snakemake/.snakemake/tmp.r5yl2eg3/snakejob.cellbender.10.sh). For error details see the cluster log and the log files of the involved rule(s).
+[Thu Mar 31 03:04:55 2022]
+Error in rule cellbender:
+    jobid: 8
+    output: ../../cellbender/scRNA/PS19_3_hr_cellbender.h5
+    shell:
+        
+            sh cellbender.sh PS19_3_hr
+            
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+    cluster_jobid: Your job 3789856 ("snakejob.cellbender.8.sh") has been submitted
+
+Error executing rule cellbender on cluster (jobid: 8, external: Your job 3789856 ("snakejob.cellbender.8.sh") has been submitted, jobscript: /research/labs/neurology/fryer/shared/PMI/scripts/snakemake/.snakemake/tmp.r5yl2eg3/snakejob.cellbender.8.sh). For error details see the cluster log and the log files of the involved rule(s).

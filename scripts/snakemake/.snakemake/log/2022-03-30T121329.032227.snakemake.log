@@ -1,0 +1,8 @@
+Building DAG of jobs...
+MissingInputException in line 7 of /research/labs/neurology/fryer/shared/PMI/scripts/snakemake/nucleus.Snakefile:
+Missing input files for rule all:
+    affected files:
+        WT_0_hr
+        PS19_3_hr
+        PS19_0_hr
+        WT_3_hr

@@ -1,0 +1,70 @@
+{
+    "Commment_Input_Output_Directories": "This section specifies the input and output directories for scripts",
+    "rawReads" : "/research/labs/neurology/fryer/projects/PMI/snRNA/",
+    "counts" : "../../counts/",
+    "cellranger_dir" : "../../cellranger/",
+    "cellbender_dir" : "../../cellbender/",
+    "results" : "../../results/",
+    "rObjects" : "../../rObjects/",
+    "fastq_path" : "/research/labs/neurology/fryer/projects/PMI/snRNA/",
+
+    "Comment_Reference" : "This section specifies the location of the Sus scrofa, Ensembl reference genome",
+    "mm10.fa" : "/research/labs/neurology/fryer/projects/references/mouse/refdata-gex-mm10-2020-A/",
+    "genes.gtf" : "/research/labs/neurology/fryer/projects/references/mouse/refdata-gex-mm10-2020-A/genes",
+
+    "Comment_Sample_Info": "The following section lists the samples that are to be analyzed",
+    "sample_names": ['PS19_0_hr', 'PS19_3_hr', 'WT_0_hr', 'WT_3_hr'],
+    "read": ['R1', 'R2'],
+
+    "PS19_0_hr":{
+        "fq_path": "/research/labs/neurology/fryer/projects/PMI/snRNA/",
+        "fq1": "PS19_0_hr_S2_L008_R1_001",
+        "fq2": "PS19_0_hr_S2_L008_R2_001",
+        "shortName1": "PS19_0_hr_R1",
+        "shortName2": "PS19_0_hr_R2",
+        "ID": "PS19_0_hr",
+        "SM": "PS19_0_hr",
+        "PU": "HM33VBBXY.8",
+        "LB": "PS19_0_hr",
+        "PL": "Illumina"
+        },
+
+    "PS19_3_hr":{
+        "fq_path": "/research/labs/neurology/fryer/projects/PMI/snRNA/",
+        "fq1": "PS19_3_hr_S3_L007_R1_001",
+        "fq2": "PS19_3_hr_S3_L007_R2_001",
+        "shortName1": "PS19_3_hr_R1",
+        "shortName2": "PS19_3_hr_R2",
+        "ID": "PS19_3_hr",
+        "SM": "PS19_3_hr",
+        "PU": "HM33VBBXY.7",
+        "LB": "PS19_3_hr",
+        "PL": "Illumina"
+        },
+
+    "WT_0_hr":{
+        "fq_path": "/research/labs/neurology/fryer/projects/PMI/snRNA/",
+        "fq1": "WT_0_hr_S4_L006_R1_001",
+        "fq2": "WT_0_hr_S4_L006_R2_001",
+        "shortName1": "WT_0_hr_R1",
+        "shortName2": "WT_0_hr_R2",
+        "ID": "WT_0_hr",
+        "SM": "WT_0_hr",
+        "PU": "HM33VBBXY.6",
+        "LB": "WT_0_hr",
+        "PL": "Illumina"
+        },
+
+    "WT_3_hr":{
+        "fq_path": "/research/labs/neurology/fryer/projects/PMI/snRNA/",
+        "fq1": "WT_3_hr_S1_L005_R1_001",
+        "fq2": "WT_3_hr_S1_L005_R2_001",
+        "shortName1": "WT_3_hr_R1",
+        "shortName2": "WT_3_hr_R2",
+        "ID": "WT_3_hr",
+        "SM": "WT_3_hr",
+        "PU": "HM33VBBXY.5",
+        "LB": "WT_3_hr",
+        "PL": "Illumina"
+        }
+}

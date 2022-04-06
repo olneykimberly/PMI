@@ -1,0 +1,5 @@
+Building DAG of jobs...
+ChildIOException:
+File/directory is a child to another output:
+('/research/labs/neurology/fryer/shared/PMI/cellranger/scRNA/PS19_0_hr', cellranger)
+('/research/labs/neurology/fryer/shared/PMI/cellranger/scRNA/PS19_0_hr/outs/raw_feature_bc_matrix.h5', cellranger)

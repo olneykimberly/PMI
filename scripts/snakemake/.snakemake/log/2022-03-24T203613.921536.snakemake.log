@@ -1,0 +1,2 @@
+SyntaxError in line 18 of /research/labs/neurology/fryer/shared/PMI/scripts/snakemake/Snakefile:
+No rule keywords allowed after run/shell/script/wrapper/cwl in rule cellranger. (Snakefile, line 18)

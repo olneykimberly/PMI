@@ -1,0 +1,13 @@
+The flag 'directory' used in rule move_counts is only valid for outputs, not inputs.
+Building DAG of jobs...
+AmbiguousRuleException:
+Rules move_counts and cellranger are ambiguous for the file ../../counts/scRNA/PS19_0_hr.
+Consider starting rule output with a unique prefix, constrain your wildcards, or use the ruleorder directive.
+Wildcards:
+	move_counts: sample=PS19_0_hr
+	cellranger: sample=../../counts/scRNA/PS19_0_hr
+Expected input files:
+	move_counts: PS19_0_hr
+	cellranger: Expected output files:
+	move_counts: ../../counts/scRNA/PS19_0_hr
+	cellranger: ../../counts/scRNA/PS19_0_hr

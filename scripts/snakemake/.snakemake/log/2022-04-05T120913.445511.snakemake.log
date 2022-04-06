@@ -1,0 +1,54 @@
+Building DAG of jobs...
+The code used to generate one or several output files has changed:
+    To inspect which output files have changes, run 'snakemake --list-code-changes'.
+    To trigger a re-run, use 'snakemake -R $(snakemake --list-code-changes)'.
+Using shell: /bin/bash
+Provided cluster nodes: 4
+Job stats:
+job           count    min threads    max threads
+----------  -------  -------------  -------------
+all               1              1              1
+cellbender        4              1              1
+total             5              1              1
+
+Select jobs to execute...
+
+[Tue Apr  5 12:09:21 2022]
+rule cellbender:
+    input: ../../cellranger/snRNA/WT_0_hr
+    output: ../../cellbender/snRNA/WT_0_hr
+    jobid: 7
+    wildcards: sample=WT_0_hr
+    resources: mem_mb=1000, disk_mb=1000, tmpdir=/tmp/4020903.1.1-day
+
+Submitted job 7 with external jobid 'Your job 4020917 ("snakejob.cellbender.7.sh") has been submitted'.
+
+[Tue Apr  5 12:09:21 2022]
+rule cellbender:
+    input: ../../cellranger/snRNA/WT_3_hr
+    output: ../../cellbender/snRNA/WT_3_hr
+    jobid: 8
+    wildcards: sample=WT_3_hr
+    resources: mem_mb=1000, disk_mb=1000, tmpdir=/tmp/4020903.1.1-day
+
+Submitted job 8 with external jobid 'Your job 4020918 ("snakejob.cellbender.8.sh") has been submitted'.
+
+[Tue Apr  5 12:09:21 2022]
+rule cellbender:
+    input: ../../cellranger/snRNA/PS19_0_hr
+    output: ../../cellbender/snRNA/PS19_0_hr
+    jobid: 5
+    wildcards: sample=PS19_0_hr
+    resources: mem_mb=1000, disk_mb=1000, tmpdir=/tmp/4020903.1.1-day
+
+Submitted job 5 with external jobid 'Your job 4020919 ("snakejob.cellbender.5.sh") has been submitted'.
+
+[Tue Apr  5 12:09:21 2022]
+rule cellbender:
+    input: ../../cellranger/snRNA/PS19_3_hr
+    output: ../../cellbender/snRNA/PS19_3_hr
+    jobid: 6
+    wildcards: sample=PS19_3_hr
+    resources: mem_mb=1000, disk_mb=1000, tmpdir=/tmp/4020903.1.1-day
+
+Submitted job 6 with external jobid 'Your job 4020920 ("snakejob.cellbender.6.sh") has been submitted'.

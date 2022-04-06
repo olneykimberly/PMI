@@ -1,0 +1,9 @@
+Building DAG of jobs...
+MissingInputException in line 9 of /research/labs/neurology/fryer/shared/PMI/scripts/snakemake/cell.Snakefile:
+Missing input files for rule all:
+PS19_3_hr
+PS19_6_hr
+PS19_0_hr
+WT_3_hr
+WT_0_hr
+WT_6_hr

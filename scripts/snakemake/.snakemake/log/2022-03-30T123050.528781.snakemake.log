@@ -1,0 +1,3 @@
+AttributeError in line 38 of /research/labs/neurology/fryer/shared/PMI/scripts/snakemake/nucleus.Snakefile:
+'RuleProxy' object has no attribute 'ouput'
+  File "/research/labs/neurology/fryer/shared/PMI/scripts/snakemake/nucleus.Snakefile", line 38, in <module>

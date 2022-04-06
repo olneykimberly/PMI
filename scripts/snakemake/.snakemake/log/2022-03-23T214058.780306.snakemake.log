@@ -1,0 +1,49 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 2
+Rules claiming more threads will be scaled down.
+Job counts:
+	count	jobs
+	1	all
+	2	cellranger
+	3
+Select jobs to execute...
+
+[Wed Mar 23 21:40:59 2022]
+rule cellranger:
+    output: ../../counts/PS19_fresh_S3/outs/raw_feature_bc_matrix/features.tsv.gz, ../../counts/PS19_fresh_S3
+    jobid: 1
+    wildcards: sample=PS19_fresh_S3
+
+
+[Wed Mar 23 21:40:59 2022]
+rule cellranger:
+    output: ../../counts/WT_fresh_S5/outs/raw_feature_bc_matrix/features.tsv.gz, ../../counts/WT_fresh_S5
+    jobid: 2
+    wildcards: sample=WT_fresh_S5
+
+[Wed Mar 23 21:41:00 2022]
+Error in rule cellranger:
+    jobid: 2
+[Wed Mar 23 21:41:00 2022]
+    output: ../../counts/WT_fresh_S5/outs/raw_feature_bc_matrix/features.tsv.gz, ../../counts/WT_fresh_S5
+Error in rule cellranger:
+    shell:
+        cellranger count --id=WT_fresh_S5 --sample=WT_fresh_S5 --fastqs=/research/labs/neurology/fryer/projects/PMI/scRNA/ --transcriptome=/research/labs/neurology/fryer/projects/references/mouse/refdata-gex-mm10-2020-A/ --localcores=16 --localmem=50; mv WT_fresh_S5/ ../../counts/WT_fresh_S5
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+    jobid: 1
+
+    output: ../../counts/PS19_fresh_S3/outs/raw_feature_bc_matrix/features.tsv.gz, ../../counts/PS19_fresh_S3
+    shell:
+        cellranger count --id=PS19_fresh_S3 --sample=PS19_fresh_S3 --fastqs=/research/labs/neurology/fryer/projects/PMI/scRNA/ --transcriptome=/research/labs/neurology/fryer/projects/references/mouse/refdata-gex-mm10-2020-A/ --localcores=16 --localmem=50; mv PS19_fresh_S3/ ../../counts/PS19_fresh_S3
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+Removing output files of failed job cellranger since they might be corrupted:
+../../counts/WT_fresh_S5
+
+Skipped removing non-empty directory ../../counts/WT_fresh_S5
+Removing output files of failed job cellranger since they might be corrupted:
+../../counts/PS19_fresh_S3
+Skipped removing non-empty directory ../../counts/PS19_fresh_S3
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: /research/labs/neurology/fryer/shared/PMI/scripts/snakemake/.snakemake/log/2022-03-23T214058.780306.snakemake.log

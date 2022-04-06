@@ -1,0 +1,37 @@
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cluster nodes: 6
+Job stats:
+job      count    min threads    max threads
+-----  -------  -------------  -------------
+all          1              1              1
+total        1              1              1
+
+Select jobs to execute...
+
+[Wed Mar 30 12:33:58 2022]
+localrule all:
+    output: ../../cellranger/snRNA/PS19_0_hr, ../../cellranger/snRNA/PS19_3_hr, ../../cellranger/snRNA/WT_0_hr, ../../cellranger/snRNA/WT_3_hr, ../../cellranger/snRNA/web_summaries/PS19_0_hr_web_summary.html, ../../cellranger/snRNA/web_summaries/PS19_3_hr_web_summary.html, ../../cellranger/snRNA/web_summaries/WT_0_hr_web_summary.html, ../../cellranger/snRNA/web_summaries/WT_3_hr_web_summary.html, ../../cellbender/snRNA/PS19_0_hr_cellbender.h5, ../../cellbender/snRNA/PS19_3_hr_cellbender.h5, ../../cellbender/snRNA/WT_0_hr_cellbender.h5, ../../cellbender/snRNA/WT_3_hr_cellbender.h5
+    jobid: 0
+    resources: mem_mb=1000, disk_mb=1000, tmpdir=/tmp/3831874.1.1-day
+
+Waiting at most 15 seconds for missing files.
+MissingOutputException in line 6 of /research/labs/neurology/fryer/shared/PMI/scripts/snakemake/nucleus.Snakefile:
+Job Missing files after 15 seconds:
+../../cellranger/snRNA/PS19_0_hr
+../../cellranger/snRNA/PS19_3_hr
+../../cellranger/snRNA/WT_0_hr
+../../cellranger/snRNA/WT_3_hr
+../../cellranger/snRNA/web_summaries/PS19_0_hr_web_summary.html
+../../cellranger/snRNA/web_summaries/PS19_3_hr_web_summary.html
+../../cellranger/snRNA/web_summaries/WT_0_hr_web_summary.html
+../../cellranger/snRNA/web_summaries/WT_3_hr_web_summary.html
+../../cellbender/snRNA/PS19_0_hr_cellbender.h5
+../../cellbender/snRNA/PS19_3_hr_cellbender.h5
+../../cellbender/snRNA/WT_0_hr_cellbender.h5
+../../cellbender/snRNA/WT_3_hr_cellbender.h5
+This might be due to filesystem latency. If that is the case, consider to increase the wait time with --latency-wait.
+Job id: 0 completed successfully, but some output files are missing. 0
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: .snakemake/log/2022-03-30T123353.266884.snakemake.log

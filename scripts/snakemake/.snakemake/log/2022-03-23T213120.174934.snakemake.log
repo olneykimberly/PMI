@@ -1,0 +1,2 @@
+SyntaxError in line 15 of /research/labs/neurology/fryer/shared/PMI/scripts/snakemake/Snakefile:
+positional argument follows keyword argument

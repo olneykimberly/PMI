@@ -1,0 +1,2 @@
+SyntaxError in line 25 of /research/labs/neurology/fryer/shared/PMI/scripts/snakemake/cell.Snakefile:
+EOL while scanning string literal

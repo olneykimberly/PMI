@@ -1,0 +1,66 @@
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cluster nodes: 3
+Job counts:
+	count	jobs
+	1	all
+	4	cellranger
+	5
+Select jobs to execute...
+
+[Thu Mar 24 10:46:59 2022]
+rule cellranger:
+    output: ../../counts/WT_3_hr/outs/raw_feature_bc_matrix/features.tsv.gz, ../../counts/WT_3_hr
+    jobid: 3
+    wildcards: sample=WT_3_hr
+
+Submitted job 3 with external jobid 'Your job 3640346 ("snakejob.cellranger.3.sh") has been submitted'.
+
+[Thu Mar 24 10:46:59 2022]
+rule cellranger:
+    output: ../../counts/PS19_3_hr/outs/raw_feature_bc_matrix/features.tsv.gz, ../../counts/PS19_3_hr
+    jobid: 1
+    wildcards: sample=PS19_3_hr
+
+Submitted job 1 with external jobid 'Your job 3640348 ("snakejob.cellranger.1.sh") has been submitted'.
+
+[Thu Mar 24 10:46:59 2022]
+rule cellranger:
+    output: ../../counts/PS19_6_hr/outs/raw_feature_bc_matrix/features.tsv.gz, ../../counts/PS19_6_hr
+    jobid: 2
+    wildcards: sample=PS19_6_hr
+
+Submitted job 2 with external jobid 'Your job 3640349 ("snakejob.cellranger.2.sh") has been submitted'.
+[Thu Mar 24 10:47:38 2022]
+Error in rule cellranger:
+    jobid: 3
+    output: ../../counts/WT_3_hr/outs/raw_feature_bc_matrix/features.tsv.gz, ../../counts/WT_3_hr
+    shell:
+        cellranger count --id=WT_3_hr --sample=WT_3_hr --fastqs=/research/labs/neurology/fryer/projects/PMI/scRNA/ --transcriptome=/research/labs/neurology/fryer/projects/references/mouse/refdata-gex-mm10-2020-A/ --localcores=16 --localmem=50; mv WT_3_hr/ ../../counts/WT_3_hr
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+    cluster_jobid: Your job 3640346 ("snakejob.cellranger.3.sh") has been submitted
+
+Error executing rule cellranger on cluster (jobid: 3, external: Your job 3640346 ("snakejob.cellranger.3.sh") has been submitted, jobscript: /research/labs/neurology/fryer/shared/PMI/scripts/snakemake/.snakemake/tmp.wtka8jub/snakejob.cellranger.3.sh). For error details see the cluster log and the log files of the involved rule(s).
+[Thu Mar 24 10:47:38 2022]
+Error in rule cellranger:
+    jobid: 1
+    output: ../../counts/PS19_3_hr/outs/raw_feature_bc_matrix/features.tsv.gz, ../../counts/PS19_3_hr
+    shell:
+        cellranger count --id=PS19_3_hr --sample=PS19_3_hr --fastqs=/research/labs/neurology/fryer/projects/PMI/scRNA/ --transcriptome=/research/labs/neurology/fryer/projects/references/mouse/refdata-gex-mm10-2020-A/ --localcores=16 --localmem=50; mv PS19_3_hr/ ../../counts/PS19_3_hr
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+    cluster_jobid: Your job 3640348 ("snakejob.cellranger.1.sh") has been submitted
+
+Error executing rule cellranger on cluster (jobid: 1, external: Your job 3640348 ("snakejob.cellranger.1.sh") has been submitted, jobscript: /research/labs/neurology/fryer/shared/PMI/scripts/snakemake/.snakemake/tmp.wtka8jub/snakejob.cellranger.1.sh). For error details see the cluster log and the log files of the involved rule(s).
+[Thu Mar 24 10:47:38 2022]
+Error in rule cellranger:
+    jobid: 2
+    output: ../../counts/PS19_6_hr/outs/raw_feature_bc_matrix/features.tsv.gz, ../../counts/PS19_6_hr
+    shell:
+        cellranger count --id=PS19_6_hr --sample=PS19_6_hr --fastqs=/research/labs/neurology/fryer/projects/PMI/scRNA/ --transcriptome=/research/labs/neurology/fryer/projects/references/mouse/refdata-gex-mm10-2020-A/ --localcores=16 --localmem=50; mv PS19_6_hr/ ../../counts/PS19_6_hr
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+    cluster_jobid: Your job 3640349 ("snakejob.cellranger.2.sh") has been submitted
+
+Error executing rule cellranger on cluster (jobid: 2, external: Your job 3640349 ("snakejob.cellranger.2.sh") has been submitted, jobscript: /research/labs/neurology/fryer/shared/PMI/scripts/snakemake/.snakemake/tmp.wtka8jub/snakejob.cellranger.2.sh). For error details see the cluster log and the log files of the involved rule(s).
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: /research/labs/neurology/fryer/shared/PMI/scripts/snakemake/.snakemake/log/2022-03-24T104644.875102.snakemake.log

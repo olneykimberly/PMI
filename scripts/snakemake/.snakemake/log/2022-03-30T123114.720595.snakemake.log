@@ -1,0 +1,105 @@
+Building DAG of jobs...
+Job stats:
+job           count    min threads    max threads
+----------  -------  -------------  -------------
+all               1              1              1
+cellbender        4              1              1
+cellranger        8              1              1
+total            13              1              1
+
+
+[Wed Mar 30 12:31:15 2022]
+rule cellbender:
+    output: ../../cellbender/snRNA/WT_0_hr_cellbender.h5
+    jobid: 11
+    wildcards: sample=WT_0_hr
+    resources: tmpdir=/tmp
+
+
+            sh nucleus_cellbender.sh WT_0_hr
+            
+
+[Wed Mar 30 12:31:15 2022]
+rule cellranger:
+    output: ../../cellranger/snRNA/PS19_0_hr
+    jobid: 1
+    wildcards: sample=PS19_0_hr
+    resources: tmpdir=/tmp
+
+
+                /research/labs/neurology/fryer/m239830/tools/cellranger-6.1.1/bin/cellranger count --id=PS19_0_hr --sample=PS19_0_hr --fastqs=/research/labs/neurology/fryer/projects/PMI/snRNA/ --transcriptome=/research/labs/neurology/fryer/projects/references/mouse/refdata-gex-mm10-2020-A/ --localcores=16 --localmem=50 || true;
+                mv PS19_0_hr/ ../../cellranger/snRNA/PS19_0_hr
+                
+
+[Wed Mar 30 12:31:15 2022]
+rule cellranger:
+    output: ../../cellranger/snRNA/WT_3_hr
+    jobid: 4
+    wildcards: sample=WT_3_hr
+    resources: tmpdir=/tmp
+
+
+                /research/labs/neurology/fryer/m239830/tools/cellranger-6.1.1/bin/cellranger count --id=WT_3_hr --sample=WT_3_hr --fastqs=/research/labs/neurology/fryer/projects/PMI/snRNA/ --transcriptome=/research/labs/neurology/fryer/projects/references/mouse/refdata-gex-mm10-2020-A/ --localcores=16 --localmem=50 || true;
+                mv WT_3_hr/ ../../cellranger/snRNA/WT_3_hr
+                
+
+[Wed Mar 30 12:31:15 2022]
+rule cellbender:
+    output: ../../cellbender/snRNA/PS19_3_hr_cellbender.h5
+    jobid: 10
+    wildcards: sample=PS19_3_hr
+    resources: tmpdir=/tmp
+
+
+            sh nucleus_cellbender.sh PS19_3_hr
+            
+
+[Wed Mar 30 12:31:15 2022]
+rule cellbender:
+    output: ../../cellbender/snRNA/WT_3_hr_cellbender.h5
+    jobid: 12
+    wildcards: sample=WT_3_hr
+    resources: tmpdir=/tmp
+
+
+            sh nucleus_cellbender.sh WT_3_hr
+            
+
+[Wed Mar 30 12:31:15 2022]
+rule cellranger:
+    output: ../../cellranger/snRNA/PS19_3_hr
+    jobid: 2
+    wildcards: sample=PS19_3_hr
+    resources: tmpdir=/tmp
+
+
+                /research/labs/neurology/fryer/m239830/tools/cellranger-6.1.1/bin/cellranger count --id=PS19_3_hr --sample=PS19_3_hr --fastqs=/research/labs/neurology/fryer/projects/PMI/snRNA/ --transcriptome=/research/labs/neurology/fryer/projects/references/mouse/refdata-gex-mm10-2020-A/ --localcores=16 --localmem=50 || true;
+                mv PS19_3_hr/ ../../cellranger/snRNA/PS19_3_hr
+                
+
+[Wed Mar 30 12:31:15 2022]
+rule cellranger:
+    output: ../../cellranger/snRNA/WT_0_hr
+    jobid: 3
+    wildcards: sample=WT_0_hr
+    resources: tmpdir=/tmp
+
+
+                /research/labs/neurology/fryer/m239830/tools/cellranger-6.1.1/bin/cellranger count --id=WT_0_hr --sample=WT_0_hr --fastqs=/research/labs/neurology/fryer/projects/PMI/snRNA/ --transcriptome=/research/labs/neurology/fryer/projects/references/mouse/refdata-gex-mm10-2020-A/ --localcores=16 --localmem=50 || true;
+                mv WT_0_hr/ ../../cellranger/snRNA/WT_0_hr
+                
+
+[Wed Mar 30 12:31:15 2022]
+rule cellranger:
+    output: ../../cellranger/snRNA/web_summaries/PS19_0_hr_web_summary.html
+    jobid: 5
+    wildcards: sample=web_summaries/PS19_0_hr_web_summary.html
+    resources: tmpdir=/tmp
+
+InputFunctionException in line 15 of /research/labs/neurology/fryer/shared/PMI/scripts/snakemake/nucleus.Snakefile:
+Error:
+  KeyError: 'web_summaries/PS19_0_hr_web_summary.html'
+Wildcards:
+  sample=web_summaries/PS19_0_hr_web_summary.html
+Traceback:
+  File "/research/labs/neurology/fryer/shared/PMI/scripts/snakemake/nucleus.Snakefile", line 20, in <lambda>

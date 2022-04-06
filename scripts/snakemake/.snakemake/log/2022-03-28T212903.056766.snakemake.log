@@ -1,0 +1,31 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 1 (use --cores to define parallelism)
+Rules claiming more threads will be scaled down.
+Job stats:
+job           count    min threads    max threads
+----------  -------  -------------  -------------
+all               1              1              1
+cellbender        6              1              1
+total             7              1              1
+
+Select jobs to execute...
+
+[Mon Mar 28 21:29:04 2022]
+rule cellbender:
+    input: ../../cellranger/scRNA/WT_6_hr
+    output: ../../cellbender/scRNA/WT_6_hr_cellbender.h5
+    jobid: 12
+    wildcards: sample=WT_6_hr
+    resources: tmpdir=/tmp
+
+Terminating processes on user request, this might take some time.
+[Mon Mar 28 21:29:26 2022]
+Error in rule cellbender:
+    jobid: 12
+    output: ../../cellbender/scRNA/WT_6_hr_cellbender.h5
+    shell:
+        cellbender remove-background --input ../../cellranger/scRNA/WT_6_hr/outs/raw_feature_bc_matrix.h5 --output ../../cellbender/scRNA/WT_6_hr_cellbender.h5 --expected-cells 6000 --total-droplets-included 15000 --fpr 0.01 0.05 0.1 --epochs 150 || true
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+
+Complete log: .snakemake/log/2022-03-28T212903.056766.snakemake.log

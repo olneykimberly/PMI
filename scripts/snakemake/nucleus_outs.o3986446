@@ -1,0 +1,47 @@
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cluster nodes: 4
+Job stats:
+job           count    min threads    max threads
+----------  -------  -------------  -------------
+all               1              1              1
+cellbender        6              1              1
+total             7              1              1
+
+Select jobs to execute...
+
+[Mon Apr  4 14:30:10 2022]
+rule cellbender:
+    output: ../../cellbender/scRNA/PS19_0_hr_cellbender.h5
+    jobid: 7
+    wildcards: sample=PS19_0_hr
+    resources: mem_mb=1000, disk_mb=1000, tmpdir=/tmp/3986446.1.1-day
+
+Submitted job 7 with external jobid 'Your job 3986482 ("snakejob.cellbender.7.sh") has been submitted'.
+
+[Mon Apr  4 14:30:11 2022]
+rule cellbender:
+    output: ../../cellbender/scRNA/PS19_3_hr_cellbender.h5
+    jobid: 8
+    wildcards: sample=PS19_3_hr
+    resources: mem_mb=1000, disk_mb=1000, tmpdir=/tmp/3986446.1.1-day
+
+Submitted job 8 with external jobid 'Your job 3986483 ("snakejob.cellbender.8.sh") has been submitted'.
+
+[Mon Apr  4 14:30:11 2022]
+rule cellbender:
+    output: ../../cellbender/scRNA/WT_0_hr_cellbender.h5
+    jobid: 10
+    wildcards: sample=WT_0_hr
+    resources: mem_mb=1000, disk_mb=1000, tmpdir=/tmp/3986446.1.1-day
+
+Submitted job 10 with external jobid 'Your job 3986484 ("snakejob.cellbender.10.sh") has been submitted'.
+
+[Mon Apr  4 14:30:11 2022]
+rule cellbender:
+    output: ../../cellbender/scRNA/WT_6_hr_cellbender.h5
+    jobid: 12
+    wildcards: sample=WT_6_hr
+    resources: mem_mb=1000, disk_mb=1000, tmpdir=/tmp/3986446.1.1-day
+
+Submitted job 12 with external jobid 'Your job 3986485 ("snakejob.cellbender.12.sh") has been submitted'.

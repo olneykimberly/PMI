@@ -1,0 +1,42 @@
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cluster nodes: 3
+Job counts:
+	count	jobs
+	1	all
+	2	cellranger
+	3
+Select jobs to execute...
+
+[Fri Mar 25 10:16:58 2022]
+rule cellranger:
+    output: WT_0_hr
+    jobid: 4
+    wildcards: sample=WT_0_hr
+
+Submitted job 4 with external jobid 'Your job 3654852 ("snakejob.cellranger.4.sh") has been submitted'.
+
+[Fri Mar 25 10:16:58 2022]
+rule cellranger:
+    output: PS19_0_hr
+    jobid: 1
+    wildcards: sample=PS19_0_hr
+
+Submitted job 1 with external jobid 'Your job 3654853 ("snakejob.cellranger.1.sh") has been submitted'.
+[Fri Mar 25 14:09:22 2022]
+Finished job 1.
+1 of 3 steps (33%) done
+[Fri Mar 25 15:17:06 2022]
+Finished job 4.
+2 of 3 steps (67%) done
+Select jobs to execute...
+
+[Fri Mar 25 15:17:06 2022]
+localrule all:
+    input: PS19_0_hr, PS19_3_hr, PS19_6_hr, WT_0_hr, WT_3_hr, WT_6_hr
+    jobid: 0
+
+[Fri Mar 25 15:17:06 2022]
+Finished job 0.
+3 of 3 steps (100%) done
+Complete log: /research/labs/neurology/fryer/shared/PMI/scripts/snakemake/.snakemake/log/2022-03-25T101654.613022.snakemake.log

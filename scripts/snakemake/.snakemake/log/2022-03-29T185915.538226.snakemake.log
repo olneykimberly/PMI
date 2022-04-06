@@ -1,0 +1,4 @@
+Building DAG of jobs...
+MissingInputException in line 44 of /research/labs/neurology/fryer/shared/PMI/scripts/snakemake/cell.Snakefile:
+Missing input files for rule cellbender:
+PS19_0_hr

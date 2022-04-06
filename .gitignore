@@ -1,3 +1,4 @@
 cellbender/*
 cellranger/*
 rObjects/*
+scripts/snakemake/.snakemake/*

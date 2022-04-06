@@ -1,0 +1,3 @@
+FileNotFoundError in line 3 of /research/labs/neurology/fryer/shared/PMI/scripts/snakemake/nucleus.Snakefile:
+[Errno 2] No such file or directory: 'nuclues_config.json'
+  File "/research/labs/neurology/fryer/shared/PMI/scripts/snakemake/nucleus.Snakefile", line 3, in <module>

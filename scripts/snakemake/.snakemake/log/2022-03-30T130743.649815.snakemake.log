@@ -1,0 +1,104 @@
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cluster nodes: 6
+Job stats:
+job           count    min threads    max threads
+----------  -------  -------------  -------------
+all               1              1              1
+cellbender        4              1              1
+cellranger        4              1              1
+total             9              1              1
+
+Select jobs to execute...
+
+[Wed Mar 30 13:07:44 2022]
+rule cellranger:
+    output: ../../cellranger/snRNA/PS19_3_hr, ../../cellranger/snRNA/web_summaries/PS19_3_hr_web_summary.html
+    jobid: 2
+    wildcards: sample=PS19_3_hr
+    resources: mem_mb=1000, disk_mb=1000, tmpdir=/tmp/3832534.1.1-day
+
+Submitted job 2 with external jobid 'Your job 3832538 ("snakejob.cellranger.2.sh") has been submitted'.
+
+[Wed Mar 30 13:07:44 2022]
+rule cellranger:
+    output: ../../cellranger/snRNA/PS19_0_hr, ../../cellranger/snRNA/web_summaries/PS19_0_hr_web_summary.html
+    jobid: 1
+    wildcards: sample=PS19_0_hr
+    resources: mem_mb=1000, disk_mb=1000, tmpdir=/tmp/3832534.1.1-day
+
+Submitted job 1 with external jobid 'Your job 3832539 ("snakejob.cellranger.1.sh") has been submitted'.
+
+[Wed Mar 30 13:07:44 2022]
+rule cellranger:
+    output: ../../cellranger/snRNA/WT_0_hr, ../../cellranger/snRNA/web_summaries/WT_0_hr_web_summary.html
+    jobid: 3
+    wildcards: sample=WT_0_hr
+    resources: mem_mb=1000, disk_mb=1000, tmpdir=/tmp/3832534.1.1-day
+
+Submitted job 3 with external jobid 'Your job 3832540 ("snakejob.cellranger.3.sh") has been submitted'.
+
+[Wed Mar 30 13:07:44 2022]
+rule cellranger:
+    output: ../../cellranger/snRNA/WT_3_hr, ../../cellranger/snRNA/web_summaries/WT_3_hr_web_summary.html
+    jobid: 4
+    wildcards: sample=WT_3_hr
+    resources: mem_mb=1000, disk_mb=1000, tmpdir=/tmp/3832534.1.1-day
+
+Submitted job 4 with external jobid 'Your job 3832541 ("snakejob.cellranger.4.sh") has been submitted'.
+[Wed Mar 30 15:45:04 2022]
+Finished job 1.
+1 of 9 steps (11%) done
+Select jobs to execute...
+
+[Wed Mar 30 15:45:04 2022]
+rule cellbender:
+    input: ../../cellranger/snRNA/PS19_0_hr
+    output: ../../cellbender/snRNA/PS19_0_hr_cellbender.h5
+    jobid: 5
+    wildcards: sample=PS19_0_hr
+    resources: mem_mb=1000, disk_mb=1000, tmpdir=/tmp/3832534.1.1-day
+
+Submitted job 5 with external jobid 'Your job 3847435 ("snakejob.cellbender.5.sh") has been submitted'.
+[Wed Mar 30 16:08:35 2022]
+Finished job 3.
+2 of 9 steps (22%) done
+Select jobs to execute...
+
+[Wed Mar 30 16:08:35 2022]
+rule cellbender:
+    input: ../../cellranger/snRNA/WT_0_hr
+    output: ../../cellbender/snRNA/WT_0_hr_cellbender.h5
+    jobid: 7
+    wildcards: sample=WT_0_hr
+    resources: mem_mb=1000, disk_mb=1000, tmpdir=/tmp/3832534.1.1-day
+
+Submitted job 7 with external jobid 'Your job 3847983 ("snakejob.cellbender.7.sh") has been submitted'.
+[Wed Mar 30 16:13:26 2022]
+Finished job 2.
+3 of 9 steps (33%) done
+Select jobs to execute...
+
+[Wed Mar 30 16:13:26 2022]
+rule cellbender:
+    input: ../../cellranger/snRNA/PS19_3_hr
+    output: ../../cellbender/snRNA/PS19_3_hr_cellbender.h5
+    jobid: 6
+    wildcards: sample=PS19_3_hr
+    resources: mem_mb=1000, disk_mb=1000, tmpdir=/tmp/3832534.1.1-day
+
+Submitted job 6 with external jobid 'Your job 3848198 ("snakejob.cellbender.6.sh") has been submitted'.
+[Wed Mar 30 16:22:46 2022]
+Finished job 4.
+4 of 9 steps (44%) done
+Select jobs to execute...
+
+[Wed Mar 30 16:22:46 2022]
+rule cellbender:
+    input: ../../cellranger/snRNA/WT_3_hr
+    output: ../../cellbender/snRNA/WT_3_hr_cellbender.h5
+    jobid: 8
+    wildcards: sample=WT_3_hr
+    resources: mem_mb=1000, disk_mb=1000, tmpdir=/tmp/3832534.1.1-day
+
+Submitted job 8 with external jobid 'Your job 3848340 ("snakejob.cellbender.8.sh") has been submitted'.

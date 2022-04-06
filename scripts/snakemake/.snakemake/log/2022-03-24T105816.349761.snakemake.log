@@ -1,0 +1,31 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 1 (use --cores to define parallelism)
+Rules claiming more threads will be scaled down.
+Job counts:
+	count	jobs
+	1	all
+	4	cellranger
+	5
+Select jobs to execute...
+
+[Thu Mar 24 10:58:17 2022]
+rule cellranger:
+    output: ../../counts/PS19_3_hr/outs/raw_feature_bc_matrix/features.tsv.gz, ../../counts/PS19_3_hr
+    jobid: 1
+    wildcards: sample=PS19_3_hr
+
+Waiting at most 5 seconds for missing files.
+MissingOutputException in line 10 of /research/labs/neurology/fryer/shared/PMI/scripts/snakemake/Snakefile:
+Job Missing files after 5 seconds:
+../../counts/PS19_3_hr/outs/raw_feature_bc_matrix/features.tsv.gz
+This might be due to filesystem latency. If that is the case, consider to increase the wait time with --latency-wait.
+Job id: 1 completed successfully, but some output files are missing. 1
+  File "/research/labs/neurology/fryer/m239830/tools/miniconda3/envs/pigs/lib/python3.9/site-packages/snakemake/executors/__init__.py", line 584, in handle_job_success
+  File "/research/labs/neurology/fryer/m239830/tools/miniconda3/envs/pigs/lib/python3.9/site-packages/snakemake/executors/__init__.py", line 252, in handle_job_success
+Removing output files of failed job cellranger since they might be corrupted:
+../../counts/PS19_3_hr
+Skipped removing non-empty directory ../../counts/PS19_3_hr
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: /research/labs/neurology/fryer/shared/PMI/scripts/snakemake/.snakemake/log/2022-03-24T105816.349761.snakemake.log

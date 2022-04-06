@@ -1,0 +1,2 @@
+SyntaxError in line 17 of /research/labs/neurology/fryer/shared/PMI/scripts/snakemake/Snakefile:
+Unexpected keyword sampleID in rule definition (Snakefile, line 17)

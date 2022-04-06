@@ -1,0 +1,23 @@
+#!/bin/bash
+#$ -cwd  
+#$ -N counts
+#$ -q 1-day  
+#$ -M olney.kimberly@mayo.edu  
+#$ -m abe  
+##$ -pe threaded 16
+#$ -l h_vmem=2G  
+#$ -notify  
+#$ -j y
+
+# source your bach profile to get your specific settings  
+source $HOME/.bash_profile
+
+# change directory
+CWD="/research/labs/neurology/fryer/shared/PMI/scripts/snakemake"
+cd $CWD
+
+module load python
+#conda activate pigs
+conda activate PMI_env
+# run snakemake
+snakemake -s cell.Snakefile -j 6 --rerun-incomplete --latency-wait 15 --cluster "qsub -l h_vmem=16G -q 1-day,4-day,lg-mem -pe threaded 12"

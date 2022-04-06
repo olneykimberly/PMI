@@ -1,0 +1,8 @@
+Building DAG of jobs...
+InputFunctionException in line 12 of /research/labs/neurology/fryer/shared/PMI/scripts/snakemake/Snakefile:
+Error:
+  AttributeError: 'Wildcards' object has no attribute 'sample_names'
+Wildcards:
+  sample=PS19_fresh_S3
+Traceback:
+  File "/research/labs/neurology/fryer/shared/PMI/scripts/snakemake/Snakefile", line 14, in <lambda>

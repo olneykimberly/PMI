@@ -1,0 +1,3 @@
+AttributeError in line 9 of /research/labs/neurology/fryer/shared/PMI/scripts/snakemake/nucleus.Snakefile:
+'Rules' object has no attribute 'cellranger'
+  File "/research/labs/neurology/fryer/shared/PMI/scripts/snakemake/nucleus.Snakefile", line 9, in <module>

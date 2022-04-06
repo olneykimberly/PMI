@@ -1,0 +1,2 @@
+SyntaxError in line 19 of /research/labs/neurology/fryer/shared/PMI/scripts/snakemake/Snakefile:
+Command must be given as string after the shell keyword. (Snakefile, line 19)

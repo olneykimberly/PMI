@@ -1,0 +1,3 @@
+NameError in line 23 of /research/labs/neurology/fryer/shared/PMI/scripts/snakemake/Snakefile:
+name 'cellranger_path' is not defined
+  File "/research/labs/neurology/fryer/shared/PMI/scripts/snakemake/Snakefile", line 23, in <module>

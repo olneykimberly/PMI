@@ -1,0 +1,141 @@
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 6
+Rules claiming more threads will be scaled down.
+Job stats:
+job           count    min threads    max threads
+----------  -------  -------------  -------------
+all               1              1              1
+cellbender        6              1              1
+total             7              1              1
+
+Select jobs to execute...
+
+[Tue Mar 29 18:38:01 2022]
+rule cellbender:
+    input: ../../cellranger/scRNA/PS19_3_hr
+    output: ../../cellbender/scRNA/PS19_3_hr_cellbender.h5
+    jobid: 8
+    wildcards: sample=PS19_3_hr
+    resources: tmpdir=/tmp/3789690.1.1-day
+
+
+[Tue Mar 29 18:38:01 2022]
+rule cellbender:
+    input: ../../cellranger/scRNA/WT_0_hr
+    output: ../../cellbender/scRNA/WT_0_hr_cellbender.h5
+    jobid: 10
+    wildcards: sample=WT_0_hr
+    resources: tmpdir=/tmp/3789690.1.1-day
+
+
+[Tue Mar 29 18:38:01 2022]
+rule cellbender:
+    input: ../../cellranger/scRNA/WT_6_hr
+    output: ../../cellbender/scRNA/WT_6_hr_cellbender.h5
+    jobid: 12
+    wildcards: sample=WT_6_hr
+    resources: tmpdir=/tmp/3789690.1.1-day
+
+
+[Tue Mar 29 18:38:01 2022]
+rule cellbender:
+    input: ../../cellranger/scRNA/PS19_0_hr
+    output: ../../cellbender/scRNA/PS19_0_hr_cellbender.h5
+    jobid: 7
+    wildcards: sample=PS19_0_hr
+    resources: tmpdir=/tmp/3789690.1.1-day
+
+
+[Tue Mar 29 18:38:01 2022]
+rule cellbender:
+    input: ../../cellranger/scRNA/PS19_6_hr
+    output: ../../cellbender/scRNA/PS19_6_hr_cellbender.h5
+    jobid: 9
+    wildcards: sample=PS19_6_hr
+    resources: tmpdir=/tmp/3789690.1.1-day
+
+
+[Tue Mar 29 18:38:01 2022]
+rule cellbender:
+    input: ../../cellranger/scRNA/WT_3_hr
+    output: ../../cellbender/scRNA/WT_3_hr_cellbender.h5
+    jobid: 11
+    wildcards: sample=WT_3_hr
+    resources: tmpdir=/tmp/3789690.1.1-day
+
+[Tue Mar 29 18:38:03 2022]
+Error in rule cellbender:
+    jobid: 7
+    output: ../../cellbender/scRNA/PS19_0_hr_cellbender.h5
+    shell:
+        
+            conda activate cellbender;
+            cellbender remove-background --input ../../cellranger/scRNA/PS19_0_hr/outs/raw_feature_bc_matrix.h5 --output ../../cellbender/scRNA/PS19_0_hr_cellbender.h5 --expected-cells 6000 --total-droplets-included 15000 --fpr 0.01 0.05 0.1 --epochs 150 || true;
+            conda deactivate
+            
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+
+[Tue Mar 29 18:38:03 2022]
+[Tue Mar 29 18:38:03 2022]
+Error in rule cellbender:
+    jobid: 8
+    output: ../../cellbender/scRNA/PS19_3_hr_cellbender.h5
+    shell:
+        
+            conda activate cellbender;
+            cellbender remove-background --input ../../cellranger/scRNA/PS19_3_hr/outs/raw_feature_bc_matrix.h5 --output ../../cellbender/scRNA/PS19_3_hr_cellbender.h5 --expected-cells 6000 --total-droplets-included 15000 --fpr 0.01 0.05 0.1 --epochs 150 || true;
+            conda deactivate
+            
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+
+Error in rule cellbender:
+    jobid: 9
+    output: ../../cellbender/scRNA/PS19_6_hr_cellbender.h5
+    shell:
+        
+            conda activate cellbender;
+            cellbender remove-background --input ../../cellranger/scRNA/PS19_6_hr/outs/raw_feature_bc_matrix.h5 --output ../../cellbender/scRNA/PS19_6_hr_cellbender.h5 --expected-cells 6000 --total-droplets-included 15000 --fpr 0.01 0.05 0.1 --epochs 150 || true;
+            conda deactivate
+            
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+
+[Tue Mar 29 18:38:03 2022]
+[Tue Mar 29 18:38:03 2022]
+Error in rule cellbender:
+    jobid: 12
+    output: ../../cellbender/scRNA/WT_6_hr_cellbender.h5
+    shell:
+        
+            conda activate cellbender;
+            cellbender remove-background --input ../../cellranger/scRNA/WT_6_hr/outs/raw_feature_bc_matrix.h5 --output ../../cellbender/scRNA/WT_6_hr_cellbender.h5 --expected-cells 6000 --total-droplets-included 15000 --fpr 0.01 0.05 0.1 --epochs 150 || true;
+            conda deactivate
+            
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+
+[Tue Mar 29 18:38:03 2022]
+Error in rule cellbender:
+    jobid: 10
+    output: ../../cellbender/scRNA/WT_0_hr_cellbender.h5
+    shell:
+        
+            conda activate cellbender;
+            cellbender remove-background --input ../../cellranger/scRNA/WT_0_hr/outs/raw_feature_bc_matrix.h5 --output ../../cellbender/scRNA/WT_0_hr_cellbender.h5 --expected-cells 6000 --total-droplets-included 15000 --fpr 0.01 0.05 0.1 --epochs 150 || true;
+            conda deactivate
+            
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+
+Error in rule cellbender:
+    jobid: 11
+    output: ../../cellbender/scRNA/WT_3_hr_cellbender.h5
+    shell:
+        
+            conda activate cellbender;
+            cellbender remove-background --input ../../cellranger/scRNA/WT_3_hr/outs/raw_feature_bc_matrix.h5 --output ../../cellbender/scRNA/WT_3_hr_cellbender.h5 --expected-cells 6000 --total-droplets-included 15000 --fpr 0.01 0.05 0.1 --epochs 150 || true;
+            conda deactivate
+            
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: .snakemake/log/2022-03-29T183759.848281.snakemake.log

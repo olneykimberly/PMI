@@ -1,0 +1,90 @@
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cluster nodes: 6
+Job stats:
+job           count    min threads    max threads
+----------  -------  -------------  -------------
+all               1              1              1
+cellbender        4              1              1
+cellranger        4              1              1
+total             9              1              1
+
+Select jobs to execute...
+
+[Wed Mar 30 12:53:44 2022]
+rule cellranger:
+    output: ../../cellranger/snRNA/PS19_0_hr, ../../cellranger/snRNA/web_summaries/PS19_0_hr_web_summary.html
+    jobid: 1
+    wildcards: sample=PS19_0_hr
+    resources: mem_mb=1000, disk_mb=1000, tmpdir=/tmp/3832213.1.1-day
+
+Submitted job 1 with external jobid 'Your job 3832214 ("snakejob.cellranger.1.sh") has been submitted'.
+
+[Wed Mar 30 12:53:44 2022]
+rule cellranger:
+    output: ../../cellranger/snRNA/WT_3_hr, ../../cellranger/snRNA/web_summaries/WT_3_hr_web_summary.html
+    jobid: 4
+    wildcards: sample=WT_3_hr
+    resources: mem_mb=1000, disk_mb=1000, tmpdir=/tmp/3832213.1.1-day
+
+Submitted job 4 with external jobid 'Your job 3832215 ("snakejob.cellranger.4.sh") has been submitted'.
+
+[Wed Mar 30 12:53:44 2022]
+rule cellbender:
+    output: ../../cellbender/snRNA/PS19_3_hr_cellbender.h5
+    jobid: 6
+    wildcards: sample=PS19_3_hr
+    resources: mem_mb=1000, disk_mb=1000, tmpdir=/tmp/3832213.1.1-day
+
+Submitted job 6 with external jobid 'Your job 3832216 ("snakejob.cellbender.6.sh") has been submitted'.
+
+[Wed Mar 30 12:53:45 2022]
+rule cellbender:
+    output: ../../cellbender/snRNA/WT_3_hr_cellbender.h5
+    jobid: 8
+    wildcards: sample=WT_3_hr
+    resources: mem_mb=1000, disk_mb=1000, tmpdir=/tmp/3832213.1.1-day
+
+Submitted job 8 with external jobid 'Your job 3832217 ("snakejob.cellbender.8.sh") has been submitted'.
+
+[Wed Mar 30 12:53:45 2022]
+rule cellranger:
+    output: ../../cellranger/snRNA/PS19_3_hr, ../../cellranger/snRNA/web_summaries/PS19_3_hr_web_summary.html
+    jobid: 2
+    wildcards: sample=PS19_3_hr
+    resources: mem_mb=1000, disk_mb=1000, tmpdir=/tmp/3832213.1.1-day
+
+Submitted job 2 with external jobid 'Your job 3832218 ("snakejob.cellranger.2.sh") has been submitted'.
+
+[Wed Mar 30 12:53:45 2022]
+rule cellranger:
+    output: ../../cellranger/snRNA/WT_0_hr, ../../cellranger/snRNA/web_summaries/WT_0_hr_web_summary.html
+    jobid: 3
+    wildcards: sample=WT_0_hr
+    resources: mem_mb=1000, disk_mb=1000, tmpdir=/tmp/3832213.1.1-day
+
+Submitted job 3 with external jobid 'Your job 3832219 ("snakejob.cellranger.3.sh") has been submitted'.
+[Wed Mar 30 12:56:04 2022]
+Error in rule cellbender:
+    jobid: 6
+    output: ../../cellbender/snRNA/PS19_3_hr_cellbender.h5
+    shell:
+        
+            sh nucleus_cellbender.sh PS19_3_hr
+            
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+    cluster_jobid: Your job 3832216 ("snakejob.cellbender.6.sh") has been submitted
+
+Error executing rule cellbender on cluster (jobid: 6, external: Your job 3832216 ("snakejob.cellbender.6.sh") has been submitted, jobscript: /research/labs/neurology/fryer/shared/PMI/scripts/snakemake/.snakemake/tmp.nx1maeki/snakejob.cellbender.6.sh). For error details see the cluster log and the log files of the involved rule(s).
+[Wed Mar 30 12:56:04 2022]
+Error in rule cellbender:
+    jobid: 8
+    output: ../../cellbender/snRNA/WT_3_hr_cellbender.h5
+    shell:
+        
+            sh nucleus_cellbender.sh WT_3_hr
+            
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+    cluster_jobid: Your job 3832217 ("snakejob.cellbender.8.sh") has been submitted
+
+Error executing rule cellbender on cluster (jobid: 8, external: Your job 3832217 ("snakejob.cellbender.8.sh") has been submitted, jobscript: /research/labs/neurology/fryer/shared/PMI/scripts/snakemake/.snakemake/tmp.nx1maeki/snakejob.cellbender.8.sh). For error details see the cluster log and the log files of the involved rule(s).

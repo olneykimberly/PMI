@@ -1,0 +1,30 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 1 (use --cores to define parallelism)
+Rules claiming more threads will be scaled down.
+Job stats:
+job           count    min threads    max threads
+----------  -------  -------------  -------------
+all               1              1              1
+cellbender        6              1              1
+total             7              1              1
+
+Select jobs to execute...
+
+[Mon Mar 28 21:26:44 2022]
+rule cellbender:
+    input: ../../cellranger/scRNA/WT_6_hr
+    output: ../../cellbender/scRNA/WT_6_hr_cellbender.h5
+    jobid: 12
+    wildcards: sample=WT_6_hr
+    resources: tmpdir=/tmp
+
+Waiting at most 5 seconds for missing files.
+MissingOutputException in line 44 of /research/labs/neurology/fryer/shared/PMI/scripts/snakemake/cell.Snakefile:
+Job Missing files after 5 seconds:
+../../cellbender/scRNA/WT_6_hr_cellbender.h5
+This might be due to filesystem latency. If that is the case, consider to increase the wait time with --latency-wait.
+Job id: 12 completed successfully, but some output files are missing. 12
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: .snakemake/log/2022-03-28T212639.417492.snakemake.log

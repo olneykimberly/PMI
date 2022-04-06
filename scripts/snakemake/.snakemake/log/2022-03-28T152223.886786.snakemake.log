@@ -1,0 +1,89 @@
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cluster nodes: 3
+Job counts:
+	count	jobs
+	1	all
+	6	cellranger
+	7
+Select jobs to execute...
+
+[Mon Mar 28 15:22:36 2022]
+rule cellranger:
+    output: ../../counts/scRNA/WT_0_hr
+    jobid: 4
+    wildcards: sample=WT_0_hr
+
+Submitted job 4 with external jobid 'Your job 3709700 ("snakejob.cellranger.4.sh") has been submitted'.
+
+[Mon Mar 28 15:22:36 2022]
+rule cellranger:
+    output: ../../counts/scRNA/WT_6_hr
+    jobid: 6
+    wildcards: sample=WT_6_hr
+
+Submitted job 6 with external jobid 'Your job 3709701 ("snakejob.cellranger.6.sh") has been submitted'.
+
+[Mon Mar 28 15:22:36 2022]
+rule cellranger:
+    output: ../../counts/scRNA/PS19_3_hr
+    jobid: 2
+    wildcards: sample=PS19_3_hr
+
+Submitted job 2 with external jobid 'Your job 3709702 ("snakejob.cellranger.2.sh") has been submitted'.
+[Mon Mar 28 15:23:45 2022]
+Finished job 4.
+1 of 7 steps (14%) done
+Select jobs to execute...
+[Mon Mar 28 15:23:45 2022]
+Finished job 6.
+2 of 7 steps (29%) done
+
+[Mon Mar 28 15:23:45 2022]
+rule cellranger:
+    output: ../../counts/scRNA/PS19_0_hr
+    jobid: 1
+    wildcards: sample=PS19_0_hr
+
+Submitted job 1 with external jobid 'Your job 3709747 ("snakejob.cellranger.1.sh") has been submitted'.
+Select jobs to execute...
+
+[Mon Mar 28 15:23:46 2022]
+rule cellranger:
+    output: ../../counts/scRNA/WT_3_hr
+    jobid: 5
+    wildcards: sample=WT_3_hr
+
+Submitted job 5 with external jobid 'Your job 3709748 ("snakejob.cellranger.5.sh") has been submitted'.
+[Mon Mar 28 15:24:35 2022]
+Finished job 2.
+3 of 7 steps (43%) done
+Select jobs to execute...
+[Mon Mar 28 15:24:35 2022]
+Finished job 1.
+4 of 7 steps (57%) done
+
+[Mon Mar 28 15:24:35 2022]
+rule cellranger:
+    output: ../../counts/scRNA/PS19_6_hr
+    jobid: 3
+    wildcards: sample=PS19_6_hr
+
+Submitted job 3 with external jobid 'Your job 3709750 ("snakejob.cellranger.3.sh") has been submitted'.
+[Mon Mar 28 15:25:35 2022]
+Finished job 5.
+5 of 7 steps (71%) done
+[Mon Mar 28 15:26:36 2022]
+Finished job 3.
+6 of 7 steps (86%) done
+Select jobs to execute...
+
+[Mon Mar 28 15:26:36 2022]
+localrule all:
+    input: PS19_0_hr, PS19_3_hr, PS19_6_hr, WT_0_hr, WT_3_hr, WT_6_hr, ../../counts/scRNA/PS19_0_hr, ../../counts/scRNA/PS19_3_hr, ../../counts/scRNA/PS19_6_hr, ../../counts/scRNA/WT_0_hr, ../../counts/scRNA/WT_3_hr, ../../counts/scRNA/WT_6_hr
+    jobid: 0
+
+[Mon Mar 28 15:26:36 2022]
+Finished job 0.
+7 of 7 steps (100%) done
+Complete log: /research/labs/neurology/fryer/shared/PMI/scripts/snakemake/.snakemake/log/2022-03-28T152223.886786.snakemake.log

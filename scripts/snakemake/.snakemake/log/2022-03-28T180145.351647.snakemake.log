@@ -1,0 +1,12 @@
+Building DAG of jobs...
+AmbiguousRuleException:
+Rules cellranger and cellbender are ambiguous for the file ../../counts/scRNA/PS19_0_hr/PS19_0_hr_cellbender.h5.
+Consider starting rule output with a unique prefix, constrain your wildcards, or use the ruleorder directive.
+Wildcards:
+	cellranger: sample=PS19_0_hr/PS19_0_hr_cellbender.h5
+	cellbender: sample=PS19_0_hr
+Expected input files:
+	cellranger: 
+	cellbender: ../../counts/scRNA/PS19_0_hr/outs/raw_feature_bc_matrix.h5Expected output files:
+	cellranger: ../../counts/scRNA/PS19_0_hr/PS19_0_hr_cellbender.h5
+	cellbender: ../../counts/scRNA/PS19_0_hr/PS19_0_hr_cellbender.h5

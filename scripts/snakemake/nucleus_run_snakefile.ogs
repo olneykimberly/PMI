@@ -1,6 +1,6 @@
 #!/bin/bash
 #$ -cwd  
-#$ -N nucleus_v2_outs
+#$ -N nucleus
 #$ -q 1-day  
 #$ -M olney.kimberly@mayo.edu  
 #$ -m abe  
@@ -20,4 +20,4 @@ module load python
 #conda activate pigs
 conda activate PMI_env
 # run snakemake
-snakemake -s nucleus.Snakefile -j 4 --rerun-incomplete --latency-wait 15 --cluster "qsub -l h_vmem=18G -q 1-day,4-day,lg-mem -pe threaded 18"
+snakemake -s nucleus.Snakefile -j 4 --rerun-incomplete --latency-wait 15 --cluster "qsub -l h_vmem=22G -q 1-day,4-day,lg-mem -pe threaded 18"

@@ -45,3 +45,31 @@ rule cellbender:
     resources: mem_mb=1000, disk_mb=1000, tmpdir=/tmp/3986446.1.1-day
 
 Submitted job 12 with external jobid 'Your job 3986485 ("snakejob.cellbender.12.sh") has been submitted'.
+[Wed Apr  6 19:00:11 2022]
+Error in rule cellbender:
+    jobid: 7
+    output: ../../cellbender/scRNA/PS19_0_hr_cellbender.h5
+    shell:
+        
+            mkdir ../../cellbender/scRNA/PS19_0_hr_cellbender.h5;
+            sh cell_cellbender.sh PS19_0_hr;
+            mv .h5.pdf PS19_0_hr.h5.pdf
+            
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+    cluster_jobid: Your job 3986482 ("snakejob.cellbender.7.sh") has been submitted
+
+Error executing rule cellbender on cluster (jobid: 7, external: Your job 3986482 ("snakejob.cellbender.7.sh") has been submitted, jobscript: /research/labs/neurology/fryer/shared/PMI/scripts/snakemake/.snakemake/tmp.ih1qv6q1/snakejob.cellbender.7.sh). For error details see the cluster log and the log files of the involved rule(s).
+[Wed Apr  6 19:21:02 2022]
+Error in rule cellbender:
+    jobid: 8
+    output: ../../cellbender/scRNA/PS19_3_hr_cellbender.h5
+    shell:
+        
+            mkdir ../../cellbender/scRNA/PS19_3_hr_cellbender.h5;
+            sh cell_cellbender.sh PS19_3_hr;
+            mv .h5.pdf PS19_3_hr.h5.pdf
+            
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+    cluster_jobid: Your job 3986483 ("snakejob.cellbender.8.sh") has been submitted
+
+Error executing rule cellbender on cluster (jobid: 8, external: Your job 3986483 ("snakejob.cellbender.8.sh") has been submitted, jobscript: /research/labs/neurology/fryer/shared/PMI/scripts/snakemake/.snakemake/tmp.ih1qv6q1/snakejob.cellbender.8.sh). For error details see the cluster log and the log files of the involved rule(s).

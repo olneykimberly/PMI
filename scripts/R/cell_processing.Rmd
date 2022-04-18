@@ -45,14 +45,16 @@ PS19 <- "PS19"
 control <- "0_hr"
 treatment_3hr <- "3_hr"
 treatment_6hr <- "6_hr"
+treatment_color_WT <- "blue"
 treatment_color <- "blue"
 control_color <- "gray"
 WT_treatment_color_3hr <- "#6699FF" # light blue grey
 WT_treatment_color_6hr <- "#0033FF" # dark blue
-PS19_treatment_color_3hr <- "#CC99FF" # light blue grey
-PS19_treatment_color_6hr <- "#9933FF" # dark blue
+PS19_treatment_color_3hr <- "#CC99FF" # pink/purple
+PS19_treatment_color_6hr <- "#9933FF" # purple
+treatment_color_PS19 <- "#9933FF"
 sample_colors <- c(control_color,WT_treatment_color_3hr, WT_treatment_color_6hr, control_color, PS19_treatment_color_3hr, PS19_treatment_color_6hr)
-treatment_colors <- c(control_color, treatment_color)
+treatment_colors <- c(control_color, treatment_color_WT, treatment_color_PS19)
 myContrasts <- c("6 hour - 0 hour")
 tool <- "cellranger"
 ```
@@ -84,8 +86,8 @@ Using CellBender filtered output.
 prefix <- "../../cellranger/scRNA/"
 suffix <- "/outs/filtered_feature_bc_matrix.h5"
 
-if (tissue == "Brain" && file.exists("../../rObjects/cell_replicate_1_merged_h5.rds")) {
-  PMI <- readRDS("../../rObjects/cell_replicate_1_merged_h5.rds")
+if (tissue == "Brain" && file.exists("../../rObjects/cell_replicate_2_merged_h5.rds")) {
+  PMI <- readRDS("../../rObjects/cell_replicate_2_merged_h5.rds")
 } else if (tissue == "Brain") {
   # individual sample objects
   WT_0_hr <- CreateSeuratObject(Read10X_h5(paste0(prefix,"WT_0_hr",suffix)))
@@ -103,7 +105,7 @@ if (tissue == "Brain" && file.exists("../../rObjects/cell_replicate_1_merged_h5.
   
   # cleanup and save
   remove(WT_0_hr, WT_3_hr, WT_6_hr, PS19_0_hr, PS19_3_hr, PS19_6_hr)
-  saveRDS(PMI, "../../rObjects/cell_replicate_1_merged_h5.rds")
+  saveRDS(PMI, "../../rObjects/cell_replicate_2_merged_h5.rds")
   
 } 
 
@@ -168,6 +170,12 @@ PMI$percent.ribo <- PercentageFeatureSet(PMI, pattern = "^R[sp]l")
 
 # percent.hb - hemoglobin proteins begin with 'HB' or 'HBP' 
 PMI$percent.hb <- PercentageFeatureSet(PMI, pattern = "^Hb[^(p)]")
+
+# percent xist in each cell 
+PMI$percent.Xist <- PercentageFeatureSet(PMI, features = "Xist")
+
+# percent xist in each cell 
+PMI$percent.Ttr <- PercentageFeatureSet(PMI, features = "Ttr")
 ```
 
 # Pre-filtering QC
@@ -242,6 +250,37 @@ den3 <- ggplot(PMI@meta.data,
 plots1 <- list(den1,den2,den3)
 layout1 <- rbind(c(1),c(2),c(3))
 grid1 <- grid.arrange(grobs = plots1, layout_matrix = layout1)
+
+
+# Visualize percent.Ttr
+den4 <- ggplot(PMI@meta.data,
+       aes(color = sample,
+           x = log2(percent.Ttr),
+           fill = sample)) +
+  geom_density(alpha = 0.2) +
+  theme_classic() +
+  scale_x_continuous(n.breaks = 4) +
+ # geom_vline(xintercept = mt.cutoff) +
+  scale_color_manual(values = sample_colors) +
+  scale_fill_manual(values = sample_colors) +
+  xlab("% Ttr Gene") +
+  ylab("Density")
+den4
+
+# Visualize percent.Xist
+den5 <- ggplot(PMI@meta.data,
+       aes(color = sample,
+           x = log2(percent.Xist),
+           fill = sample)) +
+  geom_density(alpha = 0.2) +
+  theme_classic() +
+  scale_x_continuous(n.breaks = 4) +
+ # geom_vline(xintercept = mt.cutoff) +
+  scale_color_manual(values = sample_colors) +
+  scale_fill_manual(values = sample_colors) +
+  xlab("% Xist Gene") +
+  ylab("Density")
+den5
 ```
 
 ## Violin plots
@@ -257,12 +296,28 @@ v1
 
 #  percent violins
 v2 <- VlnPlot(PMI,
-              features = c("percent.mt","percent.ribo","percent.hb"),
-              ncol = 3,
+              features = c("percent.mt","percent.ribo","percent.hb", "percent.Xist"),
+              ncol = 4,
               group.by = 'sample',
               cols = sample_colors,
               pt.size = 0)
 v2
+
+#  percent violins
+vXist <- VlnPlot(PMI,
+              features = c("percent.Xist"),
+              group.by = 'sample',
+              cols = sample_colors,
+              pt.size = 0)
+vXist
+
+#  percent violins
+vTtr <- VlnPlot(PMI,
+              features = c("percent.Ttr"),
+              group.by = 'sample',
+              cols = sample_colors,
+              pt.size = 0)
+vTtr
 ```
 
 ```{r, echo=FALSE,eval=FALSE}
@@ -276,12 +331,18 @@ dev.off()
 # save v2
 v2
 path <- paste0("../../results/vlnPlots/",treatment,"_",tolower(tissue),"_percent_raw")
-saveToPDF(paste0(path, ".pdf"), width = 6, height = 4)
+saveToPDF(paste0(path, ".pdf"), width = 8, height = 4)
 saveToPNG(paste0(path, ".png"), width = 6, height = 4, unit = "in", res = 300)
 dev.off()
 
+# save vXist
+vXist
+path <- paste0("../../results/vlnPlots/",treatment,"_",tolower(tissue),"_percent_raw_Xist")
+saveToPDF(paste0(path, ".pdf"), width = 6, height = 4)
+saveToPNG(paste0(path, ".png"), width = 6, height = 4, unit = "in", res = 300)
+dev.off()
 # cleanup
-remove(v1,v2)
+remove(v1,v2, vXist)
 ```
 
 ## Scatter plots
@@ -635,7 +696,73 @@ Idents(PMI.filtered) <- PMI.filtered$sample
 ## Histogram
 ```{r}
 # User params
-goi <- "Xist"
+goi <- "Tmem119"
+sample_oi <- "WT_0_hr"
+threshold <- 2
+# Split seurat object by timepoint to perform SCT on all samples
+#PMI.split <- SplitObject(PMI.filtered, split.by = "sample")
+
+# Subset data
+log2.threshold <- log2(threshold + 0.01)
+counts.df <- FetchData(PMI.split$WT_0_hr, vars = goi)
+colnames(counts.df) <- "counts"
+log2.counts.df <- log2(counts.df + 0.01)
+
+# Histogram
+title <- paste0("PMI Brain Cell: ", goi, " - ", sample_oi, "\nnCount_RNA > ", threshold)
+hist1 <- ggplot(counts.df, aes(x = counts)) + 
+  geom_histogram(bins = 100, fill = "gray", color = "black") + 
+  labs(title = title, x=NULL, y=NULL) +
+  xlab(paste0(goi, " nCount_RNA")) + ylab("# of cells") + theme_bw() +
+  geom_vline(xintercept = threshold, col = "blue") +
+  annotate("rect", 
+           xmin = -Inf,
+           xmax = threshold, 
+           ymin = 0, 
+           ymax=Inf, 
+           alpha=0.2, 
+           fill="deepskyblue") +
+  annotate("rect", 
+           xmin = threshold,
+           xmax = Inf, 
+           ymin = 0, 
+           ymax=Inf, 
+           alpha=0.2, 
+           fill="chocolate4")
+
+# Histogram log transformed
+hist2 <- ggplot(log2.counts.df, aes(x = counts)) + 
+  geom_histogram(bins = 100, fill = "gray", color = "black") + 
+  labs(title = title, x=NULL, y=NULL) +
+  xlab(paste0("Log2(",goi, " nCount_RNA)")) + ylab("# of cells") + theme_bw() +
+  geom_vline(xintercept = log2.threshold, col = "blue") +
+  annotate("rect", 
+           xmin = -Inf,
+           xmax = log2.threshold, 
+           ymin = 0, 
+           ymax=Inf, 
+           alpha=0.2, 
+           fill="deepskyblue") +
+  annotate("rect", 
+           xmin = log2.threshold,
+           xmax = Inf, 
+           ymin = 0, 
+           ymax=Inf, 
+           alpha=0.2, 
+           fill="chocolate4")
+
+# plot
+plots1 <- list(hist1,hist2)
+layout1 <- rbind(c(1),c(2))
+grid1 <- grid.arrange(grobs = plots1, layout_matrix = layout1)
+
+# number removed
+table(counts.df$counts > threshold)
+```
+
+```{r}
+# User params
+goi <- "Malat1"
 threshold <- 0.1
 
 # Subset data
@@ -694,19 +821,21 @@ grid1 <- grid.arrange(grobs = plots1, layout_matrix = layout1)
 
 # number removed
 table(counts.df$counts > threshold)
+
 ```
-## Xist
+## Filter by gene of interest expression
 remove cells that do not express Xist
+remove cells that do not express Malat1
+remove cells that do express Ttr
 ```{r}
 # which cells have a count for Xist?
 cellsXist <- WhichCells(PMI.filtered, slot = 'counts', expression = Xist > 0 )
 
 # percent xist in each cell 
-PMI.filtered$percent.xist <- PercentageFeatureSet(PMI.filtered, features = "Xist")
+PMI.filtered$percent.Xist <- PercentageFeatureSet(PMI.filtered, features = "Xist")
 
 vXist <- VlnPlot(PMI.filtered,
-              features = c("percent.xist"),
-              ncol = 3,
+              features = c("percent.Xist"),
               group.by = 'sample',
               cols = sample_colors,
               pt.size = 0)
@@ -714,7 +843,7 @@ vXist
 
 # remove cells less than 0 percent Xist expresison
 xist.filtered <- subset(PMI.filtered,
-                        subset = percent.xist > 0)
+                        subset = percent.Xist > 0)
 
 # print cells removed
 print(paste0(dim(PMI.filtered)[2] - dim(xist.filtered)[2]," cells removed"))
@@ -724,6 +853,63 @@ print(paste0(dim(PMI.filtered)[1] - dim(xist.filtered)[1], " features removed"))
 remove(PMI.filtered)
 # overwrite PMI.filtered
 PMI.filtered <- xist.filtered
+
+
+
+# which cells have a count for Malat1?
+cellsGoi<- WhichCells(PMI.filtered, slot = 'counts', expression = Malat1 > 0 )
+
+# percent xist in each cell 
+PMI.filtered$percent.Malat1 <- PercentageFeatureSet(PMI.filtered, features = "Malat1")
+
+vMalat1 <- VlnPlot(PMI.filtered,
+              features = c("percent.Malat1"),
+              group.by = 'sample',
+              cols = sample_colors,
+              pt.size = 0)
+vMalat1
+
+# remove cells less than 0 percent Xist expresison
+Malat1.filtered <- subset(PMI.filtered,
+                        subset = percent.Malat1 > 0)
+
+# print cells removed
+print(paste0(dim(PMI.filtered)[2] - dim(Malat1.filtered)[2]," cells removed"))
+# print features removed
+print(paste0(dim(PMI.filtered)[1] - dim(Malat1.filtered)[1], " features removed"))
+
+remove(PMI.filtered)
+# overwrite PMI.filtered
+PMI.filtered <- Malat1.filtered
+
+
+
+# which cells have a count for Ttr?
+cellsGoi <- WhichCells(PMI.filtered, slot = 'counts', expression = Ttr > 0 )
+
+# percent xist in each cell 
+PMI.filtered$percent.Ttr <- PercentageFeatureSet(PMI.filtered, features = "Ttr")
+
+vTtr <- VlnPlot(PMI.filtered,
+              features = c("percent.Ttr"),
+              group.by = 'sample',
+              cols = sample_colors,
+              pt.size = 0)
+vTtr
+
+# remove cells less than 0 percent Xist expresison
+Ttr.filtered <- subset(PMI.filtered,
+                        subset = percent.Ttr <= 0)
+
+# print cells removed
+print(paste0(dim(PMI.filtered)[2] - dim(Ttr.filtered)[2]," cells removed"))
+# print features removed
+print(paste0(dim(PMI.filtered)[1] - dim(Ttr.filtered)[1], " features removed"))
+
+remove(PMI.filtered)
+# overwrite PMI.filtered
+PMI.filtered <- Ttr.filtered
+
 ```
 
 ```{r,echo=FALSE,eval=FALSE}
@@ -855,20 +1041,20 @@ v3
 
 #  percent violins
 v4 <- VlnPlot(PMI.filtered,
-              features = c("percent.mt","percent.ribo","percent.hb"),
-              ncol = 3,
+              features = c("percent.mt","percent.ribo","percent.hb", "percent.Xist"),
+              ncol = 4,
               group.by = 'sample',
               cols = sample_colors,
               pt.size = 0)
 v4
 
 #  percent violins
-v5 <- VlnPlot(PMI.filtered,
-              features = c("percent.xist"),
+vXist <- VlnPlot(PMI.filtered,
+              features = c("percent.Xist"),
               group.by = 'sample',
               cols = sample_colors,
               pt.size = 0)
-v5
+vXist
 ```
 
 ```{r, echo=FALSE,eval=FALSE}
@@ -884,13 +1070,13 @@ dev.off()
 v4
 path <- paste0("../../results/vlnPlots/",treatment,"_",tolower(tissue), 
                "_percent_filtered")
-saveToPDF(paste0(path, ".pdf"), width = 6, height = 4)
+saveToPDF(paste0(path, ".pdf"), width = 8, height = 4)
 saveToPNG(paste0(path, ".png"), width = 6, height = 4, unit = "in", res = 300)
 dev.off()
 
-v5
+vXist
 path <- paste0("../../results/vlnPlots/",treatment,"_",tolower(tissue), 
-               "_percent_xist_filtered")
+               "_percent_filtered_Xist")
 saveToPDF(paste0(path, ".pdf"), width = 6, height = 4)
 saveToPNG(paste0(path, ".png"), width = 6, height = 4, unit = "in", res = 300)
 dev.off()
@@ -1074,7 +1260,7 @@ determines the phase.
 
 Using a human list for mouse 
 https://github.com/satijalab/seurat/issues/2493 
-```{r fx_convert_gene_names}
+```{r fx_convert_gene_names, eval=FALSE}
 # Basic function to convert human to mouse gene names
 convertHumanGeneList <- function(x){
 require("biomaRt")
@@ -1087,12 +1273,16 @@ print(head(humanx))
 return(humanx)
 }
 #genes <- convertHumanGeneList(humGenes)
+
+m.s.genes <- convertHumanGeneList(cc.genes.updated.2019$s.genes)
+m.g2m.genes <- convertHumanGeneList(cc.genes.updated.2019$g2m.genes)
+saveRDS(m.s.genes, "../../results/geneLists/m.s.genes.rds")
+saveRDS(m.g2m.genes, "../../results/geneLists/m.g2m.genes.rds")
 ```
 
 ```{r phase}
-m.s.genes <- convertHumanGeneList(cc.genes.updated.2019$s.genes)
-m.g2m.genes <- convertHumanGeneList(cc.genes.updated.2019$g2m.genes)
-
+m.s.genes <- readRDS("../../results/geneLists/m.s.genes.rds")
+m.g2m.genes <- readRDS("../../results/geneLists/m.g2m.genes.rds")
 
 # score cells for cell cycle
 PMI.phase <- CellCycleScoring(PMI.phase,
@@ -1378,10 +1568,41 @@ PMI.sct.merged <- merge(x = PMI.split[[1]],
 
 # define the variable features 
 VariableFeatures(PMI.sct.merged) <- var.features
+saveRDS(PMI.sct.merged, "PMI.sct.merged.rds")
+PMI.sct.merged <- readRDS("PMI.sct.merged.rds")
+
+PMI.sct.merged <- RunUMAP(PMI.sct.merged, dims = 1:15, reduction = "pca")
+
+# Plot PCA
+pca1 <- DimPlot(PMI.sct.merged,
+        reduction = "umap",
+      #  split.by = "treatment",
+        group.by = "treatment",
+        cols = treatment_colors)
+pca1
+
+pca2 <- DimPlot(PMI.sct.merged,
+        reduction = "umap",
+        split.by = "sample",
+        group.by = "sample",
+        cols = sample_colors)
+pca2
+
+pca3 <- DimPlot(PMI.sct.merged,
+        reduction = "umap",
+        group.by = "sample",
+        shuffle = TRUE)
+pca3
+# nCount
+FeaturePlot(PMI.sct.merged, 
+            features = "Tmem19",
+            pt.size = 0.4, 
+            order = TRUE,
+            min.cutoff = 'q10',
+            label = TRUE)
+
 
 # run PCA on the merged object
-PMI.sct.merged <- RunPCA(object = PMI.sct.merged, assay = "SCT")
-
 # run harmony to harmonize over samples 
 PMI.integrated <- RunHarmony(object = PMI.sct.merged, 
                               group.by.vars = "sample", 
@@ -1623,7 +1844,7 @@ PMI.unannotated <- FindClusters(object = PMI.unannotated,
 ```{r save_object_integrated,echo=FALSE,eval=TRUE}
 # Save integrated seurat object
 saveRDS(PMI.unannotated, paste0("../../rObjects/",tolower(tissue),"_unannotated.rds"))
-#PMI.unannotated <- readRDS(paste0("../../rObjects/",tolower(tissue),"_unannotated.rds"))
+PMI.unannotated <- readRDS(paste0("../../rObjects/",tolower(tissue),"_unannotated.rds"))
 ```
 
 ```{r}
@@ -1862,6 +2083,27 @@ f6 <- FeaturePlot(PMI.unannotated,
             min.cutoff = 'q1',
             label = TRUE)
 f6
+
+FeaturePlot(PMI.unannotated, 
+            features = "Cx3cr1",
+            pt.size = 0.4, 
+            order = TRUE,
+            min.cutoff = 'q1',
+            label = TRUE)
+
+FeaturePlot(PMI.unannotated, 
+            features = "Tmem119",
+            pt.size = 0.4, 
+            order = TRUE,
+            min.cutoff = 'q1',
+            label = TRUE)
+
+FeaturePlot(PMI.unannotated, 
+            features = "Xist",
+            pt.size = 0.4, 
+            order = TRUE,
+            min.cutoff = 'q1',
+            label = TRUE)
 ```
 
 ## Percent cells per cluster

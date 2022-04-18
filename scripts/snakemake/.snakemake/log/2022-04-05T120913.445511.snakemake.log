@@ -52,3 +52,81 @@ rule cellbender:
     resources: mem_mb=1000, disk_mb=1000, tmpdir=/tmp/4020903.1.1-day
 
 Submitted job 6 with external jobid 'Your job 4020920 ("snakejob.cellbender.6.sh") has been submitted'.
+[Thu Apr  7 01:36:21 2022]
+Error in rule cellbender:
+    jobid: 8
+    output: ../../cellbender/snRNA/WT_3_hr
+    shell:
+                                                                                                                   
+            mkdir ../../cellbender/snRNA/WT_3_hr;                                                                                      
+            sh nucleus_cellbender.sh WT_3_hr;
+            mv .h5.pdf WT_3_hr.h5.pdf;
+            mv .h5.log WT_3_hr.h5.log;
+            mv .h5_FPR_0.05.h5 WT_3_hr.h5_FPR_0.05.h5;
+            mv .h5_FPR_0.05_filtered.h5 WT_3_hr.h5_FPR_0.05_filtered.h5;
+            mv .h5_cell_barcodes.csv WT_3_hr.h5_cell_barcodes.csv
+            
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+    cluster_jobid: Your job 4020918 ("snakejob.cellbender.8.sh") has been submitted
+
+Error executing rule cellbender on cluster (jobid: 8, external: Your job 4020918 ("snakejob.cellbender.8.sh") has been submitted, jobscript: /research/labs/neurology/fryer/shared/PMI/scripts/snakemake/.snakemake/tmp.l9qwqzjz/snakejob.cellbender.8.sh). For error details see the cluster log and the log files of the involved rule(s).
+[Thu Apr  7 04:19:01 2022]
+Error in rule cellbender:
+    jobid: 6
+    output: ../../cellbender/snRNA/PS19_3_hr
+    shell:
+                                                                                                                   
+            mkdir ../../cellbender/snRNA/PS19_3_hr;                                                                                      
+            sh nucleus_cellbender.sh PS19_3_hr;
+            mv .h5.pdf PS19_3_hr.h5.pdf;
+            mv .h5.log PS19_3_hr.h5.log;
+            mv .h5_FPR_0.05.h5 PS19_3_hr.h5_FPR_0.05.h5;
+            mv .h5_FPR_0.05_filtered.h5 PS19_3_hr.h5_FPR_0.05_filtered.h5;
+            mv .h5_cell_barcodes.csv PS19_3_hr.h5_cell_barcodes.csv
+            
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+    cluster_jobid: Your job 4020920 ("snakejob.cellbender.6.sh") has been submitted
+
+Error executing rule cellbender on cluster (jobid: 6, external: Your job 4020920 ("snakejob.cellbender.6.sh") has been submitted, jobscript: /research/labs/neurology/fryer/shared/PMI/scripts/snakemake/.snakemake/tmp.l9qwqzjz/snakejob.cellbender.6.sh). For error details see the cluster log and the log files of the involved rule(s).
+[Thu Apr  7 08:24:46 2022]
+Error in rule cellbender:
+    jobid: 7
+    output: ../../cellbender/snRNA/WT_0_hr
+    shell:
+                                                                                                                   
+            mkdir ../../cellbender/snRNA/WT_0_hr;                                                                                      
+            sh nucleus_cellbender.sh WT_0_hr;
+            mv .h5.pdf WT_0_hr.h5.pdf;
+            mv .h5.log WT_0_hr.h5.log;
+            mv .h5_FPR_0.05.h5 WT_0_hr.h5_FPR_0.05.h5;
+            mv .h5_FPR_0.05_filtered.h5 WT_0_hr.h5_FPR_0.05_filtered.h5;
+            mv .h5_cell_barcodes.csv WT_0_hr.h5_cell_barcodes.csv
+            
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+    cluster_jobid: Your job 4020917 ("snakejob.cellbender.7.sh") has been submitted
+
+Error executing rule cellbender on cluster (jobid: 7, external: Your job 4020917 ("snakejob.cellbender.7.sh") has been submitted, jobscript: /research/labs/neurology/fryer/shared/PMI/scripts/snakemake/.snakemake/tmp.l9qwqzjz/snakejob.cellbender.7.sh). For error details see the cluster log and the log files of the involved rule(s).
+[Thu Apr  7 09:26:00 2022]
+Error in rule cellbender:
+    jobid: 5
+    output: ../../cellbender/snRNA/PS19_0_hr
+    shell:
+                                                                                                                   
+            mkdir ../../cellbender/snRNA/PS19_0_hr;                                                                                      
+            sh nucleus_cellbender.sh PS19_0_hr;
+            mv .h5.pdf PS19_0_hr.h5.pdf;
+            mv .h5.log PS19_0_hr.h5.log;
+            mv .h5_FPR_0.05.h5 PS19_0_hr.h5_FPR_0.05.h5;
+            mv .h5_FPR_0.05_filtered.h5 PS19_0_hr.h5_FPR_0.05_filtered.h5;
+            mv .h5_cell_barcodes.csv PS19_0_hr.h5_cell_barcodes.csv
+            
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+    cluster_jobid: Your job 4020919 ("snakejob.cellbender.5.sh") has been submitted
+
+Error executing rule cellbender on cluster (jobid: 5, external: Your job 4020919 ("snakejob.cellbender.5.sh") has been submitted, jobscript: /research/labs/neurology/fryer/shared/PMI/scripts/snakemake/.snakemake/tmp.l9qwqzjz/snakejob.cellbender.5.sh). For error details see the cluster log and the log files of the involved rule(s).
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+The code used to generate one or several output files has changed:
+    To inspect which output files have changes, run 'snakemake --list-code-changes'.
+    To trigger a re-run, use 'snakemake -R $(snakemake --list-code-changes)'.
+Complete log: .snakemake/log/2022-04-05T120913.445511.snakemake.log

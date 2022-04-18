@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 
 # create a new output file
-outfile = open('config.json', 'w')
+outfile = open('cell_config.json', 'w')
 
 # get all, kidney, brain and blood sample names
 allSamples = list()
@@ -17,9 +17,9 @@ with open('sampleReadGroupInfo_scRNA.txt', 'r') as infile:
 
         line = line.replace(".", "_")
         split = line.split()
-        sampleAttributes = split[0].split('_') # PS19_Fresh_S2_L008_R1_001.fastq.gz
+        sampleAttributes = split[0].split('_') # rep1_PS19_Fresh_S2_L008_R1_001.fastq.gz
         # create a shorter sample name
-        stemName = sampleAttributes[0] + '_' + sampleAttributes[1] + '_' + sampleAttributes[2]
+        stemName = sampleAttributes[0] + '_' + sampleAttributes[1] + '_' + sampleAttributes[2] + '_' + sampleAttributes[3]
         allSamples.append(stemName)
 
 # create header and write to outfile
@@ -27,7 +27,8 @@ header = '''{{
     "Commment_Input_Output_Directories": "This section specifies the input and output directories for scripts",
     "rawReads" : "/research/labs/neurology/fryer/projects/PMI/scRNA",
     "counts" : "../../counts/",
-    "cellbender" : "../../cellbender/",
+    "cellranger_dir" : "../../cellranger/",
+    "cellbender_dir" : "../../cellbender/",
     "results" : "../../results/",
     "rObjects" : "../../rObjects/",
     "fastq_path" : "/research/labs/neurology/fryer/projects/PMI/scRNA/",
@@ -63,8 +64,8 @@ with open('sampleReadGroupInfo_scRNA.txt', 'r') as infile:
         # uniqueNum-number_sequencer_lane_read.fastq.gz
 
         # create a shorter sample name
-        stemName = sampleAttributes[0] + '_' + sampleAttributes[1] + '_' + sampleAttributes[2]
-        stemID = sampleAttributes[0] + '_' + sampleAttributes[1]
+        stemName = sampleAttributes[0] + '_' + sampleAttributes[1] + '_' + sampleAttributes[2] + '_' + sampleAttributes[3]
+        stemID = sampleAttributes[0] + '_' + sampleAttributes[1] + '_' + sampleAttributes[2]
         shortName1 = stemName + '_R1'
         shortName2 = stemName + '_R2'
 
@@ -101,4 +102,3 @@ with open('sampleReadGroupInfo_scRNA.txt', 'r') as infile:
         else:
             outfile.write("},\n")
 outfile.close()
-

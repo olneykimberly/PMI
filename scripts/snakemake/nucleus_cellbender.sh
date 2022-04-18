@@ -24,5 +24,8 @@ cellbender remove-background \
 		   --expected-cells 6000 \
 		   #--total-droplets-included 20000 \
 		   --fpr 0.05 \
-		   --epochs 150
+		   --epochs 150\
+
+
+touch $sample
 

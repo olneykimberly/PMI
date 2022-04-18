@@ -1,6 +1,7 @@
 {
     "Commment_Input_Output_Directories": "This section specifies the input and output directories for scripts",
     "rawReads" : "/research/labs/neurology/fryer/projects/PMI/scRNA",
+    "counts" : "../../counts/",
     "cellranger_dir" : "../../cellranger/",
     "cellbender_dir" : "../../cellbender/",
     "results" : "../../results/",
@@ -12,84 +13,136 @@
     "genes.gtf" : "/research/labs/neurology/fryer/projects/references/mouse/refdata-gex-mm10-2020-A/genes",
 
     "Comment_Sample_Info": "The following section lists the samples that are to be analyzed",
-    "sample_names": ['PS19_0_hr', 'PS19_3_hr', 'PS19_6_hr', 'WT_0_hr', 'WT_3_hr', 'WT_6_hr'],
+    "sample_names": ['rep1_PS19_0_hr', 'rep1_PS19_3_hr', 'rep1_WT_0_hr', 'rep1_WT_3_hr', 'rep2_PS19_0_hr', 'rep2_PS19_3_hr', 'rep2_PS19_6_hr', 'rep2_WT_0_hr', 'rep2_WT_3_hr', 'rep2_WT_6_hr'],
     "read": ['R1', 'R2'],
 
-    "PS19_0_hr":{
+    "rep1_PS19_0_hr":{
         "fq_path": "/research/labs/neurology/fryer/projects/PMI/scRNA/",
-        "fq1": "PS19_0_hr_S3_L007_R1_001",
-        "fq2": "PS19_0_hr_S3_L007_R2_001",
-        "shortName1": "PS19_0_hr_R1",
-        "shortName2": "PS19_0_hr_R2",
-        "ID": "PS19_0_hr",
-        "SM": "PS19_0_hr",
+        "fq1": "rep1_PS19_0_hr_S2_L004_R1_001",
+        "fq2": "rep1_PS19_0_hr_S2_L004_R2_001",
+        "shortName1": "rep1_PS19_0_hr_R1",
+        "shortName2": "rep1_PS19_0_hr_R2",
+        "ID": "rep1_PS19_0_hr",
+        "SM": "rep1_PS19_0_hr",
+        "PU": "HLTYFBBXY.4",
+        "LB": "rep1_PS19_0_hr",
+        "PL": "Illumina"
+        },
+
+    "rep1_PS19_3_hr":{
+        "fq_path": "/research/labs/neurology/fryer/projects/PMI/scRNA/",
+        "fq1": "rep1_PS19_3_hr_S3_L003_R1_001",
+        "fq2": "rep1_PS19_3_hr_S3_L003_R2_001",
+        "shortName1": "rep1_PS19_3_hr_R1",
+        "shortName2": "rep1_PS19_3_hr_R2",
+        "ID": "rep1_PS19_3_hr",
+        "SM": "rep1_PS19_3_hr",
+        "PU": "HLTYFBBXY.3",
+        "LB": "rep1_PS19_3_hr",
+        "PL": "Illumina"
+        },
+
+    "rep1_WT_0_hr":{
+        "fq_path": "/research/labs/neurology/fryer/projects/PMI/scRNA/",
+        "fq1": "rep1_WT_0_hr_S4_L002_R1_001",
+        "fq2": "rep1_WT_0_hr_S4_L002_R2_001",
+        "shortName1": "rep1_WT_0_hr_R1",
+        "shortName2": "rep1_WT_0_hr_R2",
+        "ID": "rep1_WT_0_hr",
+        "SM": "rep1_WT_0_hr",
+        "PU": "HLTYFBBXY.2",
+        "LB": "rep1_WT_0_hr",
+        "PL": "Illumina"
+        },
+
+    "rep1_WT_3_hr":{
+        "fq_path": "/research/labs/neurology/fryer/projects/PMI/scRNA/",
+        "fq1": "rep1_WT_3_hr_S1_L001_R1_001",
+        "fq2": "rep1_WT_3_hr_S1_L001_R2_001",
+        "shortName1": "rep1_WT_3_hr_R1",
+        "shortName2": "rep1_WT_3_hr_R2",
+        "ID": "rep1_WT_3_hr",
+        "SM": "rep1_WT_3_hr",
+        "PU": "HLTYFBBXY.1",
+        "LB": "rep1_WT_3_hr",
+        "PL": "Illumina"
+        },
+
+    "rep2_PS19_0_hr":{
+        "fq_path": "/research/labs/neurology/fryer/projects/PMI/scRNA/",
+        "fq1": "rep2_PS19_0_hr_S3_L007_R1_001",
+        "fq2": "rep2_PS19_0_hr_S3_L007_R2_001",
+        "shortName1": "rep2_PS19_0_hr_R1",
+        "shortName2": "rep2_PS19_0_hr_R2",
+        "ID": "rep2_PS19_0_hr",
+        "SM": "rep2_PS19_0_hr",
         "PU": "HMVKGBBXY.7",
-        "LB": "PS19_0_hr",
+        "LB": "rep2_PS19_0_hr",
         "PL": "Illumina"
         },
 
-    "PS19_3_hr":{
+    "rep2_PS19_3_hr":{
         "fq_path": "/research/labs/neurology/fryer/projects/PMI/scRNA/",
-        "fq1": "PS19_3_hr_S6_L006_R1_001",
-        "fq2": "PS19_3_hr_S6_L006_R2_001",
-        "shortName1": "PS19_3_hr_R1",
-        "shortName2": "PS19_3_hr_R2",
-        "ID": "PS19_3_hr",
-        "SM": "PS19_3_hr",
+        "fq1": "rep2_PS19_3_hr_S6_L006_R1_001",
+        "fq2": "rep2_PS19_3_hr_S6_L006_R2_001",
+        "shortName1": "rep2_PS19_3_hr_R1",
+        "shortName2": "rep2_PS19_3_hr_R2",
+        "ID": "rep2_PS19_3_hr",
+        "SM": "rep2_PS19_3_hr",
         "PU": "HMVKGBBXY.6",
-        "LB": "PS19_3_hr",
+        "LB": "rep2_PS19_3_hr",
         "PL": "Illumina"
         },
 
-    "PS19_6_hr":{
+    "rep2_PS19_6_hr":{
         "fq_path": "/research/labs/neurology/fryer/projects/PMI/scRNA/",
-        "fq1": "PS19_6_hr_S4_L005_R1_001",
-        "fq2": "PS19_6_hr_S4_L005_R2_001",
-        "shortName1": "PS19_6_hr_R1",
-        "shortName2": "PS19_6_hr_R2",
-        "ID": "PS19_6_hr",
-        "SM": "PS19_6_hr",
+        "fq1": "rep2_PS19_6_hr_S4_L005_R1_001",
+        "fq2": "rep2_PS19_6_hr_S4_L005_R2_001",
+        "shortName1": "rep2_PS19_6_hr_R1",
+        "shortName2": "rep2_PS19_6_hr_R2",
+        "ID": "rep2_PS19_6_hr",
+        "SM": "rep2_PS19_6_hr",
         "PU": "HMVKGBBXY.5",
-        "LB": "PS19_6_hr",
+        "LB": "rep2_PS19_6_hr",
         "PL": "Illumina"
         },
 
-    "WT_0_hr":{
+    "rep2_WT_0_hr":{
         "fq_path": "/research/labs/neurology/fryer/projects/PMI/scRNA/",
-        "fq1": "WT_0_hr_S5_L004_R1_001",
-        "fq2": "WT_0_hr_S5_L004_R2_001",
-        "shortName1": "WT_0_hr_R1",
-        "shortName2": "WT_0_hr_R2",
-        "ID": "WT_0_hr",
-        "SM": "WT_0_hr",
+        "fq1": "rep2_WT_0_hr_S5_L004_R1_001",
+        "fq2": "rep2_WT_0_hr_S5_L004_R2_001",
+        "shortName1": "rep2_WT_0_hr_R1",
+        "shortName2": "rep2_WT_0_hr_R2",
+        "ID": "rep2_WT_0_hr",
+        "SM": "rep2_WT_0_hr",
         "PU": "HMVKGBBXY.4",
-        "LB": "WT_0_hr",
+        "LB": "rep2_WT_0_hr",
         "PL": "Illumina"
         },
 
-    "WT_3_hr":{
+    "rep2_WT_3_hr":{
         "fq_path": "/research/labs/neurology/fryer/projects/PMI/scRNA/",
-        "fq1": "WT_3_hr_S2_L003_R1_001",
-        "fq2": "WT_3_hr_S2_L003_R2_001",
-        "shortName1": "WT_3_hr_R1",
-        "shortName2": "WT_3_hr_R2",
-        "ID": "WT_3_hr",
-        "SM": "WT_3_hr",
+        "fq1": "rep2_WT_3_hr_S2_L003_R1_001",
+        "fq2": "rep2_WT_3_hr_S2_L003_R2_001",
+        "shortName1": "rep2_WT_3_hr_R1",
+        "shortName2": "rep2_WT_3_hr_R2",
+        "ID": "rep2_WT_3_hr",
+        "SM": "rep2_WT_3_hr",
         "PU": "HMVKGBBXY.3",
-        "LB": "WT_3_hr",
+        "LB": "rep2_WT_3_hr",
         "PL": "Illumina"
         },
 
-    "WT_6_hr":{
+    "rep2_WT_6_hr":{
         "fq_path": "/research/labs/neurology/fryer/projects/PMI/scRNA/",
-        "fq1": "WT_6_hr_S1_L002_R1_001",
-        "fq2": "WT_6_hr_S1_L002_R2_001",
-        "shortName1": "WT_6_hr_R1",
-        "shortName2": "WT_6_hr_R2",
-        "ID": "WT_6_hr",
-        "SM": "WT_6_hr",
+        "fq1": "rep2_WT_6_hr_S1_L002_R1_001",
+        "fq2": "rep2_WT_6_hr_S1_L002_R2_001",
+        "shortName1": "rep2_WT_6_hr_R1",
+        "shortName2": "rep2_WT_6_hr_R2",
+        "ID": "rep2_WT_6_hr",
+        "SM": "rep2_WT_6_hr",
         "PU": "HMVKGBBXY.2",
-        "LB": "WT_6_hr",
+        "LB": "rep2_WT_6_hr",
         "PL": "Illumina"
         }
 }

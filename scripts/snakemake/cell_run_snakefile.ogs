@@ -1,6 +1,6 @@
 #!/bin/bash
 #$ -cwd  
-#$ -N cell_outs
+#$ -N cell
 #$ -q 1-day  
 #$ -M olney.kimberly@mayo.edu  
 #$ -m abe  
@@ -20,4 +20,4 @@ module load python
 #conda activate pigs
 conda activate PMI_env
 # run snakemake
-snakemake -s cell.Snakefile -j 4 --rerun-incomplete --latency-wait 15 --cluster "qsub -l h_vmem=32G -q 1-day,4-day,lg-mem -pe threaded 24"
+snakemake -s cell.Snakefile -j 20 --rerun-incomplete --latency-wait 15 --cluster "qsub -l h_vmem=22G -q 1-day,4-day,lg-mem -pe threaded 24"

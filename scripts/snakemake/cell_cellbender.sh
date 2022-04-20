@@ -25,5 +25,6 @@ cellbender remove-background \
 		   --fpr 0.05 \
 		   --epochs 150\
 
-touch $sample
+cd /research/labs/neurology/fryer/shared/PMI/cellbender/scRNA/$sample/
+mv .h5 $sample.h5
 

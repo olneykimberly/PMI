@@ -1,0 +1,387 @@
+---
+title: "PMI - mice replicate group 1"
+author: "Cadiz, Todd, Olney"
+date: "04/14/2022"
+output:
+  html_document:
+    theme: cerulean
+    toc: true
+    toc_float: true
+editor_options: 
+  chunk_output_type: inline
+---
+
+# Set working directory
+```{r working_directory}
+knitr::opts_knit$set(root.dir = ".")
+```
+
+# Load libraries
+```{r libraries, message=FALSE, warnings=FALSE}
+# load libraries
+library(cowplot)  # plot_grid()
+library(DoubletFinder)  # paramSweep()
+library(dplyr)  # ungroup()
+library(ggrepel) # geom_text_repel()
+library(ggplot2)  # ggplot()
+library(grid)  # grid.arrange()
+library(gridExtra)  # grid.arrange()
+library(harmony) # RunHarmony()
+library(reshape2) # melt()
+library(Seurat)  # Read10X_h5()
+library(Seurat.utils) # RenameGenesSeurat()
+library(stringr) # str_match()
+```
+
+# Set variables and thresholds
+```{r set_variables}
+pathToRef <- "/research/labs/neurology/fryer/projects/references/mouse/refdata-gex-mm10-2020-A"
+tissue <- "Brain"
+replicate <- "1"
+treatment <- "PMI"
+# genotype
+WT <- "WT"
+PS19 <- "PS19"
+control <- "0_hr"
+treatment_3hr <- "3_hr"
+treatment_6hr <- "6_hr"
+treatment_color_WT <- "blue"
+treatment_color <- "blue"
+control_color <- "gray"
+WT_treatment_color_3hr <- "#6699FF" # light blue grey
+WT_treatment_color_6hr <- "#0033FF" # dark blue
+PS19_treatment_color_3hr <- "#CC99FF" # pink/purple
+PS19_treatment_color_6hr <- "#9933FF" # purple
+treatment_color_PS19 <- "#9933FF"
+sample_colors <- c(control_color,WT_treatment_color_3hr, control_color, PS19_treatment_color_3hr)
+treatment_colors <- c(control_color, treatment_color_WT, treatment_color_PS19)
+myContrasts <- c("6 hour - 0 hour")
+tool <- "cellranger"
+```
+
+```{r set_thresholds}
+nCount.min <- 250
+nFeature.min <- 250
+complexity.cutoff <- 0.85
+mt.cutoff <- 25
+hb.cutoff <- 5
+```
+
+# Save functions
+These functions with help simultaneously save plots as a png and pdf.
+```{r save_functions}
+saveToPDF <- function(...) {
+    d = dev.copy(pdf,...)
+    dev.off(d)
+}
+saveToPNG <- function(...) {
+    d = dev.copy(png,...)
+    dev.off(d)
+}
+```
+
+# Setup seurat object
+Using CellBender filtered output.
+```{r seurat_object}
+prefix <- "../../cellranger/snRNA/"
+suffix <- "/outs/filtered_feature_bc_matrix.h5"
+
+if (tissue == "Brain" && file.exists("../../rObjects/nucleus_replicate_1_merged_h5.rds")) {
+  PMI <- readRDS("../../rObjects/nucleus_replicate_1_merged_h5.rds")
+} else if (tissue == "Brain") {
+  # individual sample objects
+  WT_0_hr <- CreateSeuratObject(Read10X_h5(paste0(prefix,"WT_0_hr",suffix)))
+  WT_3_hr <- CreateSeuratObject(Read10X_h5(paste0(prefix,"WT_3_hr",suffix)))
+  #WT_6_hr <- CreateSeuratObject(Read10X_h5(paste0(prefix,"WT_6_hr",suffix)))
+  PS19_0_hr <- CreateSeuratObject(Read10X_h5(paste0(prefix,"PS19_0_hr",suffix)))
+  PS19_3_hr <- CreateSeuratObject(Read10X_h5(paste0(prefix,"PS19_3_hr",suffix)))
+ # PS19_6_hr <- CreateSeuratObject(Read10X_h5(paste0(prefix,"PS19_6_hr",suffix)))
+ 
+  # merge objects
+  PMI <- merge(x = WT_0_hr, 
+                y = c(WT_3_hr, PS19_0_hr, PS19_3_hr), 
+                add.cell.ids = c("WT_0_hr", "WT_3_hr", "PS19_0_hr", "PS19_3_hr"), 
+                project = paste0("PMI replicate group ", replicate, " - Single Cell"))
+  
+  # cleanup and save
+  remove(WT_0_hr, WT_3_hr, PS19_0_hr, PS19_3_hr)
+  saveRDS(PMI, "../../rObjects/nucleus_replicate_1_merged_h5.rds")
+  
+} 
+
+# preview
+PMI
+```
+
+nCount_RNA = total number of transcripts (UMIs) in a single cell 
+nFeature_RNA = number of unique genes (features)
+
+```{r change_idents}
+# create sample column
+barcodes <- colnames(PMI)
+pattern <- "(.+)_[ACGT]+-(\\d+)"
+sample <- str_match(barcodes, pattern)[,2]
+table(sample)
+PMI$sample <- factor(sample, levels = c("WT_0_hr", "WT_3_hr", "PS19_0_hr", "PS19_3_hr"))
+table(PMI$sample)  # check
+Idents(PMI) <- PMI$sample
+```
+
+Add treatment column to metadata
+```{r treatment_column}
+# create treatment column
+treat <- gsub("WT_0_hr", control, PMI$sample)
+treat <- gsub("WT_3_hr", treatment_3hr, treat)
+#treat <- gsub("WT_6_hr", treatment_6hr, treat)
+treat <- gsub("PS19_0_hr", control, treat)
+treat <- gsub("PS19_3_hr", treatment_3hr, treat)
+#treat <- gsub("PS19_6_hr", treatment_6hr, treat)
+
+PMI$treatment <- factor(treat, levels = c("0_hr","3_hr"))
+table(PMI$treatment)
+```
+Add genotype column to metadata
+```{r genotype_column}
+# create treatment column
+geno <- gsub("WT_0_hr", WT, PMI$sample)
+geno <- gsub("WT_3_hr", WT, geno)
+#geno <- gsub("WT_6_hr", WT, geno)
+geno <- gsub("PS19_0_hr", PS19, geno)
+geno <- gsub("PS19_3_hr", PS19, geno)
+#geno <- gsub("PS19_6_hr", PS19, geno)
+
+PMI$genotype <- factor(geno, levels = c("WT","PS19"))
+table(PMI$genotype)
+```
+
+
+```{r QC_columns}
+# cell.complexity
+PMI$cell.complexity <- log10(PMI$nFeature_RNA) / log10(PMI$nCount_RNA)
+
+# percent MT
+grep("^mt-",rownames(PMI@assays$RNA@counts),value = TRUE)
+mt.genes <- c("mt-Nd1", "mt-Nd2", "mt-Co1", "mt-Co2", "mt-Atp8", "mt-Atp6", "mt-Co3", "mt-Nd3",
+              "mt-Nd4l", "mt-Nd4", "mt-Nd5", "mt-Nd6", "mt-Cytb")
+PMI$percent.mt <- PercentageFeatureSet(PMI, pattern = "^mt-")
+
+# ribosomal proteins begin with 'RPL' or 'RSL' for this annotation file
+PMI$percent.ribo <- PercentageFeatureSet(PMI, pattern = "^R[sp]l")
+
+# percent.hb - hemoglobin proteins begin with 'HB' or 'HBP' 
+PMI$percent.hb <- PercentageFeatureSet(PMI, pattern = "^Hb[^(p)]")
+
+# percent xist in each cell 
+PMI$percent.Xist <- PercentageFeatureSet(PMI, features = "Xist")
+
+# percent xist in each cell 
+PMI$percent.Ttr <- PercentageFeatureSet(PMI, features = "Ttr")
+```
+
+# Pre-filtering QC
+## Number of cells
+```{r prefiltering_cells_per_sample}
+# Visualize the number of cell counts per sample
+data <- as.data.frame(table(PMI$sample))
+colnames(data) <- c("sample","frequency")
+
+ncells1 <- ggplot(data, aes(x = sample, y = frequency, fill = sample)) + 
+  geom_col() +
+  theme_classic() +
+  geom_text(aes(label = frequency), 
+            position=position_dodge(width=0.9), 
+            vjust=-0.25) +
+  scale_fill_manual(values = sample_colors) + 
+  scale_y_continuous(breaks = seq(0,55000, by = 5000), limits = c(0,55000)) +
+  ggtitle("Raw: cells per sample") +
+  theme(legend.position =  "none") + 
+  theme(axis.text.x = element_text(angle = 45, hjust=1))
+ncells1
+```
+
+## Density plots
+```{r prefiltering_density}
+# set graphical parameter
+par(mfrow = c(3,1))
+
+# Visualize nCount_RNA
+den1 <- ggplot(PMI@meta.data,
+       aes(color = sample,
+           x = nCount_RNA,
+           fill = sample)) +
+  geom_density(alpha = 0.2) +
+  theme_classic() +
+  scale_x_log10() +
+  scale_color_manual(values = sample_colors) +
+  scale_fill_manual(values = sample_colors) +
+  xlab("nCount_RNA") +
+  ylab("Density") +
+  geom_vline(xintercept = nCount.min)
+
+# Visualize percent.mt
+den2 <- ggplot(PMI@meta.data,
+       aes(color = sample,
+           x = percent.mt,
+           fill = sample)) +
+  geom_density(alpha = 0.2) +
+  theme_classic() +
+  scale_x_continuous(n.breaks = 4) +
+  geom_vline(xintercept = mt.cutoff) +
+  scale_color_manual(values = sample_colors) +
+  scale_fill_manual(values = sample_colors) +
+  xlab("% Mitochondrial Genes") +
+  ylab("Density")
+
+# Visualize cell complexity
+# Quality cells are usually above 0.85
+den3 <- ggplot(PMI@meta.data,
+       aes(color = sample,
+           x = cell.complexity,
+           fill = sample)) +
+  geom_density(alpha = 0.2) +
+  theme_classic() +
+  scale_color_manual(values = sample_colors) +
+  scale_fill_manual(values = sample_colors) +
+  xlab("Cell Complexity (log10(nFeature/nCount))") +
+  ylab("Density") +
+  geom_vline(xintercept = complexity.cutoff)
+
+# Arrange graphs in grid
+plots1 <- list(den1,den2,den3)
+layout1 <- rbind(c(1),c(2),c(3))
+grid1 <- grid.arrange(grobs = plots1, layout_matrix = layout1)
+
+# Visualize percent.Ttr
+den4 <- ggplot(PMI@meta.data,
+       aes(color = sample,
+           x = log2(percent.Ttr),
+           fill = sample)) +
+  geom_density(alpha = 0.2) +
+  theme_classic() +
+  scale_x_continuous(n.breaks = 4) +
+ # geom_vline(xintercept = mt.cutoff) +
+  scale_color_manual(values = sample_colors) +
+  scale_fill_manual(values = sample_colors) +
+  xlab("% Ttr Gene") +
+  ylab("Density")
+den4
+
+# Visualize percent.Xist
+den5 <- ggplot(PMI@meta.data,
+       aes(color = sample,
+           x = log2(percent.Xist),
+           fill = sample)) +
+  geom_density(alpha = 0.2) +
+  theme_classic() +
+  scale_x_continuous(n.breaks = 4) +
+ # geom_vline(xintercept = mt.cutoff) +
+  scale_color_manual(values = sample_colors) +
+  scale_fill_manual(values = sample_colors) +
+  xlab("% Xist Gene") +
+  ylab("Density")
+den5
+```
+
+## Violin plots
+```{r prefiltering_violins}
+# nFeature, nCount, and cell.complexity violins
+v1 <- VlnPlot(PMI,
+              features = c("nFeature_RNA", "nCount_RNA","cell.complexity"),
+              ncol = 3,
+              group.by = 'sample',
+              cols = sample_colors,
+              pt.size = 0)
+v1
+
+#  percent violins
+v2 <- VlnPlot(PMI,
+              features = c("percent.mt","percent.ribo","percent.hb", "percent.Xist"),
+              ncol = 4,
+              group.by = 'sample',
+              cols = sample_colors,
+              pt.size = 0)
+v2
+
+#  percent violins
+vXist <- VlnPlot(PMI,
+              features = c("percent.Xist"),
+              group.by = 'sample',
+              cols = sample_colors,
+              pt.size = 0)
+vXist
+
+#  percent violins
+vTtr <- VlnPlot(PMI,
+              features = c("percent.Ttr"),
+              group.by = 'sample',
+              cols = sample_colors,
+              pt.size = 0)
+vTtr
+```
+# Histogram
+```{r}
+# User params
+goi <- "Ttr"
+sample_oi <- "PS19_3_hr"
+threshold <- 2
+# Split seurat object by timepoint to perform SCT on all samples
+PMI.split <- SplitObject(PMI, split.by = "sample")
+
+# Subset data
+log2.threshold <- log2(threshold + 0.01)
+counts.df <- FetchData(PMI.split$PS19_3_hr, vars = goi)
+colnames(counts.df) <- "counts"
+log2.counts.df <- log2(counts.df + 0.01)
+
+# Histogram
+title <- paste0("PMI Brain Cell: ", goi, " - ", sample_oi, "\nnCount_RNA > ", threshold)
+hist1 <- ggplot(counts.df, aes(x = counts)) + 
+  geom_histogram(bins = 100, fill = "gray", color = "black") + 
+  labs(title = title, x=NULL, y=NULL) +
+  xlab(paste0(goi, " nCount_RNA")) + ylab("# of cells") + theme_bw() +
+  geom_vline(xintercept = threshold, col = "blue") +
+  annotate("rect", 
+           xmin = -Inf,
+           xmax = threshold, 
+           ymin = 0, 
+           ymax=Inf, 
+           alpha=0.2, 
+           fill="deepskyblue") +
+  annotate("rect", 
+           xmin = threshold,
+           xmax = Inf, 
+           ymin = 0, 
+           ymax=Inf, 
+           alpha=0.2, 
+           fill="chocolate4")
+
+# Histogram log transformed
+hist2 <- ggplot(log2.counts.df, aes(x = counts)) + 
+  geom_histogram(bins = 100, fill = "gray", color = "black") + 
+  labs(title = title, x=NULL, y=NULL) +
+  xlab(paste0("Log2(",goi, " nCount_RNA)")) + ylab("# of cells") + theme_bw() +
+  geom_vline(xintercept = log2.threshold, col = "blue") +
+  annotate("rect", 
+           xmin = -Inf,
+           xmax = log2.threshold, 
+           ymin = 0, 
+           ymax=Inf, 
+           alpha=0.2, 
+           fill="deepskyblue") +
+  annotate("rect", 
+           xmin = log2.threshold,
+           xmax = Inf, 
+           ymin = 0, 
+           ymax=Inf, 
+           alpha=0.2, 
+           fill="chocolate4")
+
+# plot
+plots1 <- list(hist1,hist2)
+layout1 <- rbind(c(1),c(2))
+grid1 <- grid.arrange(grobs = plots1, layout_matrix = layout1)
+
+# number removed
+table(counts.df$counts > threshold)
+
+```

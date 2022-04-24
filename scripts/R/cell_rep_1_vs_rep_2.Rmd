@@ -1,7 +1,7 @@
 ---
-title: "PMI - mice "
+title: "PMI - mice rep 1 vs. rep 2 3hour"
 author: "Cadiz, Todd, Olney"
-date: "04/05/2022"
+date: "04/22/2022"
 output:
   html_document:
     theme: cerulean
@@ -40,28 +40,38 @@ library(stringr) # str_match()
 # Set variables and thresholds
 ```{r set_variables}
 pathToRef <- "/research/labs/neurology/fryer/projects/references/mouse/refdata-gex-mm10-2020-A"
-tissue <- "Cell"
+pathToTestType <- "scRNA/cell_rep_1_vs_rep_2/"
+tissue <- "Brain"
+seqType <- "Cell"
 treatment <- "PMI"
+tool <- "cellbender"
+
+# replicate groups
 replicate <- "1 vs 2"
 replicate1 <- "replicate1"
 replicate2 <- "replicate2"
+
+# genotype
 WT <- "WT"
 PS19 <- "PS19"
+
+# timepoints
 treatment_3hr <- "3_hr"
-treatment_color_WT <- "blue"
+
+# colors
 treatment_color <- "blue"
 control_color <- "gray"
+treatment_color_PS19 <- "#9933FF"
+treatment_color_WT <- "blue"
 WT_treatment_color_3hr_rep1 <- "#6699FF" # light blue grey
 WT_treatment_color_3hr_rep2 <- "blue" # light blue grey
-
 PS19_treatment_color_3hr_rep1 <- "#CC99FF" # pink/purple
 PS19_treatment_color_3hr_rep2 <- "purple" # pink/purple
-
-treatment_color_PS19 <- "#9933FF"
 sample_colors <- c(WT_treatment_color_3hr_rep1, WT_treatment_color_3hr_rep2, PS19_treatment_color_3hr_rep1, PS19_treatment_color_3hr_rep2)
 treatment_colors <- c(treatment_color_WT, treatment_color_PS19)
-myContrasts <- c("3 hour - 0 hour")
-tool <- "cellbender"
+
+# contrast
+myContrasts <- c("replicate 1 - replicate 2")
 ```
 
 ```{r set_thresholds}
@@ -91,8 +101,8 @@ Using CellBender filtered output.
 prefix <- "../../cellbender/scRNA/"
 suffix <- "/.h5_filtered.h5"
 
-if (tissue == "Brain" && file.exists("../../rObjects/cell_replicate1_vs_replicate2_merged_h5.rds")) {
-  PMI <- readRDS("../../rObjects/cell_replicate1_vs_replicate2_merged_h5.rds")
+if (tissue == "Brain" && file.exists(paste0("../../rObjects/", pathToTestType, "PMI_merged_h5.rds"))) {
+  PMI <- readRDS(paste0("../../rObjects/", pathToTestType, "PMI_merged_h5.rds"))
 } else if (tissue == "Brain") {
   # individual sample objects
   rep1_WT_3_hr <- CreateSeuratObject(Read10X_h5(paste0(prefix,"rep1_WT_3_hr",suffix)))
@@ -108,8 +118,7 @@ if (tissue == "Brain" && file.exists("../../rObjects/cell_replicate1_vs_replicat
   
   # cleanup and save
   remove(rep1_WT_3_hr, rep2_WT_3_hr, rep1_PS19_3_hr, rep2_PS19_3_hr)
-  saveRDS(PMI, "../../rObjects/cell_replicate1_vs_replicate2_merged_h5.rds")
-  
+  saveRDS(PMI, past0("../../rObjects/", pathToTestType, "PMI_merged_h5.rds"))
 } 
 
 # preview
@@ -153,7 +162,7 @@ PMI$genotype <- factor(geno, levels = c("WT","PS19"))
 table(PMI$genotype)
 ```
 Add replicate column to metadata
-```{r genotype_column}
+```{r replicate_column}
 # create treatment column
 repl <- gsub("rep1_WT_3_hr", replicate1, PMI$sample)
 repl <- gsub("rep2_WT_3_hr", replicate2, repl)
@@ -180,11 +189,17 @@ PMI$percent.ribo <- PercentageFeatureSet(PMI, pattern = "^R[sp]l")
 # percent.hb - hemoglobin proteins begin with 'HB' or 'HBP' 
 PMI$percent.hb <- PercentageFeatureSet(PMI, pattern = "^Hb[^(p)]")
 
-# percent xist in each cell 
+# percent Xist in each cell 
 PMI$percent.Xist <- PercentageFeatureSet(PMI, features = "Xist")
 
-# percent xist in each cell 
+# percent Ddx3x in each cell 
+PMI$percent.Ddx3x <- PercentageFeatureSet(PMI, features = "Ddx3x")
+
+# percent Ttr in each cell 
 PMI$percent.Ttr <- PercentageFeatureSet(PMI, features = "Ttr")
+
+# percent Apoe in each cell 
+PMI$percent.Apoe <- PercentageFeatureSet(PMI, features = "Apoe")
 ```
 
 # Pre-filtering QC
@@ -194,18 +209,18 @@ PMI$percent.Ttr <- PercentageFeatureSet(PMI, features = "Ttr")
 data <- as.data.frame(table(PMI$sample))
 colnames(data) <- c("sample","frequency")
 
-ncells1 <- ggplot(data, aes(x = sample, y = frequency, fill = sample)) + 
+ncellsRaw <- ggplot(data, aes(x = sample, y = frequency, fill = sample)) + 
   geom_col() +
   theme_classic() +
   geom_text(aes(label = frequency), 
             position=position_dodge(width=0.9), 
             vjust=-0.25) +
   scale_fill_manual(values = sample_colors) + 
-  scale_y_continuous(breaks = seq(0,55000, by = 5000), limits = c(0,55000)) +
+  scale_y_continuous(breaks = seq(0,30000, by = 5000), limits = c(0,30000)) +
   ggtitle("Raw: cells per sample") +
   theme(legend.position =  "none") + 
   theme(axis.text.x = element_text(angle = 45, hjust=1))
-ncells1
+ncellsRaw
 ```
 
 ## Density plots
@@ -214,7 +229,7 @@ ncells1
 par(mfrow = c(3,1))
 
 # Visualize nCount_RNA
-den1 <- ggplot(PMI@meta.data,
+denCount <- ggplot(PMI@meta.data,
        aes(color = sample,
            x = nCount_RNA,
            fill = sample)) +
@@ -228,7 +243,7 @@ den1 <- ggplot(PMI@meta.data,
   geom_vline(xintercept = nCount.min)
 
 # Visualize percent.mt
-den2 <- ggplot(PMI@meta.data,
+denMt <- ggplot(PMI@meta.data,
        aes(color = sample,
            x = percent.mt,
            fill = sample)) +
@@ -243,7 +258,7 @@ den2 <- ggplot(PMI@meta.data,
 
 # Visualize cell complexity
 # Quality cells are usually above 0.85
-den3 <- ggplot(PMI@meta.data,
+denCellComplexity <- ggplot(PMI@meta.data,
        aes(color = sample,
            x = cell.complexity,
            fill = sample)) +
@@ -256,13 +271,13 @@ den3 <- ggplot(PMI@meta.data,
   geom_vline(xintercept = complexity.cutoff)
 
 # Arrange graphs in grid
-plots1 <- list(den1,den2,den3)
-layout1 <- rbind(c(1),c(2),c(3))
-grid1 <- grid.arrange(grobs = plots1, layout_matrix = layout1)
+plots <- list(denCount,denMt,denCellComplexity)
+layout <- rbind(c(1),c(2),c(3))
+grid <- grid.arrange(grobs = plots, layout_matrix = layout)
 
 
 # Visualize percent.Ttr
-den4 <- ggplot(PMI@meta.data,
+denTtr <- ggplot(PMI@meta.data,
        aes(color = sample,
            x = log2(percent.Ttr),
            fill = sample)) +
@@ -272,12 +287,12 @@ den4 <- ggplot(PMI@meta.data,
  # geom_vline(xintercept = mt.cutoff) +
   scale_color_manual(values = sample_colors) +
   scale_fill_manual(values = sample_colors) +
-  xlab("% Ttr Gene") +
+  xlab("percent Ttr") +
   ylab("Density")
-den4
+denTtr
 
 # Visualize percent.Xist
-den5 <- ggplot(PMI@meta.data,
+denXist <- ggplot(PMI@meta.data,
        aes(color = sample,
            x = log2(percent.Xist),
            fill = sample)) +
@@ -287,30 +302,103 @@ den5 <- ggplot(PMI@meta.data,
  # geom_vline(xintercept = mt.cutoff) +
   scale_color_manual(values = sample_colors) +
   scale_fill_manual(values = sample_colors) +
-  xlab("% Xist Gene") +
+  xlab("percent Xist") +
   ylab("Density")
-den5
+denXist
+
+# Visualize percent.Ddx3x
+denDdx3x <- ggplot(PMI@meta.data,
+       aes(color = sample,
+           x = log2(percent.Ddx3x),
+           fill = sample)) +
+  geom_density(alpha = 0.2) +
+  theme_classic() +
+  scale_x_continuous(n.breaks = 4) +
+ # geom_vline(xintercept = mt.cutoff) +
+  scale_color_manual(values = sample_colors) +
+  scale_fill_manual(values = sample_colors) +
+  xlab("percent Ddx3x") +
+  ylab("Density")
+denDdx3x
+
+# Visualize percent.Ddx3x
+denApoe <- ggplot(PMI@meta.data,
+       aes(color = sample,
+           x = log2(percent.Apoe),
+           fill = sample)) +
+  geom_density(alpha = 0.2) +
+  theme_classic() +
+  scale_x_continuous(n.breaks = 4) +
+ # geom_vline(xintercept = mt.cutoff) +
+  scale_color_manual(values = sample_colors) +
+  scale_fill_manual(values = sample_colors) +
+  xlab("percent Apoe") +
+  ylab("Density")
+denApoe
+```
+```{r, echo=FALSE,eval=FALSE}
+denCount
+path <- paste0("../../results/", pathToTestType, "density/",treatment,"_",tolower(tissue),"_nCount_raw")
+saveToPDF(paste0(path, ".pdf"), width = 6, height = 4)
+saveToPNG(paste0(path, ".png"), width = 6, height = 4, unit = "in", res = 300)
+dev.off()
+
+denMt
+path <- paste0("../../results/", pathToTestType, "density/",treatment,"_",tolower(tissue),"_percent.Mt_raw")
+saveToPDF(paste0(path, ".pdf"), width = 8, height = 4)
+saveToPNG(paste0(path, ".png"), width = 6, height = 4, unit = "in", res = 300)
+dev.off()
+
+denCellComplexity
+path <- paste0("../../results/", pathToTestType, "density/",treatment,"_",tolower(tissue),"_cell_complexity_raw")
+saveToPDF(paste0(path, ".pdf"), width = 6, height = 4)
+saveToPNG(paste0(path, ".png"), width = 6, height = 4, unit = "in", res = 300)
+dev.off()
+
+denTtr
+path <- paste0("../../results/", pathToTestType, "density/",treatment,"_",tolower(tissue),"_percent.Ttr_raw")
+saveToPDF(paste0(path, ".pdf"), width = 6, height = 4)
+saveToPNG(paste0(path, ".png"), width = 6, height = 4, unit = "in", res = 300)
+dev.off()
+
+denXist
+path <- paste0("../../results/", pathToTestType, "density/",treatment,"_",tolower(tissue),"_percent.Xist_raw")
+saveToPDF(paste0(path, ".pdf"), width = 6, height = 4)
+saveToPNG(paste0(path, ".png"), width = 6, height = 4, unit = "in", res = 300)
+dev.off()
+
+denDdx3x
+path <- paste0("../../results/", pathToTestType, "density/",treatment,"_",tolower(tissue),"_percent.Ddx3x_raw")
+saveToPDF(paste0(path, ".pdf"), width = 6, height = 4)
+saveToPNG(paste0(path, ".png"), width = 6, height = 4, unit = "in", res = 300)
+dev.off()
+
+denApoe
+path <- paste0("../../results/", pathToTestType, "density/",treatment,"_",tolower(tissue),"_percent.Apoe_raw")
+saveToPDF(paste0(path, ".pdf"), width = 6, height = 4)
+saveToPNG(paste0(path, ".png"), width = 6, height = 4, unit = "in", res = 300)
+dev.off()
 ```
 
 ## Violin plots
 ```{r prefiltering_violins}
 # nFeature, nCount, and cell.complexity violins
-v1 <- VlnPlot(PMI,
+vCellInfo <- VlnPlot(PMI,
               features = c("nFeature_RNA", "nCount_RNA","cell.complexity"),
               ncol = 3,
               group.by = 'sample',
               cols = sample_colors,
               pt.size = 0)
-v1
+vCellInfo
 
 #  percent violins
-v2 <- VlnPlot(PMI,
-              features = c("percent.mt","percent.ribo","percent.hb", "percent.Xist"),
-              ncol = 4,
+vMtRiboHb <- VlnPlot(PMI,
+              features = c("percent.mt","percent.ribo","percent.hb"),
+              ncol = 3,
               group.by = 'sample',
               cols = sample_colors,
               pt.size = 0)
-v2
+vMtRiboHb
 
 #  percent violins
 vXist <- VlnPlot(PMI,
@@ -321,42 +409,73 @@ vXist <- VlnPlot(PMI,
 vXist
 
 #  percent violins
+vDdx3x <- VlnPlot(PMI,
+              features = c("percent.Ddx3x"),
+              group.by = 'sample',
+              cols = sample_colors,
+              pt.size = 0)
+vDdx3x
+
+#  percent violins
 vTtr <- VlnPlot(PMI,
               features = c("percent.Ttr"),
               group.by = 'sample',
               cols = sample_colors,
               pt.size = 0)
 vTtr
+
+#  percent violins
+vApoe<- VlnPlot(PMI,
+              features = c("percent.Apoe"),
+              group.by = 'sample',
+              cols = sample_colors,
+              pt.size = 0)
+vApoe
+
+vGenes <- VlnPlot(PMI,
+              features = c("percent.Xist", "percent.Ddx3x", "percent.Ttr", "percent.Apoe"),
+              ncol = 4,
+              group.by = 'sample',
+              cols = sample_colors,
+              pt.size = 0)
+vGenes
 ```
 
 ```{r, echo=FALSE,eval=FALSE}
 # save v1
-v1
-path <- paste0("../../results/vlnPlots/",treatment,"_",tolower(tissue),"_nFeature_nCount_complexity_raw")
+vCellInfo
+path <- paste0("../../results/", pathToTestType, "vlnPlots/",treatment,"_",tolower(tissue),"_nFeature_nCount_complexity_raw")
 saveToPDF(paste0(path, ".pdf"), width = 6, height = 4)
 saveToPNG(paste0(path, ".png"), width = 6, height = 4, unit = "in", res = 300)
 dev.off()
 
 # save v2
-v2
-path <- paste0("../../results/vlnPlots/",treatment,"_",tolower(tissue),"_percent_raw")
+vMtRiboHb
+path <- paste0("../../results/", pathToTestType, "vlnPlots/",treatment,"_",tolower(tissue),"_percent_raw")
 saveToPDF(paste0(path, ".pdf"), width = 8, height = 4)
 saveToPNG(paste0(path, ".png"), width = 6, height = 4, unit = "in", res = 300)
 dev.off()
 
 # save vXist
 vXist
-path <- paste0("../../results/vlnPlots/",treatment,"_",tolower(tissue),"_percent_raw_Xist")
+path <- paste0("../../results/", pathToTestType, "vlnPlots/",treatment,"_",tolower(tissue),"_percent_raw_Xist")
+saveToPDF(paste0(path, ".pdf"), width = 6, height = 4)
+saveToPNG(paste0(path, ".png"), width = 6, height = 4, unit = "in", res = 300)
+dev.off()
+
+# save vXist
+vGenes
+path <- paste0("../../results/", pathToTestType, "vlnPlots/",treatment,"_",tolower(tissue),"_percent_raw_Xist_Ddx3x_Ttr_Apoe")
 saveToPDF(paste0(path, ".pdf"), width = 6, height = 4)
 saveToPNG(paste0(path, ".png"), width = 6, height = 4, unit = "in", res = 300)
 dev.off()
 # cleanup
-remove(v1,v2, vXist)
+remove(vCellInfo, vMtRiboHb, vXist, vDdx3x, vTtr, vApoe, vGenes)
 ```
 
 ## Scatter plots
 ```{r prefiltering_scatter1}
-s1 <- ggplot(
+sMt <- ggplot(
   PMI@meta.data,
   aes(x = nCount_RNA, y = nFeature_RNA, color = percent.mt)) + 
   geom_point() + 
@@ -369,42 +488,66 @@ s1 <- ggplot(
   facet_wrap(~sample) +
   scale_colour_gradient(low = "gray90", high = "black", limits =c(0,100))
   #geom_rect(aes(xmin=300, xmax=300, ymin=1000,
-   #             ymax=3000), color="transparent", fill="orange", alpha=0.3)
-s1
+  #              ymax=3000), color="transparent", fill="orange", alpha=0.3)
+sMt
 ```
 
 ```{r echo=FALSE,eval=FALSE}
 # save
-s1
-path <- paste0("../../results/scatterPlots/",treatment,"_",tolower(tissue),"_nFeature_vs_nCount_raw")
+sMt
+path <- paste0("../../results/", pathToTestType, "scatterPlots/",treatment,"_",tolower(tissue),"_nFeature_vs_nCount_raw")
 saveToPDF(paste0(path, ".pdf"), width = 4, height = 4)
 saveToPNG(paste0(path, ".png"), width = 4, height = 4, unit = "in", res = 300)
 dev.off()
 
 # cleanup
-remove(s1)
+remove(sMt)
 ```
 
 ```{r prefiltering_scatter2}
-s2 <- FeatureScatter(PMI,
+sMt <- FeatureScatter(PMI,
                feature1 = "nCount_RNA",
                feature2 = "percent.mt",
                group.by = 'sample',
                cols = sample_colors,
                shuffle = TRUE)
-s2
+sMt
+
+sTtr <- FeatureScatter(PMI,
+               feature1 = "percent.Ttr",
+               feature2 = "nCount_RNA",
+               group.by = 'sample',
+               cols = sample_colors,
+               shuffle = TRUE)
+sTtr
+
+sTtrMt <- FeatureScatter(PMI,
+               feature1 = "percent.Ttr",
+               feature2 = "percent.mt",
+               group.by = 'sample',
+               cols = sample_colors,
+               shuffle = TRUE)
+sTtrMt
+
+sXist <- FeatureScatter(PMI,
+               feature1 = "percent.Xist",
+               feature2 = "nCount_RNA",
+               group.by = 'sample',
+               cols = sample_colors,
+               shuffle = TRUE)
+sXist
 ```
 
 ```{r,echo=FALSE,eval=FALSE}
 # save
-s2
-path <- paste0("../../results/scatterPlots/",treatment,"_",tolower(tissue),"_nCount_vs_percentMT_raw")
+sMt
+path <- paste0("../../results/", pathToTestType, "scatterPlots/",treatment,"_",tolower(tissue),"_nCount_vs_percentMT_raw")
 saveToPDF(paste0(path, ".pdf"), width = 4, height = 4)
 saveToPNG(paste0(path, ".png"), width = 4, height = 4, unit = "in", res = 300)
 dev.off()
 
 # cleanup
-remove(s2)
+remove(sMt, sTtr, sTtrMt, sXist)
 ```
 
 # Filtering
@@ -431,6 +574,30 @@ PMI.filtered <- subset(PMI,
 
 # print cells removed
 print(paste0(dim(PMI)[2] - dim(PMI.filtered)[2]," cells removed"))
+
+data <- as.data.frame(table(PMI.filtered$sample))
+colnames(data) <- c("sample","frequency")
+
+ncellsFilter1 <- ggplot(data, aes(x = sample, y = frequency, fill = sample)) + 
+  geom_col() +
+  theme_classic() +
+  geom_text(aes(label = frequency), 
+            position=position_dodge(width=0.9), 
+            vjust=-0.25) +
+  scale_fill_manual(values = sample_colors) + 
+  scale_y_continuous(breaks = seq(0,30000, by = 5000), limits = c(0,30000)) +
+  ggtitle("Raw: cells per sample") +
+  theme(legend.position =  "none") + 
+  theme(axis.text.x = element_text(angle = 45, hjust=1))
+ncellsFilter1
+
+# Arrange graphs in grid
+plots <- list(ncellsRaw, ncellsFilter1)
+layout <- cbind(c(1),c(2))
+grid <- grid.arrange(grobs = plots, layout_matrix = layout)
+
+# cleanup
+remove(plots, layout, grid, ncellsFilter1)
 ```
 
 ## Gene-level filtering
@@ -518,7 +685,7 @@ for (i in 1:length(PMI.split)) {
         reduction = "umap",
         label = TRUE,
         label.size = 6)
-  path <- paste0("../../results/doubletFinder/",treatment,"_",tolower(tissue),
+  path <- paste0("../../results/", pathToTestType, "doubletFinder/",treatment,"_",tolower(tissue),
                "_doubletFinder_UMAP_res0.02_",sampleID)
   pdf(paste0(path, ".pdf"), width = 5, height = 4)
   print(d1)
@@ -553,7 +720,7 @@ for (i in 1:length(PMI.split)) {
   table(DF_class)
   
   # table showing the number of doublets and singlets
-  write.table(table(DF_class), paste0("../../results/doubletFinder/",treatment,"_",tolower(tissue),
+  write.table(table(DF_class), paste0("../../results/", pathToTestType, "doubletFinder/",treatment,"_",tolower(tissue),
                "_doubletFinder_table_",sampleID), sep = "\t", 
               row.names = FALSE, quote = FALSE)
   PMI_sample@meta.data[,"CellTypes_DF"] <- DF_class
@@ -562,7 +729,7 @@ for (i in 1:length(PMI.split)) {
   d2 <- DimPlot(PMI_sample, group.by="CellTypes_DF", reduction="umap",
           order=c("Coll.Duct.TC","Doublet"), 
           cols=c("#66C2A5","black"))
-  path <- paste0("../../results/doubletFinder/",treatment,"_",tolower(tissue),
+  path <- paste0("../../results/", pathToTestType, "doubletFinder/",treatment,"_",tolower(tissue),
                "_doubletFinder_UMAP_",sampleID)
   pdf(paste0(path, ".pdf"), width = 5,height = 4)
   print(d2)
@@ -576,7 +743,7 @@ for (i in 1:length(PMI.split)) {
             pt.size = 0.4, 
             order = TRUE,
             label = TRUE)
-  path <- paste0("../../results/doubletFinder/",treatment,"_",tolower(tissue),
+  path <- paste0("../../results/", pathToTestType, "doubletFinder/",treatment,"_",tolower(tissue),
                "_doubletFinder_FeaturePlot_",sampleID)
   pdf(paste0(path, ".pdf"), width = 7, height = 7)
   print(f1)
@@ -589,7 +756,7 @@ for (i in 1:length(PMI.split)) {
   d3 <- DimPlot(PMI_sample_singlets, group.by="CellTypes_DF", reduction="umap",
           order=c("Coll.Duct.TC","Doublet"),
           cols=c("#66C2A5","black"))
-  path <- paste0("../../results/doubletFinder/",treatment,"_",tolower(tissue),
+  path <- paste0("../../results/", pathToTestType, "doubletFinder/",treatment,"_",tolower(tissue),
                "_doubletFinder_UMAP_singlets_",sampleID)
   pdf(paste0(path, ".pdf"), width = 5, height = 4)
   print(d3)
@@ -606,7 +773,7 @@ for (i in 1:length(PMI.split)) {
   row.names(difference) <- c("difference")
   cbind(difference, ncells_per_cluster)
   write.table(ncells_per_cluster, paste0(
-    "../../results/doubletFinder/",treatment,"_",tolower(tissue),
+    "../../results/", pathToTestType, "doubletFinder/",treatment,"_",tolower(tissue),
     "_doubletFinder_table_ncells_per_cluster",sampleID, ".txt"), sep = "\t", 
     row.names = FALSE, quote = FALSE)
   
@@ -626,7 +793,7 @@ for (i in 1:length(PMI.split)) {
     ggtitle("Number of cells per cluster") +  xlab("cluster") +
     theme(axis.text.x = element_text(angle = 45, hjust=1)) +
     scale_y_continuous(limits = c(0,cellmax))
-  path <- paste0("../../results/doubletFinder/",treatment,"_",tolower(tissue),
+  path <- paste0("../../results/", pathToTestType, "doubletFinder/",treatment,"_",tolower(tissue),
                "_doubletFinder_barplot_ncells_per_cluster",sampleID)
   pdf(paste0(path, ".pdf"), width = 7,height = 5)
   print(b1)
@@ -638,7 +805,7 @@ for (i in 1:length(PMI.split)) {
             pt.size = 0.4, 
             order = TRUE,
             label = TRUE)
-  path <- paste0("../../results/doubletFinder/",treatment,"_",tolower(tissue),
+  path <- paste0("../../results/", pathToTestType, "doubletFinder/",treatment,"_",tolower(tissue),
                "_doubletFinder_FeaturePlot_singlets",sampleID)
   pdf(paste0(path, ".pdf"), width = 7,height = 7)
   print(f2)
@@ -670,6 +837,8 @@ PMI.filtered <- PMI.singlets
 # reset levels
 PMI.filtered$treatment <- factor(PMI.filtered$treatment,
                                   levels = c("3_hr"))
+PMI.filtered$replicate <- factor(PMI.filtered$replicate,
+                                 levels = c("replicate1","replicate2"))
 PMI.filtered$sample <- factor(PMI.filtered$sample,
                                levels = c("rep1_WT_3_hr", "rep2_WT_3_hr", "rep1_PS19_3_hr", "rep2_PS19_3_hr"))
 
@@ -697,12 +866,13 @@ print(paste0(dim(counts)[1] - dim(counts.filtered)[1], " features removed"))
 ```
 
 ```{r,echo=FALSE}
-saveRDS(PMI.filtered, paste0("../../rObjects/",tolower(tissue),"_filtered_replicate1_and_2.rds"))
-PMI.filtered <- readRDS(paste0("../../rObjects/",tolower(tissue),"_filtered.rds"))
+saveRDS(PMI.filtered, paste0("../../rObjects/", pathToTestType, tolower(tissue),"_filtered.rds"))
+PMI.filtered <- readRDS(paste0("../../rObjects/", pathToTestType, tolower(tissue),"_filtered.rds"))
 Idents(PMI.filtered) <- PMI.filtered$sample
 ```
 
 ## Histogram
+#### All samples together
 ```{r}
 # User params
 goi <- "Ttr"
@@ -713,7 +883,7 @@ threshold <- 2
 
 # Subset data
 log2.threshold <- log2(threshold + 0.01)
-counts.df <- FetchData(PMI.split$rep2_WT_3_hr, vars = goi)
+counts.df <- FetchData(PMI.filtered, vars = goi)
 colnames(counts.df) <- "counts"
 log2.counts.df <- log2(counts.df + 0.01)
 
@@ -761,87 +931,15 @@ hist2 <- ggplot(log2.counts.df, aes(x = counts)) +
            fill="chocolate4")
 
 # plot
-plots1 <- list(hist1,hist2)
-layout1 <- rbind(c(1),c(2))
-grid1 <- grid.arrange(grobs = plots1, layout_matrix = layout1)
+plots <- list(hist1,hist2)
+layout <- rbind(c(1),c(2))
+grid <- grid.arrange(grobs = plots, layout_matrix = layout)
 
 # number removed
 table(counts.df$counts > threshold)
 ```
-```{r}
-PMI.filtered.split <- SplitObject(PMI.filtered, split.by = "sample") 
 
-
-for (i in 1:length(PMI.filtered.split)) {
-  print(i)
-  PMI_sample <- PMI.split[[i]]
-  goi <- "Ttr"
-  sample_oi <- print(i)
-  threshold <- 2
-# Split seurat object by timepoint to perform SCT on all samples
-#PMI.split <- SplitObject(PMI.filtered, split.by = "sample")
-
-# Subset data
-  log2.threshold <- log2(threshold + 0.01)
-counts.df <- FetchData(PMI_sample, vars = goi)
-colnames(counts.df) <- "counts"
-log2.counts.df <- log2(counts.df + 0.01)
-
-# Histogram
-title <- paste0("PMI Brain Cell: ", goi, " - ", sample_oi, "\nnCount_RNA > ", threshold)
-hist1 <- ggplot(counts.df, aes(x = counts)) + 
-  geom_histogram(bins = 100, fill = "gray", color = "black") + 
-  labs(title = title, x=NULL, y=NULL) +
-  xlab(paste0(goi, " nCount_RNA")) + ylab("# of cells") + theme_bw() +
-  geom_vline(xintercept = threshold, col = "blue") +
-  annotate("rect", 
-           xmin = -Inf,
-           xmax = threshold, 
-           ymin = 0, 
-           ymax=Inf, 
-           alpha=0.2, 
-           fill="deepskyblue") +
-  annotate("rect", 
-           xmin = threshold,
-           xmax = Inf, 
-           ymin = 0, 
-           ymax=Inf, 
-           alpha=0.2, 
-           fill="chocolate4")
-
-# Histogram log transformed
-hist2 <- ggplot(log2.counts.df, aes(x = counts)) + 
-  geom_histogram(bins = 100, fill = "gray", color = "black") + 
-  labs(title = title, x=NULL, y=NULL) +
-  xlab(paste0("Log2(",goi, " nCount_RNA)")) + ylab("# of cells") + theme_bw() +
-  geom_vline(xintercept = log2.threshold, col = "blue") +
-  annotate("rect", 
-           xmin = -Inf,
-           xmax = log2.threshold, 
-           ymin = 0, 
-           ymax=Inf, 
-           alpha=0.2, 
-           fill="deepskyblue") +
-  annotate("rect", 
-           xmin = log2.threshold,
-           xmax = Inf, 
-           ymin = 0, 
-           ymax=Inf, 
-           alpha=0.2, 
-           fill="chocolate4")
-
-# plot
-plots1 <- list(hist1,hist2)
-layout1 <- rbind(c(1),c(2))
-grid1 <- grid.arrange(grobs = plots1, layout_matrix = layout1)
-
-# number removed
-table(counts.df$counts > threshold)
-
-}
-
-```
-
+Malat1 all samples
 ```{r}
 # User params
 goi <- "Malat1"
@@ -895,116 +993,220 @@ hist2 <- ggplot(log2.counts.df, aes(x = counts)) +
            ymax=Inf, 
            alpha=0.2, 
            fill="deepskyblue")
+# plot
+plots <- list(hist1,hist2)
+layout <- rbind(c(1),c(2))
+grid <- grid.arrange(grobs = plots, layout_matrix = layout)
+# number removed
+table(counts.df$counts > threshold)
+```
+
+Xist all samples
+```{r}
+# User params
+goi <- "Xist"
+sample_oi <- "ALL"
+threshold <- 2
+# Split seurat object by timepoint to perform SCT on all samples
+#PMI.split <- SplitObject(PMI.filtered, split.by = "sample")
+
+# Subset data
+log2.threshold <- log2(threshold + 0.01)
+counts.df <- FetchData(PMI.filtered, vars = goi)
+colnames(counts.df) <- "counts"
+log2.counts.df <- log2(counts.df + 0.01)
+
+# Histogram
+title <- paste0("PMI Brain Cell: ", goi, " - ", sample_oi, "\nnCount_RNA > ", threshold)
+hist1 <- ggplot(counts.df, aes(x = counts)) + 
+  geom_histogram(bins = 100, fill = "gray", color = "black") + 
+  labs(title = title, x=NULL, y=NULL) +
+  xlab(paste0(goi, " nCount_RNA")) + ylab("# of cells") + theme_bw() +
+  geom_vline(xintercept = threshold, col = "blue") +
+  annotate("rect", 
+           xmin = -Inf,
+           xmax = threshold, 
+           ymin = 0, 
+           ymax=Inf, 
+           alpha=0.2, 
+           fill="deepskyblue") +
+  annotate("rect", 
+           xmin = threshold,
+           xmax = Inf, 
+           ymin = 0, 
+           ymax=Inf, 
+           alpha=0.2, 
+           fill="chocolate4")
+
+# Histogram log transformed
+hist2 <- ggplot(log2.counts.df, aes(x = counts)) + 
+  geom_histogram(bins = 100, fill = "gray", color = "black") + 
+  labs(title = title, x=NULL, y=NULL) +
+  xlab(paste0("Log2(",goi, " nCount_RNA)")) + ylab("# of cells") + theme_bw() +
+  geom_vline(xintercept = log2.threshold, col = "blue") +
+  annotate("rect", 
+           xmin = -Inf,
+           xmax = log2.threshold, 
+           ymin = 0, 
+           ymax=Inf, 
+           alpha=0.2, 
+           fill="deepskyblue") +
+  annotate("rect", 
+           xmin = log2.threshold,
+           xmax = Inf, 
+           ymin = 0, 
+           ymax=Inf, 
+           alpha=0.2, 
+           fill="chocolate4")
 
 # plot
-plots1 <- list(hist1,hist2)
-layout1 <- rbind(c(1),c(2))
-grid1 <- grid.arrange(grobs = plots1, layout_matrix = layout1)
+plots <- list(hist1,hist2)
+layout <- rbind(c(1),c(2))
+grid <- grid.arrange(grobs = plots, layout_matrix = layout)
 
 # number removed
 table(counts.df$counts > threshold)
-
 ```
-## Filter by gene of interest expression
-remove cells that do not express Xist
-remove cells that do not express Malat1
-remove cells that do express Ttr
+
+#### Split by sample
 ```{r}
-# which cells have a count for Xist?
-cellsXist <- WhichCells(PMI.filtered, slot = 'counts', expression = Xist > 0 )
-
-# percent xist in each cell 
-PMI.filtered$percent.Xist <- PercentageFeatureSet(PMI.filtered, features = "Xist")
-
-vXist <- VlnPlot(PMI.filtered,
-              features = c("percent.Xist"),
-              group.by = 'sample',
-              cols = sample_colors,
-              pt.size = 0)
-vXist
-
-# remove cells less than 0 percent Xist expresison
-xist.filtered <- subset(PMI.filtered,
-                        subset = percent.Xist > 0)
-
-# print cells removed
-print(paste0(dim(PMI.filtered)[2] - dim(xist.filtered)[2]," cells removed"))
-# print features removed
-print(paste0(dim(PMI.filtered)[1] - dim(xist.filtered)[1], " features removed"))
-
-remove(PMI.filtered)
-# overwrite PMI.filtered
-PMI.filtered <- xist.filtered
-
-
-
-# which cells have a count for Malat1?
-cellsGoi<- WhichCells(PMI.filtered, slot = 'counts', expression = Malat1 > 0 )
-
-# percent xist in each cell 
-PMI.filtered$percent.Malat1 <- PercentageFeatureSet(PMI.filtered, features = "Malat1")
-
-vMalat1 <- VlnPlot(PMI.filtered,
-              features = c("percent.Malat1"),
-              group.by = 'sample',
-              cols = sample_colors,
-              pt.size = 0)
-vMalat1
-
-# remove cells less than 0 percent Xist expresison
-Malat1.filtered <- subset(PMI.filtered,
-                        subset = percent.Malat1 > 0)
-
-# print cells removed
-print(paste0(dim(PMI.filtered)[2] - dim(Malat1.filtered)[2]," cells removed"))
-# print features removed
-print(paste0(dim(PMI.filtered)[1] - dim(Malat1.filtered)[1], " features removed"))
-
-remove(PMI.filtered)
-# overwrite PMI.filtered
-PMI.filtered <- Malat1.filtered
-
-
-
-# which cells have a count for Ttr?
-cellsGoi <- WhichCells(PMI.filtered, slot = 'counts', expression = Ttr > 0 )
-
-# percent xist in each cell 
-PMI.filtered$percent.Ttr <- PercentageFeatureSet(PMI.filtered, features = "Ttr")
-
-vTtr <- VlnPlot(PMI.filtered,
-              features = c("percent.Ttr"),
-              group.by = 'sample',
-              cols = sample_colors,
-              pt.size = 0)
-vTtr
-
-# remove cells less than 0 percent Xist expresison
-Ttr.filtered <- subset(PMI.filtered,
-                        subset = percent.Ttr <= 0)
-
-# print cells removed
-print(paste0(dim(PMI.filtered)[2] - dim(Ttr.filtered)[2]," cells removed"))
-# print features removed
-print(paste0(dim(PMI.filtered)[1] - dim(Ttr.filtered)[1], " features removed"))
-
-remove(PMI.filtered)
-# overwrite PMI.filtered
-PMI.filtered.noTTR <- Ttr.filtered
-
+PMI.filtered.split <- SplitObject(PMI.filtered, split.by = "sample") 
 ```
 
-```{r,echo=FALSE,eval=FALSE}
-# save
-grid1 <- grid.arrange(grobs = plots1, layout_matrix = layout1)
-path <- paste0("../../results/histogram/",treatment,"_",tolower(tissue), "_",
-               goi,"_histogram")
-saveToPDF(paste0(path, ".pdf"), width = 6, height = 4)
-saveToPNG(paste0(path, ".png"), width = 6, height = 4, unit = "in", res = 300)
-dev.off()
+Ttr by sample
+```{r}
+# histogram of Ttr for each sample
+for (i in 1:length(PMI.filtered.split)) {
+  print(i)
+  PMI_sample <- PMI.filtered.split[[i]]
+  goi <- "Ttr"
+  sample_oi <- print(i)
+  threshold <- 2
 
+# Subset data
+log2.threshold <- log2(threshold + 0.01)
+counts.df <- FetchData(PMI_sample, vars = goi)
+colnames(counts.df) <- "counts"
+log2.counts.df <- log2(counts.df + 0.01)
+
+# Histogram
+title <- paste0("PMI Brain Cell: ", goi, " - ", sample_oi, "\nnCount_RNA > ", threshold)
+hist1 <- ggplot(counts.df, aes(x = counts)) + 
+  geom_histogram(bins = 100, fill = "gray", color = "black") + 
+  labs(title = title, x=NULL, y=NULL) +
+  xlab(paste0(goi, " nCount_RNA")) + ylab("# of cells") + theme_bw() +
+  geom_vline(xintercept = threshold, col = "blue") +
+  annotate("rect", 
+           xmin = -Inf,
+           xmax = threshold, 
+           ymin = 0, 
+           ymax=Inf, 
+           alpha=0.2, 
+           fill="deepskyblue") +
+  annotate("rect", 
+           xmin = threshold,
+           xmax = Inf, 
+           ymin = 0, 
+           ymax=Inf, 
+           alpha=0.2, 
+           fill="chocolate4")
+# Histogram log transformed
+hist2 <- ggplot(log2.counts.df, aes(x = counts)) + 
+  geom_histogram(bins = 100, fill = "gray", color = "black") + 
+  labs(title = title, x=NULL, y=NULL) +
+  xlab(paste0("Log2(",goi, " nCount_RNA)")) + ylab("# of cells") + theme_bw() +
+  geom_vline(xintercept = log2.threshold, col = "blue") +
+  annotate("rect", 
+           xmin = -Inf,
+           xmax = log2.threshold, 
+           ymin = 0, 
+           ymax=Inf, 
+           alpha=0.2, 
+           fill="deepskyblue") +
+  annotate("rect", 
+           xmin = log2.threshold,
+           xmax = Inf, 
+           ymin = 0, 
+           ymax=Inf, 
+           alpha=0.2, 
+           fill="chocolate4")
+# plot
+plots <- list(hist1,hist2)
+layout <- rbind(c(1),c(2))
+grid <- grid.arrange(grobs = plots, layout_matrix = layout)
+# number removed
+table(counts.df$counts > threshold)
+}
+```
+
+Xist by sample
+```{r}
+# histogram of Ttr for each sample
+for (i in 1:length(PMI.filtered.split)) {
+  print(i)
+  PMI_sample <- PMI.filtered.split[[i]]
+  goi <- "Xist"
+  sample_oi <- print(i)
+  threshold <- 2
+
+# Subset data
+log2.threshold <- log2(threshold + 0.01)
+counts.df <- FetchData(PMI_sample, vars = goi)
+colnames(counts.df) <- "counts"
+log2.counts.df <- log2(counts.df + 0.01)
+
+# Histogram
+title <- paste0("PMI Brain Cell: ", goi, " - ", sample_oi, "\nnCount_RNA > ", threshold)
+hist1 <- ggplot(counts.df, aes(x = counts)) + 
+  geom_histogram(bins = 100, fill = "gray", color = "black") + 
+  labs(title = title, x=NULL, y=NULL) +
+  xlab(paste0(goi, " nCount_RNA")) + ylab("# of cells") + theme_bw() +
+  geom_vline(xintercept = threshold, col = "blue") +
+  annotate("rect", 
+           xmin = -Inf,
+           xmax = threshold, 
+           ymin = 0, 
+           ymax=Inf, 
+           alpha=0.2, 
+           fill="deepskyblue") +
+  annotate("rect", 
+           xmin = threshold,
+           xmax = Inf, 
+           ymin = 0, 
+           ymax=Inf, 
+           alpha=0.2, 
+           fill="chocolate4")
+# Histogram log transformed
+hist2 <- ggplot(log2.counts.df, aes(x = counts)) + 
+  geom_histogram(bins = 100, fill = "gray", color = "black") + 
+  labs(title = title, x=NULL, y=NULL) +
+  xlab(paste0("Log2(",goi, " nCount_RNA)")) + ylab("# of cells") + theme_bw() +
+  geom_vline(xintercept = log2.threshold, col = "blue") +
+  annotate("rect", 
+           xmin = -Inf,
+           xmax = log2.threshold, 
+           ymin = 0, 
+           ymax=Inf, 
+           alpha=0.2, 
+           fill="deepskyblue") +
+  annotate("rect", 
+           xmin = log2.threshold,
+           xmax = Inf, 
+           ymin = 0, 
+           ymax=Inf, 
+           alpha=0.2, 
+           fill="chocolate4")
+# plot
+plots <- list(hist1,hist2)
+layout <- rbind(c(1),c(2))
+grid <- grid.arrange(grobs = plots, layout_matrix = layout)
+# number removed
+table(counts.df$counts > threshold)
+}
+```
+```{r,echo=FALSE,eval=FALSE}
 # cleanup
-remove(log2.threshold,counts.df,log2.counts.df, hist1,hist2,plots1,layout1,grid1)
+remove(log2.threshold,counts.df,log2.counts.df, hist1,hist2,plots,layout,grid)
 ```
 
 ## Number of cells
@@ -1013,43 +1215,43 @@ remove(log2.threshold,counts.df,log2.counts.df, hist1,hist2,plots1,layout1,grid1
 data <- as.data.frame(table(PMI.filtered$sample))
 colnames(data) <- c("sample","frequency")
 
-ncells2 <- ggplot(data, aes(x = sample, y = frequency, fill = sample)) + 
+ncellsFiltered <- ggplot(data, aes(x = sample, y = frequency, fill = sample)) + 
   geom_col() +
   theme_classic() +
   geom_text(aes(label = frequency), 
             position=position_dodge(width=0.9), 
             vjust=-0.25) +
   scale_fill_manual(values = sample_colors) + 
-  scale_y_continuous(breaks = seq(0,55000, by = 5000), limits = c(0,55000)) +
+  scale_y_continuous(breaks = seq(0,30000, by = 5000), limits = c(0,30000)) +
   ggtitle("Filtered: cells per sample") +
   theme(legend.position =  "none") + 
   theme(axis.text.x = element_text(angle = 45, hjust=1))
 
 # Arrange graphs in grid
-plots2 <- list(ncells1,ncells2)
-layout2 <- cbind(c(1),c(2))
-grid2 <- grid.arrange(grobs = plots2, layout_matrix = layout2)
+plots <- list(ncellsRaw,ncellsFiltered)
+layout <- cbind(c(1),c(2))
+grid <- grid.arrange(grobs = plots, layout_matrix = layout)
 ```
 
 ```{r,echo=FALSE,eval=FALSE}
 # save
-grid2 <- grid.arrange(grobs = plots2, layout_matrix = layout2)
-path <- paste0("../../results/nCells/",treatment,"_",tolower(tissue), 
+grid <- grid.arrange(grobs = plots, layout_matrix = layout)
+path <- paste0("../../results/", pathToTestType, "nCells/",treatment,"_",tolower(tissue), 
                "_cells_per_sample")
 saveToPDF(paste0(path, ".pdf"), width = 6, height = 4)
 saveToPNG(paste0(path, ".png"), width = 6, height = 4, unit = "in", res = 300)
 dev.off()
 
 # cleanup
-remove(ncells1,ncells2,plots2,layout2,grid2)
+remove(ncellsRaw, ncellsFiltered, plots, layout, grid)
 ```
-## Density plots
-```{r postfiltering_density}
+## Density plots 
+```{r postfiltering_density_cellinfo}
 # set graphical parameter
 par(mfrow = c(3,1))
 
 # Visualize the number of counts per cell
-den4 <- ggplot(PMI.filtered@meta.data,
+denCount_filter <- ggplot(PMI.filtered@meta.data,
        aes(color = sample,
            x = nCount_RNA,
            fill = sample)) +
@@ -1063,7 +1265,7 @@ den4 <- ggplot(PMI.filtered@meta.data,
   geom_vline(xintercept = nCount.min)
 
 # Visualize percent.mt
-den5 <- ggplot(PMI.filtered@meta.data,
+denMt_filter <- ggplot(PMI.filtered@meta.data,
        aes(color = sample,
            x = percent.mt,
            fill = sample)) +
@@ -1078,7 +1280,7 @@ den5 <- ggplot(PMI.filtered@meta.data,
 
 # Visualize cell complexity
 # Quality cells are usually above 0.80
-den6 <- ggplot(PMI.filtered@meta.data,
+denCellComplexity_filter <- ggplot(PMI.filtered@meta.data,
        aes(color = sample,
            x = cell.complexity,
            fill = sample)) +
@@ -1092,43 +1294,124 @@ den6 <- ggplot(PMI.filtered@meta.data,
   geom_vline(xintercept = complexity.cutoff)
 
 # Arrange graphs in grid
-plots3 <- list(den1,den2,den3,den4,den5,den6)
-layout3 <- rbind(c(1,4),c(2,5),c(3,6))
-grid3 <- grid.arrange(grobs = plots3, layout_matrix = layout3)
+plots <- list(denCount,denMt,denCellComplexity,denCount_filter,denMt_filter,denCellComplexity_filter)
+layout <- rbind(c(1,4),c(2,5),c(3,6))
+grid_den_raw_filter <- grid.arrange(grobs = plots, layout_matrix = layout)
 ```
 
 ```{r, echo=FALSE,eval=FALSE}
 # save
-grid3 <- grid.arrange(grobs = plots3, layout_matrix = layout3)
-path <- paste0("../../results/density/",treatment,"_",tolower(tissue), 
+grid_den_raw_filter <- grid.arrange(grobs = plots, layout_matrix = layout)
+path <- paste0("../../results/", pathToTestType, "density/",treatment,"_",tolower(tissue), 
                "_density")
 saveToPDF(paste0(path, ".pdf"), width = 6, height = 4)
 saveToPNG(paste0(path, ".png"), width = 6, height = 4, unit = "in", res = 300)
 dev.off()
 
 # cleanup
-remove(den1,den2,den3,den4,den5,den6,plots3,layout3,grid3)
+remove(denCount,denMt,denCellComplexity,
+       denCount_filter,denMt_filter,denCellComplexity_filter,
+       layout, plots, grid_den_raw_filter)
 ```
+
+Density plots for genes of interest
+```{r postfiltering_density_genes}
+# set graphical parameter
+par(mfrow = c(4,1))
+
+# Visualize the number of counts per cell
+denApoe_filter <- ggplot(PMI.filtered@meta.data,
+       aes(color = sample,
+           x = log2(percent.Apoe),
+           fill = sample)) +
+  geom_density(alpha = 0.2) +
+  theme_classic() +
+  scale_x_continuous(n.breaks = 4) +
+  scale_color_manual(values = sample_colors) +
+  scale_fill_manual(values = sample_colors) +
+  xlab("percent Apoe") +
+  ylab("Density") 
+
+# Visualize percent.mt
+denXist_filter <- ggplot(PMI.filtered@meta.data,
+       aes(color = sample,
+           x = log2(percent.Xist),
+           fill = sample)) +
+  geom_density(alpha = 0.2) +
+  theme_classic() +
+  scale_x_continuous(n.breaks = 4) +
+  scale_color_manual(values = sample_colors) +
+  scale_fill_manual(values = sample_colors) +
+  xlab("percent Xist") +
+  ylab("Density")
+
+# Visualize cell complexity
+# Quality cells are usually above 0.80
+denDdx3x_filter <- ggplot(PMI.filtered@meta.data,
+       aes(color = sample,
+           x = log2(percent.Ddx3x),
+           fill = sample)) +
+  geom_density(alpha = 0.2) +
+  theme_classic() +
+  scale_x_continuous(n.breaks = 4) +
+  scale_color_manual(values = sample_colors) +
+  scale_fill_manual(values = sample_colors) +
+  xlab("percent Ddx3x") +
+  ylab("Density") 
+
+denTtr_filter <- ggplot(PMI.filtered@meta.data,
+       aes(color = sample,
+           x = log2(percent.Ttr),
+           fill = sample)) +
+  geom_density(alpha = 0.2) +
+  theme_classic() +
+  scale_x_continuous(n.breaks = 4) +
+  scale_color_manual(values = sample_colors) +
+  scale_fill_manual(values = sample_colors) +
+  xlab("percent Ttr") +
+  ylab("Density") 
+
+# Arrange graphs in grid
+plots <- list(denApoe, denXist, denDdx3x, denTtr,  denApoe_filter, denXist_filter, denDdx3x_filter, denTtr_filter)
+layout <- rbind(c(1,5),c(2,6),c(3,7), c(4,8))
+grid_den_raw_filter_genes <- grid.arrange(grobs = plots, layout_matrix = layout)
+```
+
+```{r, echo=FALSE,eval=FALSE}
+# save
+grid_den_raw_filter_genes <- grid.arrange(grobs = plots, layout_matrix = layout)
+path <- paste0("../../results/", pathToTestType, "density/",treatment,"_",tolower(tissue), 
+               "_density_percent_genes")
+saveToPDF(paste0(path, ".pdf"), width = 6, height = 4)
+saveToPNG(paste0(path, ".png"), width = 6, height = 4, unit = "in", res = 300)
+dev.off()
+
+# cleanup
+remove(denApoe,denApoe_filter,denDdx3x,
+       denDdx3x_filter,denTtr,denTtr_filter,denXist, denXist_filter,
+       layout, plots, grid_den_raw_filter_genes)
+```
+
 
 ## Violin plots
 ```{r postfiltering_violins}
 # nFeature, nCount, and cell.complexity violins
-v3 <- VlnPlot(PMI.filtered,
+vCellInfo <- VlnPlot(PMI.filtered,
               features = c("nFeature_RNA", "nCount_RNA","cell.complexity"),
               ncol = 3,
               group.by = 'sample',
               cols = sample_colors,
               pt.size = 0)
-v3
+vCellInfo
 
 #  percent violins
-v4 <- VlnPlot(PMI.filtered,
-              features = c("percent.mt","percent.ribo","percent.hb", "percent.Xist"),
-              ncol = 4,
+vMtRiboHb <- VlnPlot(PMI.filtered,
+              features = c("percent.mt","percent.ribo","percent.hb"),
+              ncol = 3,
               group.by = 'sample',
               cols = sample_colors,
               pt.size = 0)
-v4
+vMtRiboHb
 
 #  percent violins
 vXist <- VlnPlot(PMI.filtered,
@@ -1139,44 +1422,74 @@ vXist <- VlnPlot(PMI.filtered,
 vXist
 
 #  percent violins
+vDdx3x <- VlnPlot(PMI.filtered,
+              features = c("percent.Ddx3x"),
+              group.by = 'sample',
+              cols = sample_colors,
+              pt.size = 0)
+vDdx3x
+
+#  percent violins
 vTtr <- VlnPlot(PMI.filtered,
               features = c("percent.Ttr"),
               group.by = 'sample',
               cols = sample_colors,
               pt.size = 0)
 vTtr
+
+#  percent violins
+vApoe<- VlnPlot(PMI.filtered,
+              features = c("percent.Apoe"),
+              group.by = 'sample',
+              cols = sample_colors,
+              pt.size = 0)
+vApoe
+
+vGenes <- VlnPlot(PMI.filtered,
+              features = c("percent.Xist", "percent.Ddx3x", "percent.Ttr", "percent.Apoe"),
+              ncol = 4,
+              group.by = 'sample',
+              cols = sample_colors,
+              pt.size = 0)
+vGenes
+
 ```
 
 ```{r, echo=FALSE,eval=FALSE}
-# save
-v3
-path <- paste0("../../results/vlnPlots/",treatment,"_",tolower(tissue), 
-               "_nFeature_nCount_complexity_filtered")
+# save v1
+vCellInfo
+path <- paste0("../../results/", pathToTestType, "vlnPlots/",treatment,"_",tolower(tissue),"_nFeature_nCount_complexity_filtered")
 saveToPDF(paste0(path, ".pdf"), width = 6, height = 4)
 saveToPNG(paste0(path, ".png"), width = 6, height = 4, unit = "in", res = 300)
 dev.off()
 
-# save
-v4
-path <- paste0("../../results/vlnPlots/",treatment,"_",tolower(tissue), 
-               "_percent_filtered")
+# save v2
+vMtRiboHb
+path <- paste0("../../results/", pathToTestType, "vlnPlots/",treatment,"_",tolower(tissue),"_percent_filtered")
 saveToPDF(paste0(path, ".pdf"), width = 8, height = 4)
 saveToPNG(paste0(path, ".png"), width = 6, height = 4, unit = "in", res = 300)
 dev.off()
 
+# save vXist
 vXist
-path <- paste0("../../results/vlnPlots/",treatment,"_",tolower(tissue), 
-               "_percent_filtered_Xist")
+path <- paste0("../../results/", pathToTestType, "vlnPlots/",treatment,"_",tolower(tissue),"_percent_filtered_Xist")
+saveToPDF(paste0(path, ".pdf"), width = 6, height = 4)
+saveToPNG(paste0(path, ".png"), width = 6, height = 4, unit = "in", res = 300)
+dev.off()
+
+# save vXist
+vGenes
+path <- paste0("../../results/", pathToTestType, "vlnPlots/",treatment,"_",tolower(tissue),"_percent_raw_Xist_Ddx3x_Ttr_Apoe")
 saveToPDF(paste0(path, ".pdf"), width = 6, height = 4)
 saveToPNG(paste0(path, ".png"), width = 6, height = 4, unit = "in", res = 300)
 dev.off()
 # cleanup
-remove(v3,v4,v5)
+remove(vCellInfo, vMtRiboHb, vXist, vDdx3x, vTtr, vApoe, vGenes)
 ```
 
 ## Scatter plots
 ```{r postfiltering_scatter1}
-s3 <- ggplot(
+sMt <- ggplot(
   PMI.filtered@meta.data,
   aes(x = nCount_RNA, y = nFeature_RNA, color = percent.mt)) + 
   geom_point() + 
@@ -1190,43 +1503,59 @@ s3 <- ggplot(
   scale_colour_gradient(low = "gray90", high = "black", limits =c(0,100))
   #geom_rect(aes(xmin=300, xmax=300, ymin=1000,
    #             ymax=3000), color="transparent", fill="orange", alpha=0.3)
-s3
+sMt
 ```
 
 ```{r,echo=FALSE,eval=FALSE}
 # save
-s3
-path <- paste0("../../results/scatterPlots/",treatment,"_",tolower(tissue),
+sMt
+path <- paste0("../../results/", pathToTestType, "scatterPlots/",treatment,"_",tolower(tissue),
                "_nFeature_vs_nCount_filtered")
 saveToPDF(paste0(path, ".pdf"), width = 4, height = 4)
 saveToPNG(paste0(path, ".png"), width = 4, height = 4, unit = "in", res = 300)
 dev.off()
 
 # cleanup
-remove(s3)
+remove(sMt)
 ```
 
 ```{r postfiltering_scatter2}
-s4 <- FeatureScatter(PMI.filtered,
+sMt <- FeatureScatter(PMI.filtered,
                feature1 = "nCount_RNA",
                feature2 = "percent.mt",
                group.by = 'sample',
                cols = sample_colors,
                shuffle = TRUE)
-s4
+sMt
+
+sTtr <- FeatureScatter(PMI.filtered,
+               feature1 = "percent.Ttr",
+               feature2 = "nCount_RNA",
+               group.by = 'sample',
+               cols = sample_colors,
+               shuffle = TRUE)
+sTtr
+
+sTtrMt <- FeatureScatter(PMI.filtered,
+               feature1 = "percent.Ttr",
+               feature2 = "percent.mt",
+               group.by = 'sample',
+               cols = sample_colors,
+               shuffle = TRUE)
+sTtrMt
+
+sXist <- FeatureScatter(PMI.filtered,
+               feature1 = "percent.Xist",
+               feature2 = "nCount_RNA",
+               group.by = 'sample',
+               cols = sample_colors,
+               shuffle = TRUE)
+sXist
 ```
 
 ```{r,echo=FALSE,eval=FALSE}
-# save
-s4
-path <- paste0("../../results/scatterPlots/",treatment,"_",tolower(tissue),
-               "_nCount_vs_percentMT_filtered")
-saveToPDF(paste0(path, ".pdf"), width = 4, height = 4)
-saveToPNG(paste0(path, ".png"), width = 4, height = 4, unit = "in", res = 300)
-dev.off()
-
 # cleanup
-remove(s4)
+remove(sMt, sTtr, sTtrMt, sXist)
 ```
 
 ## Box plot
@@ -1250,7 +1579,7 @@ b1
 ```{r,echo=FALSE,eval=FALSE}
 # save
 b1
-path <- paste0("../../results/boxPlots/",treatment,"_",tolower(tissue),
+path <- paste0("../../results/", pathToTestType,"boxPlots/",treatment,"_",tolower(tissue),
                "_nFeature_per_sample")
 saveToPDF(paste0(path, ".pdf"), width = 4, height = 4)
 saveToPNG(paste0(path, ".png"), width = 4, height = 4, unit = "in", res = 300)
@@ -1270,7 +1599,7 @@ head(df, 10)
 ```
 
 ```{r,echo=FALSE,eval=FALSE}
-write.table(df, paste0("../../results/topTranscripts/", tolower(tissue), "_abundant_transcripts.txt"),
+write.table(df, paste0("../../results/", pathToTestType,"topTranscripts/", tolower(tissue), "_abundant_transcripts.txt"),
             quote = FALSE,
             row.names = FALSE)
 ```
@@ -1388,11 +1717,10 @@ cellcyclecount_barplot <-
   ggplot(aes(Phase, fill = Phase)) + geom_bar()
 cellcyclecount_barplot
 ```
-
 ```{r,echo=FALSE,eval=FALSE}
 # save
 cellcyclecount_barplot
-path <- paste0("../../results/cellCycle/",treatment,"_",tolower(tissue),
+path <- paste0("../../results/", pathToTestType,"cellCycle/",treatment,"_",tolower(tissue),
                "_cellcycle_bargraph")
 saveToPDF(paste0(path, ".pdf"), width = 4, height = 4)
 saveToPNG(paste0(path, ".png"), width = 4, height = 4, unit = "in", res = 300)
@@ -1415,7 +1743,7 @@ cellcyclecount_piepoint
 ```{r,echo=FALSE,eval=FALSE,message=FALSE,warning=FALSE}
 # save
 cellcyclecount_piepoint
-path <- paste0("../../results/cellCycle/",treatment,"_",tolower(tissue),
+path <- paste0("../../results/", pathToTestType,"cellCycle/",treatment,"_",tolower(tissue),
                "_cellcycle_piechart")
 saveToPDF(paste0(path, ".pdf"), width = 4, height = 4)
 saveToPNG(paste0(path, ".png"), width = 4, height = 4, unit = "in", res = 300)
@@ -1446,26 +1774,10 @@ VarFeatPlotLabel <- LabelPoints(plot = VarFeatPlot,
                     xnudge = 0, ynudge = 0, max.overlaps = 12)
 VarFeatPlotLabel
 ```
-## Percent top variable genes
-```{r percent_ttr}
-PMI.filtered$percent.Xist <- PercentageFeatureSet(PMI.filtered, feature = "Xist")
-PMI.filtered$percent.Ttr <- PercentageFeatureSet(PMI.filtered, feature = "Ttr")
-PMI.filtered$percent.Apoe <- PercentageFeatureSet(PMI.filtered, feature = "Apoe")
-
-# nFeature, nCount, and cell.complexity violins
-v1 <- VlnPlot(PMI.filtered,
-              features = c("percent.Xist", "percent.Ttr", "percent.Apoe"),
-              ncol = 3,
-              group.by = 'sample',
-              cols = sample_colors,
-              pt.size = 0)
-v1
-
-```
 
 ```{r,echo=FALSE,eval=FALSE,message=FALSE,warning=FALSE}
 # save
-path <- paste0("../../results/cellCycle/",treatment,"_",tolower(tissue),
+path <- paste0("../../results/", pathToTestType,"cellCycle/",treatment,"_",tolower(tissue),
                "_cellcycle_variance_vs_expression")
 VarFeatPlotLabel
 saveToPDF(paste0(path, ".pdf"), width = 4, height = 4)
@@ -1503,7 +1815,7 @@ varGeneslog
 ```{r,echo=FALSE,eval=FALSE,message=FALSE,warning=FALSE}
 # save
 varGeneslog
-path <- paste0("../../results/cellCycle/",treatment,"_",tolower(tissue),
+path <- paste0("../../results/", pathToTestType,"cellCycle/",treatment,"_",tolower(tissue),
                "_cellcycle_variance_vs_mean")
 saveToPDF(paste0(path, ".pdf"), width = 4, height = 4)
 saveToPNG(paste0(path, ".png"), width = 4, height = 4, unit = "in", res = 300)
@@ -1556,7 +1868,7 @@ cycle.pca
 ```{r,echo=FALSE,eval=FALSE,message=FALSE,warning=FALSE}
 # save
 cycle.pca
-path <- paste0("../../results/cellCycle/",treatment,"_",tolower(tissue),
+path <- paste0("../../results/", pathToTestType,"cellCycle/",treatment,"_",tolower(tissue),
                "_cellcycle_PCA")
 saveToPDF(paste0(path, ".pdf"), width = 4, height = 4)
 saveToPNG(paste0(path, ".png"), width = 4, height = 4, unit = "in", res = 300)
@@ -1604,7 +1916,6 @@ options(future.globals.maxSize = 4000 * 1024^5)
 for (i in 1:length(PMI.split)) {
   print(paste0("Sample ", i))
   PMI.split[[i]] <- SCTransform(PMI.split[[i]]
-                                #,
                                 # vars.to.regress = c("percent.mt") 
                                  )
 }
@@ -1658,32 +1969,56 @@ PMI.sct.merged <- merge(x = PMI.split[[1]],
 
 # define the variable features 
 VariableFeatures(PMI.sct.merged) <- var.features
-saveRDS(PMI.sct.merged, paste0("../../rObjects/", tissue, "_PMI.sct.merged_replicates1_and_2.rds"))
-#PMI.sct.merged <- readRDS("PMI.sct.merged.rds")
+```
+save rObject
+```{r, echo=FALSE, eval=TRUE}
+saveRDS(PMI.sct.merged, paste0("../../rObjects/",pathToTestType, tolower(tissue), "_PMI.sct.merged.rds"))
+PMI.sct.merged <- readRDS(paste0("../../rObjects/",pathToTestType, tolower(tissue), "_PMI.sct.merged.rds"))
+```
+insepct data 
+```{r}
 PMI.sct.merged <- RunPCA(PMI.sct.merged)
-
 PMI.sct.merged <- RunUMAP(PMI.sct.merged, dims = 1:15, reduction = "pca")
 
 # Plot PCA
 pca1 <- DimPlot(PMI.sct.merged,
         reduction = "umap",
-      #  split.by = "treatment",
+        split.by = "treatment",
         group.by = "treatment",
         cols = treatment_colors)
 pca1
 
 pca2 <- DimPlot(PMI.sct.merged,
         reduction = "umap",
-        split.by = "sample",
-        group.by = "sample",
-        cols = sample_colors)
+        split.by = "replicate",
+        group.by = "replicate",
+        cols = treatment_colors)
 pca2
 
 pca3 <- DimPlot(PMI.sct.merged,
         reduction = "umap",
+        group.by = "replicate",
+        cols = treatment_colors)
+pca3
+
+pca4 <- DimPlot(PMI.sct.merged,
+        reduction = "umap",
+        split.by = "sample",
+        group.by = "sample",
+        cols = sample_colors)
+pca4
+
+pca5 <- DimPlot(PMI.sct.merged,
+        reduction = "umap",
         group.by = "sample",
         shuffle = TRUE)
-pca3
+pca5
+
+
+pca6 <- DimPlot(PMI.sct.merged,
+        reduction = "umap",
+        group.by = "genotype")
+pca6
 # nCount
 FeaturePlot(PMI.sct.merged, 
             features = "Ttr",
@@ -1692,7 +2027,11 @@ FeaturePlot(PMI.sct.merged,
             min.cutoff = 'q10',
             label = TRUE)
 
-
+# clean up
+remove(pca1, pca2, pca3, pca4, pca5, pca6)
+```
+run harmony 
+```{r runHarmony}
 # run PCA on the merged object
 # run harmony to harmonize over samples 
 PMI.integrated <- RunHarmony(object = PMI.sct.merged, 
@@ -1708,6 +2047,8 @@ PMI.integrated <- RunHarmony(object = PMI.sct.merged,
 Idents(PMI.integrated) <- PMI.integrated$sample
 PMI.integrated$treatment <- factor(PMI.integrated$treatment,
                                     levels = c("3_hr"))
+PMI.integrated$replicate <- factor(PMI.integrated$replicate,
+                                    levels = c("replicate1", "replicate2"))
 PMI.integrated$sample <- factor(PMI.integrated$sample,
                                  levels = c("rep1_WT_3_hr", "rep2_WT_3_hr", "rep1_PS19_3_hr", "rep2_PS19_3_hr"))
 # check the embedding
@@ -1721,10 +2062,12 @@ p1 <- DimPlot(object = PMI.integrated,
               cols = treatment_colors) + NoLegend()
 p2 <- VlnPlot(object = PMI.integrated, 
               features = "harmony_1", 
-              group.by = "treatment", 
+              group.by = "replicate", 
               pt.size = 0, 
               cols = treatment_colors) + NoLegend()
 plot_grid(p1,p2)
+# clean up
+remove(p1, p2)
 ```
 
 ## Top variable features
@@ -1747,54 +2090,71 @@ To generate these visualizations with the harmony output, use reduction = "harmo
 
 ```{r plot_PCA}
 # Plot PCA
-pca1 <- DimPlot(PMI.integrated,
+pcaTreatment <- DimPlot(PMI.integrated,
+        reduction = "harmony",
+        split.by = "treatment",
+        group.by = "treatment",
+        cols = treatment_colors)
+pcaTreatment
+
+pcaReplicate <- DimPlot(PMI.integrated,
         reduction = "harmony",
         split.by = "replicate",
         group.by = "replicate",
         cols = treatment_colors)
-pca1
+pcaReplicate
 
-pca2 <- DimPlot(PMI.integrated,
+pcaSampleSplit <- DimPlot(PMI.integrated,
         reduction = "harmony",
         split.by = "sample",
         group.by = "sample",
         cols = sample_colors)
-pca2
+pcaSampleSplit
 
-pca3 <- DimPlot(PMI.integrated,
+pcaSample <- DimPlot(PMI.integrated,
         reduction = "harmony",
         group.by = "sample",
         shuffle = TRUE)
-pca3
+pcaSample
+
+pcaGenotype <- DimPlot(PMI.integrated,
+        reduction = "harmony",
+        group.by = "genotype",
+        shuffle = TRUE)
+pcaGenotype
 ```
 
 ```{r,echo=FALSE,eval=FALSE,message=FALSE,warning=FALSE}
-# save pca1
-path <- paste0("../../results/PCA/",treatment,"_",tolower(tissue),
-               "_PCA_split_group_color_group")
-pca1
+path <- paste0("../../results/", pathToTestType, "PCA/",treatment,"_",tolower(tissue),
+               "_PCA_treatment")
+pcaTreatment
 saveToPDF(paste0(path, ".pdf"), width = 4, height = 4)
 saveToPNG(paste0(path, ".png"), width = 4, height = 4, unit = "in", res = 300)
 dev.off()
 
-# save pca2
-path <- paste0("../../results/PCA/",treatment,"_",tolower(tissue),
-               "_PCA_split_sample_color_group")
-pca2
+path <- paste0("../../results/", pathToTestType, "PCA/",treatment,"_",tolower(tissue),
+               "_PCA_replicate")
+pcaReplicate
 saveToPDF(paste0(path, ".pdf"), width = 4, height = 4)
 saveToPNG(paste0(path, ".png"), width = 4, height = 4, unit = "in", res = 300)
 dev.off()
 
-# save pca3
-path <- paste0("../../results/PCA/",treatment,"_",tolower(tissue),
-               "_PCA_split_sample_color_unique")
-pca3
+
+path <- paste0("../../results/", pathToTestType, "PCA/",treatment,"_",tolower(tissue),
+               "_PCA_sample")
+pcaSample
 saveToPDF(paste0(path, ".pdf"), width = 4, height = 4)
 saveToPNG(paste0(path, ".png"), width = 4, height = 4, unit = "in", res = 300)
 dev.off()
 
+path <- paste0("../../results/", pathToTestType, "PCA/",treatment,"_",tolower(tissue),
+               "_PCA_genotype")
+pcaGenotype
+saveToPDF(paste0(path, ".pdf"), width = 4, height = 4)
+saveToPNG(paste0(path, ".png"), width = 4, height = 4, unit = "in", res = 300)
+dev.off()
 # cleanup
-remove(pca1,pca2,pca3)
+remove(pcaTreatment, pcaReplicate, pcaSampleSplit, pcaSample, pcaGenotype)
 ```
 
 # Find significant PCs
@@ -1884,24 +2244,40 @@ PMI.integrated <- RunUMAP(PMI.integrated,
 ```
 
 ```{r plot_UMAP}
-# plot UMAP and color based on treatment
 DimPlot(PMI.integrated,
         group.by = "replicate",
         split.by = "replicate",
         shuffle = TRUE,
         cols = treatment_colors)
 
+DimPlot(PMI.integrated,
+        group.by = "replicate",
+        shuffle = TRUE,
+        cols = treatment_colors)
+
+DimPlot(PMI.integrated,
+        group.by = "sample",
+        split.by = "sample",
+        shuffle = TRUE,
+        cols = sample_colors)
+
+DimPlot(PMI.integrated,
+        group.by = "sample",
+        shuffle = TRUE,
+        cols = sample_colors)
+
+DimPlot(PMI.integrated,
+        group.by = "genotype",
+        shuffle = TRUE)
+
 FeaturePlot(PMI.integrated, 
             features = "Apoe")
-           # pt.size = 0.4, 
-           # order = TRUE,
-           # min.cutoff = 'q10')
 
 FeaturePlot(PMI.integrated, 
             features = "Ttr")
-           # pt.size = 0.4, 
-           # order = TRUE,
-           # min.cutoff = 'q10')
+
+FeaturePlot(PMI.integrated, 
+            features = "Xist")
 ```
 
 # Cluster the cells
@@ -1926,8 +2302,8 @@ each resolution.
 
 ```{r, echo=FALSE, eval=TRUE}
 # save preclustering object
-saveRDS(PMI.integrated, paste0("../../rObjects/",tolower(tissue),"_preclustering_replicate1_and_2.rds"))
-#PMI.integrated <- readRDS(paste0("../../rObjects/",tolower(tissue),"_preclustering.rds"#))
+saveRDS(PMI.integrated, paste0("../../rObjects/", pathToTestType, tolower(tissue),"_preclustering.rds"))
+PMI.integrated <- readRDS(paste0("../../rObjects/", pathToTestType, tolower(tissue),"_preclustering.rds"#))
 ```
 
 
@@ -1946,8 +2322,8 @@ PMI.unannotated <- FindClusters(object = PMI.unannotated,
 
 ```{r save_object_integrated,echo=FALSE,eval=TRUE}
 # Save integrated seurat object
-saveRDS(PMI.unannotated, paste0("../../rObjects/",tolower(tissue),"_unannotated_replicate1_and_2.rds"))
-PMI.unannotated <- readRDS(paste0("../../rObjects/",tolower(tissue),"_unannotated_replicate1_and_2.rds"))
+saveRDS(PMI.unannotated, paste0("../../rObjects/", pathToTestType, tolower(tissue), "_unannotated.rds"))
+PMI.unannotated <- readRDS(paste0("../../rObjects/", pathToTestType, tolower(tissue), "_unannotated.rds"))
 ```
 
 ```{r}
@@ -1955,8 +2331,7 @@ colors <- c("dodgerblue","yellow","firebrick1","gold","gray40","lightgray",
             "cyan","chocolate4","pink","orange","darkgreen","purple","lightgray","tan")
 DimPlot(PMI.unannotated,
         group.by = "SCT_snn_res.0.4",
-        label = TRUE,
-        cols = colors)
+        label = TRUE)
 ```
 
 
@@ -1989,7 +2364,7 @@ umap0.4
 
 ```{r,echo=FALSE,eval=FALSE,message=FALSE,warning=FALSE}
 # save umap0.1
-path <- paste0("../../results/UMAP/unannotated/",treatment,"_",tolower(tissue),
+path <- paste0("../../results/", pathToTestType, "/UMAP/unannotated/",treatment,"_",tolower(tissue),
                "_UMAP_unannotated_res0.1")
 umap0.1
 saveToPDF(paste0(path, ".pdf"), width = 4, height = 4)
@@ -1997,7 +2372,7 @@ saveToPNG(paste0(path, ".png"), width = 4, height = 4, unit = "in", res = 300)
 dev.off()
 
 # save umap0.2
-path <- paste0("../../results/UMAP/unannotated/",treatment,"_",tolower(tissue),
+path <- paste0("../../results/", pathToTestType, "UMAP/unannotated/",treatment,"_",tolower(tissue),
                "_UMAP_unannotated_res0.2")
 umap0.2
 saveToPDF(paste0(path, ".pdf"), width = 4, height = 4)
@@ -2005,7 +2380,7 @@ saveToPNG(paste0(path, ".png"), width = 4, height = 4, unit = "in", res = 300)
 dev.off()
 
 # save umap0.3
-path <- paste0("../../results/UMAP/unannotated/",treatment,"_",tolower(tissue),
+path <- paste0("../../results/", pathToTestType, "UMAP/unannotated/",treatment,"_",tolower(tissue),
                "_UMAP_unannotated_res0.3")
 umap0.3
 saveToPDF(paste0(path, ".pdf"), width = 4, height = 4)
@@ -2013,7 +2388,7 @@ saveToPNG(paste0(path, ".png"), width = 4, height = 4, unit = "in", res = 300)
 dev.off()
 
 # save umap0.4
-path <- paste0("../../results/UMAP/unannotated/",treatment,"_",tolower(tissue),
+path <- paste0("../../results/", pathToTestType, "UMAP/unannotated/",treatment,"_",tolower(tissue),
                "_UMAP_unannotated_res0.4")
 umap0.4
 saveToPDF(paste0(path, ".pdf"), width = 4, height = 4)
@@ -2051,7 +2426,7 @@ u3
 
 ```{r,echo=FALSE,eval=FALSE,message=FALSE,warning=FALSE}
 # save
-path <- paste0("../../results/UMAP/unannotated/",treatment,"_",tolower(tissue),
+path <- paste0("../../results/", pathToTestType, "UMAP/unannotated/",treatment,"_",tolower(tissue),
                "_UMAP_unannotated_split_treatment")
 u1
 saveToPDF(paste0(path, ".pdf"), width = 4, height = 4)
@@ -2059,7 +2434,7 @@ saveToPNG(paste0(path, ".png"), width = 4, height = 4, unit = "in", res = 300)
 dev.off()
 
 # save
-path <- paste0("../../results/UMAP/unannotated/",treatment,"_",tolower(tissue),
+path <- paste0("../../results/", pathToTestType, "UMAP/unannotated/",treatment,"_",tolower(tissue),
                "_UMAP_unannotated_split_sample")
 u2
 saveToPDF(paste0(path, ".pdf"), width = 4, height = 4)
@@ -2067,7 +2442,7 @@ saveToPNG(paste0(path, ".png"), width = 4, height = 4, unit = "in", res = 300)
 dev.off()
 
 # save
-path <- paste0("../../results/UMAP/unannotated/",treatment,"_",tolower(tissue),
+path <- paste0("../../results/", pathToTestType, "UMAP/unannotated/",treatment,"_",tolower(tissue),
                "_UMAP_unannotated_split_phase")
 u3
 saveToPDF(paste0(path, ".pdf"), width = 4, height = 4)
@@ -2157,7 +2532,7 @@ f6
 
 ```{r,echo=FALSE,eval=FALSE,message=FALSE,warning=FALSE}
 # save
-path <- paste0("../../results/featurePlots/",treatment,"_",tolower(tissue),
+path <- paste0("../../results/", pathToTestType, "featurePlots/",treatment,"_",tolower(tissue),
                "_UMAP_unannotated_nCount")
 f1
 saveToPDF(paste0(path, ".pdf"), width = 4, height = 4)
@@ -2165,7 +2540,7 @@ saveToPNG(paste0(path, ".png"), width = 4, height = 4, unit = "in", res = 300)
 dev.off()
 
 # save
-path <- paste0("../../results/featurePlots/",treatment,"_",tolower(tissue),
+path <- paste0("../../results/", pathToTestType, "featurePlots/",treatment,"_",tolower(tissue),
                "_UMAP_unannotated_nFeature")
 f2
 saveToPDF(paste0(path, ".pdf"), width = 4, height = 4)
@@ -2173,7 +2548,7 @@ saveToPNG(paste0(path, ".png"), width = 4, height = 4, unit = "in", res = 300)
 dev.off()
 
 # save
-path <- paste0("../../results/featurePlots/",treatment,"_",tolower(tissue),
+path <- paste0("../../results/", pathToTestType, "featurePlots/",treatment,"_",tolower(tissue),
                "_UMAP_unannotated_percentMT")
 f3
 saveToPDF(paste0(path, ".pdf"), width = 4, height = 4)
@@ -2181,7 +2556,7 @@ saveToPNG(paste0(path, ".png"), width = 4, height = 4, unit = "in", res = 300)
 dev.off()
 
 # save
-path <- paste0("../../results/featurePlots/",treatment,"_",tolower(tissue),
+path <- paste0("../../results/", pathToTestType, "featurePlots/",treatment,"_",tolower(tissue),
                "_UMAP_unannotated_complexity")
 f4
 saveToPDF(paste0(path, ".pdf"), width = 4, height = 4)
@@ -2224,20 +2599,27 @@ FeaturePlot(PMI.unannotated,
             min.cutoff = 'q1',
             label = TRUE)
 
-FeaturePlot(PMI.unannotated, 
-            features = "Xist",
-            pt.size = 0.4, 
-            order = TRUE,
-            min.cutoff = 'q1',
-            label = TRUE)
 ```
 
 ## Percent cells per cluster
 ```{r percent_cells_per_cluster}
 PMI.unannotated@meta.data$seurat_clusters <- 
-  PMI.unannotated@meta.data$SCT_snn_res.0.4
+  PMI.unannotated@meta.data$SCT_snn_res.0.1
 
 # treatment
+b1 <- PMI.unannotated@meta.data %>%
+  group_by(seurat_clusters, replicate) %>%
+  dplyr::count() %>%
+  group_by(seurat_clusters) %>%
+  dplyr::mutate(percent = 100*n/sum(n)) %>%
+  ungroup() %>%
+  ggplot(aes(x=seurat_clusters,y=percent, fill=replicate)) +
+  geom_col() +
+  scale_fill_manual(values = treatment_colors) +
+  ggtitle("Percentage of replicate per cluster")
+b1
+
+# replicate
 b1 <- PMI.unannotated@meta.data %>%
   group_by(seurat_clusters, replicate) %>%
   dplyr::count() %>%
@@ -2266,7 +2648,7 @@ b2
 
 ```{r,echo=FALSE,eval=FALSE}
 # save
-path <- paste0("../../results/nCells/",treatment,"_",tolower(tissue),
+path <- paste0("../../results/", pathToTestType, "nCells/",treatment,"_",tolower(tissue),
                "_percent_cells_per_cluster_treatment")
 b1
 saveToPDF(paste0(path, ".pdf"), width = 4, height = 4)
@@ -2274,7 +2656,7 @@ saveToPNG(paste0(path, ".png"), width = 4, height = 4, unit = "in", res = 300)
 dev.off()
 
 # save
-path <- paste0("../../results/nCells/",treatment,"_",tolower(tissue),
+path <- paste0("../../results/", pathToTestType, "nCells/",treatment,"_",tolower(tissue),
                "_percent_cells_per_cluster_sample")
 b2
 saveToPDF(paste0(path, ".pdf"), width = 4, height = 4)
@@ -2289,7 +2671,7 @@ treatment_ncells <- FetchData(PMI.unannotated,
   dplyr::count(ident, treatment) %>%
   tidyr::spread(ident, n)
 write.table(treatment_ncells, 
-            paste0("../../results/nCells/",
+            paste0("../../results/", pathToTestType, "nCells/",
                    treatment, "_",tolower(tissue),
                    "_cells_per_cluster_treatment.txt"),
             quote = FALSE, sep = "\t")
@@ -2299,7 +2681,7 @@ sample_ncells <- FetchData(PMI.unannotated,
   dplyr::count(ident,sample) %>%
   tidyr::spread(ident, n)
 write.table(sample_ncells, 
-            paste0("../../results/nCells/",
+            paste0("../../results/", pathToTestType, "nCells/",
                    treatment, "_",tolower(tissue),
                    "_cells_per_cluster_sample.txt"),
             quote = FALSE, sep = "\t")

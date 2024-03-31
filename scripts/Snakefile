@@ -1,0 +1,35 @@
+configfile: "config.json"
+
+cellranger_path = "/research/labs/neurology/fryer/m239830/tools/cellranger-8.0.0/bin/cellranger"
+
+ruleorder: cellranger 
+rule all:
+        input:
+                expand(config["cellranger_dir"]+"{sample}/", sample = config["sample_names"]),
+                expand(config["cellranger_dir"] + "web_summaries/{sample}_web_summary.html", sample=config["sample_names"])
+
+
+#------------------------------
+# alignment
+#------------------------------
+rule cellranger:
+        output:
+                counts = (directory(config["cellranger_dir"]+"{sample}/")),
+                web_cp = (config["cellranger_dir"]+"web_summaries/{sample}_web_summary.html"),
+        params:
+                cellranger = cellranger_path,
+                id = lambda wildcards: config[wildcards.sample]["ID"],
+                path = lambda wildcards: config[wildcards.sample]["fq_path"],
+                ref = (config["Mmusculus_dir"])
+        shell:
+                """
+                {params.cellranger} count --id={params.id} --sample={params.id} --fastqs={params.path} --transcriptome={params.ref} --create-bam true --localcores=16 --localmem=50 || true;
+                mv {params.id}/ {output.counts}
+                cp {output.counts}/outs/web_summary.html {output.web_cp}
+                """
+
+# $sample is the sampleID (e.g. 11-87_BR)
+# --fastqs is path to the snRNAseq fastq files
+# --transcriptome is the path to the human genome directory. This was created in a prior step.
+# --localcores will restrict cellranger to 16 cores
+# --localmem will restrict cellranger to 50G memory

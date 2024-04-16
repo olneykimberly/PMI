@@ -3,7 +3,7 @@
 #SBATCH --partition=cpu-short
 #SBATCH --nodes=1                                     
 #SBATCH --tasks=32                                      
-#SBATCH --time=08:00:00 # 8 hours                                
+#SBATCH --time=32:00:00 # 8 hours                                
 #SBATCH --mem=5G 
 #SBATCH -o slurm.pmi.out
 #SBATCH -e slurm.pmi.err
@@ -22,4 +22,4 @@ conda activate LBD
 #python 02_create_10X_config.py
 
 # 3) run snakemake - metaphlan alignment 
-snakemake -s Snakefile -j 30 --nolock --latency-wait 15 --rerun-incomplete --cluster "sbatch --ntasks 20 --partition=cpu-short --mem=35G -t 08:00:00"
+snakemake -s Snakefile -j 30 --nolock --latency-wait 15 --rerun-incomplete --cluster "sbatch --ntasks 20 --partition=cpu-short --mem=60G -t 12:00:00"

@@ -1,0 +1,81 @@
+---
+title: "SoupX"
+author: "Kimberly Olney, PhD"
+date: "04/14/2024"
+output:
+  html_document:
+    theme: cerulean
+    toc: true
+    toc_float: true
+editor_options: 
+  chunk_output_type: inline
+---
+
+# SoupX to remove ambinet RNA
+The [vignette](https://rawcdn.githack.com/constantAmateur/SoupX/204b602418df12e9fdb4b68775a8b486c6504fe4/inst/doc/pbmcTutorial.html)\
+Estimate the composition of this soup, i.e. what fraction of UMIs are derived from the soup in each droplet and produce a corrected count table with the soup based expression removed.\
+
+The method to do this consists of three parts:\
+
+1. Calculate the profile of the soup.\
+2. Estimate the cell specific contamination fraction.\
+3. Infer a corrected expression matrix.\
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(root.dir = ".", echo = TRUE, warning=FALSE, message=FALSE)
+```
+
+```{r libraries}
+library(SeuratObject)
+library(Seurat)
+library(dplyr)
+library(patchwork)
+library(knitr)
+library(xlsx)
+library(ggplot2)
+library(gridExtra)
+library(grid)
+library(lattice)
+library(dittoSeq)
+library(SoupX)
+library(data.table)
+Sys.setenv(RSTUDIO_PANDOC="/usr/local/biotools/pandoc/3.1.2/bin")
+color.panel <- dittoColors()
+```
+
+The contamination fraction is parametrised as rho in the code, with rho=0 meaning no contamination and rho=1 meaning 100% of UMIs in a droplet are soup.
+```{r soupX}
+source(here::here("/research/labs/neurology/fryer/m239830/PMI/scripts", "file_paths_and_colours.R"))
+treatment <- "PMI"
+sampleID <- c("P_69", "B_7", "P_65", "B_6", "P_52", "P_62", "P_67", "J_3", "J_4", "P_60", "P_71", "B_10", "B_8", "B_9", "P_68", "P_54", "P_53", "P_64", "J_2", "J_1")
+cellranger_results <- "/research/labs/neurology/fryer/m239830/PMI/cellranger/"
+
+# rhoEst table
+# rhoEst_table <- data.frame(sampleID = character(), rhoEst = numeric())
+
+for (id in sampleID) {
+  # Load data 
+  sc <- load10X(paste0(cellranger_results, id, "/outs"))
+  # Estimate the soup
+  #sc <- autoEstCont(sc)
+  #rhoEst <- sc$fit$rhoEst
+  # Append sampleID and rhoEst to the dataframe
+  #rhoEst_table <- rbind(rhoEst_table, data.frame(sampleID = id, rhoEst = rhoEst))
+  # or set the contamination fraction to 20% for all cells.
+  sc <- setContaminationFraction(sc, 0.2) 
+  out <- adjustCounts(sc) # Adjust the counts 
+  # Now that we've corrected our data, we can see how that compares to our uncorrected data. 
+  # By default the function plots the fraction of expression in each cell that has been deemed to be soup.
+  gene_names <- c("Aqp4", "Rbfox3", "Mog", "Vcan", "Ttr")
+  for (gene_name in gene_names) {
+    plot <- plotChangeMap(sc, out, gene_name) + theme_bw() + ggtitle(gene_name)
+    ggsave(filename = paste0("../results/soupX/", gene_name, "_", id, ".pdf"), plot, width = 5, height = 4.5)
+  }
+  DropletUtils:::write10xCounts(paste0(cellranger_results, id, "/SoupX_set_fraction_20percent/"), out)
+}
+
+# Print the table
+#print(rhoEst_table)
+```
+```{r}
+```

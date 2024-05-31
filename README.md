@@ -1,4 +1,6 @@
 # PMI
+A fresh perspective: Effect of post-mortem interval on cell type transcriptomic expression of WT and tau (PS19) mouse brains. 
+
 Single nuclues (sn)RNAseq of Mus musculus (mouse) brains that were either harvested fresh (0 hours) or stored in the refrigerator for 3 hours to mimic a typical human post mortem interval (PMI).
 The goal of this experiment is to identify differentially expressed genes (DEGs) within brain cell types between experimental groups: 3 hours versus fresh (0 hours). 
 
@@ -25,7 +27,7 @@ conda env create -n PMI_env --file PMI.yml
 We have put together a workflow for inferring differential expression between 3 hours and Fresh (0 hours) using two tools MAST and DESeq2. These tools are publicly available and we ask that if you use this workflow to cite the tools used listed in the table below. 
 
 ### 1. Download fastq files and mouse reference genome. Create a reference index. 
-The raw fastq files may be obtained from SRA PRJNA723823. Samples were sequenced to ~10k nuclei with 20k reads per nuclei. Information on how to download from SRA may be found [here](https://www.ncbi.nlm.nih.gov/sra/docs/sradownload/). 
+The raw fastq files may be obtained from SRA PRJNA<to-do>. Samples were sequenced to ~10k nuclei with 20k reads per nuclei. Information on how to download from SRA may be found [here](https://www.ncbi.nlm.nih.gov/sra/docs/sradownload/). 
 
 Download the Mus musculus (mouse) reference. The version used in this workflow is cellranger's refdata-gex-GRCm39-2024-A 
 ```

@@ -1,0 +1,112 @@
+---
+title: "Correlation in the log2FC comparisons"
+author: "Kimberly Olney, PhD"
+date: "05/29/2024"
+output:
+  html_document:
+    theme: cerulean
+    toc: true
+    toc_float: true
+editor_options: 
+  chunk_output_type: inline
+---
+
+Differential expression was completed for the following comparisons:
+1.	PS19 vs WT within each cell type. All samples.\
+2.	PS19 vs WT within each cell type. 0 hours only.\
+3.	PS19 vs WT within each cell type. 3 hours only.\
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(root.dir = ".", echo=TRUE, warning=FALSE, message=FALSE)
+library(ComplexHeatmap)
+library(ggpubr)
+```
+
+# Libraris, paths, colors
+https://satijalab.org/seurat/articles/essential_commands.html 
+```{r echo=FALSE, message=FALSE}
+source(here::here("/research/labs/neurology/fryer/m239830/PMI/scripts", "file_paths_and_colours.R"))
+treatment <- "PMI"
+color.panel <- dittoColors()
+metadata <- subset(metadata, sampleID != "P_60" & sampleID != "B_6")
+metadata$sampleID <- factor(metadata$sampleID, levels = c(metadata$sampleID))
+samples <- metadata$sampleID 
+```
+
+# Read in object
+```{r read_object}
+# read object
+dataObject <- readRDS(file = paste0("../rObjects/", treatment, ".dataObject.clean.rds"))
+# inspect
+dataObject
+Layers(dataObject)
+# List of cell types to analyze
+cell_types <- c(unique(dataObject$individual_clusters))
+```
+
+```{r}
+# Load necessary libraries
+library(dplyr)
+
+# Define the list of cell types and time points
+time_points <- c("0hours", "3hours")
+
+# Initialize an empty list to store data frames
+deg_list <- list()
+
+# Loop through each cell type and time point to read the data
+for (cell_type in cell_types) {
+  for (time_point in time_points) {
+    # Construct the file name
+    file_name <- paste0("../results/DEGs/MAST/", cell_type, "_PS19_vs_WT_comparison_", time_point, "_only.txt")
+    
+    # Read the data
+    deg_data <- read.table(file_name, header = TRUE, sep = "\t")
+    
+    # Add columns for cell type and time point
+    deg_data <- deg_data %>%
+      mutate(cell_type = cell_type, time_point = time_point)
+    
+    # Store the data frame in the list
+    deg_list[[paste0(cell_type, "_", time_point)]] <- deg_data
+  }
+}
+
+# Combine all data frames into a single data frame
+deg_combined <- bind_rows(deg_list)
+
+# Filter the data for 0 hours
+deg_0hours <- deg_combined %>%
+  filter(time_point == "0hours") %>%
+  select(gene, avg_log2FC, cell_type)
+
+# Filter the data for 0 hours
+deg_3hours <- deg_combined %>%
+  filter(time_point == "3hours") %>%
+  select(gene, avg_log2FC, cell_type)
+
+DEG_combined <- merge(deg_0hours, deg_3hours, by = c("gene", "cell_type"), suffixes = c("_0h", "_3h"))
+head(DEG_combined)
+
+# Compute correlation matrix by cell_type
+correlation_results <- DEG_combined %>%
+  group_by(cell_type) %>%
+  summarise(correlation = cor(avg_log2FC_0h, avg_log2FC_3h))
+```
+
+
+# Plot the data
+```{r}
+ggplot(DEG_combined, aes(x = avg_log2FC_0h, y = avg_log2FC_3h)) +
+  geom_point() +
+  geom_smooth(method = "lm", se = FALSE, color = "blue") +
+  facet_wrap(~ cell_type, ncol = 3) +
+  stat_cor(method = "pearson", label.x = -4, label.y = 5) +
+  labs(
+    title = "Correlation of 0 hours and 3 hours by cell type",
+    x = "0 hours log2FC",
+    y = "3 hours log2FC"
+  ) +
+  theme_minimal()
+```
+

@@ -3,11 +3,13 @@ title: "SoupX"
 author: "Kimberly Olney, PhD"
 date: "04/14/2024"
 output:
+  pdf_document:
+    toc: yes
   html_document:
     theme: cerulean
-    toc: true
-    toc_float: true
-editor_options: 
+    toc: yes
+    toc_float: yes
+editor_options:
   chunk_output_type: inline
 ---
 
@@ -21,8 +23,8 @@ The method to do this consists of three parts:\
 2. Estimate the cell specific contamination fraction.\
 3. Infer a corrected expression matrix.\
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(root.dir = ".", echo = TRUE, warning=FALSE, message=FALSE)
+```{r setup}
+knitr::opts_chunk$set(root.dir = ".", echo=FALSE, message=FALSE, warning=FALSE, background=TRUE)
 ```
 
 ```{r libraries}
@@ -51,19 +53,19 @@ sampleID <- c("P_69", "B_7", "P_65", "B_6", "P_52", "P_62", "P_67", "J_3", "J_4"
 cellranger_results <- "/research/labs/neurology/fryer/m239830/PMI/cellranger/"
 
 # rhoEst table
-# rhoEst_table <- data.frame(sampleID = character(), rhoEst = numeric())
+rhoEst_table <- data.frame(sampleID = character(), rhoEst = numeric())
 
 for (id in sampleID) {
   # Load data 
   sc <- load10X(paste0(cellranger_results, id, "/outs"))
   # Estimate the soup
-  #sc <- autoEstCont(sc)
-  #rhoEst <- sc$fit$rhoEst
+  sc <- autoEstCont(sc)
+  rhoEst <- sc$fit$rhoEst
   # Append sampleID and rhoEst to the dataframe
-  #rhoEst_table <- rbind(rhoEst_table, data.frame(sampleID = id, rhoEst = rhoEst))
+  rhoEst_table <- rbind(rhoEst_table, data.frame(sampleID = id, rhoEst = rhoEst))
   # or set the contamination fraction to 20% for all cells.
   sc <- setContaminationFraction(sc, 0.2) 
-  out <- adjustCounts(sc) # Adjust the counts 
+  out <- adjustCounts(sc, roundToInt=TRUE) # Adjust the counts 
   # Now that we've corrected our data, we can see how that compares to our uncorrected data. 
   # By default the function plots the fraction of expression in each cell that has been deemed to be soup.
   gene_names <- c("Aqp4", "Rbfox3", "Mog", "Vcan", "Ttr")
@@ -71,11 +73,13 @@ for (id in sampleID) {
     plot <- plotChangeMap(sc, out, gene_name) + theme_bw() + ggtitle(gene_name)
     ggsave(filename = paste0("../results/soupX/", gene_name, "_", id, ".pdf"), plot, width = 5, height = 4.5)
   }
-  DropletUtils:::write10xCounts(paste0(cellranger_results, id, "/SoupX_set_fraction_20percent/"), out)
+  DropletUtils:::write10xCounts(paste0(cellranger_results, id, "/SoupX_set_fraction_20percent_integers/"), out)
 }
 
 # Print the table
-#print(rhoEst_table)
+print(rhoEst_table)
+write.table(rhoEst_table, "../results/soupX/rhoEst_table.tsv")
 ```
+
 ```{r}
 ```

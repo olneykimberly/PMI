@@ -1,0 +1,1689 @@
+---
+title: "annotations"
+author: "Kimberly Olney, PhD"
+date: "04/19/2024"
+output:
+  html_document:
+    theme: cerulean
+    toc: true
+    toc_float: true
+editor_options: 
+  chunk_output_type: inline
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(root.dir = ".", echo=TRUE, warning=FALSE, message=FALSE)
+```
+
+# Libraris, paths, colors
+https://satijalab.org/seurat/articles/essential_commands.html 
+```{r echo=FALSE, message=FALSE}
+source(here::here("/research/labs/neurology/fryer/m239830/PMI/scripts", "file_paths_and_colours.R"))
+treatment <- "PMI"
+color.panel <- dittoColors()
+metadata <- subset(metadata, sampleID != "P_60" & sampleID != "B_6")
+metadata$sampleID <- factor(metadata$sampleID, levels = c(metadata$sampleID))
+samples <- metadata$sampleID 
+```
+
+# Read in object
+```{r read_object}
+# read object
+dataObject.annotated <- readRDS(file = paste0("../rObjects/", treatment, ".annotated.doubletsRemoved.rds"))
+# inspect
+dataObject.annotated
+# Split by cell type 
+object_list <- SplitObject(dataObject.annotated, split.by = "individual_clusters")
+```
+
+# Reprocess astrocyte
+```{r reprocess}
+# transform
+dataObject.astrocyte <- SCTransform(object_list$astrocyte, verbose = FALSE)
+
+# run PCA on the merged object
+dataObject.astrocyte <- RunPCA(object = dataObject.astrocyte)
+Idents(dataObject.astrocyte) <- "sample"
+
+# Determine the K-nearest neighbor graph
+dataObject.astrocyte <- FindNeighbors(object = dataObject.astrocyte, 
+                                 assay = "SCT", 
+                                 reduction = "pca",
+                                 dims = 1:15)
+# Run UMAP
+dataObject.astrocyte <- RunUMAP(dataObject.astrocyte,
+                           dims = 1:15,
+                           reduction = "pca",
+                           n.components = 3) 
+
+# Determine the clusters for various resolutions
+dataObject.astrocyte <- FindClusters(object = dataObject.astrocyte,
+                                 algorithm = 1, # 1= Louvain
+                                 resolution = seq(0.1,.6,by=0.1))
+
+Idents(dataObject.astrocyte) <- dataObject.astrocyte$SCT_snn_res.0.6
+dataObject.astrocyte$seurat_clusters <- dataObject.astrocyte$SCT_snn_res.0.6
+ditto_umap <- dittoDimPlot(object = dataObject.astrocyte,
+             var = "seurat_clusters",
+             reduction.use = "umap",
+             do.label = TRUE,
+             labels.highlight = TRUE)
+ditto_umap
+
+markers.to.plot <-
+  c(
+"Clu", 
+"Gfap", 
+"Aqp4", 
+"Gja1", 
+"Cldn5", 
+"Adgrf5", 
+"Flt1", 
+"Col1a1", 
+"Col1a2", 
+"Dcn", 
+"Hexb", 
+"C1qa", 
+"C1qc", 
+"C1qb", 
+"Tmem119", 
+"Itgam", 
+"Tyrobp", 
+"P2ry12", 
+"Aif1", 
+"Rbfox3", 
+"Snap25", 
+"Syt1", 
+"Gad1", 
+"Gad2", 
+"Plp1", 
+"Mbp", 
+"Mog", 
+"Olig1", 
+"Pdgfra", 
+"Vcan", 
+"Tnr", 
+"Acta2", 
+"Rgs5", 
+"Vtn", 
+"Myl5"
+  )
+
+dot_ind <- DotPlot(dataObject.astrocyte,
+                   features = markers.to.plot, 
+                  # split.by = "strain", 
+                   cluster.idents = FALSE,
+                   dot.scale = 8) + RotatedAxis()
+dot_ind
+
+dataObject.astrocyte.clean <- subset(dataObject.astrocyte, cells = WhichCells(dataObject.astrocyte, idents = setdiff(unique(dataObject.astrocyte$seurat_clusters), c(6,7,8,11,12))))
+```
+
+# Reprocess oligodendrocyte
+```{r reprocess}
+# transform
+dataObject.oligodendrocyte <- SCTransform(object_list$oligodendrocyte, verbose = FALSE)
+
+# run PCA on the merged object
+dataObject.oligodendrocyte <- RunPCA(object = dataObject.oligodendrocyte)
+Idents(dataObject.oligodendrocyte) <- "sample"
+
+# Determine the K-nearest neighbor graph
+dataObject.oligodendrocyte <- FindNeighbors(object = dataObject.oligodendrocyte, 
+                                 assay = "SCT", 
+                                 reduction = "pca",
+                                 dims = 1:15)
+# Run UMAP
+dataObject.oligodendrocyte <- RunUMAP(dataObject.oligodendrocyte,
+                           dims = 1:15,
+                           reduction = "pca",
+                           n.components = 3) 
+
+# Determine the clusters for various resolutions
+dataObject.oligodendrocyte <- FindClusters(object = dataObject.oligodendrocyte,
+                                 algorithm = 1, # 1= Louvain
+                                 resolution = seq(0.1,.6,by=0.1))
+
+Idents(dataObject.oligodendrocyte) <- dataObject.oligodendrocyte$SCT_snn_res.0.6
+dataObject.oligodendrocyte$seurat_clusters <- dataObject.oligodendrocyte$SCT_snn_res.0.6
+ditto_umap <- dittoDimPlot(object = dataObject.oligodendrocyte,
+             var = "seurat_clusters",
+             reduction.use = "umap",
+             do.label = TRUE,
+             labels.highlight = TRUE)
+ditto_umap
+
+markers.to.plot <-
+  c(
+"Clu", 
+"Gfap", 
+"Aqp4", 
+"Gja1", 
+"Cldn5", 
+"Adgrf5", 
+"Flt1", 
+"Col1a1", 
+"Col1a2", 
+"Dcn", 
+"Hexb", 
+"C1qa", 
+"C1qc", 
+"C1qb", 
+"Tmem119", 
+"Itgam", 
+"Tyrobp", 
+"P2ry12", 
+"Aif1", 
+"Rbfox3", 
+"Snap25", 
+"Syt1", 
+"Gad1", 
+"Gad2", 
+"Plp1", 
+"Mbp", 
+"Mog", 
+"Olig1", 
+"Pdgfra", 
+"Vcan", 
+"Tnr", 
+"Acta2", 
+"Rgs5", 
+"Vtn", 
+"Myl5"
+  )
+
+dot_ind <- DotPlot(dataObject.oligodendrocyte,
+                   features = markers.to.plot, 
+                  # split.by = "strain", 
+                   cluster.idents = FALSE,
+                   dot.scale = 8) + RotatedAxis()
+dot_ind
+
+dataObject.oligodendrocyte.clean <- subset(dataObject.oligodendrocyte, cells = WhichCells(dataObject.oligodendrocyte, idents = setdiff(unique(dataObject.oligodendrocyte$seurat_clusters), c(15,6,11,13,9,3,10,8,14,4,12))))
+```
+
+
+# Reprocess polydendrocyte
+```{r reprocess}
+# transform
+dataObject.polydendrocyte <- SCTransform(object_list$polydendrocyte, verbose = FALSE)
+
+# run PCA on the merged object
+dataObject.polydendrocyte <- RunPCA(object = dataObject.polydendrocyte)
+Idents(dataObject.polydendrocyte) <- "sample"
+
+# Determine the K-nearest neighbor graph
+dataObject.polydendrocyte <- FindNeighbors(object = dataObject.polydendrocyte, 
+                                 assay = "SCT", 
+                                 reduction = "pca",
+                                 dims = 1:15)
+# Run UMAP
+dataObject.polydendrocyte <- RunUMAP(dataObject.polydendrocyte,
+                           dims = 1:15,
+                           reduction = "pca",
+                           n.components = 3) 
+
+# Determine the clusters for various resolutions
+dataObject.polydendrocyte <- FindClusters(object = dataObject.polydendrocyte,
+                                 algorithm = 1, # 1= Louvain
+                                 resolution = seq(0.1,.6,by=0.1))
+
+Idents(dataObject.polydendrocyte) <- dataObject.polydendrocyte$SCT_snn_res.0.6
+dataObject.polydendrocyte$seurat_clusters <- dataObject.polydendrocyte$SCT_snn_res.0.6
+ditto_umap <- dittoDimPlot(object = dataObject.polydendrocyte,
+             var = "seurat_clusters",
+             reduction.use = "umap",
+             do.label = TRUE,
+             labels.highlight = TRUE)
+ditto_umap
+
+markers.to.plot <-
+  c(
+"Clu", 
+"Gfap", 
+"Aqp4", 
+"Gja1", 
+"Cldn5", 
+"Adgrf5", 
+"Flt1", 
+"Col1a1", 
+"Col1a2", 
+"Dcn", 
+"Hexb", 
+"C1qa", 
+"C1qc", 
+"C1qb", 
+"Tmem119", 
+"Itgam", 
+"Tyrobp", 
+"P2ry12", 
+"Aif1", 
+"Rbfox3", 
+"Snap25", 
+"Syt1", 
+"Gad1", 
+"Gad2", 
+"Plp1", 
+"Mbp", 
+"Mog", 
+"Olig1", 
+"Pdgfra", 
+"Vcan", 
+"Tnr", 
+"Acta2", 
+"Rgs5", 
+"Vtn", 
+"Myl5"
+  )
+
+dot_ind <- DotPlot(dataObject.polydendrocyte,
+                   features = markers.to.plot, 
+                  # split.by = "strain", 
+                   cluster.idents = FALSE,
+                   dot.scale = 8) + RotatedAxis()
+dot_ind
+
+dataObject.polydendrocyte.clean <- subset(dataObject.polydendrocyte, cells = WhichCells(dataObject.polydendrocyte, idents = setdiff(unique(dataObject.polydendrocyte$seurat_clusters), c(10,8,6,3,4,9,7))))
+```
+
+# Reprocess endothelial
+```{r reprocess}
+# transform
+dataObject.endothelial <- SCTransform(object_list$endothelial, verbose = FALSE)
+
+# run PCA on the merged object
+dataObject.endothelial <- RunPCA(object = dataObject.endothelial)
+Idents(dataObject.endothelial) <- "sample"
+
+# Determine the K-nearest neighbor graph
+dataObject.endothelial <- FindNeighbors(object = dataObject.endothelial, 
+                                 assay = "SCT", 
+                                 reduction = "pca",
+                                 dims = 1:15)
+# Run UMAP
+dataObject.endothelial <- RunUMAP(dataObject.endothelial,
+                           dims = 1:15,
+                           reduction = "pca",
+                           n.components = 3) 
+
+# Determine the clusters for various resolutions
+dataObject.endothelial <- FindClusters(object = dataObject.endothelial,
+                                 algorithm = 1, # 1= Louvain
+                                 resolution = seq(0.1,.6,by=0.1))
+
+Idents(dataObject.endothelial) <- dataObject.endothelial$SCT_snn_res.0.2
+dataObject.endothelial$seurat_clusters <- dataObject.endothelial$SCT_snn_res.0.2
+ditto_umap <- dittoDimPlot(object = dataObject.endothelial,
+             var = "seurat_clusters",
+             reduction.use = "umap",
+             do.label = TRUE,
+             labels.highlight = TRUE)
+ditto_umap
+
+
+markers.to.plot <-
+  c(
+"Clu", 
+"Gfap", 
+"Aqp4", 
+"Hexb", 
+"C1qa", 
+"C1qc", 
+"C1qb", 
+"Tmem119", 
+"Itgam", 
+"Tyrobp", 
+"P2ry12", 
+"Cx3cr1",
+"Apoe", 
+"Cst7", 
+"Lyz2", 
+"Lpl", 
+"Cd9", 
+"Trem2",
+"Rbfox3", 
+"Snap25", 
+"Gad1", 
+"Plp1", 
+"Mbp", 
+"Mog"
+  )
+
+dot_ind <- DotPlot(dataObject.endothelial,
+                   features = markers.to.plot, 
+                  # split.by = "strain", 
+                   cluster.idents = TRUE,
+                   dot.scale = 8) + RotatedAxis()
+dot_ind
+
+dataObject.endothelial.clean <- subset(dataObject.endothelial, cells = WhichCells(dataObject.endothelial, idents = setdiff(unique(dataObject.endothelial$seurat_clusters), c(3,2,6,4))))
+```
+
+
+# Reprocess fibroblast
+```{r reprocess}
+# transform
+dataObject.fibroblast <- SCTransform(object_list$fibroblast, verbose = FALSE)
+
+# run PCA on the merged object
+dataObject.fibroblast <- RunPCA(object = dataObject.fibroblast)
+Idents(dataObject.fibroblast) <- "sample"
+
+# Determine the K-nearest neighbor graph
+dataObject.fibroblast <- FindNeighbors(object = dataObject.fibroblast, 
+                                 assay = "SCT", 
+                                 reduction = "pca",
+                                 dims = 1:15)
+# Run UMAP
+dataObject.fibroblast <- RunUMAP(dataObject.fibroblast,
+                           dims = 1:15,
+                           reduction = "pca",
+                           n.components = 3) 
+
+# Determine the clusters for various resolutions
+dataObject.fibroblast <- FindClusters(object = dataObject.fibroblast,
+                                 algorithm = 1, # 1= Louvain
+                                 resolution = seq(0.1,.6,by=0.1))
+
+Idents(dataObject.fibroblast) <- dataObject.fibroblast$SCT_snn_res.0.2
+dataObject.fibroblast$seurat_clusters <- dataObject.fibroblast$SCT_snn_res.0.2
+ditto_umap <- dittoDimPlot(object = dataObject.fibroblast,
+             var = "seurat_clusters",
+             reduction.use = "umap",
+             do.label = TRUE,
+             labels.highlight = TRUE)
+ditto_umap
+
+markers.to.plot <-
+  c(
+"Clu", 
+"Gfap", 
+"Aqp4", 
+"Gja1", 
+"Cldn5", 
+"Adgrf5", 
+"Flt1", 
+"Col1a1", 
+"Col1a2", 
+"Dcn", 
+"Hexb", 
+"C1qa", 
+"C1qc", 
+"C1qb", 
+"Tmem119", 
+"Itgam", 
+"Tyrobp", 
+"P2ry12", 
+"Aif1", 
+"Rbfox3", 
+"Snap25", 
+"Syt1", 
+"Gad1", 
+"Gad2", 
+"Plp1", 
+"Mbp", 
+"Mog", 
+"Olig1", 
+"Pdgfra", 
+"Vcan", 
+"Tnr", 
+"Acta2", 
+"Rgs5", 
+"Vtn"
+  )
+
+dot_ind <- DotPlot(dataObject.fibroblast,
+                   features = markers.to.plot, 
+                   #split.by = "time", 
+                   cluster.idents = FALSE,
+                   dot.scale = 8) + RotatedAxis()
+dot_ind
+
+dataObject.fibroblast.clean <- subset(dataObject.fibroblast, cells = WhichCells(dataObject.fibroblast, idents = setdiff(unique(dataObject.fibroblast$seurat_clusters), c(3,8,6,7))))
+```
+
+# Reprocess mural
+```{r reprocess}
+# transform
+dataObject.mural <- SCTransform(object_list$mural, verbose = FALSE)
+
+# run PCA on the merged object
+dataObject.mural <- RunPCA(object = dataObject.mural)
+Idents(dataObject.mural) <- "sample"
+
+# Determine the K-nearest neighbor graph
+dataObject.mural <- FindNeighbors(object = dataObject.mural, 
+                                 assay = "SCT", 
+                                 reduction = "pca",
+                                 dims = 1:15)
+# Run UMAP
+dataObject.mural <- RunUMAP(dataObject.mural,
+                           dims = 1:15,
+                           reduction = "pca",
+                           n.components = 3) 
+
+# Determine the clusters for various resolutions
+dataObject.mural <- FindClusters(object = dataObject.mural,
+                                 algorithm = 1, # 1= Louvain
+                                 resolution = seq(0.1,.6,by=0.1))
+
+Idents(dataObject.mural) <- dataObject.mural$SCT_snn_res.0.2
+dataObject.mural$seurat_clusters <- dataObject.mural$SCT_snn_res.0.2
+ditto_umap <- dittoDimPlot(object = dataObject.mural,
+             var = "seurat_clusters",
+             reduction.use = "umap",
+             do.label = TRUE,
+             labels.highlight = TRUE)
+ditto_umap
+
+markers.to.plot <-
+  c(
+"Clu", 
+"Gfap", 
+"Aqp4", 
+"Gja1", 
+"Cldn5", 
+"Adgrf5", 
+"Flt1", 
+"Col1a1", 
+"Col1a2", 
+"Dcn", 
+"Hexb", 
+"C1qa", 
+"C1qc", 
+"C1qb", 
+"Tmem119", 
+"Itgam", 
+"Tyrobp", 
+"P2ry12", 
+"Aif1", 
+"Rbfox3", 
+"Snap25", 
+"Syt1", 
+"Gad1", 
+"Gad2", 
+"Plp1", 
+"Mbp", 
+"Mog", 
+"Olig1", 
+"Pdgfra", 
+"Vcan", 
+"Tnr", 
+"Acta2", 
+"Rgs5", 
+"Vtn"
+  )
+
+dot_ind <- DotPlot(dataObject.mural,
+                   features = markers.to.plot, 
+                   #split.by = "time", 
+                   cluster.idents = FALSE,
+                   dot.scale = 8) + RotatedAxis()
+dot_ind
+
+dataObject.mural.clean <- subset(dataObject.mural, cells = WhichCells(dataObject.mural, idents = setdiff(unique(dataObject.mural$seurat_clusters), c(2))))
+```
+
+# Reprocess microglia
+```{r reprocess}
+# transform
+dataObject.microglia <- SCTransform(object_list$microglia, verbose = FALSE)
+
+# run PCA on the merged object
+dataObject.microglia <- RunPCA(object = dataObject.microglia)
+Idents(dataObject.microglia) <- "sample"
+
+# Determine the K-nearest neighbor graph
+dataObject.microglia <- FindNeighbors(object = dataObject.microglia, 
+                                 assay = "SCT", 
+                                 reduction = "pca",
+                                 dims = 1:15)
+# Run UMAP
+dataObject.microglia <- RunUMAP(dataObject.microglia,
+                           dims = 1:15,
+                           reduction = "pca",
+                           n.components = 3) 
+
+# Determine the clusters for various resolutions
+dataObject.microglia <- FindClusters(object = dataObject.microglia,
+                                 algorithm = 1, # 1= Louvain
+                                 resolution = seq(0.1,.6,by=0.1))
+
+Idents(dataObject.microglia) <- dataObject.microglia$SCT_snn_res.0.2
+dataObject.microglia$seurat_clusters <- dataObject.microglia$SCT_snn_res.0.2
+ditto_umap <- dittoDimPlot(object = dataObject.microglia,
+             var = "seurat_clusters",
+             reduction.use = "umap",
+             do.label = TRUE,
+             labels.highlight = TRUE)
+ditto_umap
+
+
+markers.to.plot <-
+  c(
+"Clu", 
+"Gfap", 
+"Aqp4", 
+"Hexb", 
+"C1qa", 
+"C1qc", 
+"C1qb", 
+"Tmem119", 
+"Itgam", 
+"Tyrobp", 
+"P2ry12", 
+"Cx3cr1",
+"Apoe", 
+"Cst7", 
+"Lyz2", 
+"Lpl", 
+"Cd9", 
+"Trem2",
+"Rbfox3", 
+"Snap25", 
+"Gad1", 
+"Plp1", 
+"Mbp", 
+"Mog"
+  )
+
+dot_ind <- DotPlot(dataObject.microglia,
+                   features = markers.to.plot, 
+                  # split.by = "strain", 
+                   cluster.idents = TRUE,
+                   dot.scale = 8) + RotatedAxis()
+dot_ind
+
+dataObject.microglia.clean <- subset(dataObject.microglia, cells = WhichCells(dataObject.microglia, idents = setdiff(unique(dataObject.microglia$seurat_clusters), c(1))))
+```
+
+# Reprocess neuron
+```{r reprocess}
+# transform
+dataObject.neuron <- SCTransform(object_list$neuron, verbose = FALSE)
+
+# run PCA on the merged object
+dataObject.neuron <- RunPCA(object = dataObject.neuron)
+Idents(dataObject.neuron) <- "sample"
+
+# Determine the K-nearest neighbor graph
+dataObject.neuron <- FindNeighbors(object = dataObject.neuron, 
+                                 assay = "SCT", 
+                                 reduction = "pca",
+                                 dims = 1:15)
+# Run UMAP
+dataObject.neuron <- RunUMAP(dataObject.neuron,
+                           dims = 1:15,
+                           reduction = "pca",
+                           n.components = 3) 
+
+# Determine the clusters for various resolutions
+dataObject.neuron <- FindClusters(object = dataObject.neuron,
+                                 algorithm = 1, # 1= Louvain
+                                 resolution = seq(0.1,.6,by=0.1))
+
+Idents(dataObject.neuron) <- dataObject.neuron$SCT_snn_res.0.6
+dataObject.neuron$seurat_clusters <- dataObject.neuron$SCT_snn_res.0.6
+ditto_umap <- dittoDimPlot(object = dataObject.neuron,
+             var = "seurat_clusters",
+             reduction.use = "umap",
+             do.label = TRUE,
+             labels.highlight = TRUE)
+ditto_umap
+
+markers.to.plot <-
+  c(
+"Clu", 
+"Gfap", 
+"Aqp4", 
+"Gja1", 
+"Cldn5", 
+"Adgrf5", 
+"Flt1", 
+"Col1a1", 
+"Col1a2", 
+"Dcn", 
+"Hexb", 
+"C1qa", 
+"C1qc", 
+"C1qb", 
+"Tmem119", 
+"Itgam", 
+"Tyrobp", 
+"P2ry12", 
+"Aif1", 
+"Rbfox3", 
+"Snap25", 
+"Syt1", 
+"Gad1", 
+"Gad2", 
+"Plp1", 
+"Mbp", 
+"Mog", 
+"Olig1", 
+"Pdgfra", 
+"Vcan", 
+"Tnr", 
+"Acta2", 
+"Rgs5", 
+"Vtn", 
+"Myl5"
+  )
+
+dot_ind <- DotPlot(dataObject.neuron,
+                   features = markers.to.plot, 
+                   #split.by = "time", 
+                   cluster.idents = FALSE,
+                   dot.scale = 8) + RotatedAxis()
+dot_ind
+
+#dataObject.neuron.clean <- subset(dataObject.neuron, cells = WhichCells(dataObject.neuron, idents = setdiff(unique(dataObject.neuron$seurat_clusters), c(6, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19))))
+```
+
+# Reprocess interneuron
+```{r reprocess}
+# transform
+dataObject.interneuron <- SCTransform(object_list$interneuron, verbose = FALSE)
+
+# run PCA on the merged object
+dataObject.interneuron <- RunPCA(object = dataObject.interneuron)
+Idents(dataObject.interneuron) <- "sample"
+
+# Determine the K-nearest neighbor graph
+dataObject.interneuron <- FindNeighbors(object = dataObject.interneuron, 
+                                 assay = "SCT", 
+                                 reduction = "pca",
+                                 dims = 1:15)
+# Run UMAP
+dataObject.interneuron <- RunUMAP(dataObject.interneuron,
+                           dims = 1:15,
+                           reduction = "pca",
+                           n.components = 3) 
+
+# Determine the clusters for various resolutions
+dataObject.interneuron <- FindClusters(object = dataObject.interneuron,
+                                 algorithm = 1, # 1= Louvain
+                                 resolution = seq(0.1,.6,by=0.1))
+
+Idents(dataObject.interneuron) <- dataObject.interneuron$SCT_snn_res.0.6
+dataObject.interneuron$seurat_clusters <- dataObject.interneuron$SCT_snn_res.0.6
+ditto_umap <- dittoDimPlot(object = dataObject.interneuron,
+             var = "seurat_clusters",
+             reduction.use = "umap",
+             do.label = TRUE,
+             labels.highlight = TRUE)
+ditto_umap
+
+markers.to.plot <-
+  c(
+"Clu", 
+"Gfap", 
+"Aqp4", 
+"Gja1", 
+"Cldn5", 
+"Adgrf5", 
+"Flt1", 
+"Col1a1", 
+"Col1a2", 
+"Dcn", 
+"Hexb", 
+"C1qa", 
+"C1qc", 
+"C1qb", 
+"Tmem119", 
+"Itgam", 
+"Tyrobp", 
+"P2ry12", 
+"Aif1", 
+"Rbfox3", 
+"Snap25", 
+"Syt1", 
+"Gad1", 
+"Gad2", 
+"Plp1", 
+"Mbp", 
+"Mog", 
+"Olig1", 
+"Pdgfra", 
+"Vcan", 
+"Tnr", 
+"Acta2", 
+"Rgs5", 
+"Vtn"
+  )
+
+dot_ind <- DotPlot(dataObject.interneuron,
+                   features = markers.to.plot, 
+                   #split.by = "time", 
+                   cluster.idents = FALSE,
+                   dot.scale = 8) + RotatedAxis()
+dot_ind
+
+dataObject.interneuron.clean <- subset(dataObject.interneuron, cells = WhichCells(dataObject.interneuron, idents = setdiff(unique(dataObject.interneuron$seurat_clusters), c(2,12,13,14,21,25))))
+```
+
+# Merge objects
+```{r merge}
+dataObject.glia.clean <- merge(x = dataObject.astrocyte.clean, y = c(dataObject.oligodendrocyte.clean, dataObject.polydendrocyte.clean, dataObject.endothelial.clean, dataObject.fibroblast.clean, dataObject.mural.clean, dataObject.microglia.clean))
+
+dataObject.neurons.clean <- merge(x = dataObject.neuron, y = c(dataObject.interneuron.clean))
+```
+
+# Reprocess glia cells 
+```{r glia_clean}
+# Inspect 
+dataObject.glia.clean
+Layers(dataObject.glia.clean[["RNA"]]) # Inspect layers
+dataObject.glia.clean[["RNA"]] <- JoinLayers(dataObject.glia.clean[["RNA"]])
+Layers(dataObject.glia.clean[["RNA"]])
+# Re-normalizing data and finding clusters
+dataObject.glia.clean <- SCTransform(dataObject.glia.clean, verbose = FALSE)
+# run PCA on the merged object
+dataObject.glia.clean <- RunPCA(object = dataObject.glia.clean)
+Idents(dataObject.glia.clean) <- "sample"
+
+# Determine the K-nearest neighbor graph
+dataObject.glia.clean <- FindNeighbors(object = dataObject.glia.clean, 
+                                 assay = "SCT", 
+                                 reduction = "pca",
+                                 dims = 1:15)
+# Run UMAP
+dataObject.glia.clean <- RunUMAP(dataObject.glia.clean,
+                           dims = 1:15,
+                           reduction = "pca",
+                           n.components = 3) 
+
+# Determine the clusters for various resolutions
+dataObject.glia.clean <- FindClusters(object = dataObject.glia.clean,
+                                 algorithm = 1, # 1= Louvain
+                                 resolution = seq(0.4,.8,by=0.2))
+
+Idents(dataObject.glia.clean) <- dataObject.glia.clean$SCT_snn_res.0.6
+dataObject.glia.clean$seurat_clusters <- dataObject.glia.clean$SCT_snn_res.0.6
+ditto_umap <- dittoDimPlot(object = dataObject.glia.clean,
+             var = "seurat_clusters",
+             dim.1 = 1, 
+             dim.2 = 2,
+             reduction.use = "umap",
+             do.label = TRUE,
+             labels.highlight = TRUE)
+ditto_umap
+
+ditto_umap_anno <- dittoDimPlot(object = dataObject.glia.clean,
+             var = "individual_clusters",
+             dim.1 = 1, 
+             dim.2 = 2,
+             reduction.use = "umap",
+             do.label = TRUE,
+             labels.highlight = TRUE)
+ditto_umap_anno
+
+pdf(
+  paste0(
+    "../results/UMAP/annotated/",
+    treatment,
+    "_individual_clusters_glia_clean_UMAP.pdf"
+  ),
+  width = 7,
+  height = 5
+)
+ditto_umap_anno
+dev.off()
+
+markers.to.plot <-
+  c(
+"Clu", 
+"Gfap", 
+"Aqp4", 
+"Gja1", 
+"Cldn5", 
+"Adgrf5", 
+"Flt1", 
+"Col1a1", 
+"Col1a2", 
+"Dcn", 
+"Hexb", 
+"C1qa", 
+"C1qc", 
+"C1qb", 
+"Tmem119", 
+"Itgam", 
+"Tyrobp", 
+"P2ry12", 
+"Aif1", 
+"Rbfox3", 
+"Snap25", 
+"Syt1", 
+"Gad1", 
+"Gad2", 
+"Plp1", 
+"Mbp", 
+"Mog", 
+"Olig1", 
+"Pdgfra", 
+"Vcan", 
+"Tnr", 
+"Acta2", 
+"Rgs5", 
+"Vtn", 
+"Myl5"
+  )
+
+dot_ind <- DotPlot(dataObject.glia.clean,
+                   features = markers.to.plot, 
+                  # split.by = "strain", 
+                   cluster.idents = FALSE,
+                   dot.scale = 8) + RotatedAxis()
+dot_ind
+```
+
+# Reprocess neurons  
+```{r glia_clean}
+# Inspect 
+dataObject.neurons.clean
+Layers(dataObject.neurons.clean[["RNA"]]) # Inspect layers
+dataObject.neurons.clean[["RNA"]] <- JoinLayers(dataObject.neurons.clean[["RNA"]])
+Layers(dataObject.neurons.clean[["RNA"]])
+# Re-normalizing data and finding clusters
+dataObject.neurons.clean <- SCTransform(dataObject.neurons.clean, verbose = FALSE)
+# run PCA on the merged object
+dataObject.neurons.clean <- RunPCA(object = dataObject.neurons.clean)
+Idents(dataObject.neurons.clean) <- "sample"
+
+# Determine the K-nearest neighbor graph
+dataObject.neurons.clean <- FindNeighbors(object = dataObject.neurons.clean, 
+                                 assay = "SCT", 
+                                 reduction = "pca",
+                                 dims = 1:15)
+# Run UMAP
+dataObject.neurons.clean <- RunUMAP(dataObject.neurons.clean,
+                           dims = 1:15,
+                           reduction = "pca",
+                           n.components = 3) 
+
+# Determine the clusters for various resolutions
+dataObject.neurons.clean <- FindClusters(object = dataObject.neurons.clean,
+                                 algorithm = 1, # 1= Louvain
+                                 resolution = seq(0.4,.8,by=0.2))
+
+Idents(dataObject.neurons.clean) <- dataObject.neurons.clean$SCT_snn_res.0.6
+dataObject.neurons.clean$seurat_clusters <- dataObject.neurons.clean$SCT_snn_res.0.6
+ditto_umap <- dittoDimPlot(object = dataObject.neurons.clean,
+             var = "seurat_clusters",
+             dim.1 = 1, 
+             dim.2 = 2,
+             reduction.use = "umap",
+             do.label = TRUE,
+             labels.highlight = TRUE)
+ditto_umap
+
+ditto_umap_anno <- dittoDimPlot(object = dataObject.neurons.clean,
+             var = "individual_clusters",
+             dim.1 = 1, 
+             dim.2 = 2,
+             reduction.use = "umap",
+             do.label = TRUE,
+             labels.highlight = TRUE)
+ditto_umap_anno
+
+pdf(
+  paste0(
+    "../results/UMAP/annotated/",
+    treatment,
+    "_individual_clusters_neurons_clean_UMAP.pdf"
+  ),
+  width = 7,
+  height = 5
+)
+ditto_umap_anno
+dev.off()
+
+markers.to.plot <-
+  c(
+"Clu", 
+"Gfap", 
+"Aqp4", 
+"Gja1", 
+"Cldn5", 
+"Adgrf5", 
+"Flt1", 
+"Col1a1", 
+"Col1a2", 
+"Dcn", 
+"Hexb", 
+"C1qa", 
+"C1qc", 
+"C1qb", 
+"Tmem119", 
+"Itgam", 
+"Tyrobp", 
+"P2ry12", 
+"Aif1", 
+"Rbfox3", 
+"Snap25", 
+"Syt1", 
+"Gad1", 
+"Gad2", 
+"Plp1", 
+"Mbp", 
+"Mog", 
+"Olig1", 
+"Pdgfra", 
+"Vcan", 
+"Tnr", 
+"Acta2", 
+"Rgs5", 
+"Vtn", 
+"Myl5"
+  )
+
+dot_ind <- DotPlot(dataObject.neurons.clean,
+                   features = markers.to.plot, 
+                  # split.by = "strain", 
+                   cluster.idents = FALSE,
+                   dot.scale = 8) + RotatedAxis()
+dot_ind
+
+# Remove neurons with high Olig expression 
+dataObject.neurons.clean.again <- subset(dataObject.neurons.clean, cells = WhichCells(dataObject.neurons.clean, idents = setdiff(unique(dataObject.neurons.clean$seurat_clusters), c(10,16,22,23,27,31))))
+
+ditto_umap_anno <- dittoDimPlot(object = dataObject.neurons.clean.again,
+             var = "individual_clusters",
+             dim.1 = 1, 
+             dim.2 = 2,
+             reduction.use = "umap",
+             do.label = TRUE,
+             labels.highlight = TRUE)
+ditto_umap_anno
+
+pdf(
+  paste0(
+    "../results/UMAP/annotated/",
+    treatment,
+    "_individual_clusters_neurons_cleaned_twice_UMAP.pdf"
+  ),
+  width = 7,
+  height = 5
+)
+ditto_umap_anno
+dev.off()
+```
+
+# Save
+```{r save_object,echo=FALSE,eval=TRUE}
+saveRDS(dataObject.glia.clean, paste0("../rObjects/",treatment,".dataObject.glia.clean.rds"))
+saveRDS(dataObject.neurons.clean.again, paste0("../rObjects/",treatment,".dataObject.neurons.clean.rds"))
+```
+
+# Read in clean data 
+```{r read_deg}
+dataObject.glia.clean <- readRDS("../rObjects/PMI.dataObject.glia.clean.rds")
+FeaturePlot(dataObject.glia.clean, features = c("Mog"), pt.size = 0.2)
+FeaturePlot(dataObject.glia.clean, features = c("Rbfox3"), pt.size = 0.2)
+
+
+dataObject.neurons.clean <- readRDS("../rObjects/PMI.dataObject.neurons.clean.rds")
+FeaturePlot(dataObject.neurons.clean, features = c("Mog"), pt.size = 0.2)
+FeaturePlot(dataObject.neurons.clean, features = c("Rbfox3"), pt.size = 0.2)
+
+# Inspect 
+table(dataObject.glia.clean$sample)
+dataObject.glia.clean$sample <- factor(dataObject.glia.clean$sample, levels = samples)
+table(dataObject.glia.clean$sample)  # check
+
+table(dataObject.neurons.clean$sample)
+dataObject.neurons.clean$sample <- factor(dataObject.neurons.clean$sample, levels = samples)
+table(dataObject.neurons.clean$sample)  # check
+```
+
+
+# Glia 
+## Percent sample per cluster
+```{r percent_sample_per_cluster}
+# sample before integration 
+bSample <- dataObject.glia.clean@meta.data %>%
+  group_by(individual_clusters, sample) %>%
+  dplyr::count() %>%
+  group_by(individual_clusters) %>%
+  dplyr::mutate(percent = 100*n/sum(n)) %>%
+  ungroup() %>%
+  ggplot(aes(x=individual_clusters,y=percent, fill=sample)) +
+  geom_col() +
+  ggtitle("Percentage of sample per cluster")
+bSample
+
+bTime <- dataObject.glia.clean@meta.data %>%
+  group_by(individual_clusters, time) %>%
+  dplyr::count() %>%
+  group_by(individual_clusters) %>%
+  dplyr::mutate(percent = 100*n/sum(n)) %>%
+  ungroup() %>%
+  ggplot(aes(x=individual_clusters,y=percent, fill=time)) +
+  geom_col() +
+  ggtitle("Percentage of time per cluster")
+bTime
+
+
+bSex <- dataObject.glia.clean@meta.data %>%
+  group_by(individual_clusters, sex) %>%
+  dplyr::count() %>%
+  group_by(individual_clusters) %>%
+  dplyr::mutate(percent = 100*n/sum(n)) %>%
+  ungroup() %>%
+  ggplot(aes(x=individual_clusters,y=percent, fill=sex)) +
+  geom_col() +
+  ggtitle("Percentage of sex per cluster")
+bSex
+
+
+bGroup <- dataObject.glia.clean@meta.data %>%
+  group_by(individual_clusters, group) %>%
+  dplyr::count() %>%
+  group_by(individual_clusters) %>%
+  dplyr::mutate(percent = 100*n/sum(n)) %>%
+  ungroup() %>%
+  ggplot(aes(x=individual_clusters,y=percent, fill=group)) +
+  geom_col() +
+  ggtitle("Percentage of group per cluster")
+bGroup
+```
+
+```{r,echo=FALSE}
+# save
+path <- paste0("../results/nuclei_count/",treatment,
+               "_percent_nuclei_per_cluster_sample_glia_clean")
+bSample
+saveToPDF(paste0(path, ".pdf"), width = 10, height = 4)
+
+path <- paste0("../results/nuclei_count/",treatment,
+               "_percent_nuclei_per_cluster_time_glia_clean")
+bTime
+saveToPDF(paste0(path, ".pdf"), width = 10, height = 4)
+
+
+path <- paste0("../results/nuclei_count/",treatment,
+               "_percent_nuclei_per_cluster_sex_glia_clean")
+bSex
+saveToPDF(paste0(path, ".pdf"), width = 10, height = 4)
+
+path <- paste0("../results/nuclei_count/",treatment,
+               "_percent_nuclei_per_cluster_group_glia_clean")
+bGroup
+saveToPDF(paste0(path, ".pdf"), width = 10, height = 4)
+```
+
+## Number of cells
+```{r number_cells2}
+# Visualize the number of cell counts per sample
+data <- as.data.frame(table(dataObject.glia.clean$sample))
+colnames(data) <- c("sample","frequency")
+
+ncells_sample <- ggplot(data, aes(x = sample, y = frequency, fill = sample)) + 
+  geom_col() +
+  theme_classic() +
+  geom_text(aes(label = frequency), 
+            position=position_dodge(width=0.9), 
+            vjust=-0.25) +
+  scale_y_continuous(breaks = seq(0,3000, by = 500), limits = c(0,3000)) +
+  ggtitle("Filtered: nuclei count per sample
+Glia cell types only") +
+  theme(legend.position =  "none") + 
+  theme(axis.text.x = element_text(angle = 45, hjust=1))
+ncells_sample
+
+
+# Visualize the number of cell counts per group
+data <- as.data.frame(table(dataObject.glia.clean$group))
+colnames(data) <- c("group","frequency")
+
+ncells_group <- ggplot(data, aes(x = group, y = frequency, fill = group)) + 
+  geom_col() +
+  theme_classic() +
+  geom_text(aes(label = frequency), 
+            position=position_dodge(width=0.9), 
+            vjust=-0.25) +
+  scale_y_continuous(breaks = seq(0,10000, by = 1000), limits = c(0,10000)) +
+  ggtitle("Filtered: nuclei count per group
+Glia cell types only") +
+  theme(legend.position =  "none") + 
+  theme(axis.text.x = element_text(angle = 45, hjust=1))
+ncells_group
+
+
+# Visualize the number of cell counts per group
+data <- as.data.frame(table(dataObject.glia.clean$time))
+colnames(data) <- c("time","frequency")
+
+ncells_time <- ggplot(data, aes(x = time, y = frequency, fill = time)) + 
+  geom_col() +
+  theme_classic() +
+  geom_text(aes(label = frequency), 
+            position=position_dodge(width=0.9), 
+            vjust=-0.25) +
+  scale_y_continuous(breaks = seq(0,20000, by = 1000), limits = c(0,20000)) +
+  ggtitle("Filtered: nuclei count per time
+Glia cell types only") +
+  theme(legend.position =  "none") + 
+  theme(axis.text.x = element_text(angle = 45, hjust=1))
+ncells_time
+```
+
+```{r,echo=FALSE}
+# save
+ncells_sample
+path <- paste0("../results/nuclei_count/",treatment, 
+               "_cells_per_sample_glia_clean")
+saveToPDF(paste0(path, ".pdf"), width = 8, height = 4)
+
+ncells_group
+path <- paste0("../results/nuclei_count/",treatment, 
+               "_cells_per_group_glia_clean")
+saveToPDF(paste0(path, ".pdf"), width = 7, height = 4)
+
+ncells_time
+path <- paste0("../results/nuclei_count/",treatment, 
+               "_cells_per_time_glia_clean")
+saveToPDF(paste0(path, ".pdf"), width = 7, height = 4)
+```
+
+
+## Nuclei count per cluster
+```{r}
+Idents(dataObject.glia.clean) <- dataObject.glia.clean$individual_clusters
+
+count_per_cluster <- FetchData(dataObject.glia.clean,
+                               vars = c("ident", "orig.ident")) %>%
+  dplyr::count(ident, orig.ident) %>%
+  tidyr::spread(ident, n)
+count_per_cluster
+
+count_melt <- reshape2::melt(count_per_cluster)
+colnames(count_melt) <- c("ident", "cluster", "number of nuclei")
+count_max <- count_melt[which.max(count_melt$`number of nuclei`), ]
+count_max_value <- count_max$`number of nuclei`
+cellmax <- count_max_value + 500 # so that the figure doesn't cut off the text
+count_bar <- ggplot(count_melt, aes(x = factor(cluster), y = `number of nuclei`, fill = `cluster`)) +
+  geom_bar(
+    stat = "identity",
+    colour = "black",
+    width = 1,
+    position = position_dodge(width = 0.8)
+  ) +
+  geom_text(
+    aes(label = `number of nuclei`),
+    position = position_dodge(width = 0.9),
+    vjust = -0.25,
+    angle = 45,
+    hjust = -.01
+  ) +
+  theme_classic() + scale_fill_manual(values = color.panel) +
+  ggtitle("Number of nuclei per cluster") +  xlab("cluster") +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  scale_y_continuous(limits = c(0, cellmax))
+count_bar
+
+
+
+# Fetch data including time point
+count_per_cluster <- FetchData(dataObject.glia.clean,
+                               vars = c("ident", "orig.ident", "time")) %>%
+  dplyr::count(ident, orig.ident, time) %>%
+  tidyr::spread(ident, n)
+
+# Reshape the data for plotting
+count_melt <- reshape2::melt(count_per_cluster, id.vars = c("orig.ident", "time"))
+colnames(count_melt) <- c("orig.ident", "time", "cluster", "number_of_nuclei")
+
+# Find the maximum number of nuclei for plot scaling
+count_max <- count_melt[which.max(count_melt$number_of_nuclei), ]
+count_max_value <- count_max$number_of_nuclei
+cellmax <- count_max_value + 500 # Adjust plot limits
+
+# Create the bar plot
+count_bar_time <- ggplot(count_melt, aes(x = factor(cluster), y = number_of_nuclei, fill = time)) +
+  geom_bar(
+    stat = "identity",
+    colour = "black",
+    width = 0.7,
+    position = position_dodge(width = 0.8)
+  ) +
+  geom_text(
+    aes(label = number_of_nuclei),
+    position = position_dodge(width = 0.8),
+    vjust = -0.5,
+    angle = 45,
+    hjust = -.01
+  ) +
+  theme_classic() +
+  scale_fill_manual(values = c("0" = "blue", "3" = "red")) + # Adjust colors as needed
+  ggtitle("Number of nuclei per cell type by Time Point") +
+  xlab("Cluster") +
+  ylab("Number of Nuclei") +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  scale_y_continuous(limits = c(0, cellmax))
+
+count_bar_time
+```
+
+```{r}
+pdf(
+  paste0(
+    "../results/UMAP/annotated/",
+    treatment,
+    "_individual_clusters_glia_clean_nuclei_count.pdf"
+  ),
+  width = 11,
+  height = 7
+)
+count_bar
+dev.off()
+
+pdf(
+  paste0(
+    "../results/UMAP/annotated/",
+    treatment,
+    "_individual_clusters_glia_clean_nuclei_count_split_by_time.pdf"
+  ),
+  width = 11,
+  height = 7
+)
+count_bar_time
+dev.off()
+```
+
+# Neurons
+
+## Percent sample per cluster
+```{r percent_sample_per_cluster}
+# sample before integration 
+bSample <- dataObject.neurons.clean@meta.data %>%
+  group_by(individual_clusters, sample) %>%
+  dplyr::count() %>%
+  group_by(individual_clusters) %>%
+  dplyr::mutate(percent = 100*n/sum(n)) %>%
+  ungroup() %>%
+  ggplot(aes(x=individual_clusters,y=percent, fill=sample)) +
+  geom_col() +
+  ggtitle("Percentage of sample per cluster")
+bSample
+
+bTime <- dataObject.neurons.clean@meta.data %>%
+  group_by(individual_clusters, time) %>%
+  dplyr::count() %>%
+  group_by(individual_clusters) %>%
+  dplyr::mutate(percent = 100*n/sum(n)) %>%
+  ungroup() %>%
+  ggplot(aes(x=individual_clusters,y=percent, fill=time)) +
+  geom_col() +
+  ggtitle("Percentage of time per cluster")
+bTime
+
+
+bSex <- dataObject.neurons.clean@meta.data %>%
+  group_by(individual_clusters, sex) %>%
+  dplyr::count() %>%
+  group_by(individual_clusters) %>%
+  dplyr::mutate(percent = 100*n/sum(n)) %>%
+  ungroup() %>%
+  ggplot(aes(x=individual_clusters,y=percent, fill=sex)) +
+  geom_col() +
+  ggtitle("Percentage of sex per cluster")
+bSex
+
+
+bGroup <- dataObject.neurons.clean@meta.data %>%
+  group_by(individual_clusters, group) %>%
+  dplyr::count() %>%
+  group_by(individual_clusters) %>%
+  dplyr::mutate(percent = 100*n/sum(n)) %>%
+  ungroup() %>%
+  ggplot(aes(x=individual_clusters,y=percent, fill=group)) +
+  geom_col() +
+  ggtitle("Percentage of group per cluster")
+bGroup
+```
+
+```{r,echo=FALSE}
+# save
+path <- paste0("../results/nuclei_count/",treatment,
+               "_percent_nuclei_per_cluster_sample_neurons_clean")
+bSample
+saveToPDF(paste0(path, ".pdf"), width = 6, height = 4)
+
+path <- paste0("../results/nuclei_count/",treatment,
+               "_percent_nuclei_per_cluster_time_neurons_clean")
+bTime
+saveToPDF(paste0(path, ".pdf"), width = 6, height = 4)
+
+
+path <- paste0("../results/nuclei_count/",treatment,
+               "_percent_nuclei_per_cluster_sex_neurons_clean")
+bSex
+saveToPDF(paste0(path, ".pdf"), width = 6, height = 4)
+
+path <- paste0("../results/nuclei_count/",treatment,
+               "_percent_nuclei_per_cluster_group_neurons_clean")
+bGroup
+saveToPDF(paste0(path, ".pdf"), width = 6, height = 4)
+```
+
+## Number of cells
+```{r number_cells2}
+# Visualize the number of cell counts per sample
+data <- as.data.frame(table(dataObject.neurons.clean$sample))
+colnames(data) <- c("sample","frequency")
+
+ncells_sample <- ggplot(data, aes(x = sample, y = frequency, fill = sample)) + 
+  geom_col() +
+  theme_classic() +
+  geom_text(aes(label = frequency), 
+            position=position_dodge(width=0.9), 
+            vjust=-0.25) +
+  scale_y_continuous(breaks = seq(0,7000, by = 1000), limits = c(0,7000)) +
+  ggtitle("Filtered: nuclei count per sample
+neurons cell types only") +
+  theme(legend.position =  "none") + 
+  theme(axis.text.x = element_text(angle = 45, hjust=1))
+ncells_sample
+
+
+# Visualize the number of cell counts per group
+data <- as.data.frame(table(dataObject.neurons.clean$group))
+colnames(data) <- c("group","frequency")
+
+ncells_group <- ggplot(data, aes(x = group, y = frequency, fill = group)) + 
+  geom_col() +
+  theme_classic() +
+  geom_text(aes(label = frequency), 
+            position=position_dodge(width=0.9), 
+            vjust=-0.25) +
+  scale_y_continuous(breaks = seq(0,20000, by = 1000), limits = c(0,20000)) +
+  ggtitle("Filtered: nuclei count per group
+neurons cell types only") +
+  theme(legend.position =  "none") + 
+  theme(axis.text.x = element_text(angle = 45, hjust=1))
+ncells_group
+
+
+# Visualize the number of cell counts per group
+data <- as.data.frame(table(dataObject.neurons.clean$time))
+colnames(data) <- c("time","frequency")
+
+ncells_time <- ggplot(data, aes(x = time, y = frequency, fill = time)) + 
+  geom_col() +
+  theme_classic() +
+  geom_text(aes(label = frequency), 
+            position=position_dodge(width=0.9), 
+            vjust=-0.25) +
+  scale_y_continuous(breaks = seq(0,60000, by = 10000), limits = c(0,60000)) +
+  ggtitle("Filtered: nuclei count per time
+neurons cell types only") +
+  theme(legend.position =  "none") + 
+  theme(axis.text.x = element_text(angle = 45, hjust=1))
+ncells_time
+```
+
+```{r,echo=FALSE}
+# save
+ncells_sample
+path <- paste0("../results/nuclei_count/",treatment, 
+               "_cells_per_sample_neurons_clean")
+saveToPDF(paste0(path, ".pdf"), width = 8, height = 4)
+
+ncells_group
+path <- paste0("../results/nuclei_count/",treatment, 
+               "_cells_per_group_neurons_clean")
+saveToPDF(paste0(path, ".pdf"), width = 7, height = 4)
+
+ncells_time
+path <- paste0("../results/nuclei_count/",treatment, 
+               "_cells_per_time_neurons_clean")
+saveToPDF(paste0(path, ".pdf"), width = 7, height = 4)
+```
+
+
+## Nuclei count per cluster
+```{r}
+Idents(dataObject.neurons.clean) <- dataObject.neurons.clean$individual_clusters
+
+count_per_cluster <- FetchData(dataObject.neurons.clean,
+                               vars = c("ident", "orig.ident")) %>%
+  dplyr::count(ident, orig.ident) %>%
+  tidyr::spread(ident, n)
+count_per_cluster
+
+count_melt <- reshape2::melt(count_per_cluster)
+colnames(count_melt) <- c("ident", "cluster", "number of nuclei")
+count_max <- count_melt[which.max(count_melt$`number of nuclei`), ]
+count_max_value <- count_max$`number of nuclei`
+cellmax <- count_max_value + 2500 # so that the figure doesn't cut off the text
+count_bar <- ggplot(count_melt, aes(x = factor(cluster), y = `number of nuclei`, fill = `cluster`)) +
+  geom_bar(
+    stat = "identity",
+    colour = "black",
+    width = 1,
+    position = position_dodge(width = 0.8)
+  ) +
+  geom_text(
+    aes(label = `number of nuclei`),
+    position = position_dodge(width = 0.9),
+    vjust = -0.25,
+    angle = 45,
+    hjust = -.01
+  ) +
+  theme_classic() + scale_fill_manual(values = color.panel) +
+  ggtitle("Number of nuclei per cluster") +  xlab("cluster") +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  scale_y_continuous(limits = c(0, cellmax))
+count_bar
+
+
+
+# Fetch data including time point
+count_per_cluster <- FetchData(dataObject.neurons.clean,
+                               vars = c("ident", "orig.ident", "time")) %>%
+  dplyr::count(ident, orig.ident, time) %>%
+  tidyr::spread(ident, n)
+
+# Reshape the data for plotting
+count_melt <- reshape2::melt(count_per_cluster, id.vars = c("orig.ident", "time"))
+colnames(count_melt) <- c("orig.ident", "time", "cluster", "number_of_nuclei")
+
+# Find the maximum number of nuclei for plot scaling
+count_max <- count_melt[which.max(count_melt$number_of_nuclei), ]
+count_max_value <- count_max$number_of_nuclei
+cellmax <- count_max_value + 2500 # Adjust plot limits
+
+# Create the bar plot
+count_bar_time <- ggplot(count_melt, aes(x = factor(cluster), y = number_of_nuclei, fill = time)) +
+  geom_bar(
+    stat = "identity",
+    colour = "black",
+    width = 0.7,
+    position = position_dodge(width = 0.8)
+  ) +
+  geom_text(
+    aes(label = number_of_nuclei),
+    position = position_dodge(width = 0.8),
+    vjust = -0.5,
+    angle = 45,
+    hjust = -.01
+  ) +
+  theme_classic() +
+  scale_fill_manual(values = c("0" = "blue", "3" = "red")) + # Adjust colors as needed
+  ggtitle("Number of nuclei per cell type by Time Point") +
+  xlab("Cluster") +
+  ylab("Number of Nuclei") +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  scale_y_continuous(limits = c(0, cellmax))
+
+count_bar_time
+```
+
+```{r}
+pdf(
+  paste0(
+    "../results/UMAP/annotated/",
+    treatment,
+    "_individual_clusters_neurons_clean_nuclei_count.pdf"
+  ),
+  width = 7,
+  height = 7
+)
+count_bar
+dev.off()
+
+pdf(
+  paste0(
+    "../results/UMAP/annotated/",
+    treatment,
+    "_individual_clusters_neurons_clean_nuclei_count_split_by_time.pdf"
+  ),
+  width = 7,
+  height = 7
+)
+count_bar_time
+dev.off()
+```
+# Reprocess glia & neurons together  
+```{r merge_all}
+dataObject.clean <- merge(x = dataObject.neurons.clean, y = c(dataObject.glia.clean))
+# Inspect 
+dataObject.clean
+Layers(dataObject.clean[["RNA"]]) # Inspect layers
+dataObject.clean[["RNA"]] <- JoinLayers(dataObject.clean[["RNA"]])
+Layers(dataObject.clean[["RNA"]])
+# Re-normalizing data and finding clusters
+dataObject.clean <- SCTransform(dataObject.clean, verbose = FALSE)
+# run PCA on the merged object
+dataObject.clean <- RunPCA(object = dataObject.clean)
+Idents(dataObject.clean) <- "sample"
+
+# Determine the K-nearest neighbor graph
+dataObject.clean <- FindNeighbors(object = dataObject.clean, 
+                                 assay = "SCT", 
+                                 reduction = "pca",
+                                 dims = 1:15)
+# Run UMAP
+dataObject.clean <- RunUMAP(dataObject.clean,
+                           dims = 1:15,
+                           reduction = "pca",
+                           n.components = 3) 
+
+# Determine the clusters for various resolutions
+dataObject.clean <- FindClusters(object = dataObject.clean,
+                                 algorithm = 1, # 1= Louvain
+                                 resolution = seq(0.4,.8,by=0.2))
+
+Idents(dataObject.clean) <- dataObject.clean$SCT_snn_res.0.6
+dataObject.clean$seurat_clusters <- dataObject.clean$SCT_snn_res.0.6
+ditto_umap <- dittoDimPlot(object = dataObject.clean,
+             var = "seurat_clusters",
+             dim.1 = 1, 
+             dim.2 = 2,
+             reduction.use = "umap",
+             do.label = TRUE,
+             labels.highlight = TRUE)
+ditto_umap
+pdf(
+  paste0(
+    "../results/UMAP/unannotated/",
+    treatment,
+    "_individual_clusters_clean_UMAP.pdf"
+  ),
+  width = 9,
+  height = 7
+)
+ditto_umap
+dev.off()
+
+ditto_umap_anno <- dittoDimPlot(object = dataObject.clean,
+             var = "individual_clusters",
+             dim.1 = 1, 
+             dim.2 = 2,
+             reduction.use = "umap",
+             do.label = TRUE,
+             labels.highlight = TRUE)
+ditto_umap_anno
+
+
+pdf(
+  paste0(
+    "../results/UMAP/annotated/",
+    treatment,
+    "_individual_clusters_clean_UMAP.pdf"
+  ),
+  width = 9,
+  height = 7
+)
+ditto_umap_anno
+dev.off()
+
+markers.to.plot <-
+  c(
+"Clu", 
+"Gfap", 
+"Aqp4", 
+"Gja1", 
+"Cldn5", 
+"Adgrf5", 
+"Flt1", 
+"Col1a1", 
+"Col1a2", 
+"Dcn", 
+"Hexb", 
+"C1qa", 
+"C1qc", 
+"C1qb", 
+"Tmem119", 
+"Itgam", 
+"Tyrobp", 
+"P2ry12", 
+"Aif1", 
+"Rbfox3", 
+"Snap25", 
+"Syt1", 
+"Gad1", 
+"Gad2", 
+"Plp1", 
+"Mbp", 
+"Mog", 
+"Olig1", 
+"Pdgfra", 
+"Vcan", 
+"Tnr", 
+"Acta2", 
+"Rgs5", 
+"Vtn", 
+"Myl5"
+  )
+
+dot_ind <- DotPlot(dataObject.clean,
+                   features = markers.to.plot, 
+                  # split.by = "strain", 
+                   cluster.idents = FALSE,
+                   dot.scale = 8) + RotatedAxis()
+dot_ind
+
+Idents(dataObject.clean) <- dataObject.clean$individual_clusters
+dot_ind_celltype <- DotPlot(dataObject.clean,
+                   features = markers.to.plot, 
+                  # split.by = "strain", 
+                   cluster.idents = FALSE,
+                   dot.scale = 8) + RotatedAxis()
+dot_ind_celltype
+pdf(
+  paste0(
+    "../results/dot_plot/",
+    treatment,
+    "_individual_clusters_clean.pdf"
+  ),width = 10, height = 4)
+dot_ind_celltype
+dev.off()
+```
+# Save
+```{r save_object,echo=FALSE,eval=TRUE}
+saveRDS(dataObject.clean, paste0("../rObjects/",treatment,".dataObject.clean.rds"))
+```
+

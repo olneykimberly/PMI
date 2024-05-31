@@ -1,7 +1,7 @@
 ---
 title: "annotations"
 author: "Kimberly Olney, PhD"
-date: "04/14/2024"
+date: "04/19/2024"
 output:
   html_document:
     theme: cerulean
@@ -21,23 +21,38 @@ knitr::opts_chunk$set(root.dir = ".", echo=TRUE, warning=FALSE, message=FALSE)
 source(here::here("/research/labs/neurology/fryer/m239830/PMI/scripts", "file_paths_and_colours.R"))
 treatment <- "PMI"
 color.panel <- dittoColors()
+metadata <- subset(metadata, sampleID != "P_60" & sampleID != "B_6")
+metadata$sampleID <- factor(metadata$sampleID, levels = c(metadata$sampleID))
 ```
 
 # Read in object
 ```{r read_object}
 # read object
 dataObject <- readRDS(file = paste0("../rObjects/", treatment, "_unannotated_no_integration.rds"))
-
 DefaultAssay(dataObject) <- "RNA"
+dataObject <- JoinLayers(dataObject)
+dataObject$seurat_clusters <- dataObject$SCT_snn_res.0.4
 Idents(dataObject) <- "seurat_clusters"
-dataObject@assays$SCT <- NULL
 dataObject <- NormalizeData(dataObject)
 dataObject <- FindVariableFeatures(dataObject)
 dataObject <- ScaleData(dataObject)
-dataObject <- JoinLayers(dataObject)
-
+DefaultAssay(dataObject)
 # inspect
 dataObject
+```
+
+```{r}
+DimPlot(dataObject,
+        group.by = "strain")
+
+DimPlot(dataObject,
+        group.by = "sex")
+
+DimPlot(dataObject,
+        group.by = "time")
+
+DimPlot(dataObject,
+        group.by = "sample")
 ```
 
 # Unannotated 
@@ -45,12 +60,23 @@ dataObject
 ```{r unannotated_umap}
 ditto_umap <- dittoDimPlot(object = dataObject,
              var = "seurat_clusters",
-             reduction.use = "umap",
              do.label = TRUE,
              labels.highlight = TRUE)
 ditto_umap
 ```
-
+```{r UMAP_ind, echo=FALSE}
+pdf(
+  paste0(
+    "../results/UMAP/unannotated/",
+    treatment,
+    "_seurat_clusters_UMAP_doublets_removed.pdf"
+  ),
+  width = 11,
+  height = 7
+)
+ditto_umap
+dev.off()
+```
 ### Nuclei count per cluster
 ```{r count_per_cluster}
 count_per_cluster <- FetchData(dataObject,
@@ -78,7 +104,8 @@ count_bar <- ggplot(count_melt, aes(x = factor(cluster), y = `number of nuclei`,
     angle = 45,
     hjust = -.01
   ) +
-  theme_classic() + scale_fill_manual(values = sample_colors) +
+  theme_classic() + 
+  #scale_fill_manual(values = sample_colors) +
   ggtitle("Number of nuclei per cluster") +  xlab("cluster") +
   theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
   scale_y_continuous(limits = c(0, cellmax))
@@ -114,63 +141,77 @@ tree_graph
 ## Violins - Canonical cell-type markers
 Markers obtained from dropviz
 ```{r violins}
-# Astrocytes
-VlnPlot(dataObject,
-        features = c("Aqp4"))
-# Endothelial
-VlnPlot(dataObject,
-        features = c("CLDN5", "ADGRF5", "FLT1"))
-# Fibroblast-Like_Dcn
-VlnPlot(dataObject,
-        features = c("COL1A1", "COL1A2", "DCN"))
-# Microglia / Marchophage 
-VlnPlot(dataObject,
-        features = c("C1QA", "C1QC", "C1QB"))
-# Microglia / Marchophage 
-VlnPlot(dataObject,
-        features = c( "HEXB", "TMEM119", "ITGAM", "TYROBP","P2RY12", "AIF1"))
 # Neurons
 VlnPlot(dataObject,
-        features = c("RBFOX3", "SNAP25","SYT1", "GAD1", "GAD2"))
+        features = c("Rbfox3", "Snap25", "Syt1", "Gad1", "Gad2"))
+# Astrocytes
+VlnPlot(dataObject,
+        features = c("Aqp4", "Gfap", "Clu"))
+# Microglia  
+VlnPlot(dataObject,
+        features = c("Hexb", "C1qa", "C1qc", "C1qb"))
+## DAM
+VlnPlot(dataObject,
+        features = c("Apoe", "Cst7", "Lyz2", "Lpl", "Cd9", "Trem2"))
+
+## Homeostatis
+VlnPlot(dataObject,
+        features = c("P2ry12", "Cx3cr1"))
 # Oligodendrocyte
 VlnPlot(dataObject,
-        features = c("PLP1","MBP", "MOG"))
+        features = c("Plp1","Mbp", "Mog", "Mag"))
 # OPC
 VlnPlot(dataObject,
-        features = c("OLIG1","PDGFRA", "VCAN", "TNR"))
+        features = c("Olig1","Pdgfra", "Vcan", "Tnr"))
+# Microglia / Marchophage 
+VlnPlot(dataObject,
+        features = c( "F13a1", "Mrc1"))
+# Endothelial
+VlnPlot(dataObject,
+        features = c("Igfbp7", "Fn1", "Sox17", "Cldn5", "Adgrf5", "Flt1"))
+# Fibroblast-Like_Dcn
+VlnPlot(dataObject,
+        features = c("Col1a1", "Col1a2", "Dcn"))
 # Smooth muscle 
 VlnPlot(dataObject,
-        features = c("ACTA2","RGS5", "VTN", "MYL5"))
-
+        features = c("Acta2", "Rgs5", "Vtn", "Myl5"))
 ```
 
 ## Percent cell type - Canonical cell-type markers
 ```{r percent_cell_type}
-# astrocyte
-dataObject[["percent.astrocyte"]] <- PercentageFeatureSet(dataObject, 
-                                     features = c("CLU", "GFAP", "AQP4", "GJA1"))
-# endothelial
-dataObject[["percent.endothelial"]] <- PercentageFeatureSet(dataObject, 
-                                       features = c("CLDN5", "ADGRF5", "FLT1"))
-# fibroblast 
-dataObject[["percent.fibroblast"]] <- PercentageFeatureSet(dataObject, 
-                                      features = c("COL1A1", "COL1A2", "DCN"))
-# microglia
-dataObject[["percent.microglia"]] <- PercentageFeatureSet(dataObject, 
-                                     features = c("HEXB", "C1QA", "C1QC", "C1QB", 
-                                     "TMEM119", "ITGAM", "TYROBP","P2RY12", "AIF1")) 
 # neuron 
 dataObject[["percent.neurons"]] <- PercentageFeatureSet(dataObject, 
-                                   features = c("RBFOX3", "SNAP25","SYT1", "GAD1", "GAD2"))
+                                   features = c("Rbfox3", "Snap25", "Syt1", "Gad1", "Gad2"))
+# astrocyte
+dataObject[["percent.astrocyte"]] <- PercentageFeatureSet(dataObject, 
+                                     features = c("Aqp4", "Gfap", "Clu"))
+# microglia
+dataObject[["percent.microglia"]] <- PercentageFeatureSet(dataObject, 
+                                     features = c("Hexb", "C1qa", "C1qc", "C1qb")) 
+# DAM
+dataObject[["percent.DAM"]] <- PercentageFeatureSet(dataObject, 
+                                     features = c("Apoe", "Cst7", "Lyz2", "Lpl", "Cd9", "Trem2")) 
+# homeostatis
+dataObject[["percent.homeostatis"]] <- PercentageFeatureSet(dataObject, 
+                                     features = c("P2ry12", "Cx3cr1")) 
 # oligodendrocyte
 dataObject[["percent.oligodendrocyte"]] <- PercentageFeatureSet(dataObject, 
-                                           features = c("PLP1","MBP", "MOG"))
+                                           features = c("Plp1","Mbp", "Mog", "Mag"))
 # oligodendrocyte precursor cells
 dataObject[["percent.opc"]] <- PercentageFeatureSet(dataObject, 
-                               features = c("OLIG1","PDGFRA", "VCAN", "TNR"))
+                               features = c("Olig1","Pdgfra", "Vcan", "Tnr"))
+# Marchophage
+dataObject[["percent.marchophage"]] <- PercentageFeatureSet(dataObject, 
+                               features = c("F13a1", "Mrc1"))
+# endothelial
+dataObject[["percent.endothelial"]] <- PercentageFeatureSet(dataObject, 
+                                       features = c("Igfbp7", "Fn1", "Sox17", "Cldn5", "Adgrf5", "Flt1"))
+# fibroblast 
+dataObject[["percent.fibroblast"]] <- PercentageFeatureSet(dataObject, 
+                                      features = c("Col1a1", "Col1a2", "Dcn"))
 # smooth muscle 
 dataObject[["percent.smooth"]] <- PercentageFeatureSet(dataObject, 
-                                  features = c("ACTA2","RGS5", "VTN", "MYL5"))
+                                  features = c("Acta2", "Rgs5", "Vtn"))
 ```
 
 ## Feature plot percent cell type - Canonical cell-type markers
@@ -183,6 +224,9 @@ FeaturePlot(dataObject, features = "percent.endothelial", label = TRUE)
 FeaturePlot(dataObject, features = "percent.fibroblast", label = TRUE) 
 # microglia
 FeaturePlot(dataObject, features = "percent.microglia", label = TRUE)  
+FeaturePlot(dataObject, features = "percent.DAM", label = TRUE)  
+FeaturePlot(dataObject, features = "percent.homeostatis", label = TRUE)  
+
 # neuron 
 FeaturePlot(dataObject, features = "percent.neurons", label = TRUE) 
 # oligodendrocyte
@@ -202,20 +246,21 @@ markers <- SeuratWrappers::RunPrestoAll(
   only.pos = FALSE
 )
 write.table(markers, 
-            paste0("../../results/markers/", treatment, "_markers.tsv"),
+            paste0("../results/markers/", treatment, "_markers_doublets_removed.tsv"),
             quote = FALSE,
             row.names = FALSE)
-saveRDS(markers, paste0("../../rObjects/", treatment, "_markers.rds"))
+saveRDS(markers, paste0("../rObjects/", treatment, "_markers_doublets_removed..rds"))
 
 # rearrange to order by cluster & filter to only include log2FC > 1 & FDR < 0.05
  all.markers.strict <- markers %>%
    group_by(cluster) %>%
    dplyr::filter(avg_log2FC > 1 & p_val_adj < 0.05)
 
-saveRDS(all.markers.strict, paste0("../../rObjects/", treatment,"_markers_log2FC1_q0.01.rds"))
+saveRDS(all.markers.strict, paste0("../rObjects/", treatment,"_markers_log2FC1_q0.01_doublets_removed.rds"))
 ```
 
-Get markers for each cluster
+
+# Get markers for each cluster
 ```{r markers_per_cluster}
 # unique clusters variable
 unique_clusters <- unique(markers$cluster)
@@ -240,10 +285,73 @@ umap_feature <-
               features = c("Tyrobp", "Mog", "Aqp4", "Rbfox3"))
 umap_feature
 ```
+### DotPlot
+```{r dot_individual}
+markers.to.plot <-
+  c(
+"Clu", 
+"Gfap", 
+"Aqp4", 
+"Gja1", 
+"Cldn5", 
+"Adgrf5", 
+"Flt1", 
+"Col1a1", 
+"Col1a2", 
+"Dcn", 
+"Hexb", 
+"C1qa", 
+"C1qc", 
+"C1qb", 
+"Tmem119", 
+"Itgam", 
+"Tyrobp", 
+"P2ry12", 
+"Aif1", 
+"Rbfox3", 
+"Snap25", 
+"Syt1", 
+"Gad1", 
+"Gad2", 
+"Plp1", 
+"Mbp", 
+"Mog", 
+"Olig1", 
+"Pdgfra", 
+"Vcan", 
+"Tnr", 
+"Acta2", 
+"Rgs5", 
+"Vtn", 
+"Myl5"
+  )
+
+dot_ind <- DotPlot(dataObject,
+                   features = markers.to.plot, 
+                  # split.by = "strain", 
+                   cluster.idents = FALSE,
+                   dot.scale = 8) + RotatedAxis()
+dot_ind
+```
+
+```{r save_dot_individual, echo=FALSE}
+pdf(
+  paste0(
+    "../results/dot_plot/",
+    treatment,
+    "_clusters_DotPlot_no_integration_doublets_removed_order_by_cluster.pdf"
+  ),
+  width = 14,
+  height = 10
+)
+dot_ind
+dev.off()
+```
+
 
 # Cluster Annotation
 
-## Cluster 0 - oligodendrocyte
+## Cluster 0 - interneuron
 ```{r cluster0}
 # Number of cells per condition
 count_per_cluster[,c(1,2)]
@@ -263,7 +371,7 @@ VlnPlot(dataObject,
 cluster0$gene[1:10]
 ```
 
-## Cluster 1 - oligodendrocyte
+## Cluster 1 - neuron
 ```{r cluster1}
 count_per_cluster[,c(1,3)]
 DimPlot(object = subset(dataObject, seurat_clusters == "1"),
@@ -282,7 +390,7 @@ VlnPlot(dataObject,
 cluster1$gene[1:10]
 ```
 
-## Cluster 2 - polydendrocyte
+## Cluster 2 - interneuron
 ```{r cluster2}
 count_per_cluster[,c(1,4)]
 DimPlot(object = subset(dataObject, seurat_clusters == "2"),
@@ -301,7 +409,7 @@ VlnPlot(dataObject,
 cluster2$gene[1:10]
 ```
 
-## Cluster 3 - astrocyte 
+## Cluster 3 - neuron 
 ```{r cluster3}
 count_per_cluster[,c(1,4)]
 DimPlot(object = subset(dataObject, seurat_clusters == "3"),
@@ -320,7 +428,7 @@ VlnPlot(dataObject,
 cluster3$gene[1:10]
 ```
 
-## Cluster 4 - oligodendrocyte
+## Cluster 4 - astrocyte
 ```{r cluster4}
 count_per_cluster[,c(1,5)]
 DimPlot(object = subset(dataObject, seurat_clusters == "4"),
@@ -358,7 +466,7 @@ VlnPlot(dataObject,
 cluster5$gene[1:10]
 ```
 
-## Cluster 6 - oligodendrocyte
+## Cluster 6 - neuron
 ```{r cluster6}
 count_per_cluster[,c(1,7)]
 DimPlot(object = subset(dataObject, seurat_clusters == "6"),
@@ -377,7 +485,7 @@ VlnPlot(dataObject,
 cluster6$gene[1:10]
 ```
 
-## Cluster 7 - microglia
+## Cluster 7 - internueron
 ```{r cluster7}
 count_per_cluster[,c(1,8)]
 DimPlot(object = subset(dataObject, seurat_clusters == "7"),
@@ -396,7 +504,7 @@ VlnPlot(dataObject,
 cluster7$gene[1:10]
 ```
 
-## Cluster 8 - astrocyte
+## Cluster 8 - oligodendrocyte
 ```{r cluster8}
 count_per_cluster[,c(1,9)]
 DimPlot(object = subset(dataObject, seurat_clusters == "8"),
@@ -415,7 +523,7 @@ VlnPlot(dataObject,
 cluster8$gene[1:10]
 ```
 
-## Cluster 9 - interneuron
+## Cluster 9 - neuron
 ```{r cluster9}
 count_per_cluster[,c(1,10)]
 DimPlot(object = subset(dataObject, seurat_clusters == "9"),
@@ -434,7 +542,7 @@ VlnPlot(dataObject,
 cluster9$gene[1:10]
 ```
 
-## Cluster 10 - neuron
+## Cluster 10 - astrocyte
 ```{r cluster10}
 count_per_cluster[,c(1,11)]
 DimPlot(object = subset(dataObject, seurat_clusters == "10"),
@@ -453,7 +561,7 @@ VlnPlot(dataObject,
 cluster10$gene[1:10]
 ```
 
-## Cluster 11 - interneuron
+## Cluster 11 - oligodendrocyte
 ```{r cluster11}
 count_per_cluster[,c(1,12)]
 DimPlot(object = subset(dataObject, seurat_clusters == "11"),
@@ -472,7 +580,7 @@ VlnPlot(dataObject,
 cluster11$gene[1:10]
 ```
 
-## Cluster 12 - endothelial
+## Cluster 12 - neuron
 ```{r cluster12}
 count_per_cluster[,c(1,13)]
 DimPlot(object = subset(dataObject, seurat_clusters == "12"),
@@ -491,7 +599,7 @@ VlnPlot(dataObject,
 cluster12$gene[1:10]
 ```
 
-## Cluster 13 - microglia
+## Cluster 13 - polydendrocyte
 ```{r cluster13}
 count_per_cluster[,c(1,14)]
 DimPlot(object = subset(dataObject, seurat_clusters == "13"),
@@ -529,7 +637,7 @@ VlnPlot(dataObject,
 cluster14$gene[1:10]
 ```
 
-## Cluster 15 - fibroblast
+## Cluster 15 - neuron
 ```{r cluster15}
 count_per_cluster[,c(1,16)]
 DimPlot(object = subset(dataObject, seurat_clusters == "15"),
@@ -547,7 +655,7 @@ VlnPlot(dataObject,
         split.by = "seurat_clusters")
 cluster15$gene[1:10]
 ```
-## Cluster 16 - mural
+## Cluster 16 - fibroblast
 ```{r cluster16}
 count_per_cluster[,c(1,17)]
 DimPlot(object = subset(dataObject, seurat_clusters == "16"),
@@ -566,7 +674,7 @@ VlnPlot(dataObject,
 cluster16$gene[1:10]
 ```
 
-## Cluster 17 - nueron
+## Cluster 17 - neuron
 ```{r cluster17}
 count_per_cluster[,c(1,18)]
 DimPlot(object = subset(dataObject, seurat_clusters == "17"),
@@ -585,7 +693,7 @@ VlnPlot(dataObject,
 cluster17$gene[1:10]
 ```
 
-## Cluster 18 - neuron
+## Cluster 18 - astrocyte
 ```{r cluster18}
 count_per_cluster[,c(1,1)]
 DimPlot(object = subset(dataObject, seurat_clusters == "18"),
@@ -604,7 +712,7 @@ VlnPlot(dataObject,
 cluster18$gene[1:10]
 ```
 
-## Cluster 19 - neuron
+## Cluster 19 - fibroblast
 ```{r cluster19}
 count_per_cluster[,c(1,19)]
 DimPlot(object = subset(dataObject, seurat_clusters == "19"),
@@ -623,30 +731,211 @@ VlnPlot(dataObject,
 cluster19$gene[1:10]
 ```
 
+
+## Cluster 20 - interneuron
+```{r cluster20}
+count_per_cluster[,c(1,20)]
+DimPlot(object = subset(dataObject, seurat_clusters == "20"),
+        reduction = "umap", 
+        label = TRUE,
+        label.box = TRUE,
+        label.size = 3,
+        repel = TRUE,
+        cols = color.panel[21])
+VlnPlot(dataObject,
+        features = cluster20$gene[1:10],
+        cols = color.panel,
+        stack = TRUE,
+        flip = TRUE,
+        split.by = "seurat_clusters")
+cluster20$gene[1:10]
+```
+
+## Cluster 21 - endothelial
+```{r cluster21}
+count_per_cluster[,c(1,21)]
+DimPlot(object = subset(dataObject, seurat_clusters == "21"),
+        reduction = "umap", 
+        label = TRUE,
+        label.box = TRUE,
+        label.size = 3,
+        repel = TRUE,
+        cols = color.panel[22])
+VlnPlot(dataObject,
+        features = cluster21$gene[1:10],
+        cols = color.panel,
+        stack = TRUE,
+        flip = TRUE,
+        split.by = "seurat_clusters")
+cluster21$gene[1:10]
+```
+
+## Cluster 22 - interneuron
+```{r cluster22}
+count_per_cluster[,c(1,22)]
+DimPlot(object = subset(dataObject, seurat_clusters == "22"),
+        reduction = "umap", 
+        label = TRUE,
+        label.box = TRUE,
+        label.size = 3,
+        repel = TRUE,
+        cols = color.panel[23])
+VlnPlot(dataObject,
+        features = cluster22$gene[1:10],
+        cols = color.panel,
+        stack = TRUE,
+        flip = TRUE,
+        split.by = "seurat_clusters")
+cluster22$gene[1:10]
+```
+
+## Cluster 23 - neuron
+```{r cluster23}
+count_per_cluster[,c(1,23)]
+DimPlot(object = subset(dataObject, seurat_clusters == "23"),
+        reduction = "umap", 
+        label = TRUE,
+        label.box = TRUE,
+        label.size = 3,
+        repel = TRUE,
+        cols = color.panel[24])
+VlnPlot(dataObject,
+        features = cluster23$gene[1:10],
+        cols = color.panel,
+        stack = TRUE,
+        flip = TRUE,
+        split.by = "seurat_clusters")
+cluster23$gene[1:10]
+```
+
+## Cluster 24 - neuron
+```{r cluster24}
+count_per_cluster[,c(1,24)]
+DimPlot(object = subset(dataObject, seurat_clusters == "24"),
+        reduction = "umap", 
+        label = TRUE,
+        label.box = TRUE,
+        label.size = 3,
+        repel = TRUE,
+        cols = color.panel[25])
+VlnPlot(dataObject,
+        features = cluster24$gene[1:10],
+        cols = color.panel,
+        stack = TRUE,
+        flip = TRUE,
+        split.by = "seurat_clusters")
+cluster24$gene[1:10]
+```
+
+## Cluster 25 - neuron
+```{r cluster25}
+count_per_cluster[,c(1,25)]
+DimPlot(object = subset(dataObject, seurat_clusters == "25"),
+        reduction = "umap", 
+        label = TRUE,
+        label.box = TRUE,
+        label.size = 3,
+        repel = TRUE,
+        cols = color.panel[26])
+VlnPlot(dataObject,
+        features = cluster25$gene[1:10],
+        cols = color.panel,
+        stack = TRUE,
+        flip = TRUE,
+        split.by = "seurat_clusters")
+cluster25$gene[1:10]
+```
+
+## Cluster 26 - mural
+```{r cluster26}
+count_per_cluster[,c(1,26)]
+DimPlot(object = subset(dataObject, seurat_clusters == "26"),
+        reduction = "umap", 
+        label = TRUE,
+        label.box = TRUE,
+        label.size = 3,
+        repel = TRUE,
+        cols = color.panel[27])
+VlnPlot(dataObject,
+        features = cluster26$gene[1:10],
+        cols = color.panel,
+        stack = TRUE,
+        flip = TRUE,
+        split.by = "seurat_clusters")
+cluster26$gene[1:10]
+```
+
+## Cluster 27 - microglia 
+```{r cluster27}
+count_per_cluster[,c(1,27)]
+DimPlot(object = subset(dataObject, seurat_clusters == "27"),
+        reduction = "umap", 
+        label = TRUE,
+        label.box = TRUE,
+        label.size = 3,
+        repel = TRUE,
+        cols = color.panel[28])
+VlnPlot(dataObject,
+        features = cluster27$gene[1:10],
+        cols = color.panel,
+        stack = TRUE,
+        flip = TRUE,
+        split.by = "seurat_clusters")
+cluster27$gene[1:10]
+```
+
+## Cluster 28 - neuron
+```{r cluster28}
+count_per_cluster[,c(1,28)]
+DimPlot(object = subset(dataObject, seurat_clusters == "28"),
+        reduction = "umap", 
+        label = TRUE,
+        label.box = TRUE,
+        label.size = 3,
+        repel = TRUE,
+        cols = color.panel[29])
+VlnPlot(dataObject,
+        features = cluster28$gene[1:10],
+        cols = color.panel,
+        stack = TRUE,
+        flip = TRUE,
+        split.by = "seurat_clusters")
+cluster28$gene[1:10]
+```
+
 # Assign identities
 ## Individual 
 ```{r assign_individual}
 dataObject.annotated <- RenameIdents(object = dataObject, 
-                               "0" = "oligodendrocyte 1",
-                               "1" = "oligodendrocyte 2",
-                               "2" = "polydendrocyte 1",
-                               "3" = "astrocyte 1",
-                               "4" = "oligodendrocyte 3",
-                               "5" = "neuron 1",
-                               "6" = "oligodendrocyte 4",
-                               "7" = "microglia 1",
-                               "8" = "astrocyte 2",
-                               "9" = "interneuron 1",
-                               "10" = "neuron 2",
-                               "11" = "interneuron 2",
-                               "12" = "endothelial",
-                               "13" = "microglia 2",
-                               "14" = "interneuron 3",
-                               "15" = "fibroblast",
-                               "16" = "mural",
-                               "17" = "neuron 3",
-                               "18" = "neuron 4",
-                               "19" = "neuron 5")
+                               "0" = "interneuron",
+                               "1" = "neuron",
+                               "2" = "interneuron",
+                               "3" = "neuron",
+                               "4" = "astrocyte",
+                               "5" = "neuron",
+                               "6" = "neuron",
+                               "7" = "interneuron",
+                               "8" = "oligodendrocyte",
+                               "9" = "neuron",
+                               "10" = "astrocyte",
+                               "11" = "oligodendrocyte",
+                               "12" = "neuron",
+                               "13" = "polydendrocyte",
+                               "14" = "interneuron",
+                               "15" = "neuron",
+                               "16" = "fibroblast",
+                               "17" = "neuron",
+                               "18" = "astrocyte",
+                               "19" = "fibroblast",
+                               "20" = "interneuron",
+                               "21" = "endothelial",
+                               "22" = "interneuron",
+                               "23" = "neuron",
+                               "24" = "neuron",
+                               "25" = "neuron",
+                               "26" = "mural",
+                               "27" = "microglia",
+                               "28" = "neuron")
 dataObject.annotated$individual_clusters <- factor(Idents(dataObject.annotated))
 
 UMAP_ind <- dittoDimPlot(object = dataObject.annotated,
@@ -660,9 +949,9 @@ UMAP_ind
 ```{r UMAP_ind, echo=FALSE}
 pdf(
   paste0(
-    "../../results/UMAP/annotated/",
+    "../results/UMAP/annotated/",
     treatment,
-    "_individual_clusters_UMAP.pdf"
+    "_individual_clusters_UMAP_doublets_removed.pdf"
   ),
   width = 11,
   height = 7
@@ -708,9 +997,9 @@ count_bar
 ```{r nuclei_count_individual, echo=FALSE}
 pdf(
   paste0(
-    "../../results/UMAP/annotated/",
+    "../results/UMAP/annotated/",
     treatment,
-    "_individual_clusters_nuclei_count.pdf"
+    "_individual_clusters_nuclei_count_doublets_removed.pdf"
   ),
   width = 11,
   height = 7
@@ -760,9 +1049,8 @@ markers.to.plot <-
 "Myl5"
   )
 
-dot_ind <- DotPlot(dataObject, 
+dot_ind <- DotPlot(dataObject.annotated,
                    features = markers.to.plot, 
-                   cluster.idents = TRUE,
                    dot.scale = 8) + RotatedAxis()
 dot_ind
 ```
@@ -772,122 +1060,27 @@ pdf(
   paste0(
     "../results/dot_plot/",
     treatment,
-    "_clusters_DotPlot.pdf"
+    "_annotated_clusters.pdf"
   ),
   width = 14,
-  height = 9
+  height = 5
 )
 dot_ind
 dev.off()
 ```
 
-## Merged 
-```{r assign_merged}
-dataObject.annotated <- RenameIdents(object = dataObject.annotated, 
-"oligodendrocyte 1" = "oligodendrocyte",
-"oligodendrocyte 2" = "oligodendrocyte",
-"polydendrocyte 1" = "polydendrocyte",
-"astrocyte 1" = "astrocyte",
-"oligodendrocyte 3" = "oligodendrocyte",
-"neuron 1" = "neuron",
-"oligodendrocyte 4" = "oligodendrocyte",
-"microglia 1" = "microglia",
-"astrocyte 2" = "astrocyte",
-"interneuron 1" = "interneuron",
-"neuron 2" = "neuron",
-"interneuron 2" = "interneuron",
-"endothelial" = "endothelial",
-"microglia 2" = "microglia",
-"interneuron 3" = "interneuron",
-"fibroblast" = "fibroblast",
-"mural" = "mural",
-"neuron 3" = "neuron",
-"neuron 4" = "neuron",
-"neuron 5"	=	"neuron")
-dataObject.annotated$annotated_clusters <- factor(Idents(dataObject.annotated))
-Idents(dataObject.annotated) <- "annotated_clusters"
-
-UMAP_merge <- dittoDimPlot(object = dataObject.annotated,
-             var = "annotated_clusters",
-             reduction.use = "umap",
-             do.label = TRUE,
-             labels.highlight = TRUE)
-UMAP_merge
-```
-
-```{r UMAP_merge, echo=FALSE}
-pdf(
-  paste0(
-    "../../results/UMAP/annotated/",
-    treatment,
-    "_merged_clusters_UMAP.pdf"
-  ),
-  width = 9,
-  height = 7
-)
-UMAP_merge
-dev.off()
-```
-
-### Nuclei count per cluster
-```{r annotated_counts_merged}
-count_per_cluster <- FetchData(dataObject.annotated,
-                               vars = c("ident", "orig.ident")) %>%
-  dplyr::count(ident, orig.ident) %>%
-  tidyr::spread(ident, n)
-count_per_cluster
-
-count_melt <- reshape2::melt(count_per_cluster)
-colnames(count_melt) <- c("ident", "cluster", "number of nuclei")
-count_max <- count_melt[which.max(count_melt$`number of nuclei`), ]
-count_max_value <- count_max$`number of nuclei`
-cellmax <- count_max_value + 500 # so that the figure doesn't cut off the text
-count_bar <- ggplot(count_melt, aes(x = factor(cluster), y = `number of nuclei`, fill = `cluster`)) +
-  geom_bar(
-    stat = "identity",
-    colour = "black",
-    width = 1,
-    position = position_dodge(width = 0.8)
-  ) +
-  geom_text(
-    aes(label = `number of nuclei`),
-    position = position_dodge(width = 0.9),
-    vjust = -0.25,
-    angle = 45,
-    hjust = -.01
-  ) +
-  theme_classic() + scale_fill_manual(values = color.panel) +
-  ggtitle("Number of nuclei per cluster") +  xlab("cluster") +
-  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
-  scale_y_continuous(limits = c(0, cellmax))
-count_bar
-```
-
-```{r nuclei_count_merge, echo=FALSE}
-pdf(
-  paste0(
-    "../../results/UMAP/annotated/",
-    treatment,
-    "_merged_clusters_nuclei_count.pdf"
-  ),
-  width = 9,
-  height = 7
-)
-count_bar
-dev.off()
-```
 
 ### Relative abundance
 ```{r relative_cell_type}
 relative_abundance <- dataObject.annotated@meta.data %>%
-  group_by(annotated_clusters, orig.ident) %>%
+  group_by(individual_clusters, orig.ident) %>%
   dplyr::count() %>%
   group_by(orig.ident) %>%
   dplyr::mutate(percent = 100 * n / sum(n)) %>%
   ungroup()
 
 
-rel_abun <- ggplot(relative_abundance, aes(x = orig.ident, y = percent, fill = annotated_clusters)) +
+rel_abun <- ggplot(relative_abundance, aes(x = orig.ident, y = percent, fill = individual_clusters)) +
   geom_col() +
   geom_text(aes(label = paste0(round(percent), "%")), 
             position = position_stack(vjust = 0.5), size = 3, color = "white") +
@@ -899,9 +1092,9 @@ rel_abun
 
 pdf(
   paste0(
-    "../../results/UMAP/annotated/",
+    "../results/UMAP/annotated/",
     treatment,
-    "_merged_clusters_relative_abundance.pdf"
+    "_merged_clusters_relative_abundance_doublets_removed.pdf"
   ),
   width = 6,
   height = 8
@@ -910,71 +1103,14 @@ rel_abun
 dev.off()
 ```
 
-### DotPlot
-```{r dot_merge}
-markers.to.plot <-
-  c(
-"CLU", 
-"GFAP", 
-"AQP4", 
-"GJA1",
-"CLDN5", 
-"ADGRF5", 
-"FLT1",
-"COL1A1", 
-"COL1A2", 
-"DCN",
-"HEXB", 
-"C1QA", 
-"C1QC", 
-"C1QB", 
-"TMEM119", 
-"ITGAM", 
-"TYROBP",
-"P2RY12", 
-"AIF1",
-"RBFOX3", 
-"SNAP25",
-"SYT1", 
-"GAD1", 
-"GAD2",
-"PLP1",
-"MBP", 
-"MOG",
-"OLIG1",
-"PDGFRA", 
-"VCAN", 
-"TNR",
-"ACTA2",
-"RGS5", 
-"VTN", 
-"MYL5"
-  )
-dot_merge <- DotPlot(dataObject.annotated, 
-               features = markers.to.plot, 
-               cluster.idents = TRUE,
-               dot.scale = 8) + RotatedAxis()
-dot_merge
-```
-
-```{r save_dot_merge, echo=FALSE}
-pdf(
-  paste0(
-    "../../results/UMAP/annotated/",
-    treatment,
-    "_merged_clusters_DotPlot.pdf"
-  ),
-  width = 14,
-  height = 5
-)
-dot_merge
-dev.off()
-```
 
 # Save RDS 
 ```{r save_annotations}
-saveRDS(dataObject.annotated, paste0("../../rObjects/", treatment, ".annotated.rds"))
+saveRDS(dataObject.annotated, paste0("../rObjects/", treatment, ".annotated.doubletsRemoved.rds"))
 ```
 
 ```{r}
 ```
+
+
+

@@ -20,13 +20,14 @@ with open('sampleReadGroupInfo_snRNA.txt', 'r') as infile:
         split = line.split()
         sampleAttributes = split[0].split('_') # 01.RawData/P_65/P_65_CKDL240007500-1A_H5MHCDSXC_S1_L001_R1_001.fastq.gz
         # create a shorter sample name
-        stemName = sampleAttributes[4] + '_' + sampleAttributes[5] + '_' + sampleAttributes[6] + '_' + sampleAttributes[7] 
+        stemName = sampleAttributes[2] + "_" + sampleAttributes[3]
         allSamples.append(stemName)
 
 # create header and write to outfile
 header = '''{{
     "Commment_Input_Output_Directories": "This section specifies the input and output directories for scripts",
     "cellranger_dir" : "../cellranger/", 
+    "cellbender_dir" : "../cellbender/",
     "fastq_path" : "/research/labs/neurology/fryer/projects/PMI/2024_snRNA/",
 
     "Comment_Reference" : "This section specifies the location of the Sus scrofa, Ensembl reference genome",
@@ -61,7 +62,7 @@ with open('sampleReadGroupInfo_snRNA.txt', 'r') as infile:
         # uniqueNum-number_sequencer_lane_read.fastq.gz
 
         # create a shorter sample name
-        stemName = sampleAttributes[4] + '_' + sampleAttributes[5] + '_' + sampleAttributes[6] + '_' + sampleAttributes[7]
+        stemName = sampleAttributes[2] + "_" + sampleAttributes[3]
         stemID = sampleAttributes[2] + '_' + sampleAttributes[3]
         fullName = sampleAttributes[2] + '_' + sampleAttributes[3] + '_' + sampleAttributes[5] + '_' + sampleAttributes[6] + '_' + sampleAttributes[7] 
         shortName1 = stemName + '_R1'

@@ -1,6 +1,7 @@
 {
     "Commment_Input_Output_Directories": "This section specifies the input and output directories for scripts",
     "cellranger_dir" : "../cellranger/", 
+    "cellbender_dir" : "../cellbender/",
     "fastq_path" : "/research/labs/neurology/fryer/projects/PMI/2024_snRNA/",
 
     "Comment_Reference" : "This section specifies the location of the Sus scrofa, Ensembl reference genome",
@@ -9,223 +10,223 @@
     "Mmusculus_fa" : "/research/labs/neurology/fryer/projects/references/mouse/refdata-gex-GRCm39-2024-A/fasta/genome.fa",
 
     "Comment_Sample_Info": "The following section lists the samples that are to be analyzed",
-    "sample_names": ['P_65_CKDL240007500-1A_H5MHCDSXC', 'P_64_CKDL240007502-1A_H5T7LDSXC', 'P_67_CKDL240007511-1A_H5MHCDSXC', 'P_71_CKDL240007512-1A_H5MHCDSXC', 'P_60_CKDL240007495-1A_H5T7LDSXC', 'J_1_CKDL240007504-1A_H5T7LDSXC', 'P_62_CKDL240007506-1A_H5MHCDSXC', 'P_69_CKDL240007507-1A_H5MHCDSXC', 'P_68_CKDL240007508-1A_H5MHCDSXC', 'B_8_CKDL240007496-1A_H5T7LDSXC', 'B_9_CKDL240007503-1A_H5T7LDSXC', 'J_2_CKDL240007497-1A_H5T7LDSXC', 'J_3_CKDL240007499-1A_H5MHCDSXC', 'J_4_CKDL240007510-1A_H5MHCDSXC', 'B_6_CKDL240007505-1A_H5MHCDSXC', 'P_54_CKDL240007494-1A_H5T7LDSXC', 'B_10_CKDL240007509-1A_H5MHCDSXC', 'P_53_CKDL240007501-1A_H5T7LDSXC', 'P_52_CKDL240007493-1A_H5T7LDSXC', 'B_7_CKDL240007498-1A_H5T7LDSXC'],
+    "sample_names": ['P_65', 'P_64', 'P_67', 'P_71', 'P_60', 'J_1', 'P_62', 'P_69', 'P_68', 'B_8', 'B_9', 'J_2', 'J_3', 'J_4', 'B_6', 'P_54', 'B_10', 'P_53', 'P_52', 'B_7'],
 
-    "P_65_CKDL240007500-1A_H5MHCDSXC":{
+    "P_65":{
         "fq_path": "/research/labs/neurology/fryer/projects/PMI/2024_snRNA/01.RawData/",
         "fq1": "01.RawData/P_65/P_65_CKDL240007500-1A_H5MHCDSXC_S1_L001_R1_001",
         "fq2": "01.RawData/P_65/P_65_CKDL240007500-1A_H5MHCDSXC_S1_L001_R2_001",
-        "ID": "P_65_CKDL240007500-1A_H5MHCDSXC",
-        "SM": "P_65_CKDL240007500-1A_H5MHCDSXC",
+        "ID": "P_65",
+        "SM": "P_65",
         "PU": "H5MHCDSXC.1",
         "LB": "10X",
         "PL": "Illumina"
         },
 
-    "P_64_CKDL240007502-1A_H5T7LDSXC":{
+    "P_64":{
         "fq_path": "/research/labs/neurology/fryer/projects/PMI/2024_snRNA/01.RawData/",
         "fq1": "01.RawData/P_64/P_64_CKDL240007502-1A_H5T7LDSXC_S1_L003_R1_001",
         "fq2": "01.RawData/P_64/P_64_CKDL240007502-1A_H5T7LDSXC_S1_L003_R2_001",
-        "ID": "P_64_CKDL240007502-1A_H5T7LDSXC",
-        "SM": "P_64_CKDL240007502-1A_H5T7LDSXC",
+        "ID": "P_64",
+        "SM": "P_64",
         "PU": "H5T7LDSXC.3",
         "LB": "10X",
         "PL": "Illumina"
         },
 
-    "P_67_CKDL240007511-1A_H5MHCDSXC":{
+    "P_67":{
         "fq_path": "/research/labs/neurology/fryer/projects/PMI/2024_snRNA/01.RawData/",
         "fq1": "01.RawData/P_67/P_67_CKDL240007511-1A_H5MHCDSXC_S1_L003_R1_001",
         "fq2": "01.RawData/P_67/P_67_CKDL240007511-1A_H5MHCDSXC_S1_L003_R2_001",
-        "ID": "P_67_CKDL240007511-1A_H5MHCDSXC",
-        "SM": "P_67_CKDL240007511-1A_H5MHCDSXC",
+        "ID": "P_67",
+        "SM": "P_67",
         "PU": "H5MHCDSXC.3",
         "LB": "10X",
         "PL": "Illumina"
         },
 
-    "P_71_CKDL240007512-1A_H5MHCDSXC":{
+    "P_71":{
         "fq_path": "/research/labs/neurology/fryer/projects/PMI/2024_snRNA/01.RawData/",
         "fq1": "01.RawData/P_71/P_71_CKDL240007512-1A_H5MHCDSXC_S2_L003_R1_001",
         "fq2": "01.RawData/P_71/P_71_CKDL240007512-1A_H5MHCDSXC_S2_L003_R2_001",
-        "ID": "P_71_CKDL240007512-1A_H5MHCDSXC",
-        "SM": "P_71_CKDL240007512-1A_H5MHCDSXC",
+        "ID": "P_71",
+        "SM": "P_71",
         "PU": "H5MHCDSXC.3",
         "LB": "10X",
         "PL": "Illumina"
         },
 
-    "P_60_CKDL240007495-1A_H5T7LDSXC":{
+    "P_60":{
         "fq_path": "/research/labs/neurology/fryer/projects/PMI/2024_snRNA/01.RawData/",
         "fq1": "01.RawData/P_60/P_60_CKDL240007495-1A_H5T7LDSXC_S1_L002_R1_001",
         "fq2": "01.RawData/P_60/P_60_CKDL240007495-1A_H5T7LDSXC_S1_L002_R2_001",
-        "ID": "P_60_CKDL240007495-1A_H5T7LDSXC",
-        "SM": "P_60_CKDL240007495-1A_H5T7LDSXC",
+        "ID": "P_60",
+        "SM": "P_60",
         "PU": "H5T7LDSXC.2",
         "LB": "10X",
         "PL": "Illumina"
         },
 
-    "J_1_CKDL240007504-1A_H5T7LDSXC":{
+    "J_1":{
         "fq_path": "/research/labs/neurology/fryer/projects/PMI/2024_snRNA/01.RawData/",
         "fq1": "01.RawData/J_1/J_1_CKDL240007504-1A_H5T7LDSXC_S2_L003_R1_001",
         "fq2": "01.RawData/J_1/J_1_CKDL240007504-1A_H5T7LDSXC_S2_L003_R2_001",
-        "ID": "J_1_CKDL240007504-1A_H5T7LDSXC",
-        "SM": "J_1_CKDL240007504-1A_H5T7LDSXC",
+        "ID": "J_1",
+        "SM": "J_1",
         "PU": "H5T7LDSXC.3",
         "LB": "10X",
         "PL": "Illumina"
         },
 
-    "P_62_CKDL240007506-1A_H5MHCDSXC":{
+    "P_62":{
         "fq_path": "/research/labs/neurology/fryer/projects/PMI/2024_snRNA/01.RawData/",
         "fq1": "01.RawData/P_62/P_62_CKDL240007506-1A_H5MHCDSXC_S1_L002_R1_001",
         "fq2": "01.RawData/P_62/P_62_CKDL240007506-1A_H5MHCDSXC_S1_L002_R2_001",
-        "ID": "P_62_CKDL240007506-1A_H5MHCDSXC",
-        "SM": "P_62_CKDL240007506-1A_H5MHCDSXC",
+        "ID": "P_62",
+        "SM": "P_62",
         "PU": "H5MHCDSXC.2",
         "LB": "10X",
         "PL": "Illumina"
         },
 
-    "P_69_CKDL240007507-1A_H5MHCDSXC":{
+    "P_69":{
         "fq_path": "/research/labs/neurology/fryer/projects/PMI/2024_snRNA/01.RawData/",
         "fq1": "01.RawData/P_69/P_69_CKDL240007507-1A_H5MHCDSXC_S2_L002_R1_001",
         "fq2": "01.RawData/P_69/P_69_CKDL240007507-1A_H5MHCDSXC_S2_L002_R2_001",
-        "ID": "P_69_CKDL240007507-1A_H5MHCDSXC",
-        "SM": "P_69_CKDL240007507-1A_H5MHCDSXC",
+        "ID": "P_69",
+        "SM": "P_69",
         "PU": "H5MHCDSXC.2",
         "LB": "10X",
         "PL": "Illumina"
         },
 
-    "P_68_CKDL240007508-1A_H5MHCDSXC":{
+    "P_68":{
         "fq_path": "/research/labs/neurology/fryer/projects/PMI/2024_snRNA/01.RawData/",
         "fq1": "01.RawData/P_68/P_68_CKDL240007508-1A_H5MHCDSXC_S3_L002_R1_001",
         "fq2": "01.RawData/P_68/P_68_CKDL240007508-1A_H5MHCDSXC_S3_L002_R2_001",
-        "ID": "P_68_CKDL240007508-1A_H5MHCDSXC",
-        "SM": "P_68_CKDL240007508-1A_H5MHCDSXC",
+        "ID": "P_68",
+        "SM": "P_68",
         "PU": "H5MHCDSXC.2",
         "LB": "10X",
         "PL": "Illumina"
         },
 
-    "B_8_CKDL240007496-1A_H5T7LDSXC":{
+    "B_8":{
         "fq_path": "/research/labs/neurology/fryer/projects/PMI/2024_snRNA/01.RawData/",
         "fq1": "01.RawData/B_8/B_8_CKDL240007496-1A_H5T7LDSXC_S2_L002_R1_001",
         "fq2": "01.RawData/B_8/B_8_CKDL240007496-1A_H5T7LDSXC_S2_L002_R2_001",
-        "ID": "B_8_CKDL240007496-1A_H5T7LDSXC",
-        "SM": "B_8_CKDL240007496-1A_H5T7LDSXC",
+        "ID": "B_8",
+        "SM": "B_8",
         "PU": "H5T7LDSXC.2",
         "LB": "10X",
         "PL": "Illumina"
         },
 
-    "B_9_CKDL240007503-1A_H5T7LDSXC":{
+    "B_9":{
         "fq_path": "/research/labs/neurology/fryer/projects/PMI/2024_snRNA/01.RawData/",
         "fq1": "01.RawData/B_9/B_9_CKDL240007503-1A_H5T7LDSXC_S3_L003_R1_001",
         "fq2": "01.RawData/B_9/B_9_CKDL240007503-1A_H5T7LDSXC_S3_L003_R2_001",
-        "ID": "B_9_CKDL240007503-1A_H5T7LDSXC",
-        "SM": "B_9_CKDL240007503-1A_H5T7LDSXC",
+        "ID": "B_9",
+        "SM": "B_9",
         "PU": "H5T7LDSXC.3",
         "LB": "10X",
         "PL": "Illumina"
         },
 
-    "J_2_CKDL240007497-1A_H5T7LDSXC":{
+    "J_2":{
         "fq_path": "/research/labs/neurology/fryer/projects/PMI/2024_snRNA/01.RawData/",
         "fq1": "01.RawData/J_2/J_2_CKDL240007497-1A_H5T7LDSXC_S3_L002_R1_001",
         "fq2": "01.RawData/J_2/J_2_CKDL240007497-1A_H5T7LDSXC_S3_L002_R2_001",
-        "ID": "J_2_CKDL240007497-1A_H5T7LDSXC",
-        "SM": "J_2_CKDL240007497-1A_H5T7LDSXC",
+        "ID": "J_2",
+        "SM": "J_2",
         "PU": "H5T7LDSXC.2",
         "LB": "10X",
         "PL": "Illumina"
         },
 
-    "J_3_CKDL240007499-1A_H5MHCDSXC":{
+    "J_3":{
         "fq_path": "/research/labs/neurology/fryer/projects/PMI/2024_snRNA/01.RawData/",
         "fq1": "01.RawData/J_3/J_3_CKDL240007499-1A_H5MHCDSXC_S2_L001_R1_001",
         "fq2": "01.RawData/J_3/J_3_CKDL240007499-1A_H5MHCDSXC_S2_L001_R2_001",
-        "ID": "J_3_CKDL240007499-1A_H5MHCDSXC",
-        "SM": "J_3_CKDL240007499-1A_H5MHCDSXC",
+        "ID": "J_3",
+        "SM": "J_3",
         "PU": "H5MHCDSXC.1",
         "LB": "10X",
         "PL": "Illumina"
         },
 
-    "J_4_CKDL240007510-1A_H5MHCDSXC":{
+    "J_4":{
         "fq_path": "/research/labs/neurology/fryer/projects/PMI/2024_snRNA/01.RawData/",
         "fq1": "01.RawData/J_4/J_4_CKDL240007510-1A_H5MHCDSXC_S3_L003_R1_001",
         "fq2": "01.RawData/J_4/J_4_CKDL240007510-1A_H5MHCDSXC_S3_L003_R2_001",
-        "ID": "J_4_CKDL240007510-1A_H5MHCDSXC",
-        "SM": "J_4_CKDL240007510-1A_H5MHCDSXC",
+        "ID": "J_4",
+        "SM": "J_4",
         "PU": "H5MHCDSXC.3",
         "LB": "10X",
         "PL": "Illumina"
         },
 
-    "B_6_CKDL240007505-1A_H5MHCDSXC":{
+    "B_6":{
         "fq_path": "/research/labs/neurology/fryer/projects/PMI/2024_snRNA/01.RawData/",
         "fq1": "01.RawData/B_6/B_6_CKDL240007505-1A_H5MHCDSXC_S4_L002_R1_001",
         "fq2": "01.RawData/B_6/B_6_CKDL240007505-1A_H5MHCDSXC_S4_L002_R2_001",
-        "ID": "B_6_CKDL240007505-1A_H5MHCDSXC",
-        "SM": "B_6_CKDL240007505-1A_H5MHCDSXC",
+        "ID": "B_6",
+        "SM": "B_6",
         "PU": "H5MHCDSXC.2",
         "LB": "10X",
         "PL": "Illumina"
         },
 
-    "P_54_CKDL240007494-1A_H5T7LDSXC":{
+    "P_54":{
         "fq_path": "/research/labs/neurology/fryer/projects/PMI/2024_snRNA/01.RawData/",
         "fq1": "01.RawData/P_54/P_54_CKDL240007494-1A_H5T7LDSXC_S1_L001_R1_001",
         "fq2": "01.RawData/P_54/P_54_CKDL240007494-1A_H5T7LDSXC_S1_L001_R2_001",
-        "ID": "P_54_CKDL240007494-1A_H5T7LDSXC",
-        "SM": "P_54_CKDL240007494-1A_H5T7LDSXC",
+        "ID": "P_54",
+        "SM": "P_54",
         "PU": "H5T7LDSXC.1",
         "LB": "10X",
         "PL": "Illumina"
         },
 
-    "B_10_CKDL240007509-1A_H5MHCDSXC":{
+    "B_10":{
         "fq_path": "/research/labs/neurology/fryer/projects/PMI/2024_snRNA/01.RawData/",
         "fq1": "01.RawData/B_10/B_10_CKDL240007509-1A_H5MHCDSXC_S4_L003_R1_001",
         "fq2": "01.RawData/B_10/B_10_CKDL240007509-1A_H5MHCDSXC_S4_L003_R2_001",
-        "ID": "B_10_CKDL240007509-1A_H5MHCDSXC",
-        "SM": "B_10_CKDL240007509-1A_H5MHCDSXC",
+        "ID": "B_10",
+        "SM": "B_10",
         "PU": "H5MHCDSXC.3",
         "LB": "10X",
         "PL": "Illumina"
         },
 
-    "P_53_CKDL240007501-1A_H5T7LDSXC":{
+    "P_53":{
         "fq_path": "/research/labs/neurology/fryer/projects/PMI/2024_snRNA/01.RawData/",
         "fq1": "01.RawData/P_53/P_53_CKDL240007501-1A_H5T7LDSXC_S4_L003_R1_001",
         "fq2": "01.RawData/P_53/P_53_CKDL240007501-1A_H5T7LDSXC_S4_L003_R2_001",
-        "ID": "P_53_CKDL240007501-1A_H5T7LDSXC",
-        "SM": "P_53_CKDL240007501-1A_H5T7LDSXC",
+        "ID": "P_53",
+        "SM": "P_53",
         "PU": "H5T7LDSXC.3",
         "LB": "10X",
         "PL": "Illumina"
         },
 
-    "P_52_CKDL240007493-1A_H5T7LDSXC":{
+    "P_52":{
         "fq_path": "/research/labs/neurology/fryer/projects/PMI/2024_snRNA/01.RawData/",
         "fq1": "01.RawData/P_52/P_52_CKDL240007493-1A_H5T7LDSXC_S2_L001_R1_001",
         "fq2": "01.RawData/P_52/P_52_CKDL240007493-1A_H5T7LDSXC_S2_L001_R2_001",
-        "ID": "P_52_CKDL240007493-1A_H5T7LDSXC",
-        "SM": "P_52_CKDL240007493-1A_H5T7LDSXC",
+        "ID": "P_52",
+        "SM": "P_52",
         "PU": "H5T7LDSXC.1",
         "LB": "10X",
         "PL": "Illumina"
         },
 
-    "B_7_CKDL240007498-1A_H5T7LDSXC":{
+    "B_7":{
         "fq_path": "/research/labs/neurology/fryer/projects/PMI/2024_snRNA/01.RawData/",
         "fq1": "01.RawData/B_7/B_7_CKDL240007498-1A_H5T7LDSXC_S4_L002_R1_001",
         "fq2": "01.RawData/B_7/B_7_CKDL240007498-1A_H5T7LDSXC_S4_L002_R2_001",
-        "ID": "B_7_CKDL240007498-1A_H5T7LDSXC",
-        "SM": "B_7_CKDL240007498-1A_H5T7LDSXC",
+        "ID": "B_7",
+        "SM": "B_7",
         "PU": "H5T7LDSXC.2",
         "LB": "10X",
         "PL": "Illumina"

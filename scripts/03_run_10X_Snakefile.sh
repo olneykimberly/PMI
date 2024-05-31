@@ -13,7 +13,7 @@
 source $HOME/.bash_profile
 
 module load python
-conda activate LBD
+conda activate Ecoli_pigs
 
 # 1) get read information
 #sh 01_sample_read_info.sh
@@ -22,4 +22,4 @@ conda activate LBD
 #python 02_create_10X_config.py
 
 # 3) run snakemake - metaphlan alignment 
-snakemake -s Snakefile -j 30 --nolock --latency-wait 15 --rerun-incomplete --cluster "sbatch --ntasks 20 --partition=cpu-short --mem=60G -t 12:00:00"
+snakemake -s Snakefile -j 30 --nolock --latency-wait 15 --rerun-incomplete --keep-incomplete --cluster "sbatch --ntasks 32 --partition=cpu-short --mem=25G -t 40:00:00"

@@ -47,10 +47,98 @@ Layers(dataObject)
 cell_types <- c(unique(dataObject$individual_clusters))
 ```
 
+# Check 
+```{r }
+# Group
+table(dataObject$group) 
+```
+# DESeq all cell type pseudo-bulk
+```{r DESeq_all_samples}
+output_dir <- "../results/DEGs/DESeq2_pseudobulk"
+# List of cell types to analyze
+# Pseudo-bulk the counts based on sample, strain, sex, time, and cell type
+dataObject.pseudo <- AggregateExpression(
+    dataObject, 
+    assays = "RNA", # DESeq works with raw counts
+    return.seurat = TRUE, 
+    group.by = c("sample", "strain", "sex", "time")
+)
+# Function to calculate pct.1 and pct.2
+calculate_percentages <- function(counts, group_labels) {
+    percent_expressing <- function(group_counts) {
+        apply(group_counts, 1, function(x) sum(x > 0) / length(x))
+    }
+    pct_list <- lapply(levels(group_labels), function(label) {
+        percent_expressing(counts[, group_labels == label])
+    })
+    pct_df <- do.call(cbind, pct_list)
+    colnames(pct_df) <- paste0("percent_", levels(group_labels))
+    return(pct_df)
+}
+
+
+# Strain comparison with covariates
+dataObject.pseudo$allcells.strain <- paste(dataObject$strain, sep = "_")
+Idents(dataObject.pseudo) <- "allcells.strain"
+Layers(dataObject.pseudo)
+pseudo_bulk_counts <- GetAssayData(dataObject.pseudo, slot = "counts")
+
+    # Alternate accessor function with the same result
+    pseudo_bulk_meta <- dataObject.pseudo@meta.data
+
+    dds <- DESeqDataSetFromMatrix(
+        countData = pseudo_bulk_counts,
+        colData = pseudo_bulk_meta,
+        design = ~ sex +time + strain
+    )
+    dds <- DESeq(dds)
+    res <- results(dds, contrast = c("strain", "PS19", "WT"))
+    
+    # Calculate pct.1 and pct.2
+    pct_data <- calculate_percentages(pseudo_bulk_counts, factor(pseudo_bulk_meta$strain))
+
+    # Combine results
+    res$gene <- rownames(res)
+    res <- as.data.frame(res)
+    DEGs <- cbind(res[, c("gene", "baseMean", "log2FoldChange","lfcSE", "stat", "pvalue", "padj")], pct_data)
+    DEGs$percent_difference <- abs(DEGs$percent_PS19 - DEGs$percent_WT) 
+    
+    strain_output_path <- file.path(output_dir, paste0("all_celltypes", "_PS19_vs_WT_comparison_pseudo_bulk_with_covariates.txt"))
+    write.table(DEGs, file = strain_output_path, sep = "\t", quote = FALSE, row.names = FALSE)
+    rm(dds, res, DEGs) # clean up 
+
+# Time
+    dds <- DESeqDataSetFromMatrix(
+        countData = pseudo_bulk_counts,
+        colData = pseudo_bulk_meta,
+        design = ~ sex + strain + time
+    )
+    dds <- DESeq(dds)
+    res <- results(dds, contrast = c("time", "3", "0"))
+    
+    # Calculate pct.1 and pct.2
+    pct_data <- calculate_percentages(pseudo_bulk_counts, factor(pseudo_bulk_meta$time))
+    
+    # Combine results
+    res$gene <- rownames(res)
+    res <- as.data.frame(res)
+    DEGs <- cbind(res[, c("gene", "baseMean", "log2FoldChange","lfcSE", "stat", "pvalue", "padj")], pct_data)
+    DEGs$percent_difference <- abs(DEGs$percent_3 - DEGs$percent_0) 
+    
+    time_output_path <- file.path(output_dir, paste0("all_celltypes", "_3_vs_0_hours_comparison_pseudo_bulk_with_covariates.txt"))
+    write.table(DEGs, file = time_output_path, sep = "\t", quote = FALSE, row.names = FALSE)
+    rm(dds, res, DEGs) # clean up 
+    
+up <- subset(DEGs, DEGs$padj < 0.05 & DEGs$log2FoldChange > 0.25)
+
+down <- subset(DEGs, DEGs$padj < 0.05 & DEGs$log2FoldChange < -0.25)
+```
+
 # DESeq all samples 
 ```{r DESeq_all_samples}
 output_dir <- "../results/DEGs/DESeq2_pseudobulk"
-cell_types <- c("astrocyte")
+# List of cell types to analyze
+cell_types <- c(unique(dataObject$individual_clusters))
 # Pseudo-bulk the counts based on sample, strain, sex, time, and cell type
 dataObject.pseudo <- AggregateExpression(
     dataObject, 
@@ -337,10 +425,10 @@ for (cell_type in cell_types) {
 ```{r}
 # Step 1: Pseudo-bulk the counts based on sample, strain, sex, time, and cell type
 dataObject.pseudo <- AggregateExpression(
-    dataObject_subset, 
+    dataObject, 
     assays = "RNA", 
     return.seurat = TRUE, 
-    group.by = c("sample", "strain", "sex", "individual_clusters")
+    group.by = c("sample", "strain", "sex", "time", "individual_clusters")
 )
 
 # Step 2: Normalize the data
@@ -369,9 +457,6 @@ metadata <- as.data.frame(dataObject.pseudo@meta.data)
 
 # Step 8: Combine PC scores and metadata
 combined_data <- cbind(pc_scores, metadata)
-
-# Step 9: Calculate correlations
-correlation_matrix <- cor(combined_data[, 1:10], combined_data[, c("sex", "strain", "time", "individual_clusters")])
 
 library(variancePartition)
 
@@ -423,37 +508,12 @@ corrplot(C, method = "color", col = col(200),
          tl.col = "black", tl.srt = 45, 
          diag = FALSE, col.lim = c(0, 1))
 
-```
-
-
-```{r}
-# Step 1: Pseudo-bulk the counts based on sample, strain, sex, time, and cell type
-dataObject.pseudo <- AggregateExpression(
-    dataObject, 
-    assays = "RNA", 
-    return.seurat = TRUE, 
-    group.by = c("sample", "strain", "sex", "time", "individual_clusters")
-)
-
-# Step 2: Normalize the data
-dataObject.pseudo <- NormalizeData(dataObject.pseudo, normalization.method = "LogNormalize", scale.factor = 10000)
-
-# Step 3: Find variable features
-dataObject.pseudo <- FindVariableFeatures(dataObject.pseudo, selection.method = "vst", nfeatures = 2000)
-
-# Step 4: Scale the data
-dataObject.pseudo <- ScaleData(dataObject.pseudo, features = rownames(dataObject.pseudo))
-
-# Step 5: Run PCA
-dataObject.pseudo <- RunPCA(dataObject.pseudo, features = VariableFeatures(object = dataObject.pseudo))
-
-# Step 6: Visualize PCA
-#DimPlot(dataObject.pseudo, reduction = "pca", label = TRUE) + NoLegend()
-
+# PCA 
 DimPlot(dataObject.pseudo, reduction = "pca", group.by = "individual_clusters")
-#DimPlot(dataObject.pseudo, reduction = "pca", group.by = "sex", dims = c(3,4))
 
 ```
+
+
 
 ## Other 
 ```{r}
@@ -515,7 +575,7 @@ for (cell_type in cell_types) {
 all_top_genes <- unique(unlist(top_genes_list))
 
 # Create a matrix to store the expression data for top genes
-heatmap_data <- matrix(NA, nrow = length(all_top_genes), ncol = ncol(dataObject), dimnames = list(all_top_genes, colnames(dataObject))))
+heatmap_data <- matrix(NA, nrow = length(all_top_genes), ncol = ncol(dataObject), dimnames = list(all_top_genes, colnames(dataObject)))
 
 # Fill in the matrix with expression data
 for (cell_type in cell_types) {

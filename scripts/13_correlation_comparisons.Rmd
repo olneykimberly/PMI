@@ -43,7 +43,247 @@ Layers(dataObject)
 # List of cell types to analyze
 cell_types <- c(unique(dataObject$individual_clusters))
 ```
+# Sex check
+```{r exp_matrix}
+# Pseudo-bulk the counts based on sample, strain, sex, time, and cell type
+dataObject.pseudo <- AggregateExpression(
+    dataObject, 
+    assays = "RNA", # DESeq works with raw counts
+    return.seurat = TRUE, 
+    group.by = c("sample", "strain", "sex", "time", "individual_clusters")
+)
+# Normalize the data
+dataObject.pseudo <- NormalizeData(dataObject.pseudo, normalization.method = "LogNormalize", scale.factor = 10000)
+help(NormalizeData)
+# Find variable features
+dataObject.pseudo <- FindVariableFeatures(dataObject.pseudo, selection.method = "vst", nfeatures = 2000)
 
+# Scale the data
+dataObject.pseudo <- ScaleData(dataObject.pseudo)
+
+# Perform PCA
+dataObject.pseudo <- RunPCA(dataObject.pseudo, features = VariableFeatures(object = dataObject.pseudo))
+
+# Visualize the expression of a specific gene
+FeaturePlot(dataObject.pseudo, features = "Rbfox3")
+
+# Visualize the distribution of expression levels
+pdf(paste0("../results/sex_check/violin_Xist.pdf"), width = 8.5, height = 4)
+VlnPlot(dataObject.pseudo, features = "Xist", group.by = "sample")
+dev.off()
+
+pdf(paste0("../results/sex_check/violin_Uty.pdf"), width = 8.5, height = 4)
+VlnPlot(dataObject.pseudo, features = "Uty", group.by = "sample")
+dev.off()
+
+
+pseudo_bulk_counts <- GetAssayData(dataObject.pseudo, layer = "counts")
+pseudo_bulk_counts <- NormalizeData(pseudo_bulk_counts)
+df_norm <- as.matrix(pseudo_bulk_counts)
+
+Uty <- subset(df_norm, rownames(df_norm) == "Uty")
+Xist <- subset(df_norm, rownames(df_norm) == "Xist")
+
+library(reshape2)
+genes <- rbind(Uty, Xist)
+genes_melt <- melt(genes)
+
+# Extract sample ID
+genes_melt$sampleID <- sapply(strsplit(as.character(genes_melt$Var2), '_'), '[', 1)
+genes_melt$reported_sex <- sapply(strsplit(as.character(genes_melt$Var2), '_'), '[', 3)
+
+# Reshape data to wide format for plotting
+data_wide <- reshape(genes_melt, timevar = "Var1", idvar = "Var2", direction = "wide")
+
+# Specify the sample ID to be highlighted
+highlight_sample <- "P-68"
+
+# Add a column for coloring
+data_wide$color <- ifelse(data_wide$sampleID.Uty == highlight_sample, highlight_sample, "Other")
+
+# Plot the data
+ggplot(data_wide, aes(x = value.Xist, y = value.Uty, color = color)) +
+  geom_point(size = 3) +
+  scale_color_manual(values = c("gray", "red")) + # Highlight the specific sample in red and others in black
+  labs(x = "Xist Expression", y = "Uty Expression") +
+  theme_minimal() +
+  theme(legend.title = element_blank())
+
+```
+
+# Expression heatmap for each cell type, all expressed genes 
+```{r heatmap_celltype, eval=FALSE}
+# Define colors for each level of qualitative variables
+col = list(
+  strain = c("PS19" = "orange", "WT" = "yellow"),
+  sex = c("Male" = "green", "Female" = "purple"),
+  timepoint = c("3" = "red", "0" = "blue")
+)
+
+# Loop over each cell type
+for (cell_type in cell_types) {
+  # Filter the data for the current cell type
+  df_filtered <- df_norm[, grep(paste0("_", cell_type, "$"), colnames(df_norm))]
+  
+   # Filter genes with counts above 1 in at least 3 samples
+  gene_filter <- rowSums(df_filtered > 1) >= 3
+  df_filtered <- df_filtered[gene_filter, ]
+  
+  # Extract annotations from column names
+  annotations <- data.frame(
+    strain = sapply(strsplit(colnames(df_filtered), "_"), function(x) x[2]), 
+    sex = sapply(strsplit(colnames(df_filtered), "_"), function(x) x[3]),
+    timepoint = sapply(strsplit(colnames(df_filtered), "_"), function(x) x[4])
+  )
+  
+  # Create the heatmap annotation
+  ha <- HeatmapAnnotation(
+    df = annotations,
+    col = col
+  )
+  
+  # Create the heatmap
+  heatmap_plot <- Heatmap(df_filtered, name = "Expression",
+                          top_annotation = ha,
+                          show_row_names = FALSE)
+  
+  # Save the heatmap as a PDF
+  pdf(paste0("../results/heatmap/", cell_type, "_expression.pdf"),
+      width = 8.5,
+      height = 10)
+  draw(heatmap_plot)
+  dev.off()
+}
+```
+
+# 3 vs 0 hours DEGs heatmap
+```{r heatmap_3_vs_0}
+# Define colors for each level of qualitative variables
+col = list(
+  strain = c("PS19" = "orange", "WT" = "yellow"),
+  sex = c("Male" = "green", "Female" = "purple"),
+  timepoint = c("3" = "red", "0" = "blue")
+)
+
+# Loop over each cell type
+for (cell_type in cell_types) {
+  # Filter the data for the current cell type
+  df_filtered <- df_norm[, grep(paste0("_", cell_type, "$"), colnames(df_norm))]
+
+  DEGs <- read.delim(paste0("../results/DEGs/DESeq2_pseudobulk/", cell_type,
+                            "_3_vs_0_hours_comparison_pseudo_bulk_with_covariates.txt"))
+  gene_filter <- subset(DEGs, (padj < 0.05 & log2FoldChange > 0.25) | ((padj < 0.05 & log2FoldChange < -0.25)))
+  df_filtered <- df_filtered[gene_filter$gene, ]
+  
+  # Extract annotations from column names
+  annotations <- data.frame(
+    strain = sapply(strsplit(colnames(df_filtered), "_"), function(x) x[2]), 
+    sex = sapply(strsplit(colnames(df_filtered), "_"), function(x) x[3]),
+    timepoint = sapply(strsplit(colnames(df_filtered), "_"), function(x) x[4])
+  )
+  
+  # Create the heatmap annotation
+  ha <- HeatmapAnnotation(
+    df = annotations,
+    col = col
+  )
+  
+  # Create the heatmap
+  heatmap_plot <- Heatmap(df_filtered, name = "Expression",
+                          top_annotation = ha,
+                          show_row_names = TRUE, # show gene names
+                          column_names_rot = 75)  # Rotate column names
+
+  
+  # Save the heatmap as a PDF
+  pdf(paste0("../results/heatmap/", cell_type, "_expression_3_vs_0_hours_DEGs_q0.05_log2FC0.25.pdf"),
+      width = 14,
+      height = 10)
+  draw(heatmap_plot)
+  dev.off()
+}
+```
+
+# PS19 vs WT  DEGs heatmap
+```{r heatmap_PS19_vs_WT}
+# Define colors for each level of qualitative variables
+col = list(
+  strain = c("PS19" = "orange", "WT" = "yellow"),
+  sex = c("Male" = "green", "Female" = "purple"),
+  timepoint = c("3" = "red", "0" = "blue")
+)
+
+# Loop over each cell type
+for (cell_type in cell_types) {
+  # Filter the data for the current cell type
+  df_filtered <- df_norm[, grep(paste0("_", cell_type, "$"), colnames(df_norm))]
+
+  DEGs <- read.delim(paste0("../results/DEGs/DESeq2_pseudobulk/", cell_type,
+                            "_PS19_vs_WT_comparison_pseudo_bulk_with_covariates.txt"))
+  gene_filter <- subset(DEGs, (padj < 0.05 & log2FoldChange > 0.25) | ((padj < 0.05 & log2FoldChange < -0.25)))
+  df_filtered <- df_filtered[gene_filter$gene, ]
+  
+  # Extract annotations from column names
+  annotations <- data.frame(
+    strain = sapply(strsplit(colnames(df_filtered), "_"), function(x) x[2]), 
+    sex = sapply(strsplit(colnames(df_filtered), "_"), function(x) x[3]),
+    timepoint = sapply(strsplit(colnames(df_filtered), "_"), function(x) x[4])
+  )
+  
+  # Create the heatmap annotation
+  ha <- HeatmapAnnotation(
+    df = annotations,
+    col = col
+  )
+  
+  # Create the heatmap
+  heatmap_plot <- Heatmap(df_filtered, name = "Expression",
+                          top_annotation = ha,
+                          show_row_names = TRUE, # show gene names
+                          column_names_rot = 75)  # Rotate column names
+
+  
+  # Save the heatmap as a PDF
+  pdf(paste0("../results/heatmap/", cell_type, "_expression_PS19_vs_WT_DEGs_q0.05_log2FC0.25.pdf"),
+      width = 14,
+      height = 10)
+  draw(heatmap_plot)
+  dev.off()
+}
+```
+
+  
+```{r}
+#----------
+# Extract annotations from column names
+annotations <- data.frame(
+  strain = sapply(strsplit(colnames(df), "_"), function(x) x[2]),
+  sex = sapply(strsplit(colnames(df), "_"), function(x) x[3]),
+  timepoint = sapply(strsplit(colnames(df), "_"), function(x) x[4])
+)
+
+# Create the heatmap annotation
+ha <- HeatmapAnnotation(
+  df = annotations,
+  col = col
+)
+
+# Plot the heatmap
+heatmap_plot <- Heatmap(df, name = "Expression",
+        top_annotation = ha,
+        show_row_names = FALSE)
+
+pdf(paste0("../results/heatmap/neuron_expression.pdf"
+  ),
+  width = 8.5,
+  height = 8
+)
+heatmap_plot
+dev.off()
+```
+
+
+# Correlation matrix
 ```{r}
 # Load necessary libraries
 library(dplyr)

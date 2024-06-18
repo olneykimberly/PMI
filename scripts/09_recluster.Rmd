@@ -25,6 +25,17 @@ color.panel <- dittoColors()
 metadata <- subset(metadata, sampleID != "P_60" & sampleID != "B_6")
 metadata$sampleID <- factor(metadata$sampleID, levels = c(metadata$sampleID))
 samples <- metadata$sampleID 
+
+
+
+time_order <- factor(metadata$pmi_interval, levels = unique(metadata$pmi_interval))
+sex_order <- factor(metadata$sex, levels = unique(metadata$sex))
+genotype_order <- factor(metadata$genotype, levels = unique(metadata$genotype))
+
+# Make a new column called strain 
+metadata$strain <- gsub("JAX22|B623", "WT", gsub("PS1922", "PS19", metadata$genotype))
+strain_order <- factor(metadata$strain, levels = unique(metadata$strain))
+group_order <- paste0(time_order, ".", sex_order, ".", strain_order)
 ```
 
 # Read in object
@@ -1019,11 +1030,29 @@ saveRDS(dataObject.neurons.clean.again, paste0("../rObjects/",treatment,".dataOb
 # Read in clean data 
 ```{r read_deg}
 dataObject.glia.clean <- readRDS("../rObjects/PMI.dataObject.glia.clean.rds")
+# Match the samples to the dataObject
+sample_match <- match(dataObject.glia.clean$sample, samples)
+# Sex 
+dataObject.glia.clean$sex <- sex_order[sample_match]
+table(dataObject.glia.clean$sex) 
+# Group
+dataObject.glia.clean$group <- group_order[sample_match]
+table(dataObject.glia.clean$group) 
+
+
 FeaturePlot(dataObject.glia.clean, features = c("Mog"), pt.size = 0.2)
 FeaturePlot(dataObject.glia.clean, features = c("Rbfox3"), pt.size = 0.2)
 
 
 dataObject.neurons.clean <- readRDS("../rObjects/PMI.dataObject.neurons.clean.rds")
+# Match the samples to the dataObject
+sample_match <- match(dataObject.neurons.clean$sample, samples)
+# Sex 
+dataObject.neurons.clean$sex <- sex_order[sample_match]
+table(dataObject.neurons.clean$sex) 
+# Group
+dataObject.neurons.clean$group <- group_order[sample_match]
+table(dataObject.neurons.clean$group) 
 FeaturePlot(dataObject.neurons.clean, features = c("Mog"), pt.size = 0.2)
 FeaturePlot(dataObject.neurons.clean, features = c("Rbfox3"), pt.size = 0.2)
 
@@ -1682,6 +1711,51 @@ pdf(
 dot_ind_celltype
 dev.off()
 ```
+# Cell cycle 
+```{r cellcycle}
+dataObject <- CellCycleScoring(dataObject, 
+                                        s.features = m.s.genes$gene_name, 
+                                        g2m.features = m.g2m.genes$gene_name, 
+                                        set.ident = TRUE)
+
+# sample before integration 
+cellcyle_time <- dataObject@meta.data %>%
+  group_by(time, Phase) %>%
+  dplyr::count() %>%
+  group_by(time) %>%
+  dplyr::mutate(percent = 100*n/sum(n)) %>%
+  ungroup() %>%
+  ggplot(aes(x=time,y=percent, fill=Phase)) +
+  geom_col() +
+  ggtitle("Percentage of cell cycle phase by time")
+cellcyle_time
+
+# sample before integration 
+cellcyle_group <- dataObject@meta.data %>%
+  group_by(group, Phase) %>%
+  dplyr::count() %>%
+  group_by(group) %>%
+  dplyr::mutate(percent = 100*n/sum(n)) %>%
+  ungroup() %>%
+  ggplot(aes(x=group,y=percent, fill=Phase)) +
+  geom_col() +
+  ggtitle("Percentage of cell cycle phase by group")
+cellcyle_group
+```
+
+```{r,echo=FALSE}
+# save
+path <- paste0("../results/cellcycle/",treatment,
+               "_percent_phase_time")
+cellcyle_time
+saveToPDF(paste0(path, ".pdf"), width = 6, height = 4)
+
+path <- paste0("../results/cellcycle/",treatment,
+               "_percent_phase_group")
+cellcyle_group
+saveToPDF(paste0(path, ".pdf"), width = 10, height = 5)
+```
+
 # Save
 ```{r save_object,echo=FALSE,eval=TRUE}
 saveRDS(dataObject.clean, paste0("../rObjects/",treatment,".dataObject.clean.rds"))

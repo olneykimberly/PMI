@@ -43,6 +43,10 @@ Layers(dataObject)
 # List of cell types to analyze
 cell_types <- c(unique(dataObject$individual_clusters))
 ```
+```{r protein_coding}
+protein_coding_genes <- subset(gene_info, type == "protein_coding")
+```
+
 # Sex check
 ```{r exp_matrix}
 # Pseudo-bulk the counts based on sample, strain, sex, time, and cell type
@@ -50,11 +54,11 @@ dataObject.pseudo <- AggregateExpression(
     dataObject, 
     assays = "RNA", # DESeq works with raw counts
     return.seurat = TRUE, 
+    features = protein_coding_genes$gene_name,
     group.by = c("sample", "strain", "sex", "time", "individual_clusters")
 )
 # Normalize the data
 dataObject.pseudo <- NormalizeData(dataObject.pseudo, normalization.method = "LogNormalize", scale.factor = 10000)
-help(NormalizeData)
 # Find variable features
 dataObject.pseudo <- FindVariableFeatures(dataObject.pseudo, selection.method = "vst", nfeatures = 2000)
 
@@ -67,48 +71,9 @@ dataObject.pseudo <- RunPCA(dataObject.pseudo, features = VariableFeatures(objec
 # Visualize the expression of a specific gene
 FeaturePlot(dataObject.pseudo, features = "Rbfox3")
 
-# Visualize the distribution of expression levels
-pdf(paste0("../results/sex_check/violin_Xist.pdf"), width = 8.5, height = 4)
-VlnPlot(dataObject.pseudo, features = "Xist", group.by = "sample")
-dev.off()
-
-pdf(paste0("../results/sex_check/violin_Uty.pdf"), width = 8.5, height = 4)
-VlnPlot(dataObject.pseudo, features = "Uty", group.by = "sample")
-dev.off()
-
-
 pseudo_bulk_counts <- GetAssayData(dataObject.pseudo, layer = "counts")
 pseudo_bulk_counts <- NormalizeData(pseudo_bulk_counts)
 df_norm <- as.matrix(pseudo_bulk_counts)
-
-Uty <- subset(df_norm, rownames(df_norm) == "Uty")
-Xist <- subset(df_norm, rownames(df_norm) == "Xist")
-
-library(reshape2)
-genes <- rbind(Uty, Xist)
-genes_melt <- melt(genes)
-
-# Extract sample ID
-genes_melt$sampleID <- sapply(strsplit(as.character(genes_melt$Var2), '_'), '[', 1)
-genes_melt$reported_sex <- sapply(strsplit(as.character(genes_melt$Var2), '_'), '[', 3)
-
-# Reshape data to wide format for plotting
-data_wide <- reshape(genes_melt, timevar = "Var1", idvar = "Var2", direction = "wide")
-
-# Specify the sample ID to be highlighted
-highlight_sample <- "P-68"
-
-# Add a column for coloring
-data_wide$color <- ifelse(data_wide$sampleID.Uty == highlight_sample, highlight_sample, "Other")
-
-# Plot the data
-ggplot(data_wide, aes(x = value.Xist, y = value.Uty, color = color)) +
-  geom_point(size = 3) +
-  scale_color_manual(values = c("gray", "red")) + # Highlight the specific sample in red and others in black
-  labs(x = "Xist Expression", y = "Uty Expression") +
-  theme_minimal() +
-  theme(legend.title = element_blank())
-
 ```
 
 # Expression heatmap for each cell type, all expressed genes 
@@ -117,7 +82,7 @@ ggplot(data_wide, aes(x = value.Xist, y = value.Uty, color = color)) +
 col = list(
   strain = c("PS19" = "orange", "WT" = "yellow"),
   sex = c("Male" = "green", "Female" = "purple"),
-  timepoint = c("3" = "red", "0" = "blue")
+  timepoint = c("3" = "black", "0" = "gray")
 )
 
 # Loop over each cell type
@@ -162,7 +127,7 @@ for (cell_type in cell_types) {
 col = list(
   strain = c("PS19" = "orange", "WT" = "yellow"),
   sex = c("Male" = "green", "Female" = "purple"),
-  timepoint = c("3" = "red", "0" = "blue")
+  timepoint = c("3" = "black", "0" = "gray")
 )
 
 # Loop over each cell type
@@ -172,7 +137,7 @@ for (cell_type in cell_types) {
 
   DEGs <- read.delim(paste0("../results/DEGs/DESeq2_pseudobulk/", cell_type,
                             "_3_vs_0_hours_comparison_pseudo_bulk_with_covariates.txt"))
-  gene_filter <- subset(DEGs, (padj < 0.05 & log2FoldChange > 0.25) | ((padj < 0.05 & log2FoldChange < -0.25)))
+  gene_filter <- subset(DEGs, (padj < 0.1 & log2FoldChange > 0) | ((padj < 0.1 & log2FoldChange < -0)))
   df_filtered <- df_filtered[gene_filter$gene, ]
   
   # Extract annotations from column names
@@ -196,7 +161,7 @@ for (cell_type in cell_types) {
 
   
   # Save the heatmap as a PDF
-  pdf(paste0("../results/heatmap/", cell_type, "_expression_3_vs_0_hours_DEGs_q0.05_log2FC0.25.pdf"),
+  pdf(paste0("../results/heatmap/", cell_type, "_expression_3_vs_0_hours_DEGs_q0.1.pdf"),
       width = 14,
       height = 10)
   draw(heatmap_plot)
@@ -210,9 +175,10 @@ for (cell_type in cell_types) {
 col = list(
   strain = c("PS19" = "orange", "WT" = "yellow"),
   sex = c("Male" = "green", "Female" = "purple"),
-  timepoint = c("3" = "red", "0" = "blue")
+  timepoint = c("3" = "black", "0" = "gray")
 )
-
+   
+cell_types <- c("neuron", "interneuron", "astrocyte", "polydendrocyte", "fibroblast", "mural", "microglia")
 # Loop over each cell type
 for (cell_type in cell_types) {
   # Filter the data for the current cell type
@@ -220,7 +186,7 @@ for (cell_type in cell_types) {
 
   DEGs <- read.delim(paste0("../results/DEGs/DESeq2_pseudobulk/", cell_type,
                             "_PS19_vs_WT_comparison_pseudo_bulk_with_covariates.txt"))
-  gene_filter <- subset(DEGs, (padj < 0.05 & log2FoldChange > 0.25) | ((padj < 0.05 & log2FoldChange < -0.25)))
+  gene_filter <- subset(DEGs, (padj < 0.1 & log2FoldChange > 0.0) | ((padj < 0.1 & log2FoldChange < -0)))
   df_filtered <- df_filtered[gene_filter$gene, ]
   
   # Extract annotations from column names
@@ -244,7 +210,7 @@ for (cell_type in cell_types) {
 
   
   # Save the heatmap as a PDF
-  pdf(paste0("../results/heatmap/", cell_type, "_expression_PS19_vs_WT_DEGs_q0.05_log2FC0.25.pdf"),
+  pdf(paste0("../results/heatmap/", cell_type, "_expression_PS19_vs_WT_DEGs_q0.1.pdf"),
       width = 14,
       height = 10)
   draw(heatmap_plot)
@@ -289,7 +255,7 @@ dev.off()
 library(dplyr)
 
 # Define the list of cell types and time points
-time_points <- c("0hours", "3hours")
+time_points <- c("0_hours", "3_hours")
 
 # Initialize an empty list to store data frames
 deg_list <- list()
@@ -298,7 +264,7 @@ deg_list <- list()
 for (cell_type in cell_types) {
   for (time_point in time_points) {
     # Construct the file name
-    file_name <- paste0("../results/DEGs/MAST/", cell_type, "_PS19_vs_WT_comparison_", time_point, "_only.txt")
+    file_name <- paste0("../results/DEGs/DESeq2_pseudobulk/", cell_type, "_PS19_vs_WT_comparison_", time_point, "_only.txt")
     
     # Read the data
     deg_data <- read.table(file_name, header = TRUE, sep = "\t")
@@ -317,27 +283,25 @@ deg_combined <- bind_rows(deg_list)
 
 # Filter the data for 0 hours
 deg_0hours <- deg_combined %>%
-  filter(time_point == "0hours") %>%
-  select(gene, avg_log2FC, cell_type)
+  filter(time_point == "0_hours") %>%
+  select(gene, log2FoldChange, cell_type)
 
 # Filter the data for 0 hours
 deg_3hours <- deg_combined %>%
-  filter(time_point == "3hours") %>%
-  select(gene, avg_log2FC, cell_type)
+  filter(time_point == "3_hours") %>%
+  select(gene, log2FoldChange, cell_type)
 
 DEG_combined <- merge(deg_0hours, deg_3hours, by = c("gene", "cell_type"), suffixes = c("_0h", "_3h"))
 head(DEG_combined)
-
-# Compute correlation matrix by cell_type
-correlation_results <- DEG_combined %>%
-  group_by(cell_type) %>%
-  summarise(correlation = cor(avg_log2FC_0h, avg_log2FC_3h))
 ```
 
 
 # Plot the data
 ```{r}
-ggplot(DEG_combined, aes(x = avg_log2FC_0h, y = avg_log2FC_3h)) +
+DEG_combined2 <- na.omit(DEG_combined)
+
+subset(DEG_combined2, gene == "Ctsb")
+ggplot(DEG_combined2, aes(x = log2FoldChange_0h, y = log2FoldChange_3h)) +
   geom_point() +
   geom_smooth(method = "lm", se = FALSE, color = "blue") +
   facet_wrap(~ cell_type, ncol = 3) +
@@ -348,5 +312,64 @@ ggplot(DEG_combined, aes(x = avg_log2FC_0h, y = avg_log2FC_3h)) +
     y = "3 hours log2FC"
   ) +
   theme_minimal()
+```
+
+```{r}
+markers.to.plot <-
+  c(
+"Clu", 
+"Gfap", 
+"Aqp4", 
+"Gja1", 
+"Cldn5", 
+"Adgrf5", 
+"Flt1", 
+"Col1a1", 
+"Col1a2", 
+"Dcn", 
+"Hexb", 
+"C1qa", 
+"C1qc", 
+"C1qb", 
+"Tmem119", 
+"Itgam", 
+"Tyrobp", 
+"P2ry12", 
+"Aif1", 
+"Rbfox3", 
+"Snap25", 
+"Syt1", 
+"Gad1", 
+"Gad2", 
+"Plp1", 
+"Mbp", 
+"Mog", 
+"Olig1", 
+"Pdgfra", 
+"Vcan", 
+"Tnr", 
+"Acta2", 
+"Rgs5", 
+"Vtn", 
+"Myl5"
+  )
+
+dataObject.pseudo$time
+dot_ind <- DotPlot(dataObject.pseudo,
+                   features = markers.to.plot, 
+                   split.by = "time", 
+                   cluster.idents = FALSE,
+                   cols = c("blue", "red"),
+                   dot.scale = 8) + RotatedAxis()
+dot_ind
+
+pdf(
+  paste0(
+    "../results/dot_plot/",
+    treatment,
+    "_individual_clusters_clean_group_no_sex.pdf"
+  ),width = 11, height = 9.5)
+dot_ind
+dev.off()
 ```
 

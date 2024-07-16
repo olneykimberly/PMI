@@ -24,31 +24,6 @@ library(ShinyCell)
 treatment <- c("PMI")
 ```
 
-# Read RDS 
-```{r read_pbj}
-dataObject.annotated <- readRDS(paste0("../rObjects/",treatment,".dataObject.glia.clean.rds"))
-# inspect 
-dataObject.annotated <- dataObject.glia.clean
-DefaultAssay(dataObject.annotated) <- "RNA"
-dataObject.annotated <- NormalizeData(dataObject.annotated)
-```
-
-
-```{r reorder_metadata}
-metadata <- colnames(dataObject.annotated@meta.data)
-metadata <- metadata[c(34,1:16)]
-sc.config <- createConfig(obj = dataObject.annotated, meta.to.include = metadata)
-```
-
-# Output directory
-```{r}
-makeShinyApp(obj = dataObject.annotated,
-             scConf = sc.config, 
-             gene.mapping = TRUE,
-             shiny.dir = paste0("../shiny_apps/PMI_glia_cell_types"),
-             shiny.title = paste0("Glia cell types only"))
-```
-
 
 # Read RDS 
 ```{r read_pbj}
@@ -62,7 +37,7 @@ dataObject.annotated <- NormalizeData(dataObject.annotated)
 
 ```{r reorder_metadata}
 metadata <- colnames(dataObject.annotated@meta.data)
-metadata <- metadata[c(34,1:16)]
+metadata <- metadata[c(34,1:16, 23:33, 39)]
 sc.config <- createConfig(obj = dataObject.annotated, meta.to.include = metadata)
 ```
 
@@ -71,7 +46,9 @@ sc.config <- createConfig(obj = dataObject.annotated, meta.to.include = metadata
 makeShinyApp(obj = dataObject.annotated,
              scConf = sc.config, 
              gene.mapping = TRUE,
-             shiny.dir = paste0("../shiny_apps/PMI_all_cell_types"),
+             shiny.dir = paste0("../shiny_apps/PMI_final_shiny"),
              shiny.title = paste0("PMI"))
+```
+```{r}
 ```
 

@@ -30,6 +30,14 @@ metadata <-
 
 pathToRef = c("/research/labs/neurology/fryer/projects/references/mouse/refdata-gex-GRCm39-2024-A")
 pathToRawData = c("/research/labs/neurology/fryer/projects/PMI/")
+gene_info <- read.delim(paste0(pathToRef, "/star/geneInfo.tab"), header = FALSE)
+gene_info = gene_info[-1,]
+gene_info <- gene_info %>% 
+  rename(
+    V1 = "gene_ID",
+    V2 = "gene_name", 
+    V3 = "type"
+  )
 
 # cell cycle 
 #cell_cycle_markers <- read.delim("/research/labs/neurology/fryer/projects/references/mouse/cell_cycle_mouse.tsv")

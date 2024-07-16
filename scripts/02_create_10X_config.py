@@ -28,12 +28,18 @@ header = '''{{
     "Commment_Input_Output_Directories": "This section specifies the input and output directories for scripts",
     "cellranger_dir" : "../cellranger/", 
     "cellbender_dir" : "../cellbender/",
+    "cellrangerMAPT_dir" : "../cellrangerMAPT/",
     "fastq_path" : "/research/labs/neurology/fryer/projects/PMI/2024_snRNA/",
 
-    "Comment_Reference" : "This section specifies the location of the Sus scrofa, Ensembl reference genome",
+    "Comment_Reference" : "This section specifies the location of the mouse reference genome",
     "Mmusculus_dir" : "/research/labs/neurology/fryer/projects/references/mouse/refdata-gex-GRCm39-2024-A/",
     "Mmusculus_gtf" : "/research/labs/neurology/fryer/projects/references/mouse/refdata-gex-GRCm39-2024-A/genes/genes.gtf",
     "Mmusculus_fa" : "/research/labs/neurology/fryer/projects/references/mouse/refdata-gex-GRCm39-2024-A/fasta/genome.fa",
+    
+    "Comment_MAPT_Reference" : "This section specifies the location of the mouse with human MAPT reference ",
+    "MmusculusMAPT_gtf" : "/research/labs/neurology/fryer/projects/references/mouse/human_MAPT_transgenic_mouse_reference/refdata-gex-GRCm39-2024-A_with_human_MAPT/genes/genes.gtf",
+    "MmusculusMAPT_fa" : "/research/labs/neurology/fryer/projects/references/mouse/human_MAPT_transgenic_mouse_reference/refdata-gex-GRCm39-2024-A_with_human_MAPT/fasta/genome.fa",
+    "MmusculusMAPT_dir" : "/research/labs/neurology/fryer/projects/references/mouse/human_MAPT_transgenic_mouse_reference/refdata-gex-GRCm39-2024-A_with_human_MAPT/cellranger_mouse_ref_with_human_MAPT/",
 
     "Comment_Sample_Info": "The following section lists the samples that are to be analyzed",
     "sample_names": {0},
@@ -64,7 +70,7 @@ with open('sampleReadGroupInfo_snRNA.txt', 'r') as infile:
         # create a shorter sample name
         stemName = sampleAttributes[2] + "_" + sampleAttributes[3]
         stemID = sampleAttributes[2] + '_' + sampleAttributes[3]
-        fullName = sampleAttributes[2] + '_' + sampleAttributes[3] + '_' + sampleAttributes[5] + '_' + sampleAttributes[6] + '_' + sampleAttributes[7] 
+        fullName = sampleAttributes[2] + '_' + sampleAttributes[5] + '_' + sampleAttributes[6] + '_' + sampleAttributes[7] 
         shortName1 = stemName + '_R1'
         shortName2 = stemName + '_R2'
 
@@ -84,7 +90,7 @@ with open('sampleReadGroupInfo_snRNA.txt', 'r') as infile:
 
         out = '''
     "{0}":{{
-        "fq_path": "/research/labs/neurology/fryer/projects/PMI/2024_snRNA/01.RawData/",
+        "fq_path": "/research/labs/neurology/fryer/projects/PMI/2024_snRNA/01.RawData/{7}/",
         "fq1": "{1}",
         "fq2": "{2}",
         "ID": "{3}",
@@ -93,7 +99,7 @@ with open('sampleReadGroupInfo_snRNA.txt', 'r') as infile:
         "LB": "{6}",
         "PL": "Illumina"
         '''
-        outfile.write(out.format(stemName, sampleName1, sampleName2, stemName, stemName, PU, LB))
+        outfile.write(out.format(stemName, sampleName1, sampleName2, stemName, fullName, PU, LB, stemName))
         if (counter == numSamples):
             outfile.write("}\n}")
         else:

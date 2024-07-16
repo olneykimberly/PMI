@@ -1,0 +1,405 @@
+---
+title: "DESeq2 differential expression"
+author: "Kimberly Olney, PhD"
+date: "05/28/2024"
+output:
+  html_document:
+    theme: cerulean
+    toc: true
+    toc_float: true
+editor_options: 
+  chunk_output_type: inline
+---
+
+Differential expression was completed for the following comparisons:
+1.	PS19 vs WT within each cell type. All samples.\
+2.	3 hours versus 0 hours within each cell type. All samples.\ 
+3.	3 hours versus 0 hours within each cell type. PS19 only.\   
+4.	3 hours versus 0 hours within each cell type. WT only.\ 
+5.	3 hours versus 0 hours within each cell type. XX female only.\ 
+6.	3 hours versus 0 hours within each cell type. XY male only.\ 
+7.	PS19 vs WT within each cell type. 0 hours only.\
+8.	PS19 vs WT within each cell type. 3 hours only.\
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(root.dir = ".", echo=TRUE, warning=FALSE, message=FALSE)
+```
+
+# Libraris, paths, colors
+https://satijalab.org/seurat/articles/essential_commands.html 
+```{r echo=FALSE, message=FALSE}
+source(here::here("/research/labs/neurology/fryer/m239830/PMI/scripts", "file_paths_and_colours.R"))
+treatment <- "PMI"
+color.panel <- dittoColors()
+metadata <- subset(metadata, sampleID != "P_60" & sampleID != "B_6")
+metadata$sampleID <- factor(metadata$sampleID, levels = c(metadata$sampleID))
+samples <- metadata$sampleID 
+```
+
+# Read in object
+```{r read_object}
+# read object
+dataObject <- readRDS(file = paste0("../rObjects/", treatment, ".dataObject.clean.rds"))
+# inspect
+dataObject
+Layers(dataObject)
+# List of cell types to analyze
+cell_types <- c(unique(dataObject$individual_clusters))
+```
+```{r protein_coding}
+protein_coding_genes <- subset(gene_info, type == "protein_coding")
+```
+
+# Check 
+```{r }
+# Group
+table(dataObject$group) 
+```
+
+# DESeq all samples 
+```{r DESeq_all_samples}
+info <- (dataObject@meta.data)
+
+output_dir <- "../results/DEGs/FindMarkers_DESeq2_pseudobulk"
+# List of cell types to analyze
+cell_types <- c(unique(dataObject$individual_clusters))
+# Pseudo-bulk the counts based on sample, strain, sex, time, and cell type
+dataObject.pseudo <- AggregateExpression(
+    dataObject, 
+    assays = "RNA", # DESeq works with raw counts
+    features = protein_coding_genes$gene_name,
+    return.seurat = TRUE, 
+    group.by = c("sample", "strain", "sex", "time", "individual_clusters")
+)
+
+# Loop through each cell type to perform differential expression analysis for each condition
+for (cell_type in cell_types) {
+    # Strain comparison with covariates
+    dataObject.pseudo$celltype.strain <- paste(dataObject.pseudo$individual_clusters, dataObject.pseudo$strain, sep = "_")
+    Idents(dataObject.pseudo) <- "celltype.strain"
+    DEGs <- FindMarkers(object = dataObject.pseudo, 
+                         ident.1 = paste0(cell_type, "_PS19"), 
+                         ident.2 = paste0(cell_type, "_WT"),
+                         test.use = "DESeq2")
+  DEGs$percent_difference <- abs(DEGs$pct.1 - DEGs$pct.2) # percent difference 
+  colnames(DEGs)[c(3,4)] <- c("percent_PS19","percent_WT") # define the percent columns 
+  DEGs$gene <- rownames(DEGs) # set row names as column gene 
+  DEGs <- DEGs[,c(7,1,2,5,3,4,6)] # reorder 
+    strain_output_path <- file.path(output_dir, paste0(cell_type, "_PS19_vs_WT_comparison_pseudobulk.txt"))
+    write.table(DEGs, file = strain_output_path, sep = "\t", quote = FALSE, row.names = FALSE)
+    rm(dds, res, DEGs) # clean up 
+    
+    # Time comparison with covariates
+    dataObject.pseudo$celltype.time <- paste(dataObject.pseudo$individual_clusters, dataObject.pseudo$time, sep = "_")
+    Idents(dataObject.pseudo) <- "celltype.time"
+    DEGs <- FindMarkers(object = dataObject.pseudo, 
+                         ident.1 = paste0(cell_type, "_3"), 
+                         ident.2 = paste0(cell_type, "_0"),
+                         test.use = "DESeq2")
+      DEGs$percent_difference <- abs(DEGs$pct.1 - DEGs$pct.2) # percent difference 
+  colnames(DEGs)[c(3,4)] <- c("percent_3","percent_0") # define the percent columns 
+  DEGs$gene <- rownames(DEGs) # set row names as column gene 
+  DEGs <- DEGs[,c(7,1,2,5,3,4,6)] # reorder 
+    time_output_path <- file.path(output_dir, paste0(cell_type, "_3_vs_0_hours_comparison_pseudobulk.txt"))
+    write.table(DEGs, file = time_output_path, sep = "\t", quote = FALSE, row.names = FALSE)
+    rm(DEGs) # clean up 
+}
+rm(dataObject.pseudo)
+```
+
+
+# DESeq within a group 
+#### PS19 vs WT
+```{r}
+output_dir <- "../results/DEGs/FindMarkers_DESeq2_pseudobulk"
+
+# Function to construct the output filename
+construct_filename <- function(cell_type, comparison, subgroup) {
+    paste0(cell_type, "_", comparison, "_comparison_", subgroup, ".txt")
+}
+
+# List of conditions to subset data
+conditions <- list(
+    list(subset_expr = "time == '0'", group_by = "strain", comparison = "PS19_vs_WT", subgroup = "0_hours_only", design_formula = ~ sex + strain, DES_group_by = c("sample", "strain", "sex", "individual_clusters")),
+    list(subset_expr = "time == '3'", group_by = "strain", comparison = "PS19_vs_WT", subgroup = "3_hours_only", design_formula = ~ sex + strain, DES_group_by = c("sample", "strain", "sex", "individual_clusters")),
+    list(subset_expr = "sex == 'Female'", group_by = "strain", comparison = "PS19_vs_WT", subgroup = "XX_female_only", design_formula = ~ time + strain, DES_group_by = c("sample", "strain", "time", "individual_clusters")),
+    list(subset_expr = "sex == 'Male'", group_by = "strain", comparison = "PS19_vs_WT", subgroup = "XY_male_only", design_formula = ~ time + strain, DES_group_by = c("sample", "strain", "time", "individual_clusters"))
+)
+
+# Loop through each cell type and condition
+for (cell_type in cell_types) {
+    for (condition in conditions) {
+        cat("Processing condition:", condition$subset_expr, "\n")
+        
+        # Subset dataObject based on the condition using logical indexing
+        subset_indices <- with(dataObject@meta.data, eval(parse(text = condition$subset_expr)))
+        dataObject_subset <- subset(dataObject, cells = rownames(dataObject@meta.data)[subset_indices])
+        
+        cat("Number of cells after subsetting:", nrow(dataObject_subset@meta.data), "\n")
+        
+        if (nrow(dataObject_subset@meta.data) > 0) {
+            # Pseudo-bulk the counts for the subsetted data
+            dataObject.pseudo <- AggregateExpression(
+                dataObject_subset, 
+                features = protein_coding_genes$gene_name,
+                assays = "RNA", 
+                return.seurat = TRUE, 
+                group.by = condition$DES_group_by
+            )
+
+            # Define the identifier for the current cell type
+            dataObject.pseudo$celltype.strain <- paste(dataObject.pseudo$individual_clusters, dataObject.pseudo$strain, sep = "_")
+            Idents(dataObject.pseudo) <- "celltype.strain"
+            DEGs <- FindMarkers(object = dataObject.pseudo, 
+                         ident.1 = paste0(cell_type, "_PS19"), 
+                         ident.2 = paste0(cell_type, "_WT"),
+                         test.use = "DESeq2")
+        DEGs$percent_difference <- abs(DEGs$pct.1 - DEGs$pct.2) # percent difference 
+        colnames(DEGs)[c(3,4)] <- c("percent_PS19","percent_WT") # define the percent columns 
+        DEGs$gene <- rownames(DEGs) # set row names as column gene 
+        DEGs <- DEGs[,c(7,1,2,5,3,4,6)] # reorder 
+                
+                # Construct the output filename
+                output_filename <- construct_filename(cell_type, condition$comparison, condition$subgroup)
+                output_path <- file.path(output_dir, output_filename)
+                write.table(DEGs, file = output_path, sep = "\t", quote = FALSE, row.names = FALSE)
+                rm(dds, res, DEGs) # clean up 
+    }}}
+rm(dataObject_subset, dataObject.pseudo)
+
+```
+
+#### 3 vs 0 hours
+```{r}
+output_dir <- "../results/DEGs/FindMarkers_DESeq2_pseudobulk"
+
+# Function to construct the output filename
+construct_filename <- function(cell_type, comparison, subgroup) {
+    paste0(cell_type, "_", comparison, "_comparison_", subgroup, ".txt")
+}
+
+
+# List of conditions to subset data
+conditions <- list(
+    list(subset_expr = "strain == 'PS19'", group_by = "time", comparison = "3_vs_0_hours", subgroup = "WT_only", design_formula = ~ sex + time, DES_group_by = c("sample", "time", "sex", "individual_clusters")),
+    list(subset_expr = "strain == 'WT'", group_by = "time", comparison = "3_vs_0_hours", subgroup = "PS19_only", design_formula = ~ sex + time, DES_group_by = c("sample", "time", "sex", "individual_clusters")))
+
+# Loop through each cell type and condition
+for (cell_type in cell_types) {
+    for (condition in conditions) {
+        cat("Processing condition:", condition$subset_expr, "\n")
+        
+        # Subset dataObject based on the condition using logical indexing
+        subset_indices <- with(dataObject@meta.data, eval(parse(text = condition$subset_expr)))
+        dataObject_subset <- subset(dataObject, cells = rownames(dataObject@meta.data)[subset_indices])
+        
+        cat("Number of cells after subsetting:", nrow(dataObject_subset@meta.data), "\n")
+        
+        if (nrow(dataObject_subset@meta.data) > 0) {
+            # Pseudo-bulk the counts for the subsetted data
+            dataObject.pseudo <- AggregateExpression(
+                dataObject_subset, 
+                features = protein_coding_genes$gene_name,
+                assays = "RNA", 
+                return.seurat = TRUE, 
+                group.by = condition$DES_group_by
+            )
+
+            # Define the identifier for the current cell type
+            dataObject.pseudo$celltype.time <- paste(dataObject.pseudo$individual_clusters, dataObject.pseudo$time, sep = "_")
+            Idents(dataObject.pseudo) <- "celltype.time"
+            DEGs <- FindMarkers(object = dataObject.pseudo, 
+                         ident.1 = paste0(cell_type, "_3"), 
+                         ident.2 = paste0(cell_type, "_0"),
+                         test.use = "DESeq2")
+        DEGs$percent_difference <- abs(DEGs$pct.1 - DEGs$pct.2) # percent difference 
+        colnames(DEGs)[c(3,4)] <- c("percent_3","percent_0") # define the percent columns 
+        DEGs$gene <- rownames(DEGs) # set row names as column gene 
+        DEGs <- DEGs[,c(7,1,2,5,3,4,6)] # reorder 
+                
+                # Construct the output filename
+                output_filename <- construct_filename(cell_type, condition$comparison, condition$subgroup)
+                output_path <- file.path(output_dir, output_filename)
+                write.table(DEGs, file = output_path, sep = "\t", quote = FALSE, row.names = FALSE)
+                rm(dds, res, DEGs) # clean up 
+    }}}
+rm(dataObject_subset, dataObject.pseudo)
+```
+
+# PCA post pseudo-bulk 
+```{r}
+# Step 1: Pseudo-bulk the counts based on sample, strain, sex, time, and cell type
+dataObject.pseudo <- AggregateExpression(
+    dataObject, 
+    assays = "RNA", 
+    features = protein_coding_genes$gene_name,
+    return.seurat = TRUE, 
+    group.by = c("sample", "strain", "sex", "time", "individual_clusters")
+)
+
+# Step 2: Normalize the data
+dataObject.pseudo <- NormalizeData(dataObject.pseudo, normalization.method = "LogNormalize", scale.factor = 10000)
+
+# Step 3: Find variable features
+dataObject.pseudo <- FindVariableFeatures(dataObject.pseudo, selection.method = "vst", nfeatures = 2000)
+
+# Step 4: Scale the data
+dataObject.pseudo <- ScaleData(dataObject.pseudo, features = rownames(dataObject.pseudo))
+
+# Step 5: Run PCA
+dataObject.pseudo <- RunPCA(dataObject.pseudo, features = VariableFeatures(object = dataObject.pseudo))
+
+# Step 6: Visualize PCA
+DimPlot(dataObject.pseudo, reduction = "pca", label = TRUE) + NoLegend()
+
+pdf(paste0("../results/pca/PMI_DESeq2_psuedobulk_cell_type.pdf"), height = 5, width = 6.5)
+DimPlot(dataObject.pseudo, reduction = "pca", group.by = "individual_clusters")
+dev.off()
+
+# Step 7: Extract PC scores and metadata
+pc_scores <- as.data.frame(Embeddings(dataObject.pseudo, reduction = "pca")[, 1:10]) # Extract PC1 to PC10
+# Step 7: Extract metadata
+metadata <- as.data.frame(dataObject.pseudo@meta.data)
+
+# Step 8: Combine PC scores and metadata
+combined_data <- cbind(pc_scores, metadata)
+
+library(variancePartition)
+
+# Define the formula for CCA
+form_PCA <- ~ time +
+  sex +
+  strain +
+  individual_clusters +
+  PC_1 +
+  PC_2 +
+  PC_3 +
+  PC_4 +
+  PC_5 +
+  PC_6 +
+  PC_7 +
+  PC_8 +
+  PC_9 +
+  PC_10 
+
+# Perform Canonical Correlation Analysis
+C <- canCorPairs(form_PCA, combined_data)
+
+# Define a function to compute p-values for correlation
+cor.mtest <- function(C, ...) {
+    C <- as.matrix(C)
+    n <- ncol(C)
+    p.mat <- matrix(NA, n, n)
+    diag(p.mat) <- 0
+    for (i in 1:(n - 1)) {
+        for (j in (i + 1):n) {
+            tmp <- cor.test(C[, i], C[, j], ...)
+            p.mat[i, j] <- p.mat[j, i] <- tmp$p.value
+        }
+    }
+    colnames(p.mat) <- rownames(p.mat) <- colnames(C)
+    p.mat
+}
+
+# Compute p-values for correlation
+p.mat <- cor.mtest(C)
+
+# Define colors for the heatmap
+col <- colorRampPalette(c("#4477AA", "#77AADD", "#FFFFFF", "#EE9988", "#BB4444"))
+library(corrplot)
+# Plot correlation matrix using corrplot
+corrplot(C, method = "color", col = col(200),  
+         type = "upper", order = "hclust", 
+         addCoef.col = "black", 
+         tl.col = "black", tl.srt = 45, 
+         diag = FALSE, col.lim = c(0, 1))
+
+# PCA 
+DimPlot(dataObject.pseudo, reduction = "pca", group.by = "individual_clusters")
+
+```
+
+
+
+## Other 
+```{r}
+library(dittoSeq)
+dittoDimPlot(dataObject, "sex")
+library(SummarizedExperiment)
+
+pseudo_bulk_counts <- GetAssayData(dataObject.pseudo, slot = "counts")
+
+# Alternate accessor function with the same result
+pseudo_bulk_meta <- dataObject.pseudo@meta.data
+
+pseudo_bulk_meta$sex
+
+bulkSE <- SummarizedExperiment(
+    assays = list(counts = pseudo_bulk_counts),
+    colData = data.frame(pseudo_bulk_meta)
+)
+
+# Create the heatmap
+dittoHeatmap(dataObject,
+             genes_to_visualize,
+             annot.by = c("time", "sex"), 
+             order.by = "time",  # This orders the columns by the "time" annotation
+             scaled.to.max = FALSE,
+             show_colnames = FALSE,
+             show_rownames = TRUE)
+
+help(dittoHeatmap)
+dittoBarPlot(bulkSE, "sex", group.by = "conditions")
+```
+
+```{r}
+library(Seurat)
+library(pheatmap)
+
+# Get unique cell types
+cell_types <- unique(dataObject$individual_clusters)
+
+# Initialize a list to store the top genes for each cell type
+top_genes_list <- list()
+
+# Iterate over cell types
+for (cell_type in cell_types) {
+  # Subsetting by cell type
+  celltype_data <- subset(dataObject, ident = cell_type)
+  
+  # Calculate average expression across all cells in this cell type
+  avg_expression <- AverageExpression(celltype_data)
+  
+  # Order genes by average expression
+  top_genes <- names(sort(avg_expression, decreasing = TRUE))[1:10]
+  
+  # Add top genes to the list
+  top_genes_list[[cell_type]] <- top_genes
+}
+
+# Get the union of top genes across all cell types
+all_top_genes <- unique(unlist(top_genes_list))
+
+# Create a matrix to store the expression data for top genes
+heatmap_data <- matrix(NA, nrow = length(all_top_genes), ncol = ncol(dataObject), dimnames = list(all_top_genes, colnames(dataObject)))
+
+# Fill in the matrix with expression data
+for (cell_type in cell_types) {
+  # Subsetting by cell type
+  celltype_data <- subset(seurat_object, ident = cell_type)
+  
+  # Get the top genes for this cell type
+  top_genes <- top_genes_list[[cell_type]]
+  
+  # Fill in the expression data for top genes in this cell type
+  heatmap_data[top_genes, colnames(seurat_object)[IdentifySeuratObject(celltype_data)]] <- celltype_data@assays$RNA@data[top_genes, ]
+}
+
+# Generate the heatmap
+pheatmap(heatmap_data,
+         cluster_rows = FALSE,
+         cluster_cols = FALSE,
+         show_rownames = TRUE,
+         show_colnames = TRUE,
+         main = "Top 10 most highly expressed genes in each cell type")
+```

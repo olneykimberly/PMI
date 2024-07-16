@@ -1,0 +1,1551 @@
+---
+title: "DEG excel tables and volcano plots"
+author: "Kimberly Olney, PhD"
+date: "05/28/2024"
+output:
+  html_document:
+    theme: cerulean
+    toc: true
+    toc_float: true
+editor_options: 
+  chunk_output_type: inline
+---
+
+Differential expression was completed for the following comparisons:
+1.	PS19 vs WT within each cell type. All samples.\
+2.	3 hours versus 0 hours within each cell type. All samples.\ 
+3.	3 hours versus 0 hours within each cell type. PS19 only.\   
+4.	3 hours versus 0 hours within each cell type. WT only.\ 
+5.	3 hours versus 0 hours within each cell type. XX female only.\ 
+6.	3 hours versus 0 hours within each cell type. XY male only.\ 
+7.	PS19 vs WT within each cell type. 0 hours only.\
+8.	PS19 vs WT within each cell type. 3 hours only.\
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(root.dir = ".", echo=TRUE, warning=FALSE, message=FALSE)
+```
+
+# Libraris, paths, colors
+https://satijalab.org/seurat/articles/essential_commands.html 
+```{r echo=FALSE, message=FALSE}
+source(here::here("/research/labs/neurology/fryer/m239830/PMI/scripts", "file_paths_and_colours.R"))
+treatment <- "PMI"
+color.panel <- dittoColors()
+metadata <- subset(metadata, sampleID != "P_60" & sampleID != "B_6")
+metadata$sampleID <- factor(metadata$sampleID, levels = c(metadata$sampleID))
+samples <- metadata$sampleID 
+```
+
+# Read in object
+```{r read_object}
+# read object
+dataObject <- readRDS(file = paste0("../rObjects/", treatment, ".dataObject.clean.rds"))
+# inspect
+dataObject
+Layers(dataObject)
+# List of cell types to analyze
+cell_types <- c(unique(dataObject$individual_clusters))
+```
+
+
+# Volcano plot
+```{r volcano_set_up}
+# Set up
+qval = 0.1
+posFC = 0
+negFC = -0
+FC = 0
+```
+
+
+#----- MAST
+### All samples: 3 vs 0 hours 
+```{r volcano_time, warning=FALSE}
+for (i in cell_types) {
+  ind1_vs_ind2 <- read.delim(paste0("../results/DEGs/MAST/", i, "_3_vs_0_hours_comparison.txt"))
+  ind1_vs_ind2 <- na.omit(ind1_vs_ind2)
+  if (!any(ind1_vs_ind2$p_val_adj < 0.1, na.rm = TRUE)) {
+    # If there are no significant DEGs, create a volcano plot with all points in gray
+    p <- ggplot(data = ind1_vs_ind2, aes(x = avg_log2FC, y = -log10(p_val))) +
+      geom_point(alpha = 0.8, size = 2, color = "gray") +
+      theme_bw() +
+      theme(legend.position = "none",
+            axis.title.x = element_text(size = 10),
+            axis.text.x = element_text(size = 10),
+            axis.title.y = element_text(size = 10),
+            axis.text.y = element_text(size = 10)) +
+      geom_vline(xintercept = negFC,
+                 colour = "#000000",
+                 linetype = "dashed") +
+      geom_vline(xintercept = posFC,
+                 colour = "#000000",
+                 linetype = "dashed") +
+      labs(x = expression(log[2](FC)),
+           y = expression(-log[10] ~ "(" ~ italic("p") ~ "-value)")) +
+      ggtitle(paste0(i, ": 3 hours vs 0 hours \nNo significant DEGs found"))
+    
+    pdf(paste0("../results/volcanoes/MAST/", i, "_3_vs_0hours_all_samples.pdf"), height = 8, width = 8)
+    print(p)
+    dev.off()
+  } else {
+    color_values <- vector()
+max <- nrow(ind1_vs_ind2)
+  for (row in 1:max) {
+    if (!is.na(ind1_vs_ind2$p_val_adj[row])) {  # Check for NA values in p_val_adj
+      if (ind1_vs_ind2$p_val_adj[row] < qval) {
+        if (ind1_vs_ind2$avg_log2FC[row] > posFC) {
+          color_values <- c(color_values, 1)
+        } else if (ind1_vs_ind2$avg_log2FC[row] < negFC) {
+          color_values <- c(color_values, 2)
+        } else {
+          color_values <- c(color_values, 3)
+        }
+      } else {
+        color_values <- c(color_values, 3)
+      }
+    } else {
+      color_values <- c(color_values, 3)  # Handle NA values in p_val_adj
+    }
+  }
+  ind1_vs_ind2$color_adjpval_0.05 <- factor(color_values)
+    data <- ind1_vs_ind2
+    num <- subset(data, (p_val_adj < qval & avg_log2FC < negFC) | (p_val_adj < qval & avg_log2FC > posFC))
+    num <- nrow(num)
+    if(num != 0) {
+    up <- data[data$color_adjpval_0.05 == 1,]
+    up <- up[!grepl("ENSG", up$gene),]
+    up10 <- up[1:10,]
+    upFold <- subset(up, avg_log2FC > 2)
+    upFold <- upFold[!(upFold$gene %in% up10$gene),]
+    upFold <- upFold[1:10,]
+
+    down <- data[data$color_adjpval_0.05 == 2,]
+    down <- down[!grepl("ENSG", down$gene),]
+    down10 <- down[1:10,]
+    downFold <- subset(down, avg_log2FC < -2)
+    downFold <- downFold[!(downFold$gene %in% down10$gene),]
+    downFold <- downFold[1:10,]
+
+    if (!1 %in% unique(data$color_adjpval_0.05)) {
+        my_colors <- c("blue","gray")
+      } else if (!2 %in% unique(data$color_adjpval_0.05)) {
+        my_colors <- c("red","gray")
+      } else if (!1 %in% unique(data$color_adjpval_0.05) && !2 %in% unique(data$color_adjpval_0.05)) {
+        my_colors <- c("gray")
+      } else {
+        my_colors <- c("red","blue","gray")
+      }
+      # plot
+      hadjpval <- (-log10(max(data$p_val[data$p_val_adj < qval], na.rm=TRUE)))
+      p <- ggplot(data = data, aes(x = avg_log2FC,y = -log10(p_val), color = color_adjpval_0.05)) + 
+        geom_point(alpha = 0.8, size = 2) +  
+        theme_bw() +  
+        theme(legend.position = "none") + 
+        scale_color_manual(values = my_colors) + 
+        labs(x = expression(log[2](FC)), 
+          y = expression(-log[10] ~ "(" ~ italic("p") ~ "-value)") ) +
+        theme(legend.position = "none",
+              axis.title.x = element_text(size = 10),
+              axis.text.x = element_text(size = 10),
+              axis.title.y = element_text(size = 10),
+              axis.text.y = element_text(size = 10)) +
+      geom_hline(yintercept = hadjpval,
+                 colour = "#000000",
+                 linetype = "dashed") +
+      geom_vline(xintercept = negFC,
+                 colour = "#000000",
+                 linetype = "dashed") +
+      geom_vline(xintercept = posFC,
+                 colour = "#000000",
+                 linetype = "dashed") +
+      ggtitle(paste0(i, ": 3 hours vs 0 hours \nq-value < ", qval," & |log2FC| > ", FC)) +
+      geom_text_repel(data = up10,
+                        aes(x = avg_log2FC, y= -log10(p_val), label = gene), 
+                        color = "maroon", 
+                        fontface="italic",
+                        max.overlaps = getOption("ggrepel.max.overlaps", default = 30)
+                        ) +
+      geom_text_repel(data = down10,
+                        aes(x = avg_log2FC, y= -log10(p_val), label = gene), 
+                        color = "navyblue", 
+                        fontface="italic",
+                        max.overlaps = getOption("ggrepel.max.overlaps", default = 30)
+                        ) +
+      geom_text_repel(data = upFold,
+                        aes(x = avg_log2FC, y= -log10(p_val), label = gene), 
+                        color = "maroon", 
+                        fontface="italic",
+                        max.overlaps = getOption("ggrepel.max.overlaps", default = 30)
+                        ) +
+      geom_text_repel(data = downFold,
+                        aes(x = avg_log2FC, y= -log10(p_val), label = gene), 
+                        color = "navyblue", 
+                        fontface="italic",
+                        max.overlaps = getOption("ggrepel.max.overlaps", default = 30)
+                        )
+      p
+      pdf(paste0("../results/volcanoes/MAST/", i, "_3_vs_0hours_all_samples.pdf"), height = 8, width = 8)
+      print(p)
+      dev.off()
+    } 
+  }
+}
+
+```
+
+### XX female: 3 vs 0 hours 
+```{r volcano_time_female, warning=FALSE}
+for (i in cell_types) {
+  ind1_vs_ind2 <- read.delim(paste0("../results/DEGs/MAST/", i, "_3_vs_0_hours_comparison_XX_female_only.txt"))
+  ind1_vs_ind2 <- na.omit(ind1_vs_ind2)
+  if (!any(ind1_vs_ind2$p_val_adj < 0.1, na.rm = TRUE)) {
+    # If there are no significant DEGs, create a volcano plot with all points in gray
+    p <- ggplot(data = ind1_vs_ind2, aes(x = avg_log2FC, y = -log10(p_val))) +
+      geom_point(alpha = 0.8, size = 2, color = "gray") +
+      theme_bw() +
+      theme(legend.position = "none",
+            axis.title.x = element_text(size = 10),
+            axis.text.x = element_text(size = 10),
+            axis.title.y = element_text(size = 10),
+            axis.text.y = element_text(size = 10)) +
+      geom_vline(xintercept = negFC,
+                 colour = "#000000",
+                 linetype = "dashed") +
+      geom_vline(xintercept = posFC,
+                 colour = "#000000",
+                 linetype = "dashed") +
+      labs(x = expression(log[2](FC)),
+           y = expression(-log[10] ~ "(" ~ italic("p") ~ "-value)")) +
+      ggtitle(paste0("XX female \n", i, ": 3 hours vs 0 hours \nNo significant DEGs found"))
+    
+    pdf(paste0("../results/volcanoes/MAST/", i, "_3_vs_0hours_XX_female_only.pdf"), height = 8, width = 8)
+    print(p)
+    dev.off()
+  } else {
+    color_values <- vector()
+max <- nrow(ind1_vs_ind2)
+  for (row in 1:max) {
+    if (!is.na(ind1_vs_ind2$p_val_adj[row])) {  # Check for NA values in p_val_adj
+      if (ind1_vs_ind2$p_val_adj[row] < qval) {
+        if (ind1_vs_ind2$avg_log2FC[row] > posFC) {
+          color_values <- c(color_values, 1)
+        } else if (ind1_vs_ind2$avg_log2FC[row] < negFC) {
+          color_values <- c(color_values, 2)
+        } else {
+          color_values <- c(color_values, 3)
+        }
+      } else {
+        color_values <- c(color_values, 3)
+      }
+    } else {
+      color_values <- c(color_values, 3)  # Handle NA values in p_val_adj
+    }
+  }
+  ind1_vs_ind2$color_adjpval_0.05 <- factor(color_values)
+    data <- ind1_vs_ind2
+    num <- subset(data, (p_val_adj < qval & avg_log2FC < negFC) | (p_val_adj < qval & avg_log2FC > posFC))
+    num <- nrow(num)
+    if(num != 0) {
+    up <- data[data$color_adjpval_0.05 == 1,]
+    up <- up[!grepl("ENSG", up$gene),]
+    up10 <- up[1:10,]
+    upFold <- subset(up, avg_log2FC > 2)
+    upFold <- upFold[!(upFold$gene %in% up10$gene),]
+    upFold <- upFold[1:10,]
+
+    down <- data[data$color_adjpval_0.05 == 2,]
+    down <- down[!grepl("ENSG", down$gene),]
+    down10 <- down[1:10,]
+    downFold <- subset(down, avg_log2FC < -2)
+    downFold <- downFold[!(downFold$gene %in% down10$gene),]
+    downFold <- downFold[1:10,]
+
+    if (!1 %in% unique(data$color_adjpval_0.05)) {
+        my_colors <- c("blue","gray")
+      } else if (!2 %in% unique(data$color_adjpval_0.05)) {
+        my_colors <- c("red","gray")
+      } else if (!1 %in% unique(data$color_adjpval_0.05) && !2 %in% unique(data$color_adjpval_0.05)) {
+        my_colors <- c("gray")
+      } else {
+        my_colors <- c("red","blue","gray")
+      }
+      # plot
+      hadjpval <- (-log10(max(data$p_val[data$p_val_adj < qval], na.rm=TRUE)))
+      p <- ggplot(data = data, aes(x = avg_log2FC,y = -log10(p_val), color = color_adjpval_0.05)) + 
+        geom_point(alpha = 0.8, size = 2) +  
+        theme_bw() +  
+        theme(legend.position = "none") + 
+        scale_color_manual(values = my_colors) + 
+        labs(x = expression(log[2](FC)), 
+          y = expression(-log[10] ~ "(" ~ italic("p") ~ "-value)") ) +
+        theme(legend.position = "none",
+              axis.title.x = element_text(size = 10),
+              axis.text.x = element_text(size = 10),
+              axis.title.y = element_text(size = 10),
+              axis.text.y = element_text(size = 10)) +
+      geom_hline(yintercept = hadjpval,
+                 colour = "#000000",
+                 linetype = "dashed") +
+      geom_vline(xintercept = negFC,
+                 colour = "#000000",
+                 linetype = "dashed") +
+      geom_vline(xintercept = posFC,
+                 colour = "#000000",
+                 linetype = "dashed") +
+      ggtitle(paste0("XX female \n", i, ": 3 hours vs 0 hours \nq-value < ", qval," & |log2FC| > ", FC)) +
+      geom_text_repel(data = up10,
+                        aes(x = avg_log2FC, y= -log10(p_val), label = gene), 
+                        color = "maroon", 
+                        fontface="italic",
+                        max.overlaps = getOption("ggrepel.max.overlaps", default = 30)
+                        ) +
+      geom_text_repel(data = down10,
+                        aes(x = avg_log2FC, y= -log10(p_val), label = gene), 
+                        color = "navyblue", 
+                        fontface="italic",
+                        max.overlaps = getOption("ggrepel.max.overlaps", default = 30)
+                        ) +
+      geom_text_repel(data = upFold,
+                        aes(x = avg_log2FC, y= -log10(p_val), label = gene), 
+                        color = "maroon", 
+                        fontface="italic",
+                        max.overlaps = getOption("ggrepel.max.overlaps", default = 30)
+                        ) +
+      geom_text_repel(data = downFold,
+                        aes(x = avg_log2FC, y= -log10(p_val), label = gene), 
+                        color = "navyblue", 
+                        fontface="italic",
+                        max.overlaps = getOption("ggrepel.max.overlaps", default = 30)
+                        )
+      p
+      pdf(paste0("../results/volcanoes/MAST/", i, "_3_vs_0hours_XX_female_only.pdf"), height = 8, width = 8)
+      print(p)
+      dev.off()
+    } 
+  }
+}
+# Clean up 
+remove(up, up10, upFold, ind1_vs_ind2, downFold, down10, data, p, down)
+```
+
+### XY male: 3 vs 0 hours 
+```{r volcano_time_male, warning=FALSE}
+for (i in cell_types) {
+  ind1_vs_ind2 <- read.delim(paste0("../results/DEGs/MAST/",i,  "_3_vs_0_hours_comparison_XY_male_only.txt"))
+  ind1_vs_ind2 <- na.omit(ind1_vs_ind2)
+  if (!any(ind1_vs_ind2$p_val_adj < 0.1, na.rm = TRUE)) {
+    # If there are no significant DEGs, create a volcano plot with all points in gray
+    p <- ggplot(data = ind1_vs_ind2, aes(x = avg_log2FC, y = -log10(p_val))) +
+      geom_point(alpha = 0.8, size = 2, color = "gray") +
+      theme_bw() +
+      theme(legend.position = "none",
+            axis.title.x = element_text(size = 10),
+            axis.text.x = element_text(size = 10),
+            axis.title.y = element_text(size = 10),
+            axis.text.y = element_text(size = 10)) +
+      geom_vline(xintercept = negFC,
+                 colour = "#000000",
+                 linetype = "dashed") +
+      geom_vline(xintercept = posFC,
+                 colour = "#000000",
+                 linetype = "dashed") +
+      labs(x = expression(log[2](FC)),
+           y = expression(-log[10] ~ "(" ~ italic("p") ~ "-value)")) +
+      ggtitle(paste0("XY male \n", i, ": 3 hours vs 0 hours \nNo significant DEGs found"))
+    
+    pdf(paste0("../results/volcanoes/MAST/", i, "_3_vs_0hours_XY_male_only.pdf"), height = 8, width = 8)
+    print(p)
+    dev.off()
+  } else {
+    color_values <- vector()
+max <- nrow(ind1_vs_ind2)
+  for (row in 1:max) {
+    if (!is.na(ind1_vs_ind2$p_val_adj[row])) {  # Check for NA values in p_val_adj
+      if (ind1_vs_ind2$p_val_adj[row] < qval) {
+        if (ind1_vs_ind2$avg_log2FC[row] > posFC) {
+          color_values <- c(color_values, 1)
+        } else if (ind1_vs_ind2$avg_log2FC[row] < negFC) {
+          color_values <- c(color_values, 2)
+        } else {
+          color_values <- c(color_values, 3)
+        }
+      } else {
+        color_values <- c(color_values, 3)
+      }
+    } else {
+      color_values <- c(color_values, 3)  # Handle NA values in p_val_adj
+    }
+  }
+  ind1_vs_ind2$color_adjpval_0.05 <- factor(color_values)
+    data <- ind1_vs_ind2
+    num <- subset(data, (p_val_adj < qval & avg_log2FC < negFC) | (p_val_adj < qval & avg_log2FC > posFC))
+    num <- nrow(num)
+    if(num != 0) {
+    up <- data[data$color_adjpval_0.05 == 1,]
+    up <- up[!grepl("ENSG", up$gene),]
+    up10 <- up[1:10,]
+    upFold <- subset(up, avg_log2FC > 2)
+    upFold <- upFold[!(upFold$gene %in% up10$gene),]
+    upFold <- upFold[1:10,]
+
+    down <- data[data$color_adjpval_0.05 == 2,]
+    down <- down[!grepl("ENSG", down$gene),]
+    down10 <- down[1:10,]
+    downFold <- subset(down, avg_log2FC < -2)
+    downFold <- downFold[!(downFold$gene %in% down10$gene),]
+    downFold <- downFold[1:10,]
+
+    if (!1 %in% unique(data$color_adjpval_0.05)) {
+        my_colors <- c("blue","gray")
+      } else if (!2 %in% unique(data$color_adjpval_0.05)) {
+        my_colors <- c("red","gray")
+      } else if (!1 %in% unique(data$color_adjpval_0.05) && !2 %in% unique(data$color_adjpval_0.05)) {
+        my_colors <- c("gray")
+      } else {
+        my_colors <- c("red","blue","gray")
+      }
+      # plot
+      hadjpval <- (-log10(max(data$p_val[data$p_val_adj < qval], na.rm=TRUE)))
+      p <- ggplot(data = data, aes(x = avg_log2FC,y = -log10(p_val), color = color_adjpval_0.05)) + 
+        geom_point(alpha = 0.8, size = 2) +  
+        theme_bw() +  
+        theme(legend.position = "none") + 
+        scale_color_manual(values = my_colors) + 
+        labs(x = expression(log[2](FC)), 
+          y = expression(-log[10] ~ "(" ~ italic("p") ~ "-value)") ) +
+        theme(legend.position = "none",
+              axis.title.x = element_text(size = 10),
+              axis.text.x = element_text(size = 10),
+              axis.title.y = element_text(size = 10),
+              axis.text.y = element_text(size = 10)) +
+      geom_hline(yintercept = hadjpval,
+                 colour = "#000000",
+                 linetype = "dashed") +
+      geom_vline(xintercept = negFC,
+                 colour = "#000000",
+                 linetype = "dashed") +
+      geom_vline(xintercept = posFC,
+                 colour = "#000000",
+                 linetype = "dashed") +
+      ggtitle(paste0("XY male \n", i, ": 3 hours vs 0 hours \nq-value < ", qval," & |log2FC| > ", FC)) +
+      geom_text_repel(data = up10,
+                        aes(x = avg_log2FC, y= -log10(p_val), label = gene), 
+                        color = "maroon", 
+                        fontface="italic",
+                        max.overlaps = getOption("ggrepel.max.overlaps", default = 30)
+                        ) +
+      geom_text_repel(data = down10,
+                        aes(x = avg_log2FC, y= -log10(p_val), label = gene), 
+                        color = "navyblue", 
+                        fontface="italic",
+                        max.overlaps = getOption("ggrepel.max.overlaps", default = 30)
+                        ) +
+      geom_text_repel(data = upFold,
+                        aes(x = avg_log2FC, y= -log10(p_val), label = gene), 
+                        color = "maroon", 
+                        fontface="italic",
+                        max.overlaps = getOption("ggrepel.max.overlaps", default = 30)
+                        ) +
+      geom_text_repel(data = downFold,
+                        aes(x = avg_log2FC, y= -log10(p_val), label = gene), 
+                        color = "navyblue", 
+                        fontface="italic",
+                        max.overlaps = getOption("ggrepel.max.overlaps", default = 30)
+                        )
+      p
+      pdf(paste0("../results/volcanoes/MAST/", i, "_3_vs_0hours_XY_male_only.pdf"), height = 8, width = 8)
+      print(p)
+      dev.off()
+    } 
+  }
+}
+# Clean up 
+remove(up, up10, upFold, ind1_vs_ind2, downFold, down10, data, p, down)
+```
+
+### PS19: 3 vs 0 hours 
+```{r volcano_time_PS19, warning=FALSE}
+for (i in cell_types) {
+  ind1_vs_ind2 <- read.delim(paste0("../results/DEGs/MAST/",i,  "_3_vs_0_hours_comparison_PS19_only.txt"))
+  ind1_vs_ind2 <- na.omit(ind1_vs_ind2)
+  if (!any(ind1_vs_ind2$p_val_adj < 0.1, na.rm = TRUE)) {
+    # If there are no significant DEGs, create a volcano plot with all points in gray
+    p <- ggplot(data = ind1_vs_ind2, aes(x = avg_log2FC, y = -log10(p_val))) +
+      geom_point(alpha = 0.8, size = 2, color = "gray") +
+      theme_bw() +
+      theme(legend.position = "none",
+            axis.title.x = element_text(size = 10),
+            axis.text.x = element_text(size = 10),
+            axis.title.y = element_text(size = 10),
+            axis.text.y = element_text(size = 10)) +
+      geom_vline(xintercept = negFC,
+                 colour = "#000000",
+                 linetype = "dashed") +
+      geom_vline(xintercept = posFC,
+                 colour = "#000000",
+                 linetype = "dashed") +
+      labs(x = expression(log[2](FC)),
+           y = expression(-log[10] ~ "(" ~ italic("p") ~ "-value)")) +
+      ggtitle(paste0("PS19 \n", i, ": 3 hours vs 0 hours \nNo significant DEGs found"))
+    
+    pdf(paste0("../results/volcanoes/MAST/", i, "_3_vs_0hours_PS19_only.pdf"), height = 8, width = 8)
+    print(p)
+    dev.off()
+  } else {
+    color_values <- vector()
+max <- nrow(ind1_vs_ind2)
+  for (row in 1:max) {
+    if (!is.na(ind1_vs_ind2$p_val_adj[row])) {  # Check for NA values in p_val_adj
+      if (ind1_vs_ind2$p_val_adj[row] < qval) {
+        if (ind1_vs_ind2$avg_log2FC[row] > posFC) {
+          color_values <- c(color_values, 1)
+        } else if (ind1_vs_ind2$avg_log2FC[row] < negFC) {
+          color_values <- c(color_values, 2)
+        } else {
+          color_values <- c(color_values, 3)
+        }
+      } else {
+        color_values <- c(color_values, 3)
+      }
+    } else {
+      color_values <- c(color_values, 3)  # Handle NA values in p_val_adj
+    }
+  }
+  ind1_vs_ind2$color_adjpval_0.05 <- factor(color_values)
+    data <- ind1_vs_ind2
+    num <- subset(data, (p_val_adj < qval & avg_log2FC < negFC) | (p_val_adj < qval & avg_log2FC > posFC))
+    num <- nrow(num)
+    if(num != 0) {
+    up <- data[data$color_adjpval_0.05 == 1,]
+    up <- up[!grepl("ENSG", up$gene),]
+    up10 <- up[1:10,]
+    upFold <- subset(up, avg_log2FC > 2)
+    upFold <- upFold[!(upFold$gene %in% up10$gene),]
+    upFold <- upFold[1:10,]
+
+    down <- data[data$color_adjpval_0.05 == 2,]
+    down <- down[!grepl("ENSG", down$gene),]
+    down10 <- down[1:10,]
+    downFold <- subset(down, avg_log2FC < -2)
+    downFold <- downFold[!(downFold$gene %in% down10$gene),]
+    downFold <- downFold[1:10,]
+
+    if (!1 %in% unique(data$color_adjpval_0.05)) {
+        my_colors <- c("blue","gray")
+      } else if (!2 %in% unique(data$color_adjpval_0.05)) {
+        my_colors <- c("red","gray")
+      } else if (!1 %in% unique(data$color_adjpval_0.05) && !2 %in% unique(data$color_adjpval_0.05)) {
+        my_colors <- c("gray")
+      } else {
+        my_colors <- c("red","blue","gray")
+      }
+      # plot
+      hadjpval <- (-log10(max(data$p_val[data$p_val_adj < qval], na.rm=TRUE)))
+      p <- ggplot(data = data, aes(x = avg_log2FC,y = -log10(p_val), color = color_adjpval_0.05)) + 
+        geom_point(alpha = 0.8, size = 2) +  
+        theme_bw() +  
+        theme(legend.position = "none") + 
+        scale_color_manual(values = my_colors) + 
+        labs(x = expression(log[2](FC)), 
+          y = expression(-log[10] ~ "(" ~ italic("p") ~ "-value)") ) +
+        theme(legend.position = "none",
+              axis.title.x = element_text(size = 10),
+              axis.text.x = element_text(size = 10),
+              axis.title.y = element_text(size = 10),
+              axis.text.y = element_text(size = 10)) +
+      geom_hline(yintercept = hadjpval,
+                 colour = "#000000",
+                 linetype = "dashed") +
+      geom_vline(xintercept = negFC,
+                 colour = "#000000",
+                 linetype = "dashed") +
+      geom_vline(xintercept = posFC,
+                 colour = "#000000",
+                 linetype = "dashed") +
+      ggtitle(paste0("PS19 \n", i, ": 3 hours vs 0 hours \nq-value < ", qval," & |log2FC| > ", FC)) +
+      geom_text_repel(data = up10,
+                        aes(x = avg_log2FC, y= -log10(p_val), label = gene), 
+                        color = "maroon", 
+                        fontface="italic",
+                        max.overlaps = getOption("ggrepel.max.overlaps", default = 30)
+                        ) +
+      geom_text_repel(data = down10,
+                        aes(x = avg_log2FC, y= -log10(p_val), label = gene), 
+                        color = "navyblue", 
+                        fontface="italic",
+                        max.overlaps = getOption("ggrepel.max.overlaps", default = 30)
+                        ) +
+      geom_text_repel(data = upFold,
+                        aes(x = avg_log2FC, y= -log10(p_val), label = gene), 
+                        color = "maroon", 
+                        fontface="italic",
+                        max.overlaps = getOption("ggrepel.max.overlaps", default = 30)
+                        ) +
+      geom_text_repel(data = downFold,
+                        aes(x = avg_log2FC, y= -log10(p_val), label = gene), 
+                        color = "navyblue", 
+                        fontface="italic",
+                        max.overlaps = getOption("ggrepel.max.overlaps", default = 30)
+                        )
+      p
+      pdf(paste0("../results/volcanoes/MAST/", i, "_3_vs_0hours_PS19_only.pdf"), height = 8, width = 8)
+      print(p)
+      dev.off()
+    } 
+  }
+}
+# Clean up 
+remove(up, up10, upFold, ind1_vs_ind2, downFold, down10, data, p, down)
+```
+
+### WT: 3 vs 0 hours 
+```{r volcano_time_WT, warning=FALSE}
+for (i in cell_types) {
+  ind1_vs_ind2 <- read.delim(paste0("../results/DEGs/MAST/",i,  "_3_vs_0_hours_comparison_WT_only.txt"))
+  ind1_vs_ind2 <- na.omit(ind1_vs_ind2)
+  if (!any(ind1_vs_ind2$p_val_adj < 0.1, na.rm = TRUE)) {
+    # If there are no significant DEGs, create a volcano plot with all points in gray
+    p <- ggplot(data = ind1_vs_ind2, aes(x = avg_log2FC, y = -log10(p_val))) +
+      geom_point(alpha = 0.8, size = 2, color = "gray") +
+      theme_bw() +
+      theme(legend.position = "none",
+            axis.title.x = element_text(size = 10),
+            axis.text.x = element_text(size = 10),
+            axis.title.y = element_text(size = 10),
+            axis.text.y = element_text(size = 10)) +
+      geom_vline(xintercept = negFC,
+                 colour = "#000000",
+                 linetype = "dashed") +
+      geom_vline(xintercept = posFC,
+                 colour = "#000000",
+                 linetype = "dashed") +
+      labs(x = expression(log[2](FC)),
+           y = expression(-log[10] ~ "(" ~ italic("p") ~ "-value)")) +
+      ggtitle(paste0("WT \n", i, ": 3 hours vs 0 hours \nNo significant DEGs found"))
+    
+    pdf(paste0("../results/volcanoes/MAST/", i, "_3_vs_0hours_WT_only.pdf"), height = 8, width = 8)
+    print(p)
+    dev.off()
+  } else {
+    color_values <- vector()
+max <- nrow(ind1_vs_ind2)
+  for (row in 1:max) {
+    if (!is.na(ind1_vs_ind2$p_val_adj[row])) {  # Check for NA values in p_val_adj
+      if (ind1_vs_ind2$p_val_adj[row] < qval) {
+        if (ind1_vs_ind2$avg_log2FC[row] > posFC) {
+          color_values <- c(color_values, 1)
+        } else if (ind1_vs_ind2$avg_log2FC[row] < negFC) {
+          color_values <- c(color_values, 2)
+        } else {
+          color_values <- c(color_values, 3)
+        }
+      } else {
+        color_values <- c(color_values, 3)
+      }
+    } else {
+      color_values <- c(color_values, 3)  # Handle NA values in p_val_adj
+    }
+  }
+  ind1_vs_ind2$color_adjpval_0.05 <- factor(color_values)
+    data <- ind1_vs_ind2
+    num <- subset(data, (p_val_adj < qval & avg_log2FC < negFC) | (p_val_adj < qval & avg_log2FC > posFC))
+    num <- nrow(num)
+    if(num != 0) {
+    up <- data[data$color_adjpval_0.05 == 1,]
+    up <- up[!grepl("ENSG", up$gene),]
+    up10 <- up[1:10,]
+    upFold <- subset(up, avg_log2FC > 2)
+    upFold <- upFold[!(upFold$gene %in% up10$gene),]
+    upFold <- upFold[1:10,]
+
+    down <- data[data$color_adjpval_0.05 == 2,]
+    down <- down[!grepl("ENSG", down$gene),]
+    down10 <- down[1:10,]
+    downFold <- subset(down, avg_log2FC < -2)
+    downFold <- downFold[!(downFold$gene %in% down10$gene),]
+    downFold <- downFold[1:10,]
+
+    if (!1 %in% unique(data$color_adjpval_0.05)) {
+        my_colors <- c("blue","gray")
+      } else if (!2 %in% unique(data$color_adjpval_0.05)) {
+        my_colors <- c("red","gray")
+      } else if (!1 %in% unique(data$color_adjpval_0.05) && !2 %in% unique(data$color_adjpval_0.05)) {
+        my_colors <- c("gray")
+      } else {
+        my_colors <- c("red","blue","gray")
+      }
+      # plot
+      hadjpval <- (-log10(max(data$p_val[data$p_val_adj < qval], na.rm=TRUE)))
+      p <- ggplot(data = data, aes(x = avg_log2FC,y = -log10(p_val), color = color_adjpval_0.05)) + 
+        geom_point(alpha = 0.8, size = 2) +  
+        theme_bw() +  
+        theme(legend.position = "none") + 
+        scale_color_manual(values = my_colors) + 
+        labs(x = expression(log[2](FC)), 
+          y = expression(-log[10] ~ "(" ~ italic("p") ~ "-value)") ) +
+        theme(legend.position = "none",
+              axis.title.x = element_text(size = 10),
+              axis.text.x = element_text(size = 10),
+              axis.title.y = element_text(size = 10),
+              axis.text.y = element_text(size = 10)) +
+      geom_hline(yintercept = hadjpval,
+                 colour = "#000000",
+                 linetype = "dashed") +
+      geom_vline(xintercept = negFC,
+                 colour = "#000000",
+                 linetype = "dashed") +
+      geom_vline(xintercept = posFC,
+                 colour = "#000000",
+                 linetype = "dashed") +
+      ggtitle(paste0("WT \n", i, ": 3 hours vs 0 hours \nq-value < ", qval," & |log2FC| > ", FC)) +
+      geom_text_repel(data = up10,
+                        aes(x = avg_log2FC, y= -log10(p_val), label = gene), 
+                        color = "maroon", 
+                        fontface="italic",
+                        max.overlaps = getOption("ggrepel.max.overlaps", default = 30)
+                        ) +
+      geom_text_repel(data = down10,
+                        aes(x = avg_log2FC, y= -log10(p_val), label = gene), 
+                        color = "navyblue", 
+                        fontface="italic",
+                        max.overlaps = getOption("ggrepel.max.overlaps", default = 30)
+                        ) +
+      geom_text_repel(data = upFold,
+                        aes(x = avg_log2FC, y= -log10(p_val), label = gene), 
+                        color = "maroon", 
+                        fontface="italic",
+                        max.overlaps = getOption("ggrepel.max.overlaps", default = 30)
+                        ) +
+      geom_text_repel(data = downFold,
+                        aes(x = avg_log2FC, y= -log10(p_val), label = gene), 
+                        color = "navyblue", 
+                        fontface="italic",
+                        max.overlaps = getOption("ggrepel.max.overlaps", default = 30)
+                        )
+      p
+      pdf(paste0("../results/volcanoes/MAST/", i, "_3_vs_0hours_WT_only.pdf"), height = 8, width = 8)
+      print(p)
+      dev.off()
+    } 
+  }
+}
+# Clean up 
+remove(up, up10, upFold, ind1_vs_ind2, downFold, down10, data, p, down)
+```
+
+### All samples: PS19 vs WT 
+```{r volcano_strain, warning=FALSE}
+for (i in cell_types) {
+  ind1_vs_ind2 <- read.delim(paste0("../results/DEGs/MAST/", i, "_PS19_vs_WT_comparison.txt"))
+  ind1_vs_ind2 <- na.omit(ind1_vs_ind2)
+  if (!any(ind1_vs_ind2$p_val_adj < 0.1, na.rm = TRUE)) {
+    # If there are no significant DEGs, create a volcano plot with all points in gray
+    p <- ggplot(data = ind1_vs_ind2, aes(x = avg_log2FC, y = -log10(p_val))) +
+      geom_point(alpha = 0.8, size = 2, color = "gray") +
+      theme_bw() +
+      theme(legend.position = "none",
+            axis.title.x = element_text(size = 10),
+            axis.text.x = element_text(size = 10),
+            axis.title.y = element_text(size = 10),
+            axis.text.y = element_text(size = 10)) +
+      geom_vline(xintercept = negFC,
+                 colour = "#000000",
+                 linetype = "dashed") +
+      geom_vline(xintercept = posFC,
+                 colour = "#000000",
+                 linetype = "dashed") +
+      labs(x = expression(log[2](FC)),
+           y = expression(-log[10] ~ "(" ~ italic("p") ~ "-value)")) +
+      ggtitle(paste0(i, ": PS19 vs WT \nNo significant DEGs found"))
+    
+    pdf(paste0("../results/volcanoes/MAST/", i, "_PS19_vs_WT_all_samples.pdf"), height = 8, width = 8)
+    print(p)
+    dev.off()
+  } else {
+    color_values <- vector()
+max <- nrow(ind1_vs_ind2)
+  for (row in 1:max) {
+    if (!is.na(ind1_vs_ind2$p_val_adj[row])) {  # Check for NA values in p_val_adj
+      if (ind1_vs_ind2$p_val_adj[row] < qval) {
+        if (ind1_vs_ind2$avg_log2FC[row] > posFC) {
+          color_values <- c(color_values, 1)
+        } else if (ind1_vs_ind2$avg_log2FC[row] < negFC) {
+          color_values <- c(color_values, 2)
+        } else {
+          color_values <- c(color_values, 3)
+        }
+      } else {
+        color_values <- c(color_values, 3)
+      }
+    } else {
+      color_values <- c(color_values, 3)  # Handle NA values in p_val_adj
+    }
+  }
+  ind1_vs_ind2$color_adjpval_0.05 <- factor(color_values)
+    data <- ind1_vs_ind2
+    num <- subset(data, (p_val_adj < qval & avg_log2FC < negFC) | (p_val_adj < qval & avg_log2FC > posFC))
+    num <- nrow(num)
+    if(num != 0) {
+    up <- data[data$color_adjpval_0.05 == 1,]
+    up <- up[!grepl("ENSG", up$gene),]
+    up10 <- up[1:10,]
+    upFold <- subset(up, avg_log2FC > 2)
+    upFold <- upFold[!(upFold$gene %in% up10$gene),]
+    upFold <- upFold[1:10,]
+
+    down <- data[data$color_adjpval_0.05 == 2,]
+    down <- down[!grepl("ENSG", down$gene),]
+    down10 <- down[1:10,]
+    downFold <- subset(down, avg_log2FC < -2)
+    downFold <- downFold[!(downFold$gene %in% down10$gene),]
+    downFold <- downFold[1:10,]
+
+    if (!1 %in% unique(data$color_adjpval_0.05)) {
+        my_colors <- c("blue","gray")
+      } else if (!2 %in% unique(data$color_adjpval_0.05)) {
+        my_colors <- c("red","gray")
+      } else if (!1 %in% unique(data$color_adjpval_0.05) && !2 %in% unique(data$color_adjpval_0.05)) {
+        my_colors <- c("gray")
+      } else {
+        my_colors <- c("red","blue","gray")
+      }
+      # plot
+      hadjpval <- (-log10(max(data$p_val[data$p_val_adj < qval], na.rm=TRUE)))
+      p <- ggplot(data = data, aes(x = avg_log2FC,y = -log10(p_val), color = color_adjpval_0.05)) + 
+        geom_point(alpha = 0.8, size = 2) +  
+        theme_bw() +  
+        theme(legend.position = "none") + 
+        scale_color_manual(values = my_colors) + 
+        labs(x = expression(log[2](FC)), 
+          y = expression(-log[10] ~ "(" ~ italic("p") ~ "-value)") ) +
+        theme(legend.position = "none",
+              axis.title.x = element_text(size = 10),
+              axis.text.x = element_text(size = 10),
+              axis.title.y = element_text(size = 10),
+              axis.text.y = element_text(size = 10)) +
+      geom_hline(yintercept = hadjpval,
+                 colour = "#000000",
+                 linetype = "dashed") +
+      geom_vline(xintercept = negFC,
+                 colour = "#000000",
+                 linetype = "dashed") +
+      geom_vline(xintercept = posFC,
+                 colour = "#000000",
+                 linetype = "dashed") +
+      ggtitle(paste0(i, ": PS19 vs WT \nq-value < ", qval," & |log2FC| > ", FC)) +
+      geom_text_repel(data = up10,
+                        aes(x = avg_log2FC, y= -log10(p_val), label = gene), 
+                        color = "maroon", 
+                        fontface="italic",
+                        max.overlaps = getOption("ggrepel.max.overlaps", default = 30)
+                        ) +
+      geom_text_repel(data = down10,
+                        aes(x = avg_log2FC, y= -log10(p_val), label = gene), 
+                        color = "navyblue", 
+                        fontface="italic",
+                        max.overlaps = getOption("ggrepel.max.overlaps", default = 30)
+                        ) +
+      geom_text_repel(data = upFold,
+                        aes(x = avg_log2FC, y= -log10(p_val), label = gene), 
+                        color = "maroon", 
+                        fontface="italic",
+                        max.overlaps = getOption("ggrepel.max.overlaps", default = 30)
+                        ) +
+      geom_text_repel(data = downFold,
+                        aes(x = avg_log2FC, y= -log10(p_val), label = gene), 
+                        color = "navyblue", 
+                        fontface="italic",
+                        max.overlaps = getOption("ggrepel.max.overlaps", default = 30)
+                        )
+      p
+      pdf(paste0("../results/volcanoes/MAST/", i, "_PS19_vs_WT_all_samples.pdf"), height = 8, width = 8)
+      print(p)
+      dev.off()
+    } 
+  }
+}
+
+# Clean up 
+remove(up, up10, upFold, ind1_vs_ind2, downFold, down10, data, p, down)
+```
+
+### 3 hours: PS19 vs WT 
+```{r volcano_strain, warning=FALSE}
+for (i in cell_types) {
+  ind1_vs_ind2 <- read.delim(paste0("../results/DEGs/MAST/", i, "_PS19_vs_WT_comparison_3hours_only.txt"))
+  ind1_vs_ind2 <- na.omit(ind1_vs_ind2)
+  if (!any(ind1_vs_ind2$p_val_adj < 0.1, na.rm = TRUE)) {
+    # If there are no significant DEGs, create a volcano plot with all points in gray
+    p <- ggplot(data = ind1_vs_ind2, aes(x = avg_log2FC, y = -log10(p_val))) +
+      geom_point(alpha = 0.8, size = 2, color = "gray") +
+      theme_bw() +
+      theme(legend.position = "none",
+            axis.title.x = element_text(size = 10),
+            axis.text.x = element_text(size = 10),
+            axis.title.y = element_text(size = 10),
+            axis.text.y = element_text(size = 10)) +
+      geom_vline(xintercept = negFC,
+                 colour = "#000000",
+                 linetype = "dashed") +
+      geom_vline(xintercept = posFC,
+                 colour = "#000000",
+                 linetype = "dashed") +
+      labs(x = expression(log[2](FC)),
+           y = expression(-log[10] ~ "(" ~ italic("p") ~ "-value)")) +
+      ggtitle(paste0("3 hours \n", i, ": PS19 vs WT \nNo significant DEGs found"))
+    
+    pdf(paste0("../results/volcanoes/MAST/", i, "_PS19_vs_WT_3hours_only.pdf"), height = 8, width = 8)
+    print(p)
+    dev.off()
+  } else {
+    color_values <- vector()
+max <- nrow(ind1_vs_ind2)
+  for (row in 1:max) {
+    if (!is.na(ind1_vs_ind2$p_val_adj[row])) {  # Check for NA values in p_val_adj
+      if (ind1_vs_ind2$p_val_adj[row] < qval) {
+        if (ind1_vs_ind2$avg_log2FC[row] > posFC) {
+          color_values <- c(color_values, 1)
+        } else if (ind1_vs_ind2$avg_log2FC[row] < negFC) {
+          color_values <- c(color_values, 2)
+        } else {
+          color_values <- c(color_values, 3)
+        }
+      } else {
+        color_values <- c(color_values, 3)
+      }
+    } else {
+      color_values <- c(color_values, 3)  # Handle NA values in p_val_adj
+    }
+  }
+  ind1_vs_ind2$color_adjpval_0.05 <- factor(color_values)
+    data <- ind1_vs_ind2
+    num <- subset(data, (p_val_adj < qval & avg_log2FC < negFC) | (p_val_adj < qval & avg_log2FC > posFC))
+    num <- nrow(num)
+    if(num != 0) {
+    up <- data[data$color_adjpval_0.05 == 1,]
+    up <- up[!grepl("ENSG", up$gene),]
+    up10 <- up[1:10,]
+    upFold <- subset(up, avg_log2FC > 2)
+    upFold <- upFold[!(upFold$gene %in% up10$gene),]
+    upFold <- upFold[1:10,]
+
+    down <- data[data$color_adjpval_0.05 == 2,]
+    down <- down[!grepl("ENSG", down$gene),]
+    down10 <- down[1:10,]
+    downFold <- subset(down, avg_log2FC < -2)
+    downFold <- downFold[!(downFold$gene %in% down10$gene),]
+    downFold <- downFold[1:10,]
+
+    if (!1 %in% unique(data$color_adjpval_0.05)) {
+        my_colors <- c("blue","gray")
+      } else if (!2 %in% unique(data$color_adjpval_0.05)) {
+        my_colors <- c("red","gray")
+      } else if (!1 %in% unique(data$color_adjpval_0.05) && !2 %in% unique(data$color_adjpval_0.05)) {
+        my_colors <- c("gray")
+      } else {
+        my_colors <- c("red","blue","gray")
+      }
+      # plot
+      hadjpval <- (-log10(max(data$p_val[data$p_val_adj < qval], na.rm=TRUE)))
+      p <- ggplot(data = data, aes(x = avg_log2FC,y = -log10(p_val), color = color_adjpval_0.05)) + 
+        geom_point(alpha = 0.8, size = 2) +  
+        theme_bw() +  
+        theme(legend.position = "none") + 
+        scale_color_manual(values = my_colors) + 
+        labs(x = expression(log[2](FC)), 
+          y = expression(-log[10] ~ "(" ~ italic("p") ~ "-value)") ) +
+        theme(legend.position = "none",
+              axis.title.x = element_text(size = 10),
+              axis.text.x = element_text(size = 10),
+              axis.title.y = element_text(size = 10),
+              axis.text.y = element_text(size = 10)) +
+      geom_hline(yintercept = hadjpval,
+                 colour = "#000000",
+                 linetype = "dashed") +
+      geom_vline(xintercept = negFC,
+                 colour = "#000000",
+                 linetype = "dashed") +
+      geom_vline(xintercept = posFC,
+                 colour = "#000000",
+                 linetype = "dashed") +
+      ggtitle(paste0("3 hours \n", i, ": PS19 vs WT \nq-value < ", qval," & |log2FC| > ", FC)) +
+      geom_text_repel(data = up10,
+                        aes(x = avg_log2FC, y= -log10(p_val), label = gene), 
+                        color = "maroon", 
+                        fontface="italic",
+                        max.overlaps = getOption("ggrepel.max.overlaps", default = 30)
+                        ) +
+      geom_text_repel(data = down10,
+                        aes(x = avg_log2FC, y= -log10(p_val), label = gene), 
+                        color = "navyblue", 
+                        fontface="italic",
+                        max.overlaps = getOption("ggrepel.max.overlaps", default = 30)
+                        ) +
+      geom_text_repel(data = upFold,
+                        aes(x = avg_log2FC, y= -log10(p_val), label = gene), 
+                        color = "maroon", 
+                        fontface="italic",
+                        max.overlaps = getOption("ggrepel.max.overlaps", default = 30)
+                        ) +
+      geom_text_repel(data = downFold,
+                        aes(x = avg_log2FC, y= -log10(p_val), label = gene), 
+                        color = "navyblue", 
+                        fontface="italic",
+                        max.overlaps = getOption("ggrepel.max.overlaps", default = 30)
+                        )
+      p
+      pdf(paste0("../results/volcanoes/MAST/", i, "_PS19_vs_WT_3hours_only.pdf"), height = 8, width = 8)
+      print(p)
+      dev.off()
+    } 
+  }
+}
+
+# Clean up 
+remove(up, up10, upFold, ind1_vs_ind2, downFold, down10, data, p, down)
+```
+
+### 0 hours: PS19 vs WT 
+```{r volcano_strain, warning=FALSE}
+for (i in cell_types) {
+  ind1_vs_ind2 <- read.delim(paste0("../results/DEGs/MAST/", i, "_PS19_vs_WT_comparison_0hours_only.txt"))
+  ind1_vs_ind2 <- na.omit(ind1_vs_ind2)
+  if (!any(ind1_vs_ind2$p_val_adj < 0.1, na.rm = TRUE)) {
+    # If there are no significant DEGs, create a volcano plot with all points in gray
+    p <- ggplot(data = ind1_vs_ind2, aes(x = avg_log2FC, y = -log10(p_val))) +
+      geom_point(alpha = 0.8, size = 2, color = "gray") +
+      theme_bw() +
+      theme(legend.position = "none",
+            axis.title.x = element_text(size = 10),
+            axis.text.x = element_text(size = 10),
+            axis.title.y = element_text(size = 10),
+            axis.text.y = element_text(size = 10)) +
+      geom_vline(xintercept = negFC,
+                 colour = "#000000",
+                 linetype = "dashed") +
+      geom_vline(xintercept = posFC,
+                 colour = "#000000",
+                 linetype = "dashed") +
+      labs(x = expression(log[2](FC)),
+           y = expression(-log[10] ~ "(" ~ italic("p") ~ "-value)")) +
+      ggtitle(paste0("0 hours \n", i, ": PS19 vs WT  \nNo significant DEGs found"))
+    
+    pdf(paste0("../results/volcanoes/MAST/", i, "_PS19_vs_WT_0hours_only.pdf"), height = 8, width = 8)
+    print(p)
+    dev.off()
+  } else {
+    color_values <- vector()
+max <- nrow(ind1_vs_ind2)
+  for (row in 1:max) {
+    if (!is.na(ind1_vs_ind2$p_val_adj[row])) {  # Check for NA values in p_val_adj
+      if (ind1_vs_ind2$p_val_adj[row] < qval) {
+        if (ind1_vs_ind2$avg_log2FC[row] > posFC) {
+          color_values <- c(color_values, 1)
+        } else if (ind1_vs_ind2$avg_log2FC[row] < negFC) {
+          color_values <- c(color_values, 2)
+        } else {
+          color_values <- c(color_values, 3)
+        }
+      } else {
+        color_values <- c(color_values, 3)
+      }
+    } else {
+      color_values <- c(color_values, 3)  # Handle NA values in p_val_adj
+    }
+  }
+  ind1_vs_ind2$color_adjpval_0.05 <- factor(color_values)
+    data <- ind1_vs_ind2
+    num <- subset(data, (p_val_adj < qval & avg_log2FC < negFC) | (p_val_adj < qval & avg_log2FC > posFC))
+    num <- nrow(num)
+    if(num != 0) {
+    up <- data[data$color_adjpval_0.05 == 1,]
+    up <- up[!grepl("ENSG", up$gene),]
+    up10 <- up[1:10,]
+    upFold <- subset(up, avg_log2FC > 2)
+    upFold <- upFold[!(upFold$gene %in% up10$gene),]
+    upFold <- upFold[1:10,]
+
+    down <- data[data$color_adjpval_0.05 == 2,]
+    down <- down[!grepl("ENSG", down$gene),]
+    down10 <- down[1:10,]
+    downFold <- subset(down, avg_log2FC < -2)
+    downFold <- downFold[!(downFold$gene %in% down10$gene),]
+    downFold <- downFold[1:10,]
+
+    if (!1 %in% unique(data$color_adjpval_0.05)) {
+        my_colors <- c("blue","gray")
+      } else if (!2 %in% unique(data$color_adjpval_0.05)) {
+        my_colors <- c("red","gray")
+      } else if (!1 %in% unique(data$color_adjpval_0.05) && !2 %in% unique(data$color_adjpval_0.05)) {
+        my_colors <- c("gray")
+      } else {
+        my_colors <- c("red","blue","gray")
+      }
+      # plot
+      hadjpval <- (-log10(max(data$p_val[data$p_val_adj < qval], na.rm=TRUE)))
+      p <- ggplot(data = data, aes(x = avg_log2FC,y = -log10(p_val), color = color_adjpval_0.05)) + 
+        geom_point(alpha = 0.8, size = 2) +  
+        theme_bw() +  
+        theme(legend.position = "none") + 
+        scale_color_manual(values = my_colors) + 
+        labs(x = expression(log[2](FC)), 
+          y = expression(-log[10] ~ "(" ~ italic("p") ~ "-value)") ) +
+        theme(legend.position = "none",
+              axis.title.x = element_text(size = 10),
+              axis.text.x = element_text(size = 10),
+              axis.title.y = element_text(size = 10),
+              axis.text.y = element_text(size = 10)) +
+      geom_hline(yintercept = hadjpval,
+                 colour = "#000000",
+                 linetype = "dashed") +
+      geom_vline(xintercept = negFC,
+                 colour = "#000000",
+                 linetype = "dashed") +
+      geom_vline(xintercept = posFC,
+                 colour = "#000000",
+                 linetype = "dashed") +
+      ggtitle(paste0("0 hours \n", i, ": PS19 vs WT \nq-value < ", qval," & |log2FC| > ", FC)) +
+      geom_text_repel(data = up10,
+                        aes(x = avg_log2FC, y= -log10(p_val), label = gene), 
+                        color = "maroon", 
+                        fontface="italic",
+                        max.overlaps = getOption("ggrepel.max.overlaps", default = 30)
+                        ) +
+      geom_text_repel(data = down10,
+                        aes(x = avg_log2FC, y= -log10(p_val), label = gene), 
+                        color = "navyblue", 
+                        fontface="italic",
+                        max.overlaps = getOption("ggrepel.max.overlaps", default = 30)
+                        ) +
+      geom_text_repel(data = upFold,
+                        aes(x = avg_log2FC, y= -log10(p_val), label = gene), 
+                        color = "maroon", 
+                        fontface="italic",
+                        max.overlaps = getOption("ggrepel.max.overlaps", default = 30)
+                        ) +
+      geom_text_repel(data = downFold,
+                        aes(x = avg_log2FC, y= -log10(p_val), label = gene), 
+                        color = "navyblue", 
+                        fontface="italic",
+                        max.overlaps = getOption("ggrepel.max.overlaps", default = 30)
+                        )
+      p
+      pdf(paste0("../results/volcanoes/MAST/", i, "_PS19_vs_WT_0hours_only.pdf"), height = 8, width = 8)
+      print(p)
+      dev.off()
+    } 
+  }
+}
+
+# Clean up 
+remove(up, up10, upFold, ind1_vs_ind2, downFold, down10, data, p, down)
+```
+
+# Make excel tables 
+### 3 vs 0 hours 
+```{r excel}
+# All samples 
+for (i in cell_types) {
+  filepath <- paste0("../results/DEGs/MAST/", i, "_3_vs_0_hours_comparison.txt")
+  assign(paste0(i), read.delim(filepath, header = TRUE, sep = "\t", stringsAsFactors = FALSE))
+}
+
+list_of_datasets <- list(
+"neuron" = neuron,
+"interneuron" = interneuron,     
+"astrocyte" = astrocyte,
+"oligodendrocyte" = oligodendrocyte,         
+"polydendrocyte" = polydendrocyte,
+"endothelial "= endothelial, 
+"fibroblast" = fibroblast, 
+"mural" = mural)
+write.xlsx(list_of_datasets, file = paste0(
+    "../results/DEGs/MAST/3_vs_0_hours.xlsx"))
+
+# clean up
+remove(neuron, interneuron, astrocyte, oligodendrocyte, polydendrocyte, endothelial, fibroblast, mural, microglia, list_of_datasets)
+
+
+
+# WT only 
+for (i in cell_types) {
+  filepath <- paste0("../results/DEGs/MAST/", i, "_3_vs_0_hours_comparison_WT_only.txt")
+  assign(paste0(i), read.delim(filepath, header = TRUE, sep = "\t", stringsAsFactors = FALSE))
+}
+
+list_of_datasets <- list(
+"neuron" = neuron,
+"interneuron" = interneuron,     
+"astrocyte" = astrocyte,
+"oligodendrocyte" = oligodendrocyte,         
+"polydendrocyte" = polydendrocyte,
+"endothelial "= endothelial, 
+"fibroblast" = fibroblast, 
+"mural" = mural, 
+"microglia" = microglia)
+write.xlsx(list_of_datasets, file = paste0(
+    "../results/DEGs/MAST/3_vs_0_hours_WT_only.xlsx"))
+
+# clean up
+remove(neuron, interneuron, astrocyte, oligodendrocyte, polydendrocyte, endothelial, fibroblast, mural, microglia, list_of_datasets)
+
+
+# PS19 only 
+for (i in cell_types) {
+  filepath <- paste0("../results/DEGs/MAST/", i, "_3_vs_0_hours_comparison_PS19_only.txt")
+  assign(paste0(i), read.delim(filepath, header = TRUE, sep = "\t", stringsAsFactors = FALSE))
+}
+
+list_of_datasets <- list(
+"neuron" = neuron,
+"interneuron" = interneuron,     
+"astrocyte" = astrocyte,
+"oligodendrocyte" = oligodendrocyte,         
+"polydendrocyte" = polydendrocyte,
+"endothelial "= endothelial, 
+"fibroblast" = fibroblast, 
+"mural" = mural, 
+"microglia" = microglia)
+write.xlsx(list_of_datasets, file = paste0(
+    "../results/DEGs/MAST/3_vs_0_hours_PS19_only.xlsx"))
+
+# clean up
+remove(neuron, interneuron, astrocyte, oligodendrocyte, polydendrocyte, endothelial, fibroblast, mural, microglia, list_of_datasets)
+```
+
+### PS19 vs WT  
+```{r excel}
+# All samples 
+for (i in cell_types) {
+  filepath <- paste0("../results/DEGs/MAST/", i, "_PS19_vs_WT_comparison.txt")
+  assign(paste0(i), read.delim(filepath, header = TRUE, sep = "\t", stringsAsFactors = FALSE))
+}
+
+list_of_datasets <- list(
+"neuron" = neuron,
+"interneuron" = interneuron,     
+"astrocyte" = astrocyte,
+"oligodendrocyte" = oligodendrocyte,         
+"polydendrocyte" = polydendrocyte,
+"endothelial "= endothelial, 
+"fibroblast" = fibroblast, 
+"mural" = mural, 
+"microglia" = microglia)
+write.xlsx(list_of_datasets, file = paste0(
+    "../results/DEGs/MAST/PS19_vs_WT.xlsx"))
+
+# clean up
+remove(neuron, interneuron, astrocyte, oligodendrocyte, polydendrocyte, endothelial, fibroblast, mural, microglia, list_of_datasets)
+
+
+
+
+# WT only 
+for (i in cell_types) {
+  filepath <- paste0("../results/DEGs/MAST/", i, "_PS19_vs_WT_comparison_3hours_only.txt")
+  assign(paste0(i), read.delim(filepath, header = TRUE, sep = "\t", stringsAsFactors = FALSE))
+}
+
+list_of_datasets <- list(
+"neuron" = neuron,
+"interneuron" = interneuron,     
+"astrocyte" = astrocyte,
+"oligodendrocyte" = oligodendrocyte,         
+"polydendrocyte" = polydendrocyte,
+"endothelial "= endothelial, 
+"fibroblast" = fibroblast, 
+"mural" = mural, 
+"microglia" = microglia)
+write.xlsx(list_of_datasets, file = paste0(
+    "../results/DEGs/MAST/PS19_vs_WT_3hours_only.xlsx"))
+
+# clean up
+remove(neuron, interneuron, astrocyte, oligodendrocyte, polydendrocyte, endothelial, fibroblast, mural, microglia, list_of_datasets)
+
+
+# 0 hours only 
+for (i in cell_types) {
+  filepath <- paste0("../results/DEGs/MAST/", i, "_PS19_vs_WT_comparison_0hours_only.txt")
+  assign(paste0(i), read.delim(filepath, header = TRUE, sep = "\t", stringsAsFactors = FALSE))
+}
+
+list_of_datasets <- list(
+"neuron" = neuron,
+"interneuron" = interneuron,     
+"astrocyte" = astrocyte,
+"oligodendrocyte" = oligodendrocyte,         
+"polydendrocyte" = polydendrocyte,
+"endothelial "= endothelial, 
+"fibroblast" = fibroblast, 
+"mural" = mural, 
+"microglia" = microglia)
+write.xlsx(list_of_datasets, file = paste0(
+    "../results/DEGs/MAST/PS19_vs_WT_0hours_only.xlsx"))
+
+# clean up
+remove(neuron, interneuron, astrocyte, oligodendrocyte, polydendrocyte, endothelial, fibroblast, mural, microglia, list_of_datasets)
+```
+
+## Excel table of significant DEGs
+##### 3 vs 0 hours
+```{r}
+#------------------- All samples
+# up-regulated
+list_of_datasets <- list()
+for (i in cell_types) {
+  filepath <- paste0("../results/DEGs/MAST/", i, "_3_vs_0_hours_comparison.txt")
+  dataset <- read.delim(filepath, header = TRUE, sep = "\t", stringsAsFactors = FALSE)
+  filtered_dataset <- subset(dataset, p_val_adj < 0.1 & avg_log2FC > 0.0)
+  list_of_datasets[[i]] <- filtered_dataset
+}
+write.xlsx(list_of_datasets, file = paste0(
+    "../results/DEGs/MAST/3_vs_0_hours_qval0.05_log2FC_0.25_up_regulated.xlsx"))
+
+# down-regulated
+list_of_datasets <- list()
+for (i in cell_types) {
+  filepath <- paste0("../results/DEGs/MAST/", i, "_3_vs_0_hours_comparison.txt")
+  dataset <- read.delim(filepath, header = TRUE, sep = "\t", stringsAsFactors = FALSE)
+  filtered_dataset <- subset(dataset, p_val_adj < 0.1 & avg_log2FC < -0.0)
+  list_of_datasets[[i]] <- filtered_dataset
+}
+write.xlsx(list_of_datasets, file = paste0(
+    "../results/DEGs/MAST/3_vs_0_hours_qval0.05_log2FC_0.25_down_regulated.xlsx"))
+
+
+#------------------- PS19 only
+# up-regulated
+list_of_datasets <- list()
+for (i in cell_types) {
+  filepath <- paste0("../results/DEGs/MAST/", i, "_3_vs_0_hours_comparison_PS19_only.txt")
+  dataset <- read.delim(filepath, header = TRUE, sep = "\t", stringsAsFactors = FALSE)
+  filtered_dataset <- subset(dataset, p_val_adj < 0.1 &  avg_log2FC > 0.0)
+  list_of_datasets[[i]] <- filtered_dataset
+}
+write.xlsx(list_of_datasets, file = paste0(
+    "../results/DEGs/MAST/3_vs_0_hours_qval0.05_log2FC_0.25_up_regulated_PS19_only.xlsx"))
+
+# down-regulated
+list_of_datasets <- list()
+for (i in cell_types) {
+  filepath <- paste0("../results/DEGs/MAST/", i, "_3_vs_0_hours_comparison_PS19_only.txt")
+  dataset <- read.delim(filepath, header = TRUE, sep = "\t", stringsAsFactors = FALSE)
+  filtered_dataset <- subset(dataset, p_val_adj < 0.1 & avg_log2FC < -0.0)
+  list_of_datasets[[i]] <- filtered_dataset
+}
+write.xlsx(list_of_datasets, file = paste0(
+    "../results/DEGs/MAST/3_vs_0_hours_qval0.05_log2FC_0.25_down_regulated_PS19_only.xlsx"))
+
+
+#------------------- WT only
+# up-regulated
+list_of_datasets <- list()
+for (i in cell_types) {
+  filepath <- paste0("../results/DEGs/MAST/", i, "_3_vs_0_hours_comparison_WT_only.txt")
+  dataset <- read.delim(filepath, header = TRUE, sep = "\t", stringsAsFactors = FALSE)
+  filtered_dataset <- subset(dataset, p_val_adj < 0.1 &  avg_log2FC > 0.0)
+  list_of_datasets[[i]] <- filtered_dataset
+}
+write.xlsx(list_of_datasets, file = paste0(
+    "../results/DEGs/MAST/3_vs_0_hours_qval0.05_log2FC_0.25_up_regulated_WT_only.xlsx"))
+
+# down-regulated
+list_of_datasets <- list()
+for (i in cell_types) {
+  filepath <- paste0("../results/DEGs/MAST/", i, "_3_vs_0_hours_comparison_WT_only.txt")
+  dataset <- read.delim(filepath, header = TRUE, sep = "\t", stringsAsFactors = FALSE)
+  filtered_dataset <- subset(dataset, p_val_adj < 0.1 & avg_log2FC < -0.0)
+  list_of_datasets[[i]] <- filtered_dataset
+}
+write.xlsx(list_of_datasets, file = paste0(
+    "../results/DEGs/MAST/3_vs_0_hours_qval0.05_log2FC_0.25_down_regulated_WT_only.xlsx"))
+```
+
+#### PS19 vs WT
+```{r}
+#------------------- All samples
+# up-regulated
+list_of_datasets <- list()
+for (i in cell_types) {
+  filepath <- paste0("../results/DEGs/MAST/", i, "_PS19_vs_WT_comparison.txt")
+  dataset <- read.delim(filepath, header = TRUE, sep = "\t", stringsAsFactors = FALSE)
+  filtered_dataset <- subset(dataset, p_val_adj < 0.1 &  avg_log2FC > 0.0)
+  list_of_datasets[[i]] <- filtered_dataset
+}
+write.xlsx(list_of_datasets, file = paste0(
+    "../results/DEGs/MAST/PS19_vs_WT_qval0.05_log2FC_0.25_up_regulated.xlsx"))
+
+# down-regulated
+list_of_datasets <- list()
+for (i in cell_types) {
+  filepath <- paste0("../results/DEGs/MAST/", i, "_PS19_vs_WT_comparison.txt")
+  dataset <- read.delim(filepath, header = TRUE, sep = "\t", stringsAsFactors = FALSE)
+  filtered_dataset <- subset(dataset, p_val_adj < 0.1 & avg_log2FC < -0.0)
+  list_of_datasets[[i]] <- filtered_dataset
+}
+write.xlsx(list_of_datasets, file = paste0(
+    "../results/DEGs/MAST/PS19_vs_WT_qval0.05_log2FC_0.25_down_regulated.xlsx"))
+
+
+#------------------- 3 hours only 
+# up-regulated
+list_of_datasets <- list()
+for (i in cell_types) {
+  filepath <- paste0("../results/DEGs/MAST/", i, "_PS19_vs_WT_comparison_3hours_only.txt")
+  dataset <- read.delim(filepath, header = TRUE, sep = "\t", stringsAsFactors = FALSE)
+  filtered_dataset <- subset(dataset, p_val_adj < 0.1 &  avg_log2FC > 0.0)
+  list_of_datasets[[i]] <- filtered_dataset
+}
+write.xlsx(list_of_datasets, file = paste0(
+    "../results/DEGs/MAST/PS19_vs_WT_qval0.05_log2FC_0.25_up_regulated_3hours_only.xlsx"))
+
+# down-regulated
+list_of_datasets <- list()
+for (i in cell_types) {
+  filepath <- paste0("../results/DEGs/MAST/", i, "_PS19_vs_WT_comparison_3hours_only.txt")
+  dataset <- read.delim(filepath, header = TRUE, sep = "\t", stringsAsFactors = FALSE)
+  filtered_dataset <- subset(dataset, p_val_adj < 0.1 & avg_log2FC < -0.0)
+  list_of_datasets[[i]] <- filtered_dataset
+}
+write.xlsx(list_of_datasets, file = paste0(
+    "../results/DEGs/MAST/PS19_vs_WT_qval0.05_log2FC_0.25_down_regulated_3hours_only.xlsx"))
+
+
+#------------------- 0 hours only 
+# up-regulated
+list_of_datasets <- list()
+for (i in cell_types) {
+  filepath <- paste0("../results/DEGs/MAST/", i, "_PS19_vs_WT_comparison_0hours_only.txt")
+  dataset <- read.delim(filepath, header = TRUE, sep = "\t", stringsAsFactors = FALSE)
+  filtered_dataset <- subset(dataset, p_val_adj < 0.1 &  avg_log2FC > 0.0)
+  list_of_datasets[[i]] <- filtered_dataset
+}
+write.xlsx(list_of_datasets, file = paste0(
+    "../results/DEGs/MAST/PS19_vs_WT_qval0.05_log2FC_0.25_up_regulated_0hours_only.xlsx"))
+
+# down-regulated
+list_of_datasets <- list()
+for (i in cell_types) {
+  filepath <- paste0("../results/DEGs/MAST/", i, "_PS19_vs_WT_comparison_0hours_only.txt")
+  dataset <- read.delim(filepath, header = TRUE, sep = "\t", stringsAsFactors = FALSE)
+  filtered_dataset <- subset(dataset, p_val_adj < 0.1 & avg_log2FC < -0.0)
+  list_of_datasets[[i]] <- filtered_dataset
+}
+write.xlsx(list_of_datasets, file = paste0(
+  "../results/DEGs/MAST/PS19_vs_WT_qval0.05_log2FC_0.25_down_regulated_0hours_only.xlsx"))
+```
+
+# DEG table
+## PS19 vs WT
+##### MAST
+```{r MAST_table}
+# List of cell types
+
+# Initialize a matrix to store counts
+count_matrix <- matrix(0, nrow = length(cell_types), ncol = 3,
+                       dimnames = list(cell_types, c("all_samples", "0_hours", "3_hours")))
+
+
+# Function to count differentially expressed genes
+count_DE_genes <- function(data) {
+  return(sum(data$p_val_adj < 0.1 & abs(data$avg_log2FC) > 0, na.rm = TRUE))
+}
+
+# Loop through each cell type
+for (cell_type in cell_types) {
+  # File paths
+  all_samples_file <- paste0("../results/DEGs/MAST/", cell_type, "_PS19_vs_WT_comparison.txt")
+  hours_0_file <- paste0("../results/DEGs/MAST/", cell_type, "_PS19_vs_WT_comparison_0hours_only.txt")
+  hours_3_file <- paste0("../results/DEGs/MAST/", cell_type, "_PS19_vs_WT_comparison_3hours_only.txt")
+  
+  # Read data from files
+  all_samples_data <- read.table(all_samples_file, header = TRUE)
+  hours_0_data <- read.table(hours_0_file, header = TRUE)
+  hours_3_data <- read.table(hours_3_file, header = TRUE)
+  
+  # Count differentially expressed genes
+  count_matrix[cell_type, "all_samples"] <- count_DE_genes(all_samples_data)
+  count_matrix[cell_type, "0_hours"] <- count_DE_genes(hours_0_data)
+  count_matrix[cell_type, "3_hours"] <- count_DE_genes(hours_3_data)
+}
+
+# Print the count matrix
+print(count_matrix)
+
+```
+## 3 vs 0 hours
+##### MAST
+```{r MAST_table}
+# List of cell types
+
+# Initialize a matrix to store counts
+count_matrix <- matrix(0, nrow = length(cell_types), ncol = 3,
+                       dimnames = list(cell_types, c("all_samples", "XX_female", "XY_male")))
+
+
+# Function to count differentially expressed genes
+count_DE_genes <- function(data) {
+  return(sum(data$p_val_adj < 0.1 & abs(data$avg_log2FC) > 0 , na.rm = TRUE))
+}
+
+# Loop through each cell type
+for (cell_type in cell_types) {
+  # File paths
+  all_samples_file <- paste0("../results/DEGs/MAST/", cell_type, "_3_vs_0_hours_comparison.txt")
+  XX_file <- paste0("../results/DEGs/MAST/", cell_type, "_3_vs_0_hours_comparison_XX_female_only.txt")
+  XY_file <- paste0("../results/DEGs/MAST/", cell_type, "_3_vs_0_hours_comparison_XY_male_only.txt")
+  
+  # Read data from files
+  all_samples_data <- read.table(all_samples_file, header = TRUE)
+  XX_data <- read.table(XX_file, header = TRUE)
+  XY_data <- read.table(XY_file, header = TRUE)
+  
+  # Count differentially expressed genes
+  count_matrix[cell_type, "all_samples"] <- count_DE_genes(all_samples_data)
+  count_matrix[cell_type, "XX_female"] <- count_DE_genes(XX_data)
+  count_matrix[cell_type, "XY_male"] <- count_DE_genes(XY_data)
+}
+
+# Print the count matrix
+print(count_matrix)
+
+```
+
+```{r MAST_table}
+# List of cell types
+
+# Initialize a matrix to store counts
+count_matrix <- matrix(0, nrow = length(cell_types), ncol = 3,
+                       dimnames = list(cell_types, c("all_samples", "PS19", "WT")))
+
+
+# Function to count differentially expressed genes
+count_DE_genes <- function(data) {
+  return(sum(data$p_val_adj < 0.1 & abs(data$avg_log2FC) > 0, na.rm = TRUE))
+}
+
+# Loop through each cell type
+for (cell_type in cell_types) {
+  # File paths
+  all_samples_file <- paste0("../results/DEGs/MAST/", cell_type, "_3_vs_0_hours_comparison.txt")
+  PS19_file <- paste0("../results/DEGs/MAST/", cell_type, "_3_vs_0_hours_comparison_PS19_only.txt")
+  WT_file <- paste0("../results/DEGs/MAST/", cell_type, "_3_vs_0_hours_comparison_WT_only.txt")
+  
+  # Read data from files
+  all_samples_data <- read.table(all_samples_file, header = TRUE)
+  PS19_data <- read.table(PS19_file, header = TRUE)
+  WT_data <- read.table(WT_file, header = TRUE)
+  
+  # Count differentially expressed genes
+  count_matrix[cell_type, "all_samples"] <- count_DE_genes(all_samples_data)
+  count_matrix[cell_type, "PS19"] <- count_DE_genes(PS19_data)
+  count_matrix[cell_type, "WT"] <- count_DE_genes(WT_data)
+}
+
+# Print the count matrix
+print(count_matrix)
+
+```
+
+```{r}
+```

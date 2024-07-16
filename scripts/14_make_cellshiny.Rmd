@@ -1,0 +1,54 @@
+---
+title: "shiny"
+author: "Kimberly Olney, PhD"
+date: "May 21st 2024"
+output:
+  html_document:
+    theme: cerulean
+    toc: true
+    toc_float: true
+editor_options: 
+  chunk_output_type: inline
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(root.dir = ".", echo = TRUE)
+```
+
+# Libraries & paths
+```{r libraries_variables}
+#devtools::install_github("SGDDNB/ShinyCell")
+#devtools::install_github("SGDDNB/ShinyCell", ref = remotes::github_pull(80))
+library(ShinyCell)
+treatment <- c("PMI")
+```
+
+
+# Read RDS 
+```{r read_pbj}
+dataObject.annotated <- readRDS(paste0("../rObjects/",treatment,".dataObject.clean.rds"))
+# inspect 
+dataObject.annotated
+DefaultAssay(dataObject.annotated) <- "RNA"
+dataObject.annotated <- NormalizeData(dataObject.annotated)
+```
+
+
+```{r reorder_metadata}
+metadata <- colnames(dataObject.annotated@meta.data)
+metadata <- metadata[c(34,1:16, 23:33, 39)]
+sc.config <- createConfig(obj = dataObject.annotated, meta.to.include = metadata)
+```
+
+# Output directory
+```{r}
+makeShinyApp(obj = dataObject.annotated,
+             scConf = sc.config, 
+             gene.mapping = TRUE,
+             shiny.dir = paste0("../shiny_apps/PMI_final_shiny"),
+             shiny.title = paste0("PMI"))
+```
+```{r}
+```
+

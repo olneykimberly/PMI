@@ -26,8 +26,6 @@ metadata <- subset(metadata, sampleID != "P_60" & sampleID != "B_6")
 metadata$sampleID <- factor(metadata$sampleID, levels = c(metadata$sampleID))
 samples <- metadata$sampleID 
 
-
-
 time_order <- factor(metadata$pmi_interval, levels = unique(metadata$pmi_interval))
 sex_order <- factor(metadata$sex, levels = unique(metadata$sex))
 genotype_order <- factor(metadata$genotype, levels = unique(metadata$genotype))
@@ -36,6 +34,10 @@ genotype_order <- factor(metadata$genotype, levels = unique(metadata$genotype))
 metadata$strain <- gsub("JAX22|B623", "WT", gsub("PS1922", "PS19", metadata$genotype))
 strain_order <- factor(metadata$strain, levels = unique(metadata$strain))
 group_order <- paste0(time_order, ".", sex_order, ".", strain_order)
+table(group_order)
+
+group_no_sex <- paste0(time_order, ".", strain_order)
+table(group_no_sex)
 ```
 
 # Read in object
@@ -783,6 +785,8 @@ dataObject.neurons.clean <- merge(x = dataObject.neuron, y = c(dataObject.intern
 
 # Reprocess glia cells 
 ```{r glia_clean}
+check_meta <- dataObject.glia.clean@meta.data
+
 # Inspect 
 dataObject.glia.clean
 Layers(dataObject.glia.clean[["RNA"]]) # Inspect layers
@@ -1039,6 +1043,14 @@ table(dataObject.glia.clean$sex)
 dataObject.glia.clean$group <- group_order[sample_match]
 table(dataObject.glia.clean$group) 
 
+dataObject.glia.clean$group_no_sex <- group_no_sex[sample_match]
+table(dataObject.glia.clean$group_no_sex) 
+
+dataObject.glia.clean$genotype <- genotype_order[sample_match]
+table(dataObject.glia.clean$genotype) 
+
+dataObject.glia.clean$strain <- strain_order[sample_match]
+table(dataObject.glia.clean$strain) 
 
 FeaturePlot(dataObject.glia.clean, features = c("Mog"), pt.size = 0.2)
 FeaturePlot(dataObject.glia.clean, features = c("Rbfox3"), pt.size = 0.2)
@@ -1053,15 +1065,23 @@ table(dataObject.neurons.clean$sex)
 # Group
 dataObject.neurons.clean$group <- group_order[sample_match]
 table(dataObject.neurons.clean$group) 
+
+dataObject.neurons.clean$group_no_sex <- group_no_sex[sample_match]
+table(dataObject.neurons.clean$group_no_sex) 
+
+dataObject.neurons.clean$genotype <- genotype_order[sample_match]
+table(dataObject.neurons.clean$genotype) 
+
+dataObject.neurons.clean$strain <- strain_order[sample_match]
+table(dataObject.neurons.clean$strain) 
+
 FeaturePlot(dataObject.neurons.clean, features = c("Mog"), pt.size = 0.2)
 FeaturePlot(dataObject.neurons.clean, features = c("Rbfox3"), pt.size = 0.2)
 
 # Inspect 
-table(dataObject.glia.clean$sample)
 dataObject.glia.clean$sample <- factor(dataObject.glia.clean$sample, levels = samples)
 table(dataObject.glia.clean$sample)  # check
 
-table(dataObject.neurons.clean$sample)
 dataObject.neurons.clean$sample <- factor(dataObject.neurons.clean$sample, levels = samples)
 table(dataObject.neurons.clean$sample)  # check
 ```
@@ -1116,6 +1136,18 @@ bGroup <- dataObject.glia.clean@meta.data %>%
   geom_col() +
   ggtitle("Percentage of group per cluster")
 bGroup
+
+
+bGroup2 <- dataObject.glia.clean@meta.data %>%
+  group_by(individual_clusters, group_no_sex) %>%
+  dplyr::count() %>%
+  group_by(individual_clusters) %>%
+  dplyr::mutate(percent = 100*n/sum(n)) %>%
+  ungroup() %>%
+  ggplot(aes(x=individual_clusters,y=percent, fill=group_no_sex)) +
+  geom_col() +
+  ggtitle("Percentage of group per cluster")
+bGroup2
 ```
 
 ```{r,echo=FALSE}
@@ -1139,6 +1171,11 @@ saveToPDF(paste0(path, ".pdf"), width = 10, height = 4)
 path <- paste0("../results/nuclei_count/",treatment,
                "_percent_nuclei_per_cluster_group_glia_clean")
 bGroup
+saveToPDF(paste0(path, ".pdf"), width = 10, height = 4)
+
+path <- paste0("../results/nuclei_count/",treatment,
+               "_percent_nuclei_per_cluster_group_no_sex_glia_clean")
+bGroup2
 saveToPDF(paste0(path, ".pdf"), width = 10, height = 4)
 ```
 
@@ -1180,6 +1217,21 @@ Glia cell types only") +
 ncells_group
 
 
+data <- as.data.frame(table(dataObject.glia.clean$group_no_sex))
+colnames(data) <- c("group_no_sex","frequency")
+ncells_group2 <- ggplot(data, aes(x = group_no_sex, y = frequency, fill = group_no_sex)) + 
+  geom_col() +
+  theme_classic() +
+  geom_text(aes(label = frequency), 
+            position=position_dodge(width=0.9), 
+            vjust=-0.25) +
+  scale_y_continuous(breaks = seq(0,20000, by = 1000), limits = c(0,20000)) +
+  ggtitle("Filtered: nuclei count per group
+Glia cell types only") +
+  theme(legend.position =  "none") + 
+  theme(axis.text.x = element_text(angle = 45, hjust=1))
+ncells_group2
+
 # Visualize the number of cell counts per group
 data <- as.data.frame(table(dataObject.glia.clean$time))
 colnames(data) <- c("time","frequency")
@@ -1208,6 +1260,11 @@ saveToPDF(paste0(path, ".pdf"), width = 8, height = 4)
 ncells_group
 path <- paste0("../results/nuclei_count/",treatment, 
                "_cells_per_group_glia_clean")
+saveToPDF(paste0(path, ".pdf"), width = 7, height = 4)
+
+ncells_group2
+path <- paste0("../results/nuclei_count/",treatment, 
+               "_cells_per_group_no_sex_glia_clean")
 saveToPDF(paste0(path, ".pdf"), width = 7, height = 4)
 
 ncells_time
@@ -1371,6 +1428,17 @@ bGroup <- dataObject.neurons.clean@meta.data %>%
   geom_col() +
   ggtitle("Percentage of group per cluster")
 bGroup
+
+bGroup2 <- dataObject.neurons.clean@meta.data %>%
+  group_by(individual_clusters, group_no_sex) %>%
+  dplyr::count() %>%
+  group_by(individual_clusters) %>%
+  dplyr::mutate(percent = 100*n/sum(n)) %>%
+  ungroup() %>%
+  ggplot(aes(x=individual_clusters,y=percent, fill=group_no_sex)) +
+  geom_col() +
+  ggtitle("Percentage of group per cluster")
+bGroup2
 ```
 
 ```{r,echo=FALSE}
@@ -1394,6 +1462,12 @@ saveToPDF(paste0(path, ".pdf"), width = 6, height = 4)
 path <- paste0("../results/nuclei_count/",treatment,
                "_percent_nuclei_per_cluster_group_neurons_clean")
 bGroup
+saveToPDF(paste0(path, ".pdf"), width = 6, height = 4)
+
+
+path <- paste0("../results/nuclei_count/",treatment,
+               "_percent_nuclei_per_cluster_group_no_sex_neurons_clean")
+bGroup2
 saveToPDF(paste0(path, ".pdf"), width = 6, height = 4)
 ```
 
@@ -1436,6 +1510,24 @@ ncells_group
 
 
 # Visualize the number of cell counts per group
+data <- as.data.frame(table(dataObject.neurons.clean$group_no_sex))
+colnames(data) <- c("group","frequency")
+
+ncells_group2 <- ggplot(data, aes(x = group, y = frequency, fill = group)) + 
+  geom_col() +
+  theme_classic() +
+  geom_text(aes(label = frequency), 
+            position=position_dodge(width=0.9), 
+            vjust=-0.25) +
+  scale_y_continuous(breaks = seq(0,25000, by = 1000), limits = c(0,25000)) +
+  ggtitle("Filtered: nuclei count per group
+neurons cell types only") +
+  theme(legend.position =  "none") + 
+  theme(axis.text.x = element_text(angle = 45, hjust=1))
+ncells_group2
+
+
+# Visualize the number of cell counts per group
 data <- as.data.frame(table(dataObject.neurons.clean$time))
 colnames(data) <- c("time","frequency")
 
@@ -1463,6 +1555,11 @@ saveToPDF(paste0(path, ".pdf"), width = 8, height = 4)
 ncells_group
 path <- paste0("../results/nuclei_count/",treatment, 
                "_cells_per_group_neurons_clean")
+saveToPDF(paste0(path, ".pdf"), width = 7, height = 4)
+
+ncells_group2
+path <- paste0("../results/nuclei_count/",treatment, 
+               "_cells_per_group_no_sex_neurons_clean")
 saveToPDF(paste0(path, ".pdf"), width = 7, height = 4)
 
 ncells_time
@@ -1713,7 +1810,7 @@ dev.off()
 ```
 # Cell cycle 
 ```{r cellcycle}
-dataObject <- CellCycleScoring(dataObject, 
+dataObject <- CellCycleScoring(dataObject.clean, 
                                         s.features = m.s.genes$gene_name, 
                                         g2m.features = m.g2m.genes$gene_name, 
                                         set.ident = TRUE)
@@ -1741,6 +1838,18 @@ cellcyle_group <- dataObject@meta.data %>%
   geom_col() +
   ggtitle("Percentage of cell cycle phase by group")
 cellcyle_group
+
+# sample before integration 
+cellcyle_group2 <- dataObject@meta.data %>%
+  group_by(group_no_sex, Phase) %>%
+  dplyr::count() %>%
+  group_by(group_no_sex) %>%
+  dplyr::mutate(percent = 100*n/sum(n)) %>%
+  ungroup() %>%
+  ggplot(aes(x=group_no_sex,y=percent, fill=Phase)) +
+  geom_col() +
+  ggtitle("Percentage of cell cycle phase by group")
+cellcyle_group2
 ```
 
 ```{r,echo=FALSE}
@@ -1754,6 +1863,15 @@ path <- paste0("../results/cellcycle/",treatment,
                "_percent_phase_group")
 cellcyle_group
 saveToPDF(paste0(path, ".pdf"), width = 10, height = 5)
+
+
+path <- paste0("../results/cellcycle/",treatment,
+               "_percent_phase_group_no_sex")
+cellcyle_group2
+saveToPDF(paste0(path, ".pdf"), width = 10, height = 5)
+
+info <- dataObject.clean@meta.data
+p_65 <- subset(info, sample == "P_65")
 ```
 
 # Save

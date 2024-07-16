@@ -47,11 +47,16 @@ Layers(dataObject)
 cell_types <- c(unique(dataObject$individual_clusters))
 ```
 
+```{r protein_coding}
+protein_coding_genes <- subset(gene_info, type == "protein_coding")
+```
+
 # Check 
 ```{r }
 # Group
 table(dataObject$group) 
 ```
+
 # DESeq all cell type pseudo-bulk
 ```{r DESeq_all_samples}
 output_dir <- "../results/DEGs/DESeq2_pseudobulk"
@@ -60,6 +65,7 @@ output_dir <- "../results/DEGs/DESeq2_pseudobulk"
 dataObject.pseudo <- AggregateExpression(
     dataObject, 
     assays = "RNA", # DESeq works with raw counts
+    features = protein_coding_genes$gene_name,
     return.seurat = TRUE, 
     group.by = c("sample", "strain", "sex", "time")
 )
@@ -82,6 +88,7 @@ dataObject.pseudo$allcells.strain <- paste(dataObject$strain, sep = "_")
 Idents(dataObject.pseudo) <- "allcells.strain"
 Layers(dataObject.pseudo)
 pseudo_bulk_counts <- GetAssayData(dataObject.pseudo, slot = "counts")
+
 
     # Alternate accessor function with the same result
     pseudo_bulk_meta <- dataObject.pseudo@meta.data
@@ -129,13 +136,12 @@ pseudo_bulk_counts <- GetAssayData(dataObject.pseudo, slot = "counts")
     write.table(DEGs, file = time_output_path, sep = "\t", quote = FALSE, row.names = FALSE)
     rm(dds, res, DEGs) # clean up 
     
-up <- subset(DEGs, DEGs$padj < 0.05 & DEGs$log2FoldChange > 0.25)
-
-down <- subset(DEGs, DEGs$padj < 0.05 & DEGs$log2FoldChange < -0.25)
 ```
 
 # DESeq all samples 
 ```{r DESeq_all_samples}
+info <- (dataObject@meta.data)
+
 output_dir <- "../results/DEGs/DESeq2_pseudobulk"
 # List of cell types to analyze
 cell_types <- c(unique(dataObject$individual_clusters))
@@ -143,6 +149,7 @@ cell_types <- c(unique(dataObject$individual_clusters))
 dataObject.pseudo <- AggregateExpression(
     dataObject, 
     assays = "RNA", # DESeq works with raw counts
+    features = protein_coding_genes$gene_name,
     return.seurat = TRUE, 
     group.by = c("sample", "strain", "sex", "time", "individual_clusters")
 )
@@ -160,6 +167,7 @@ calculate_percentages <- function(counts, group_labels) {
     return(pct_df)
 }
 
+cell_type <- "neuron"
 # Loop through each cell type to perform differential expression analysis for each condition
 for (cell_type in cell_types) {
     # Strain comparison with covariates
@@ -172,11 +180,17 @@ for (cell_type in cell_types) {
     # Alternate accessor function with the same result
     pseudo_bulk_meta <- dataObject.pseudo@meta.data[current_cells, ]
 
+    
     dds <- DESeqDataSetFromMatrix(
         countData = pseudo_bulk_counts,
         colData = pseudo_bulk_meta,
         design = ~ sex + time + strain
     )
+    mean(rowSums(counts(dds)))
+    
+    idx <- rowSums(counts(dds, normalized=FALSE) >= 500 ) >= 3 # less than 3 samples with count of 5 
+    dds <- dds[idx,]
+    
     dds <- DESeq(dds)
     res <- results(dds, contrast = c("strain", "PS19", "WT"))
     
@@ -186,8 +200,8 @@ for (cell_type in cell_types) {
     # Combine results
     res$gene <- rownames(res)
     res <- as.data.frame(res)
-    DEGs <- cbind(res[, c("gene", "baseMean", "log2FoldChange","lfcSE", "stat", "pvalue", "padj")], pct_data)
-    DEGs$percent_difference <- abs(DEGs$percent_PS19 - DEGs$percent_WT) 
+    DEGs <- cbind(res[, c("gene", "baseMean", "log2FoldChange","lfcSE", "stat", "pvalue", "padj")])
+    #DEGs$percent_difference <- abs(DEGs$percent_PS19 - DEGs$percent_WT) 
     
     strain_output_path <- file.path(output_dir, paste0(cell_type, "_PS19_vs_WT_comparison_pseudo_bulk_with_covariates.txt"))
     write.table(DEGs, file = strain_output_path, sep = "\t", quote = FALSE, row.names = FALSE)
@@ -271,6 +285,7 @@ for (cell_type in cell_types) {
             # Pseudo-bulk the counts for the subsetted data
             dataObject.pseudo <- AggregateExpression(
                 dataObject_subset, 
+                features = protein_coding_genes$gene_name,
                 assays = "RNA", 
                 return.seurat = TRUE, 
                 group.by = condition$DES_group_by
@@ -370,6 +385,7 @@ for (cell_type in cell_types) {
             dataObject.pseudo <- AggregateExpression(
                 dataObject_subset, 
                 assays = "RNA", 
+                features = protein_coding_genes$gene_name,
                 return.seurat = TRUE, 
                 group.by = condition$DES_group_by
             )
@@ -427,6 +443,7 @@ for (cell_type in cell_types) {
 dataObject.pseudo <- AggregateExpression(
     dataObject, 
     assays = "RNA", 
+    features = protein_coding_genes$gene_name,
     return.seurat = TRUE, 
     group.by = c("sample", "strain", "sex", "time", "individual_clusters")
 )

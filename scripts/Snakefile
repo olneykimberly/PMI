@@ -2,38 +2,47 @@ configfile: "config.json"
 
 cellranger_path = "/research/labs/neurology/fryer/m239830/tools/cellranger-8.0.0/bin/cellranger"
 
-ruleorder: cellranger 
 rule all:
-        input:
-                expand(config["cellranger_dir"]+"{sample}/", sample = config["sample_names"]),
-                expand(config["cellranger_dir"] + "web_summaries/{sample}_web_summary.html", sample=config["sample_names"]),
-                expand(config["cellbender_dir"] + "{sample}/{sample}_cellbender.h5", sample=config["sample_names"])
-                
+    input:
+        expand("{sample}/outs", sample=config["sample_names"]),
+        expand(config["cellrangerMAPT_dir"]+"{sample}/", sample=config["sample_names"]),
+        expand(config["cellrangerMAPT_dir"]+"web_summaries/{sample}_web_summary.html", sample=config["sample_names"])
+
 #------------------------------
 # alignment
 #------------------------------
 rule cellranger:
-        output:
-                counts = (directory(config["cellranger_dir"]+"{sample}/")),
-                web_cp = (config["cellranger_dir"]+"web_summaries/{sample}_web_summary.html"),
-                h5 = (config["cellranger_dir"]+"{sample}/outs/raw_feature_bc_matrix.h5")
-        params:
-                cellranger = cellranger_path,
-                id = lambda wildcards: config[wildcards.sample]["ID"],
-                path = lambda wildcards: config[wildcards.sample]["fq_path"],
-                ref = (config["Mmusculus_dir"])
-        shell:
-                """
-                {params.cellranger} count --id={params.id} --sample={params.id} --fastqs={params.path} --transcriptome={params.ref} --create-bam true --localcores=16 --localmem=50 || true;
-                mv {params.id}/ {output.counts}
-                cp {output.counts}/outs/web_summary.html {output.web_cp}
-                """
+    params:
+        cellranger = cellranger_path,
+        id = lambda wildcards: config[wildcards.sample]["ID"],
+        sm = lambda wildcards: config[wildcards.sample]["SM"],
+        path = lambda wildcards: config[wildcards.sample]["fq_path"],
+        ref = config["MmusculusMAPT_dir"]
+    shell:
+        """
+        {params.cellranger} count --id={params.id} --sample={params.sm} --fastqs={params.path} --transcriptome={params.ref} --create-bam true --localcores=16 --localmem=50 || true
+        """
+
 
 # $sample is the sampleID (e.g. 11-87_BR)
 # --fastqs is path to the snRNAseq fastq files
 # --transcriptome is the path to the human genome directory. This was created in a prior step.
 # --localcores will restrict cellranger to 16 cores
 # --localmem will restrict cellranger to 50G memory
+
+
+rule move:
+    output:
+        outs_dir = directory(config["cellrangerMAPT_dir"]+"{sample}/"),
+        web_cp = config["cellrangerMAPT_dir"]+"web_summaries/{sample}_web_summary.html"
+    params:
+        id = lambda wildcards: config[wildcards.sample]["ID"]
+    shell:
+        """
+        mv {params.id}/* {output.outs_dir}
+        mv {params.id}/outs {output.outs_dir}
+        cp {output.outs_dir}/web_summary.html {output.web_cp}
+        """
 
 #------------------------------
 # remove ambient cells

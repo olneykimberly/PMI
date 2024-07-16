@@ -34,8 +34,6 @@ color.panel <- dittoColors()
 metadata <- subset(metadata, sampleID != "P_60" & sampleID != "B_6")
 metadata$sampleID <- factor(metadata$sampleID, levels = c(metadata$sampleID))
 samples <- metadata$sampleID 
-
-library(xlsx)
 ```
 
 # Read in object
@@ -1561,6 +1559,7 @@ for (cell_type in cell_types) {
 print(count_matrix)
 
 ```
+
 ## 3 vs 0 hours
 ##### DESeq
 ```{r DESeq_table}

@@ -1,0 +1,237 @@
+---
+title: "UpSet plots"
+author: "Kimberly Olney, PhD"
+date: "07/19/2024"
+output:
+  html_document:
+    theme: cerulean
+    toc: true
+    toc_float: true
+editor_options: 
+  chunk_output_type: inline
+---
+
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(root.dir = ".", echo=TRUE, warning=FALSE, message=FALSE)
+library(ComplexHeatmap)
+library(ggpubr)
+library(UpSetR)
+```
+
+# Libraris, paths, colors
+https://satijalab.org/seurat/articles/essential_commands.html 
+```{r echo=FALSE, message=FALSE}
+source(here::here("/research/labs/neurology/fryer/m239830/PMI/scripts", "file_paths_and_colours.R"))
+treatment <- "PMI"
+color.panel <- dittoColors()
+metadata <- subset(metadata, sampleID != "P_60" & sampleID != "B_6")
+metadata$sampleID <- factor(metadata$sampleID, levels = c(metadata$sampleID))
+samples <- metadata$sampleID 
+
+saveToPDF <- function(...) {
+  d = dev.copy(pdf, ...)
+  dev.off(d)
+}
+```
+
+# Binary list shared gene function
+```{r}
+fromList <- function (input) {
+  # Same as original fromList()...
+  elements <- unique(unlist(input))
+  data <- unlist(lapply(input, function(x) {
+      x <- as.vector(match(elements, x))
+      }))
+  data[is.na(data)] <- as.integer(0)
+  data[data != 0] <- as.integer(1)
+  data <- data.frame(matrix(data, ncol = length(input), byrow = F))
+  data <- data[which(rowSums(data) != 0), ]
+  names(data) <- names(input)
+  # ... Except now it conserves your original value names!
+  row.names(data) <- elements
+  return(data)
+  }
+```
+
+
+# Read in object
+```{r read_object}
+# read object
+dataObject <- readRDS(file = paste0("../rObjects/", treatment, ".dataObject.clean.rds"))
+# inspect
+dataObject
+Layers(dataObject)
+# List of cell types to analyze
+cell_types <- c(unique(dataObject$individual_clusters))
+```
+
+
+# Upset data
+```{r}
+# Load necessary libraries
+library(dplyr)
+
+# Define the list of cell types and time points
+time_points <- c("pseudobulk", "0_hours_only", "3_hours_only")
+
+# Initialize an empty list to store data frames
+deg_list_down <- list()
+deg_list_up <- list()
+
+# Loop through each cell type and time point to read the data
+for (cell_type in cell_types) {
+  for (time_point in time_points) {
+    # Construct the file name
+    file_name <- paste0("../results/DEGs/DESeq2_pseudobulk_exp_filter/", cell_type, "_PS19_vs_WT_comparison_", time_point, ".txt")
+    
+    # Read the data
+    deg_data <- read.table(file_name, header = TRUE, sep = "\t")
+    deg_data <- subset(deg_data, deg_data$padj < 0.1)
+    deg_data_up <- subset(deg_data, log2FoldChange > 0)
+    deg_data_down <- subset(deg_data, log2FoldChange < 0)
+
+    # Add columns for cell type and time point
+    deg_data_up <- deg_data_up %>%
+      mutate(cell_type = cell_type, time_point = time_point)
+    deg_data_down <- deg_data_down %>%
+      mutate(cell_type = cell_type, time_point = time_point)
+    
+    deg_data_down <- deg_data_down$gene
+    deg_data_up <- deg_data_up$gene
+    # Store the data frame in the list
+    deg_list_down[[paste0(cell_type, "_", time_point)]] <- deg_data_down
+    deg_list_up[[paste0(cell_type, "_", time_point)]] <- deg_data_up
+
+  }
+}
+```
+
+# Upset plot
+All samples, 0 hours, 3 hours 
+```{r}
+# Loop through each cell type and generate an UpSet plot
+for (type in cell_types) {
+  
+  # Define input lists for up and down genes for the current cell type
+  list_down <- setNames(
+    list(deg_list_down[[paste(type, "pseudobulk", sep = "_")]],
+         deg_list_down[[paste(type, "0_hours_only", sep = "_")]],
+         deg_list_down[[paste(type, "3_hours_only", sep = "_")]]),
+    c(paste("down", type, "all samples", sep = " "),
+      paste("down", type, "0 hours", sep = " "),
+      paste("down", type, "3 hours", sep = " "))
+  )
+  
+  list_up <- setNames(
+    list(deg_list_up[[paste(type, "pseudobulk", sep = "_")]],
+         deg_list_up[[paste(type, "0_hours_only", sep = "_")]],
+         deg_list_up[[paste(type, "3_hours_only", sep = "_")]]),
+    c(paste("up", type, "all samples", sep = " "),
+      paste("up", type, "0 hours", sep = " "),
+      paste("up", type, "3 hours", sep = " "))
+  )
+  
+  # Combine lists for the UpSet plot
+  list_combined <- c(list_down, list_up)
+  
+  # Convert the list to a data frame for UpSetR
+  data <- fromList(list_combined)
+
+  # Open PDF device
+  pdf(paste0("../results/UpSet/", type, "_PS19_vs_WT.pdf"), width = 6, height = 4)
+
+  # Check if the data is not empty before plotting
+  if (nrow(data) > 3) {
+    # Create UpSet plot with custom colors
+    plot <- upset(data, 
+          sets = names(list_combined),
+          sets.bar.color = c("blue", "blue", "blue", "red", "red", "red"),
+          point.size = 2,
+          line.size = 1,
+          matrix.color = c("black"),
+          order.by = "freq",
+          keep.order = TRUE)
+    print(plot)
+    path <- paste0("../results/UpSet/", type, "_PS19_vs_WT")
+    saveToPDF(paste0(path, ".pdf"), width = 6, height = 4)
+
+  } else {
+    # If data is empty, print a warning on the PDF
+    plot.new() # Start a new plot
+    # Ensure no previous plot settings carry over
+   # par(mfrow=c(1,1))
+    # Add text to the plot
+    text(0.5, 0.5, "No data available for this cell type", cex = 1.5, pos = 4)
+  }
+  
+  # Close the PDF device
+  dev.off()
+}
+```
+
+# Upset plot
+0 hours and 3 hours only
+```{r}
+# Loop through each cell type and generate an UpSet plot
+for (type in cell_types) {
+  
+  # Define input lists for up and down genes for the current cell type
+  list_down <- setNames(
+    list(
+         deg_list_down[[paste(type, "0_hours_only", sep = "_")]],
+         deg_list_down[[paste(type, "3_hours_only", sep = "_")]]),
+    c(
+      paste("down", type, "0 hours", sep = " "),
+      paste("down", type, "3 hours", sep = " "))
+  )
+  
+  list_up <- setNames(
+    list(
+         deg_list_up[[paste(type, "0_hours_only", sep = "_")]],
+         deg_list_up[[paste(type, "3_hours_only", sep = "_")]]),
+    c(
+      paste("up", type, "0 hours", sep = " "),
+      paste("up", type, "3 hours", sep = " "))
+  )
+  
+  # Combine lists for the UpSet plot
+  list_combined <- c(list_down, list_up)
+  
+  # Convert the list to a data frame for UpSetR
+  data <- fromList(list_combined)
+
+  # Open PDF device
+  pdf(paste0("../results/UpSet/", type, "_PS19_vs_WT_time_only.pdf"), width = 6, height = 4)
+
+  # Check if the data is not empty before plotting
+  if (nrow(data) > 3) {
+    # Create UpSet plot with custom colors
+    plot <- upset(data, 
+          sets = names(list_combined),
+          sets.bar.color = c("blue", "blue", "red", "red"),
+          point.size = 2,
+          line.size = 1,
+          matrix.color = c("black"),
+          order.by = "freq",
+          keep.order = TRUE)
+    print(plot)
+    path <- paste0("../results/UpSet/", type, "_PS19_vs_WT_time_only")
+    saveToPDF(paste0(path, ".pdf"), width = 6, height = 4)
+
+  } else {
+    # If data is empty, print a warning on the PDF
+    plot.new() # Start a new plot
+    # Ensure no previous plot settings carry over
+   # par(mfrow=c(1,1))
+    # Add text to the plot
+    text(0.5, 0.5, "No data available for this cell type", cex = 1.5, pos = 4)
+  }
+  
+  # Close the PDF device
+  dev.off()
+}
+```
+
+

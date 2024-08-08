@@ -51,7 +51,7 @@ cell_types <- c(unique(dataObject$individual_clusters))
 # Volcano plot
 ```{r volcano_set_up}
 # Set up
-qval = 0.1
+qval = 0.01
 posFC = 0
 negFC = -0
 FC = 0
@@ -64,7 +64,7 @@ FC = 0
 for (i in cell_types) {
   ind1_vs_ind2 <- read.delim(paste0("../results/DEGs/MAST/", i, "_3_vs_0_hours_comparison.txt"))
   ind1_vs_ind2 <- na.omit(ind1_vs_ind2)
-  if (!any(ind1_vs_ind2$p_val_adj < 0.1, na.rm = TRUE)) {
+  if (!any(ind1_vs_ind2$p_val_adj < 0.01, na.rm = TRUE)) {
     # If there are no significant DEGs, create a volcano plot with all points in gray
     p <- ggplot(data = ind1_vs_ind2, aes(x = avg_log2FC, y = -log10(p_val))) +
       geom_point(alpha = 0.8, size = 2, color = "gray") +
@@ -198,7 +198,7 @@ max <- nrow(ind1_vs_ind2)
 for (i in cell_types) {
   ind1_vs_ind2 <- read.delim(paste0("../results/DEGs/MAST/", i, "_3_vs_0_hours_comparison_XX_female_only.txt"))
   ind1_vs_ind2 <- na.omit(ind1_vs_ind2)
-  if (!any(ind1_vs_ind2$p_val_adj < 0.1, na.rm = TRUE)) {
+  if (!any(ind1_vs_ind2$p_val_adj < 0.01, na.rm = TRUE)) {
     # If there are no significant DEGs, create a volcano plot with all points in gray
     p <- ggplot(data = ind1_vs_ind2, aes(x = avg_log2FC, y = -log10(p_val))) +
       geom_point(alpha = 0.8, size = 2, color = "gray") +
@@ -333,7 +333,7 @@ remove(up, up10, upFold, ind1_vs_ind2, downFold, down10, data, p, down)
 for (i in cell_types) {
   ind1_vs_ind2 <- read.delim(paste0("../results/DEGs/MAST/",i,  "_3_vs_0_hours_comparison_XY_male_only.txt"))
   ind1_vs_ind2 <- na.omit(ind1_vs_ind2)
-  if (!any(ind1_vs_ind2$p_val_adj < 0.1, na.rm = TRUE)) {
+  if (!any(ind1_vs_ind2$p_val_adj < 0.01, na.rm = TRUE)) {
     # If there are no significant DEGs, create a volcano plot with all points in gray
     p <- ggplot(data = ind1_vs_ind2, aes(x = avg_log2FC, y = -log10(p_val))) +
       geom_point(alpha = 0.8, size = 2, color = "gray") +
@@ -468,7 +468,7 @@ remove(up, up10, upFold, ind1_vs_ind2, downFold, down10, data, p, down)
 for (i in cell_types) {
   ind1_vs_ind2 <- read.delim(paste0("../results/DEGs/MAST/",i,  "_3_vs_0_hours_comparison_PS19_only.txt"))
   ind1_vs_ind2 <- na.omit(ind1_vs_ind2)
-  if (!any(ind1_vs_ind2$p_val_adj < 0.1, na.rm = TRUE)) {
+  if (!any(ind1_vs_ind2$p_val_adj < 0.01, na.rm = TRUE)) {
     # If there are no significant DEGs, create a volcano plot with all points in gray
     p <- ggplot(data = ind1_vs_ind2, aes(x = avg_log2FC, y = -log10(p_val))) +
       geom_point(alpha = 0.8, size = 2, color = "gray") +
@@ -603,7 +603,7 @@ remove(up, up10, upFold, ind1_vs_ind2, downFold, down10, data, p, down)
 for (i in cell_types) {
   ind1_vs_ind2 <- read.delim(paste0("../results/DEGs/MAST/",i,  "_3_vs_0_hours_comparison_WT_only.txt"))
   ind1_vs_ind2 <- na.omit(ind1_vs_ind2)
-  if (!any(ind1_vs_ind2$p_val_adj < 0.1, na.rm = TRUE)) {
+  if (!any(ind1_vs_ind2$p_val_adj < 0.01, na.rm = TRUE)) {
     # If there are no significant DEGs, create a volcano plot with all points in gray
     p <- ggplot(data = ind1_vs_ind2, aes(x = avg_log2FC, y = -log10(p_val))) +
       geom_point(alpha = 0.8, size = 2, color = "gray") +
@@ -738,7 +738,7 @@ remove(up, up10, upFold, ind1_vs_ind2, downFold, down10, data, p, down)
 for (i in cell_types) {
   ind1_vs_ind2 <- read.delim(paste0("../results/DEGs/MAST/", i, "_PS19_vs_WT_comparison.txt"))
   ind1_vs_ind2 <- na.omit(ind1_vs_ind2)
-  if (!any(ind1_vs_ind2$p_val_adj < 0.1, na.rm = TRUE)) {
+  if (!any(ind1_vs_ind2$p_val_adj < 0.01, na.rm = TRUE)) {
     # If there are no significant DEGs, create a volcano plot with all points in gray
     p <- ggplot(data = ind1_vs_ind2, aes(x = avg_log2FC, y = -log10(p_val))) +
       geom_point(alpha = 0.8, size = 2, color = "gray") +
@@ -874,7 +874,7 @@ remove(up, up10, upFold, ind1_vs_ind2, downFold, down10, data, p, down)
 for (i in cell_types) {
   ind1_vs_ind2 <- read.delim(paste0("../results/DEGs/MAST/", i, "_PS19_vs_WT_comparison_3hours_only.txt"))
   ind1_vs_ind2 <- na.omit(ind1_vs_ind2)
-  if (!any(ind1_vs_ind2$p_val_adj < 0.1, na.rm = TRUE)) {
+  if (!any(ind1_vs_ind2$p_val_adj < 0.01, na.rm = TRUE)) {
     # If there are no significant DEGs, create a volcano plot with all points in gray
     p <- ggplot(data = ind1_vs_ind2, aes(x = avg_log2FC, y = -log10(p_val))) +
       geom_point(alpha = 0.8, size = 2, color = "gray") +
@@ -1010,7 +1010,7 @@ remove(up, up10, upFold, ind1_vs_ind2, downFold, down10, data, p, down)
 for (i in cell_types) {
   ind1_vs_ind2 <- read.delim(paste0("../results/DEGs/MAST/", i, "_PS19_vs_WT_comparison_0hours_only.txt"))
   ind1_vs_ind2 <- na.omit(ind1_vs_ind2)
-  if (!any(ind1_vs_ind2$p_val_adj < 0.1, na.rm = TRUE)) {
+  if (!any(ind1_vs_ind2$p_val_adj < 0.01, na.rm = TRUE)) {
     # If there are no significant DEGs, create a volcano plot with all points in gray
     p <- ggplot(data = ind1_vs_ind2, aes(x = avg_log2FC, y = -log10(p_val))) +
       geom_point(alpha = 0.8, size = 2, color = "gray") +
@@ -1295,22 +1295,22 @@ list_of_datasets <- list()
 for (i in cell_types) {
   filepath <- paste0("../results/DEGs/MAST/", i, "_3_vs_0_hours_comparison.txt")
   dataset <- read.delim(filepath, header = TRUE, sep = "\t", stringsAsFactors = FALSE)
-  filtered_dataset <- subset(dataset, p_val_adj < 0.1 & avg_log2FC > 0.0)
+  filtered_dataset <- subset(dataset, p_val_adj < 0.01 & avg_log2FC > 0.0)
   list_of_datasets[[i]] <- filtered_dataset
 }
 write.xlsx(list_of_datasets, file = paste0(
-    "../results/DEGs/MAST/3_vs_0_hours_qval0.05_log2FC_0.25_up_regulated.xlsx"))
+    "../results/DEGs/MAST/3_vs_0_hours_qval0.01_up_regulated.xlsx"))
 
 # down-regulated
 list_of_datasets <- list()
 for (i in cell_types) {
   filepath <- paste0("../results/DEGs/MAST/", i, "_3_vs_0_hours_comparison.txt")
   dataset <- read.delim(filepath, header = TRUE, sep = "\t", stringsAsFactors = FALSE)
-  filtered_dataset <- subset(dataset, p_val_adj < 0.1 & avg_log2FC < -0.0)
+  filtered_dataset <- subset(dataset, p_val_adj < 0.01 & avg_log2FC < -0.0)
   list_of_datasets[[i]] <- filtered_dataset
 }
 write.xlsx(list_of_datasets, file = paste0(
-    "../results/DEGs/MAST/3_vs_0_hours_qval0.05_log2FC_0.25_down_regulated.xlsx"))
+    "../results/DEGs/MAST/3_vs_0_hours_qval0.01_down_regulated.xlsx"))
 
 
 #------------------- PS19 only
@@ -1319,22 +1319,22 @@ list_of_datasets <- list()
 for (i in cell_types) {
   filepath <- paste0("../results/DEGs/MAST/", i, "_3_vs_0_hours_comparison_PS19_only.txt")
   dataset <- read.delim(filepath, header = TRUE, sep = "\t", stringsAsFactors = FALSE)
-  filtered_dataset <- subset(dataset, p_val_adj < 0.1 &  avg_log2FC > 0.0)
+  filtered_dataset <- subset(dataset, p_val_adj < 0.01 &  avg_log2FC > 0.0)
   list_of_datasets[[i]] <- filtered_dataset
 }
 write.xlsx(list_of_datasets, file = paste0(
-    "../results/DEGs/MAST/3_vs_0_hours_qval0.05_log2FC_0.25_up_regulated_PS19_only.xlsx"))
+    "../results/DEGs/MAST/3_vs_0_hours_qval0.01_up_regulated_PS19_only.xlsx"))
 
 # down-regulated
 list_of_datasets <- list()
 for (i in cell_types) {
   filepath <- paste0("../results/DEGs/MAST/", i, "_3_vs_0_hours_comparison_PS19_only.txt")
   dataset <- read.delim(filepath, header = TRUE, sep = "\t", stringsAsFactors = FALSE)
-  filtered_dataset <- subset(dataset, p_val_adj < 0.1 & avg_log2FC < -0.0)
+  filtered_dataset <- subset(dataset, p_val_adj < 0.01 & avg_log2FC < -0.0)
   list_of_datasets[[i]] <- filtered_dataset
 }
 write.xlsx(list_of_datasets, file = paste0(
-    "../results/DEGs/MAST/3_vs_0_hours_qval0.05_log2FC_0.25_down_regulated_PS19_only.xlsx"))
+    "../results/DEGs/MAST/3_vs_0_hours_qval0.01_down_regulated_PS19_only.xlsx"))
 
 
 #------------------- WT only
@@ -1343,22 +1343,22 @@ list_of_datasets <- list()
 for (i in cell_types) {
   filepath <- paste0("../results/DEGs/MAST/", i, "_3_vs_0_hours_comparison_WT_only.txt")
   dataset <- read.delim(filepath, header = TRUE, sep = "\t", stringsAsFactors = FALSE)
-  filtered_dataset <- subset(dataset, p_val_adj < 0.1 &  avg_log2FC > 0.0)
+  filtered_dataset <- subset(dataset, p_val_adj < 0.01 &  avg_log2FC > 0.0)
   list_of_datasets[[i]] <- filtered_dataset
 }
 write.xlsx(list_of_datasets, file = paste0(
-    "../results/DEGs/MAST/3_vs_0_hours_qval0.05_log2FC_0.25_up_regulated_WT_only.xlsx"))
+    "../results/DEGs/MAST/3_vs_0_hours_qval0.01_up_regulated_WT_only.xlsx"))
 
 # down-regulated
 list_of_datasets <- list()
 for (i in cell_types) {
   filepath <- paste0("../results/DEGs/MAST/", i, "_3_vs_0_hours_comparison_WT_only.txt")
   dataset <- read.delim(filepath, header = TRUE, sep = "\t", stringsAsFactors = FALSE)
-  filtered_dataset <- subset(dataset, p_val_adj < 0.1 & avg_log2FC < -0.0)
+  filtered_dataset <- subset(dataset, p_val_adj < 0.01 & avg_log2FC < -0.0)
   list_of_datasets[[i]] <- filtered_dataset
 }
 write.xlsx(list_of_datasets, file = paste0(
-    "../results/DEGs/MAST/3_vs_0_hours_qval0.05_log2FC_0.25_down_regulated_WT_only.xlsx"))
+    "../results/DEGs/MAST/3_vs_0_hours_qval0.01_down_regulated_WT_only.xlsx"))
 ```
 
 #### PS19 vs WT
@@ -1369,22 +1369,22 @@ list_of_datasets <- list()
 for (i in cell_types) {
   filepath <- paste0("../results/DEGs/MAST/", i, "_PS19_vs_WT_comparison.txt")
   dataset <- read.delim(filepath, header = TRUE, sep = "\t", stringsAsFactors = FALSE)
-  filtered_dataset <- subset(dataset, p_val_adj < 0.1 &  avg_log2FC > 0.0)
+  filtered_dataset <- subset(dataset, p_val_adj < 0.01 &  avg_log2FC > 0.0)
   list_of_datasets[[i]] <- filtered_dataset
 }
 write.xlsx(list_of_datasets, file = paste0(
-    "../results/DEGs/MAST/PS19_vs_WT_qval0.05_log2FC_0.25_up_regulated.xlsx"))
+    "../results/DEGs/MAST/PS19_vs_WT_qval0.01_up_regulated.xlsx"))
 
 # down-regulated
 list_of_datasets <- list()
 for (i in cell_types) {
   filepath <- paste0("../results/DEGs/MAST/", i, "_PS19_vs_WT_comparison.txt")
   dataset <- read.delim(filepath, header = TRUE, sep = "\t", stringsAsFactors = FALSE)
-  filtered_dataset <- subset(dataset, p_val_adj < 0.1 & avg_log2FC < -0.0)
+  filtered_dataset <- subset(dataset, p_val_adj < 0.01 & avg_log2FC < -0.0)
   list_of_datasets[[i]] <- filtered_dataset
 }
 write.xlsx(list_of_datasets, file = paste0(
-    "../results/DEGs/MAST/PS19_vs_WT_qval0.05_log2FC_0.25_down_regulated.xlsx"))
+    "../results/DEGs/MAST/PS19_vs_WT_qval0.01_down_regulated.xlsx"))
 
 
 #------------------- 3 hours only 
@@ -1393,22 +1393,22 @@ list_of_datasets <- list()
 for (i in cell_types) {
   filepath <- paste0("../results/DEGs/MAST/", i, "_PS19_vs_WT_comparison_3hours_only.txt")
   dataset <- read.delim(filepath, header = TRUE, sep = "\t", stringsAsFactors = FALSE)
-  filtered_dataset <- subset(dataset, p_val_adj < 0.1 &  avg_log2FC > 0.0)
+  filtered_dataset <- subset(dataset, p_val_adj < 0.01 &  avg_log2FC > 0.0)
   list_of_datasets[[i]] <- filtered_dataset
 }
 write.xlsx(list_of_datasets, file = paste0(
-    "../results/DEGs/MAST/PS19_vs_WT_qval0.05_log2FC_0.25_up_regulated_3hours_only.xlsx"))
+    "../results/DEGs/MAST/PS19_vs_WT_qval0.01_up_regulated_3hours_only.xlsx"))
 
 # down-regulated
 list_of_datasets <- list()
 for (i in cell_types) {
   filepath <- paste0("../results/DEGs/MAST/", i, "_PS19_vs_WT_comparison_3hours_only.txt")
   dataset <- read.delim(filepath, header = TRUE, sep = "\t", stringsAsFactors = FALSE)
-  filtered_dataset <- subset(dataset, p_val_adj < 0.1 & avg_log2FC < -0.0)
+  filtered_dataset <- subset(dataset, p_val_adj < 0.01 & avg_log2FC < -0.0)
   list_of_datasets[[i]] <- filtered_dataset
 }
 write.xlsx(list_of_datasets, file = paste0(
-    "../results/DEGs/MAST/PS19_vs_WT_qval0.05_log2FC_0.25_down_regulated_3hours_only.xlsx"))
+    "../results/DEGs/MAST/PS19_vs_WT_qval0.01_down_regulated_3hours_only.xlsx"))
 
 
 #------------------- 0 hours only 
@@ -1417,22 +1417,22 @@ list_of_datasets <- list()
 for (i in cell_types) {
   filepath <- paste0("../results/DEGs/MAST/", i, "_PS19_vs_WT_comparison_0hours_only.txt")
   dataset <- read.delim(filepath, header = TRUE, sep = "\t", stringsAsFactors = FALSE)
-  filtered_dataset <- subset(dataset, p_val_adj < 0.1 &  avg_log2FC > 0.0)
+  filtered_dataset <- subset(dataset, p_val_adj < 0.01 &  avg_log2FC > 0.0)
   list_of_datasets[[i]] <- filtered_dataset
 }
 write.xlsx(list_of_datasets, file = paste0(
-    "../results/DEGs/MAST/PS19_vs_WT_qval0.05_log2FC_0.25_up_regulated_0hours_only.xlsx"))
+    "../results/DEGs/MAST/PS19_vs_WT_qval0.01_up_regulated_0hours_only.xlsx"))
 
 # down-regulated
 list_of_datasets <- list()
 for (i in cell_types) {
   filepath <- paste0("../results/DEGs/MAST/", i, "_PS19_vs_WT_comparison_0hours_only.txt")
   dataset <- read.delim(filepath, header = TRUE, sep = "\t", stringsAsFactors = FALSE)
-  filtered_dataset <- subset(dataset, p_val_adj < 0.1 & avg_log2FC < -0.0)
+  filtered_dataset <- subset(dataset, p_val_adj < 0.01 & avg_log2FC < -0.0)
   list_of_datasets[[i]] <- filtered_dataset
 }
 write.xlsx(list_of_datasets, file = paste0(
-  "../results/DEGs/MAST/PS19_vs_WT_qval0.05_log2FC_0.25_down_regulated_0hours_only.xlsx"))
+  "../results/DEGs/MAST/PS19_vs_WT_qval0.01_down_regulated_0hours_only.xlsx"))
 ```
 
 # DEG table
@@ -1448,7 +1448,7 @@ count_matrix <- matrix(0, nrow = length(cell_types), ncol = 3,
 
 # Function to count differentially expressed genes
 count_DE_genes <- function(data) {
-  return(sum(data$p_val_adj < 0.1 & abs(data$avg_log2FC) > 0, na.rm = TRUE))
+  return(sum(data$p_val_adj < 0.01 & abs(data$avg_log2FC) > 0, na.rm = TRUE))
 }
 
 # Loop through each cell type
@@ -1485,7 +1485,7 @@ count_matrix <- matrix(0, nrow = length(cell_types), ncol = 3,
 
 # Function to count differentially expressed genes
 count_DE_genes <- function(data) {
-  return(sum(data$p_val_adj < 0.1 & abs(data$avg_log2FC) > 0 , na.rm = TRUE))
+  return(sum(data$p_val_adj < 0.01 & abs(data$avg_log2FC) > 0 , na.rm = TRUE))
 }
 
 # Loop through each cell type
@@ -1521,7 +1521,7 @@ count_matrix <- matrix(0, nrow = length(cell_types), ncol = 3,
 
 # Function to count differentially expressed genes
 count_DE_genes <- function(data) {
-  return(sum(data$p_val_adj < 0.1 & abs(data$avg_log2FC) > 0, na.rm = TRUE))
+  return(sum(data$p_val_adj < 0.01 & abs(data$avg_log2FC) > 0, na.rm = TRUE))
 }
 
 # Loop through each cell type

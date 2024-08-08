@@ -1,0 +1,870 @@
+---
+title: "Figure 2 - PS19 vs WT differential expression"
+author: "Kimberly Olney, PhD"
+date: "07/24/2024"
+output:
+  html_document:
+    theme: cerulean
+    toc: true
+    toc_float: true
+editor_options: 
+  chunk_output_type: inline
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(root.dir = ".", echo=TRUE, warning=FALSE, message=FALSE)
+```
+
+# Libraris, paths, colors
+https://satijalab.org/seurat/articles/essential_commands.html 
+```{r echo=FALSE, message=FALSE}
+source(here::here("/research/labs/neurology/fryer/m239830/PMI/scripts", "file_paths_and_colours.R"))
+treatment <- "PMI"
+group_colors <- c("gray75","#4682B440", "gray35", "#4682B0")
+color.panel <- dittoColors()
+```
+
+# Read in object
+```{r read_object}
+# read object
+dataObject <- readRDS(file = paste0("../rObjects/",treatment,".dataObject.clean.rds"))
+# inspect
+dataObject
+```
+# Volcano 
+```{r params}
+i <- "neuron"
+qval = 0.1
+posFC = 0 
+negFC = 0 
+FC = 0
+```
+
+## Neuron
+### 3 hours: PS19 vs WT 
+```{r volcano_strain, warning=FALSE}
+
+  ind1_vs_ind2 <- read.delim(paste0("../results/DEGs/DESeq2_pseudobulk_exp_filter/", i, "_PS19_vs_WT_comparison_3_hours_only.txt"))
+  ind1_vs_ind2 <- na.omit(ind1_vs_ind2)
+
+    color_values <- vector()
+max <- nrow(ind1_vs_ind2)
+  for (row in 1:max) {
+    if (!is.na(ind1_vs_ind2$padj[row])) {  # Check for NA values in padj
+      if (ind1_vs_ind2$padj[row] < qval) {
+        if (ind1_vs_ind2$log2FoldChange[row] > posFC) {
+          color_values <- c(color_values, 1)
+        } else if (ind1_vs_ind2$log2FoldChange[row] < negFC) {
+          color_values <- c(color_values, 2)
+        } else {
+          color_values <- c(color_values, 3)
+        }
+      } else {
+        color_values <- c(color_values, 3)
+      }
+    } else {
+      color_values <- c(color_values, 3)  # Handle NA values in padj
+    }
+  }
+  ind1_vs_ind2$color_adjpval_0.05 <- factor(color_values)
+    data <- ind1_vs_ind2
+    up <- data[data$color_adjpval_0.05 == 1,]
+    up <- up[!grepl("ENSG", up$gene),]
+    up10 <- up[1:10,]
+    upFold <- subset(up, log2FoldChange > 2)
+    upFold <- upFold[!(upFold$gene %in% up10$gene),]
+    upFold <- upFold[1:10,]
+
+    down <- data[data$color_adjpval_0.05 == 2,]
+    down <- down[!grepl("ENSG", down$gene),]
+    down10 <- down[1:10,]
+    downFold <- subset(down, log2FoldChange < -2)
+    downFold <- downFold[!(downFold$gene %in% down10$gene),]
+    downFold <- downFold[1:10,]
+
+    if (!1 %in% unique(data$color_adjpval_0.05)) {
+        my_colors <- c("blue","gray")
+      } else if (!2 %in% unique(data$color_adjpval_0.05)) {
+        my_colors <- c("red","gray")
+      } else if (!1 %in% unique(data$color_adjpval_0.05) && !2 %in% unique(data$color_adjpval_0.05)) {
+        my_colors <- c("gray")
+      } else {
+        my_colors <- c("red","blue","gray")
+      }
+      # plot
+      hadjpval <- (-log10(max(data$pvalue[data$padj < qval], na.rm=TRUE)))
+
+neuron_3hour <- ggplot(data = data, aes(x = log2FoldChange,y = -log10(pvalue), color = color_adjpval_0.05)) + 
+        geom_point(alpha = 0.8, size = 1) +  
+        theme_bw() +  
+        theme(legend.position = "none") + 
+        scale_color_manual(values = my_colors) + 
+        labs(x = expression(log[2](FC)), 
+          y = expression(-log[10] ~ "(" ~ italic("p") ~ "-value)") ) +
+        theme(legend.position = "none",
+              plot.title = element_text(size = 10, margin = margin(0,0,0.3,0)),
+              axis.title.x = element_text(size = 10),
+              axis.text.x = element_text(size = 10),
+              axis.title.y = element_text(size = 10),
+              axis.text.y = element_text(size = 10)) +
+      geom_hline(yintercept = hadjpval,
+                 colour = "#000000",
+                 linetype = "dashed") +
+      geom_vline(xintercept = negFC,
+                 colour = "#000000",
+                 linetype = "dashed") +
+      geom_vline(xintercept = posFC,
+                 colour = "#000000",
+                 linetype = "dashed") +
+      ggtitle(paste0("3 hours \n", i, ": PS19 vs WT \nq-value < ", qval)) +
+  scale_x_continuous(limits = c(-4, 4), breaks = seq(-4, 4, 1)) +
+  scale_y_continuous(limits = c(0, 20), breaks = seq(0, 20, 5))
+neuron_3hour
+rm(up10, upFold, up, down, down10, downFold)
+```
+
+### 0 hours: PS19 vs WT 
+```{r}
+  ind1_vs_ind2 <- read.delim(paste0("../results/DEGs/DESeq2_pseudobulk_exp_filter/", i, "_PS19_vs_WT_comparison_0_hours_only.txt"))
+  ind1_vs_ind2 <- na.omit(ind1_vs_ind2)
+
+    color_values <- vector()
+max <- nrow(ind1_vs_ind2)
+  for (row in 1:max) {
+    if (!is.na(ind1_vs_ind2$padj[row])) {  # Check for NA values in padj
+      if (ind1_vs_ind2$padj[row] < qval) {
+        if (ind1_vs_ind2$log2FoldChange[row] > posFC) {
+          color_values <- c(color_values, 1)
+        } else if (ind1_vs_ind2$log2FoldChange[row] < negFC) {
+          color_values <- c(color_values, 2)
+        } else {
+          color_values <- c(color_values, 3)
+        }
+      } else {
+        color_values <- c(color_values, 3)
+      }
+    } else {
+      color_values <- c(color_values, 3)  # Handle NA values in padj
+    }
+  }
+  ind1_vs_ind2$color_adjpval_0.05 <- factor(color_values)
+    data <- ind1_vs_ind2
+    up <- data[data$color_adjpval_0.05 == 1,]
+    up <- up[!grepl("ENSG", up$gene),]
+    up10 <- up[1:10,]
+    upFold <- subset(up, log2FoldChange > 2)
+    upFold <- upFold[!(upFold$gene %in% up10$gene),]
+    upFold <- upFold[1:10,]
+
+    down <- data[data$color_adjpval_0.05 == 2,]
+    down <- down[!grepl("ENSG", down$gene),]
+    down10 <- down[1:10,]
+    downFold <- subset(down, log2FoldChange < -2)
+    downFold <- downFold[!(downFold$gene %in% down10$gene),]
+    downFold <- downFold[1:10,]
+
+    if (!1 %in% unique(data$color_adjpval_0.05)) {
+        my_colors <- c("blue","gray")
+      } else if (!2 %in% unique(data$color_adjpval_0.05)) {
+        my_colors <- c("red","gray")
+      } else if (!1 %in% unique(data$color_adjpval_0.05) && !2 %in% unique(data$color_adjpval_0.05)) {
+        my_colors <- c("gray")
+      } else {
+        my_colors <- c("red","blue","gray")
+      }
+      # plot
+      hadjpval <- (-log10(max(data$pvalue[data$padj < qval], na.rm=TRUE)))
+
+neuron_0hour <- ggplot(data = data, aes(x = log2FoldChange,y = -log10(pvalue), color = color_adjpval_0.05)) + 
+        geom_point(alpha = 0.8, size = 1) +  
+        theme_bw() +  
+        theme(legend.position = "none") + 
+        scale_color_manual(values = my_colors) + 
+        labs(x = expression(log[2](FC)), 
+          y = expression(-log[10] ~ "(" ~ italic("p") ~ "-value)") ) +
+        theme(legend.position = "none",
+              plot.title = element_text(size = 10, margin = margin(0,0,0.3,0)),
+              axis.title.x = element_text(size = 10),
+              axis.text.x = element_text(size = 10),
+              axis.title.y = element_text(size = 10),
+              axis.text.y = element_text(size = 10)) +
+      geom_hline(yintercept = hadjpval,
+                 colour = "#000000",
+                 linetype = "dashed") +
+      geom_vline(xintercept = negFC,
+                 colour = "#000000",
+                 linetype = "dashed") +
+      geom_vline(xintercept = posFC,
+                 colour = "#000000",
+                 linetype = "dashed") +
+      ggtitle(paste0("0 hours \n", i, ": PS19 vs WT \nq-value < ", qval)) +
+  scale_x_continuous(limits = c(-4, 4), breaks = seq(-4, 4, 1)) +
+  scale_y_continuous(limits = c(0, 20), breaks = seq(0, 20, 5))
+neuron_0hour
+rm(up10, upFold, up, down, down10, downFold)
+```
+
+## Interneuron
+### 3 hours: PS19 vs WT 
+```{r volcano_strain, warning=FALSE}
+i <- "interneuron"
+  ind1_vs_ind2 <- read.delim(paste0("../results/DEGs/DESeq2_pseudobulk_exp_filter/", i, "_PS19_vs_WT_comparison_3_hours_only.txt"))
+  ind1_vs_ind2 <- na.omit(ind1_vs_ind2)
+
+    color_values <- vector()
+max <- nrow(ind1_vs_ind2)
+  for (row in 1:max) {
+    if (!is.na(ind1_vs_ind2$padj[row])) {  # Check for NA values in padj
+      if (ind1_vs_ind2$padj[row] < qval) {
+        if (ind1_vs_ind2$log2FoldChange[row] > posFC) {
+          color_values <- c(color_values, 1)
+        } else if (ind1_vs_ind2$log2FoldChange[row] < negFC) {
+          color_values <- c(color_values, 2)
+        } else {
+          color_values <- c(color_values, 3)
+        }
+      } else {
+        color_values <- c(color_values, 3)
+      }
+    } else {
+      color_values <- c(color_values, 3)  # Handle NA values in padj
+    }
+  }
+  ind1_vs_ind2$color_adjpval_0.05 <- factor(color_values)
+    data <- ind1_vs_ind2
+    up <- data[data$color_adjpval_0.05 == 1,]
+    up <- up[!grepl("ENSG", up$gene),]
+    up10 <- up[1:10,]
+    upFold <- subset(up, log2FoldChange > 2)
+    upFold <- upFold[!(upFold$gene %in% up10$gene),]
+    upFold <- upFold[1:10,]
+
+    down <- data[data$color_adjpval_0.05 == 2,]
+    down <- down[!grepl("ENSG", down$gene),]
+    down10 <- down[1:10,]
+    downFold <- subset(down, log2FoldChange < -2)
+    downFold <- downFold[!(downFold$gene %in% down10$gene),]
+    downFold <- downFold[1:10,]
+
+    if (!1 %in% unique(data$color_adjpval_0.05)) {
+        my_colors <- c("blue","gray")
+      } else if (!2 %in% unique(data$color_adjpval_0.05)) {
+        my_colors <- c("red","gray")
+      } else if (!1 %in% unique(data$color_adjpval_0.05) && !2 %in% unique(data$color_adjpval_0.05)) {
+        my_colors <- c("gray")
+      } else {
+        my_colors <- c("red","blue","gray")
+      }
+      # plot
+      hadjpval <- (-log10(max(data$pvalue[data$padj < qval], na.rm=TRUE)))
+
+interneuron_3hour <- ggplot(data = data, aes(x = log2FoldChange,y = -log10(pvalue), color = color_adjpval_0.05)) + 
+        geom_point(alpha = 0.8, size = 1) +  
+        theme_bw() +  
+        theme(legend.position = "none") + 
+        scale_color_manual(values = my_colors) + 
+        labs(x = expression(log[2](FC)), 
+          y = expression(-log[10] ~ "(" ~ italic("p") ~ "-value)") ) +
+        theme(legend.position = "none",
+              plot.title = element_text(size = 10, margin = margin(0,0,0.3,0)),
+              axis.title.x = element_text(size = 10),
+              axis.text.x = element_text(size = 10),
+              axis.title.y = element_text(size = 10),
+              axis.text.y = element_text(size = 10)) +
+      geom_hline(yintercept = hadjpval,
+                 colour = "#000000",
+                 linetype = "dashed") +
+      geom_vline(xintercept = negFC,
+                 colour = "#000000",
+                 linetype = "dashed") +
+      geom_vline(xintercept = posFC,
+                 colour = "#000000",
+                 linetype = "dashed") +
+      ggtitle(paste0("3 hours \n", i, ": PS19 vs WT \nq-value < ", qval)) +
+  scale_x_continuous(limits = c(-4, 4), breaks = seq(-4, 4, 1)) +
+  scale_y_continuous(limits = c(0, 20), breaks = seq(0, 20, 5))
+interneuron_3hour
+rm(up10, upFold, up, down, down10, downFold)
+```
+
+### 0 hours: PS19 vs WT 
+```{r}
+  ind1_vs_ind2 <- read.delim(paste0("../results/DEGs/DESeq2_pseudobulk_exp_filter/", i, "_PS19_vs_WT_comparison_0_hours_only.txt"))
+  ind1_vs_ind2 <- na.omit(ind1_vs_ind2)
+
+    color_values <- vector()
+max <- nrow(ind1_vs_ind2)
+  for (row in 1:max) {
+    if (!is.na(ind1_vs_ind2$padj[row])) {  # Check for NA values in padj
+      if (ind1_vs_ind2$padj[row] < qval) {
+        if (ind1_vs_ind2$log2FoldChange[row] > posFC) {
+          color_values <- c(color_values, 1)
+        } else if (ind1_vs_ind2$log2FoldChange[row] < negFC) {
+          color_values <- c(color_values, 2)
+        } else {
+          color_values <- c(color_values, 3)
+        }
+      } else {
+        color_values <- c(color_values, 3)
+      }
+    } else {
+      color_values <- c(color_values, 3)  # Handle NA values in padj
+    }
+  }
+  ind1_vs_ind2$color_adjpval_0.05 <- factor(color_values)
+    data <- ind1_vs_ind2
+    up <- data[data$color_adjpval_0.05 == 1,]
+    up <- up[!grepl("ENSG", up$gene),]
+    up10 <- up[1:10,]
+    upFold <- subset(up, log2FoldChange > 2)
+    upFold <- upFold[!(upFold$gene %in% up10$gene),]
+    upFold <- upFold[1:10,]
+
+    down <- data[data$color_adjpval_0.05 == 2,]
+    down <- down[!grepl("ENSG", down$gene),]
+    down10 <- down[1:10,]
+    downFold <- subset(down, log2FoldChange < -2)
+    downFold <- downFold[!(downFold$gene %in% down10$gene),]
+    downFold <- downFold[1:10,]
+
+    if (!1 %in% unique(data$color_adjpval_0.05)) {
+        my_colors <- c("blue","gray")
+      } else if (!2 %in% unique(data$color_adjpval_0.05)) {
+        my_colors <- c("red","gray")
+      } else if (!1 %in% unique(data$color_adjpval_0.05) && !2 %in% unique(data$color_adjpval_0.05)) {
+        my_colors <- c("gray")
+      } else {
+        my_colors <- c("red","blue","gray")
+      }
+      # plot
+      hadjpval <- (-log10(max(data$pvalue[data$padj < qval], na.rm=TRUE)))
+
+interneuron_0hour <- ggplot(data = data, aes(x = log2FoldChange,y = -log10(pvalue), color = color_adjpval_0.05)) + 
+        geom_point(alpha = 0.8, size = 1) +  
+        theme_bw() +  
+        theme(legend.position = "none") + 
+        scale_color_manual(values = my_colors) + 
+        labs(x = expression(log[2](FC)), 
+          y = expression(-log[10] ~ "(" ~ italic("p") ~ "-value)") ) +
+        theme(legend.position = "none",
+              plot.title = element_text(size = 10, margin = margin(0,0,0.3,0)),
+              axis.title.x = element_text(size = 10),
+              axis.text.x = element_text(size = 10),
+              axis.title.y = element_text(size = 10),
+              axis.text.y = element_text(size = 10)) +
+      geom_hline(yintercept = hadjpval,
+                 colour = "#000000",
+                 linetype = "dashed") +
+      geom_vline(xintercept = negFC,
+                 colour = "#000000",
+                 linetype = "dashed") +
+      geom_vline(xintercept = posFC,
+                 colour = "#000000",
+                 linetype = "dashed") +
+      ggtitle(paste0("0 hours \n", i, ": PS19 vs WT \nq-value < ", qval)) +
+  scale_x_continuous(limits = c(-4, 4), breaks = seq(-4, 4, 1)) +
+  scale_y_continuous(limits = c(0, 20), breaks = seq(0, 20, 5))
+interneuron_0hour
+rm(up10, upFold, up, down, down10, downFold)
+```
+## Astrocyte
+### 3 hours: PS19 vs WT 
+```{r volcano_strain, warning=FALSE}
+i <- "astrocyte"
+  ind1_vs_ind2 <- read.delim(paste0("../results/DEGs/DESeq2_pseudobulk_exp_filter/", i, "_PS19_vs_WT_comparison_3_hours_only.txt"))
+  ind1_vs_ind2 <- na.omit(ind1_vs_ind2)
+
+    color_values <- vector()
+max <- nrow(ind1_vs_ind2)
+  for (row in 1:max) {
+    if (!is.na(ind1_vs_ind2$padj[row])) {  # Check for NA values in padj
+      if (ind1_vs_ind2$padj[row] < qval) {
+        if (ind1_vs_ind2$log2FoldChange[row] > posFC) {
+          color_values <- c(color_values, 1)
+        } else if (ind1_vs_ind2$log2FoldChange[row] < negFC) {
+          color_values <- c(color_values, 2)
+        } else {
+          color_values <- c(color_values, 3)
+        }
+      } else {
+        color_values <- c(color_values, 3)
+      }
+    } else {
+      color_values <- c(color_values, 3)  # Handle NA values in padj
+    }
+  }
+  ind1_vs_ind2$color_adjpval_0.05 <- factor(color_values)
+    data <- ind1_vs_ind2
+    up <- data[data$color_adjpval_0.05 == 1,]
+    up <- up[!grepl("ENSG", up$gene),]
+    up10 <- up[1:10,]
+    upFold <- subset(up, log2FoldChange > 2)
+    upFold <- upFold[!(upFold$gene %in% up10$gene),]
+    upFold <- upFold[1:10,]
+
+    down <- data[data$color_adjpval_0.05 == 2,]
+    down <- down[!grepl("ENSG", down$gene),]
+    down10 <- down[1:10,]
+    downFold <- subset(down, log2FoldChange < -2)
+    downFold <- downFold[!(downFold$gene %in% down10$gene),]
+    downFold <- downFold[1:10,]
+
+    if (!1 %in% unique(data$color_adjpval_0.05)) {
+        my_colors <- c("blue","gray")
+      } else if (!2 %in% unique(data$color_adjpval_0.05)) {
+        my_colors <- c("red","gray")
+      } else if (!1 %in% unique(data$color_adjpval_0.05) && !2 %in% unique(data$color_adjpval_0.05)) {
+        my_colors <- c("gray")
+      } else {
+        my_colors <- c("red","blue","gray")
+      }
+      # plot
+      hadjpval <- (-log10(max(data$pvalue[data$padj < qval], na.rm=TRUE)))
+
+astrocyte_3hour <- ggplot(data = data, aes(x = log2FoldChange,y = -log10(pvalue), color = color_adjpval_0.05)) + 
+        geom_point(alpha = 0.8, size = 1) +  
+        theme_bw() +  
+        theme(legend.position = "none") + 
+        scale_color_manual(values = my_colors) + 
+        labs(x = expression(log[2](FC)), 
+          y = expression(-log[10] ~ "(" ~ italic("p") ~ "-value)") ) +
+        theme(legend.position = "none",
+              plot.title = element_text(size = 10, margin = margin(0,0,0.3,0)),
+              axis.title.x = element_text(size = 10),
+              axis.text.x = element_text(size = 10),
+              axis.title.y = element_text(size = 10),
+              axis.text.y = element_text(size = 10)) +
+      geom_hline(yintercept = hadjpval,
+                 colour = "#000000",
+                 linetype = "dashed") +
+      geom_vline(xintercept = negFC,
+                 colour = "#000000",
+                 linetype = "dashed") +
+      geom_vline(xintercept = posFC,
+                 colour = "#000000",
+                 linetype = "dashed") +
+      ggtitle(paste0("3 hours \n", i, ": PS19 vs WT \nq-value < ", qval)) +
+  scale_x_continuous(limits = c(-4, 4), breaks = seq(-4, 4, 1)) +
+  scale_y_continuous(limits = c(0, 20), breaks = seq(0, 20, 5))
+astrocyte_3hour
+rm(up10, upFold, up, down, down10, downFold)
+```
+
+### 0 hours: PS19 vs WT 
+```{r}
+  ind1_vs_ind2 <- read.delim(paste0("../results/DEGs/DESeq2_pseudobulk_exp_filter/", i, "_PS19_vs_WT_comparison_0_hours_only.txt"))
+  ind1_vs_ind2 <- na.omit(ind1_vs_ind2)
+
+    color_values <- vector()
+max <- nrow(ind1_vs_ind2)
+  for (row in 1:max) {
+    if (!is.na(ind1_vs_ind2$padj[row])) {  # Check for NA values in padj
+      if (ind1_vs_ind2$padj[row] < qval) {
+        if (ind1_vs_ind2$log2FoldChange[row] > posFC) {
+          color_values <- c(color_values, 1)
+        } else if (ind1_vs_ind2$log2FoldChange[row] < negFC) {
+          color_values <- c(color_values, 2)
+        } else {
+          color_values <- c(color_values, 3)
+        }
+      } else {
+        color_values <- c(color_values, 3)
+      }
+    } else {
+      color_values <- c(color_values, 3)  # Handle NA values in padj
+    }
+  }
+  ind1_vs_ind2$color_adjpval_0.05 <- factor(color_values)
+    data <- ind1_vs_ind2
+    up <- data[data$color_adjpval_0.05 == 1,]
+    up <- up[!grepl("ENSG", up$gene),]
+    up10 <- up[1:10,]
+    upFold <- subset(up, log2FoldChange > 2)
+    upFold <- upFold[!(upFold$gene %in% up10$gene),]
+    upFold <- upFold[1:10,]
+
+    down <- data[data$color_adjpval_0.05 == 2,]
+    down <- down[!grepl("ENSG", down$gene),]
+    down10 <- down[1:10,]
+    downFold <- subset(down, log2FoldChange < -2)
+    downFold <- downFold[!(downFold$gene %in% down10$gene),]
+    downFold <- downFold[1:10,]
+
+    if (!1 %in% unique(data$color_adjpval_0.05)) {
+        my_colors <- c("blue","gray")
+      } else if (!2 %in% unique(data$color_adjpval_0.05)) {
+        my_colors <- c("red","gray")
+      } else if (!1 %in% unique(data$color_adjpval_0.05) && !2 %in% unique(data$color_adjpval_0.05)) {
+        my_colors <- c("gray")
+      } else {
+        my_colors <- c("red","blue","gray")
+      }
+      # plot
+      hadjpval <- (-log10(max(data$pvalue[data$padj < qval], na.rm=TRUE)))
+
+astrocyte_0hour <- ggplot(data = data, aes(x = log2FoldChange,y = -log10(pvalue), color = color_adjpval_0.05)) + 
+        geom_point(alpha = 0.8, size = 1) +  
+        theme_bw() +  
+        theme(legend.position = "none") + 
+        scale_color_manual(values = my_colors) + 
+        labs(x = expression(log[2](FC)), 
+          y = expression(-log[10] ~ "(" ~ italic("p") ~ "-value)") ) +
+        theme(legend.position = "none",
+              plot.title = element_text(size = 10, margin = margin(0,0,0.3,0)),
+              axis.title.x = element_text(size = 10),
+              axis.text.x = element_text(size = 10),
+              axis.title.y = element_text(size = 10),
+              axis.text.y = element_text(size = 10)) +
+      geom_hline(yintercept = hadjpval,
+                 colour = "#000000",
+                 linetype = "dashed") +
+      geom_vline(xintercept = negFC,
+                 colour = "#000000",
+                 linetype = "dashed") +
+      geom_vline(xintercept = posFC,
+                 colour = "#000000",
+                 linetype = "dashed") +
+      ggtitle(paste0("0 hours \n", i, ": PS19 vs WT \nq-value < ", qval)) +
+  scale_x_continuous(limits = c(-4, 4), breaks = seq(-4, 4, 1)) +
+  scale_y_continuous(limits = c(0, 20), breaks = seq(0, 20, 5))
+astrocyte_0hour
+rm(up10, upFold, up, down, down10, downFold)
+```
+# UpSets
+### Binary list shared gene function
+```{r binary_list}
+fromList <- function (input) {
+  # Same as original fromList()...
+  elements <- unique(unlist(input))
+  data <- unlist(lapply(input, function(x) {
+      x <- as.vector(match(elements, x))
+      }))
+  data[is.na(data)] <- as.integer(0)
+  data[data != 0] <- as.integer(1)
+  data <- data.frame(matrix(data, ncol = length(input), byrow = F))
+  data <- data[which(rowSums(data) != 0), ]
+  names(data) <- names(input)
+  # ... Except now it conserves your original value names!
+  row.names(data) <- elements
+  return(data)
+  }
+```
+
+### Upset data
+```{r UpSet_data}
+# Load necessary libraries
+library(dplyr)
+
+# Define the list of cell types and time points
+time_points <- c("0_hours_only", "3_hours_only")
+
+# Initialize an empty list to store data frames
+deg_list_down <- list()
+deg_list_up <- list()
+
+cell_types <- c("neuron", "interneuron", "astrocyte")
+# Loop through each cell type and time point to read the data
+for (cell_type in cell_types) {
+  for (time_point in time_points) {
+    # Construct the file name
+    file_name <- paste0("../results/DEGs/DESeq2_pseudobulk_exp_filter/", cell_type, "_PS19_vs_WT_comparison_", time_point, ".txt")
+    
+    # Read the data
+    deg_data <- read.table(file_name, header = TRUE, sep = "\t")
+    deg_data <- subset(deg_data, deg_data$padj < 0.1)
+    deg_data_up <- subset(deg_data, log2FoldChange > 0)
+    deg_data_down <- subset(deg_data, log2FoldChange < 0)
+
+    # Add columns for cell type and time point
+    deg_data_up <- deg_data_up %>%
+      mutate(cell_type = cell_type, time_point = time_point)
+    deg_data_down <- deg_data_down %>%
+      mutate(cell_type = cell_type, time_point = time_point)
+    
+    deg_data_down <- deg_data_down$gene
+    deg_data_up <- deg_data_up$gene
+    # Store the data frame in the list
+    deg_list_down[[paste0(cell_type, "_", time_point)]] <- deg_data_down
+    deg_list_up[[paste0(cell_type, "_", time_point)]] <- deg_data_up
+
+  }
+}
+```
+
+# Upset plot
+## neuron
+0 hours and 3 hours only
+```{r}
+type <- "neuron"
+  # Define input lists for up and down genes for the current cell type
+  list_down <- setNames(
+    list(
+         deg_list_down[[paste(type, "0_hours_only", sep = "_")]],
+         deg_list_down[[paste(type, "3_hours_only", sep = "_")]]),
+    c(
+      paste("down", type, "0 hours", sep = " "),
+      paste("down", type, "3 hours", sep = " "))
+  )
+  
+  list_up <- setNames(
+    list(
+         deg_list_up[[paste(type, "0_hours_only", sep = "_")]],
+         deg_list_up[[paste(type, "3_hours_only", sep = "_")]]),
+    c(
+      paste("up", type, "0 hours", sep = " "),
+      paste("up", type, "3 hours", sep = " "))
+  )
+  
+list_combined <- c(list_down, list_up)
+  
+data <- fromList(list_combined)
+
+
+upset_neuron <- upset(data, set_sizes = FALSE,
+      c('down neuron 0 hours',
+        'down neuron 3 hours',
+        'up neuron 0 hours',
+        'up neuron 3 hours'),
+      themes=upset_modify_themes(
+        list('intersections_matrix'=theme(text=element_text(size=10),
+              plot.margin = margin(0, 0, 0, 0, "cm")),
+          'overall_sizes' = theme(axis.text.x = element_text(size=10), 
+              plot.margin = margin(0, 0, 0, 0, "cm")))),
+  queries=list(
+    upset_query(set='down neuron 0 hours', fill='blue'),
+    upset_query(set='down neuron 3 hours', fill='blue'),
+    upset_query(set='up neuron 0 hours', fill='red'),
+    upset_query(set='up neuron 3 hours', fill='red')
+  ),
+  base_annotations=list(
+    'Intersection size'=(
+        intersection_size(
+        size=2,
+        text = list(size = 2.5),
+        text_mapping = aes(),
+        bar_number_threshold=3,  # show all numbers on top of bars
+        width=0.3,   # reduce width of the bars
+        mapping=aes(fill='bars_color')
+      )
+      + scale_fill_manual(values=c('grey'), guide='none')
+      + scale_y_continuous(expand=expansion(mult=c(0, 0.5)))
+      + theme(axis.text.y = element_text(size = 10),
+              axis.title.y = element_text(size = 10),
+          panel.grid.major=element_blank(),
+          panel.grid.minor=element_blank(),
+          plot.margin = margin(0, 0, 0, 0.2, "cm"), 
+          axis.line=element_line(colour='black')))),
+  matrix=intersection_matrix(
+      geom=geom_point(
+        shape='circle filled',
+        size=1,
+        stroke=0.45)) +
+        theme(axis.text.y = element_text(size = 10),
+              axis.title.y = element_text(size = 10), 
+              plot.margin = margin(0, 0, 0, 0, "cm")),
+    sort_sets=FALSE,
+  sort_intersections=FALSE)
+```
+
+
+
+## interneuron
+0 hours and 3 hours only
+```{r}
+
+type <- "interneuron"
+  # Define input lists for up and down genes for the current cell type
+  list_down <- setNames(
+    list(
+         deg_list_down[[paste(type, "0_hours_only", sep = "_")]],
+         deg_list_down[[paste(type, "3_hours_only", sep = "_")]]),
+    c(
+      paste("down", type, "0 hours", sep = " "),
+      paste("down", type, "3 hours", sep = " "))
+  )
+  
+  list_up <- setNames(
+    list(
+         deg_list_up[[paste(type, "0_hours_only", sep = "_")]],
+         deg_list_up[[paste(type, "3_hours_only", sep = "_")]]),
+    c(
+      paste("up", type, "0 hours", sep = " "),
+      paste("up", type, "3 hours", sep = " "))
+  )
+  
+list_combined <- c(list_down, list_up)
+  
+data <- fromList(list_combined)
+
+
+upset_interneuron <- upset(data, set_sizes = FALSE,
+      c('down interneuron 0 hours',
+        'down interneuron 3 hours',
+        'up interneuron 0 hours',
+        'up interneuron 3 hours'),
+      themes=upset_modify_themes(
+        list('intersections_matrix'=theme(text=element_text(size=10),
+              plot.margin = margin(0, 0, 0, 0, "cm")),
+          'overall_sizes' = theme(axis.text.x = element_text(size=10), 
+              plot.margin = margin(0, 0, 0, 0, "cm")))),
+  queries=list(
+    upset_query(set='down interneuron 0 hours', fill='blue'),
+    upset_query(set='down interneuron 3 hours', fill='blue'),
+    upset_query(set='up interneuron 0 hours', fill='red'),
+    upset_query(set='up interneuron 3 hours', fill='red')
+  ),
+  base_annotations=list(
+    'Intersection size'=(
+        intersection_size(
+        size=2,
+        text = list(size = 2.5),
+        text_mapping = aes(),
+        bar_number_threshold=3,  # show all numbers on top of bars
+        width=0.3,   # reduce width of the bars
+        mapping=aes(fill='bars_color')
+      )
+      + scale_fill_manual(values=c('grey'), guide='none')
+      + scale_y_continuous(expand=expansion(mult=c(0, 0.5)))
+      + theme(axis.text.y = element_text(size = 10),
+              axis.title.y = element_text(size = 10),
+          panel.grid.major=element_blank(),
+          panel.grid.minor=element_blank(),
+          plot.margin = margin(0, 0, 0, 0.2, "cm"), 
+          axis.line=element_line(colour='black')))),
+  matrix=intersection_matrix(
+      geom=geom_point(
+        shape='circle filled',
+        size=1,
+        stroke=0.45)) +
+        theme(axis.text.y = element_text(size = 10),
+              axis.title.y = element_text(size = 10), 
+              plot.margin = margin(0, 0, 0, 0, "cm")),
+    sort_sets=FALSE,
+  sort_intersections=FALSE)
+```
+
+## astrocyte
+0 hours and 3 hours only
+```{r}
+type <- "astrocyte"
+  # Define input lists for up and down genes for the current cell type
+  list_down <- setNames(
+    list(
+         deg_list_down[[paste(type, "0_hours_only", sep = "_")]],
+         deg_list_down[[paste(type, "3_hours_only", sep = "_")]]),
+    c(
+      paste("down", type, "0 hours", sep = " "),
+      paste("down", type, "3 hours", sep = " "))
+  )
+  
+  list_up <- setNames(
+    list(
+         deg_list_up[[paste(type, "0_hours_only", sep = "_")]],
+         deg_list_up[[paste(type, "3_hours_only", sep = "_")]]),
+    c(
+      paste("up", type, "0 hours", sep = " "),
+      paste("up", type, "3 hours", sep = " "))
+  )
+  
+list_combined <- c(list_down, list_up)
+  
+data <- fromList(list_combined)
+
+
+upset_astrocyte <- upset(data, set_sizes = FALSE,
+      c('down astrocyte 0 hours',
+        'down astrocyte 3 hours',
+        'up astrocyte 0 hours',
+        'up astrocyte 3 hours'),
+      themes=upset_modify_themes(
+        list('intersections_matrix'=theme(text=element_text(size=10),
+              plot.margin = margin(0, 0, 0, 0, "cm")),
+          'overall_sizes' = theme(axis.text.x = element_text(size=10), 
+              plot.margin = margin(0, 0, 0, 0, "cm")))),
+  queries=list(
+    upset_query(set='down astrocyte 0 hours', fill='blue'),
+    upset_query(set='down astrocyte 3 hours', fill='blue'),
+    upset_query(set='up astrocyte 0 hours', fill='red'),
+    upset_query(set='up astrocyte 3 hours', fill='red')
+  ),
+  base_annotations=list(
+    'Intersection size'=(
+        intersection_size(
+        size=2,
+        text = list(size = 2.5),
+        text_mapping = aes(),
+        bar_number_threshold=3,  # show all numbers on top of bars
+        width=0.3,   # reduce width of the bars
+        mapping=aes(fill='bars_color')
+      )
+      + scale_fill_manual(values=c('grey'), guide='none')
+      + scale_y_continuous(expand=expansion(mult=c(0, 0.5)))
+      + theme(axis.text.y = element_text(size = 10),
+              axis.title.y = element_text(size = 10),
+          panel.grid.major=element_blank(),
+          panel.grid.minor=element_blank(),
+          plot.margin = margin(0, 0, 0, 0.2, "cm"), 
+          axis.line=element_line(colour='black')))),
+  matrix=intersection_matrix(
+      geom=geom_point(
+        shape='circle filled',
+        size=1,
+        stroke=0.45)) +
+        theme(axis.text.y = element_text(size = 10),
+              axis.title.y = element_text(size = 10), 
+              plot.margin = margin(0, 0, 0, 0, "cm")),
+    sort_sets=FALSE,
+  sort_intersections=FALSE)
+```
+
+
+# Combine all plots 
+```{r}
+# row 1 experimental set up 
+row1 <- ggarrange(
+  neuron_0hour,
+  neuron_3hour,
+  upset_neuron,
+  ncol = 3,
+  labels = c("a)", "b)", "c)"), 
+  widths = c(1,1,1.25),
+  font.label = list(size = 10)
+)
+
+row2 <- ggarrange(
+  interneuron_0hour,
+  interneuron_3hour,
+  upset_interneuron,
+  ncol = 3,
+  labels = c("d)", "e)", "f)"), 
+  widths = c(1,1,1.25),
+  font.label = list(size = 10)
+)
+
+
+row3 <- ggarrange(
+  astrocyte_0hour,
+  astrocyte_3hour,
+  upset_astrocyte,
+  ncol = 3,
+  labels = c("g)", "h)", "i)"), 
+  widths = c(1,1,1.25),
+  font.label = list(size = 10)
+)
+
+
+combind <-
+  ggarrange(
+    row1,
+    row2,
+    row3,
+    nrow = 3
+    )
+combind
+
+path <- paste0("../manuscript_figures/Figure_2")
+saveToPDF(paste0(path, ".pdf"), width = 7.5, height = 9)
+```
+
+

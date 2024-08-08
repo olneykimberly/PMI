@@ -43,6 +43,7 @@ Layers(dataObject)
 # List of cell types to analyze
 cell_types <- c(unique(dataObject$individual_clusters))
 ```
+
 ```{r protein_coding}
 protein_coding_genes <- subset(gene_info, type == "protein_coding")
 ```
@@ -135,8 +136,8 @@ for (cell_type in cell_types) {
   # Filter the data for the current cell type
   df_filtered <- df_norm[, grep(paste0("_", cell_type, "$"), colnames(df_norm))]
 
-  DEGs <- read.delim(paste0("../results/DEGs/DESeq2_pseudobulk/", cell_type,
-                            "_3_vs_0_hours_comparison_pseudo_bulk_with_covariates.txt"))
+  DEGs <- read.delim(paste0("../results/DEGs/DESeq2_pseudobulk_exp_filter/", cell_type,
+                            "_3_vs_0_hours_comparison_pseudobulk.txt"))
   gene_filter <- subset(DEGs, (padj < 0.1 & log2FoldChange > 0) | ((padj < 0.1 & log2FoldChange < -0)))
   df_filtered <- df_filtered[gene_filter$gene, ]
   
@@ -184,8 +185,8 @@ for (cell_type in cell_types) {
   # Filter the data for the current cell type
   df_filtered <- df_norm[, grep(paste0("_", cell_type, "$"), colnames(df_norm))]
 
-  DEGs <- read.delim(paste0("../results/DEGs/DESeq2_pseudobulk/", cell_type,
-                            "_PS19_vs_WT_comparison_pseudo_bulk_with_covariates.txt"))
+  DEGs <- read.delim(paste0("../results/DEGs/DESeq2_pseudobulk_exp_filter/", cell_type,
+                            "_PS19_vs_WT_comparison_pseudobulk.txt"))
   gene_filter <- subset(DEGs, (padj < 0.1 & log2FoldChange > 0.0) | ((padj < 0.1 & log2FoldChange < -0)))
   df_filtered <- df_filtered[gene_filter$gene, ]
   
@@ -218,37 +219,6 @@ for (cell_type in cell_types) {
 }
 ```
 
-  
-```{r}
-#----------
-# Extract annotations from column names
-annotations <- data.frame(
-  strain = sapply(strsplit(colnames(df), "_"), function(x) x[2]),
-  sex = sapply(strsplit(colnames(df), "_"), function(x) x[3]),
-  timepoint = sapply(strsplit(colnames(df), "_"), function(x) x[4])
-)
-
-# Create the heatmap annotation
-ha <- HeatmapAnnotation(
-  df = annotations,
-  col = col
-)
-
-# Plot the heatmap
-heatmap_plot <- Heatmap(df, name = "Expression",
-        top_annotation = ha,
-        show_row_names = FALSE)
-
-pdf(paste0("../results/heatmap/neuron_expression.pdf"
-  ),
-  width = 8.5,
-  height = 8
-)
-heatmap_plot
-dev.off()
-```
-
-
 # Correlation matrix
 ```{r}
 # Load necessary libraries
@@ -264,7 +234,7 @@ deg_list <- list()
 for (cell_type in cell_types) {
   for (time_point in time_points) {
     # Construct the file name
-    file_name <- paste0("../results/DEGs/DESeq2_pseudobulk/", cell_type, "_PS19_vs_WT_comparison_", time_point, "_only.txt")
+    file_name <- paste0("../results/DEGs/DESeq2_pseudobulk_exp_filter/", cell_type, "_PS19_vs_WT_comparison_", time_point, "_only.txt")
     
     # Read the data
     deg_data <- read.table(file_name, header = TRUE, sep = "\t")
@@ -313,63 +283,58 @@ ggplot(DEG_combined2, aes(x = log2FoldChange_0h, y = log2FoldChange_3h)) +
   ) +
   theme_minimal()
 ```
-
+# Correlation matrix MAST vs DESeq2
 ```{r}
-markers.to.plot <-
-  c(
-"Clu", 
-"Gfap", 
-"Aqp4", 
-"Gja1", 
-"Cldn5", 
-"Adgrf5", 
-"Flt1", 
-"Col1a1", 
-"Col1a2", 
-"Dcn", 
-"Hexb", 
-"C1qa", 
-"C1qc", 
-"C1qb", 
-"Tmem119", 
-"Itgam", 
-"Tyrobp", 
-"P2ry12", 
-"Aif1", 
-"Rbfox3", 
-"Snap25", 
-"Syt1", 
-"Gad1", 
-"Gad2", 
-"Plp1", 
-"Mbp", 
-"Mog", 
-"Olig1", 
-"Pdgfra", 
-"Vcan", 
-"Tnr", 
-"Acta2", 
-"Rgs5", 
-"Vtn", 
-"Myl5"
-  )
+# Load necessary libraries
+library(dplyr)
 
-dataObject.pseudo$time
-dot_ind <- DotPlot(dataObject.pseudo,
-                   features = markers.to.plot, 
-                   split.by = "time", 
-                   cluster.idents = FALSE,
-                   cols = c("blue", "red"),
-                   dot.scale = 8) + RotatedAxis()
-dot_ind
+DES_deg_list <- list()
+for (cell_type in cell_types) {
+    DES <- paste0("../results/DEGs/DESeq2_pseudobulk_exp_filter/", cell_type, "_PS19_vs_WT_comparison_pseudobulk.txt")
+    DES_deg_data <- read.table(DES, header = TRUE, sep = "\t")
+    DES_deg_data <- DES_deg_data %>%
+      mutate(cell_type = cell_type)
+    DES_deg_list[[paste0(cell_type, "_", "DESeq")]] <- DES_deg_data
 
-pdf(
-  paste0(
-    "../results/dot_plot/",
-    treatment,
-    "_individual_clusters_clean_group_no_sex.pdf"
-  ),width = 11, height = 9.5)
-dot_ind
-dev.off()
+}
+DES_deg_combined <- bind_rows(DES_deg_list)
+
+
+MAST_deg_list <- list()
+for (cell_type in cell_types) {
+    MAST <- paste0("../results/DEGs/MAST/", cell_type, "_PS19_vs_WT_comparison.txt")
+    MAST_deg_data <- read.table(MAST, header = TRUE, sep = "\t")
+    MAST_deg_data <- MAST_deg_data %>%
+      mutate(cell_type = cell_type)
+    MAST_deg_list[[paste0(cell_type, "_", "MAST")]] <- MAST_deg_data
+}
+MAST_deg_combined <- bind_rows(MAST_deg_list)
+
+DEG_combined <- merge(DES_deg_combined, MAST_deg_combined, by = c("gene", "cell_type"), suffixes = c("DESeq", "MAST"))
+head(DEG_combined)
 ```
+
+
+# Plot the data
+```{r}
+DEG_combined2 <- na.omit(DEG_combined)
+
+DEG_combined2$cell_type <- factor(DEG_combined2$cell_type, levels = c("neuron", "interneuron", "astrocyte", "oligodendrocyte", "fibroblast", "polydendrocyte", "endothelial", "mural", "microglia"))
+
+ggplot(DEG_combined2, aes(x = log2FoldChange, y = avg_log2FC)) +
+  geom_point() +
+  geom_smooth(method = "lm", se = FALSE, color = "blue") +
+  facet_wrap(~ cell_type, ncol = 3) +
+  stat_cor(method = "pearson", label.x = -4, label.y = 4.5) +
+  labs(
+    title = "Correlation DESeq pseudobulk and MAST log2(PS19/WT) by cell type",
+    x = "DESeq log2(PS19/WT)",
+    y = "MAST log2(PS19/WT)"
+  ) +
+  theme_bw()
+
+path <- paste0("../manuscript_figures/Figure_5")
+saveToPDF(paste0(path, ".pdf"), width = 7.5, height = 7.5)
+```
+
 

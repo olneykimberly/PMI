@@ -40,9 +40,9 @@ gene_info <- gene_info %>%
   )
 
 # cell cycle 
-#cell_cycle_markers <- read.delim("/research/labs/neurology/fryer/projects/references/mouse/cell_cycle_mouse.tsv")
-#m.s.genes <- subset(cell_cycle_markers, phase == "S")
-#m.g2m.genes <- subset(cell_cycle_markers, phase != "S")
+cell_cycle_markers <- read.delim("/research/labs/neurology/fryer/projects/references/mouse/cell_cycle_mouse.tsv")
+m.s.genes <- subset(cell_cycle_markers, phase == "S")
+m.g2m.genes <- subset(cell_cycle_markers, phase != "S")
 
 #--- functions 
 saveToPDF <- function(...) {

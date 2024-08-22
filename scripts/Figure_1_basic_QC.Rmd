@@ -21,8 +21,10 @@ https://satijalab.org/seurat/articles/essential_commands.html
 ```{r echo=FALSE, message=FALSE}
 source(here::here("/research/labs/neurology/fryer/m239830/PMI/scripts", "file_paths_and_colours.R"))
 treatment <- "PMI"
-group_colors <- c("gray75","#4682B440", "gray35", "#4682B0")
+group_colors <- c("lightblue", "#bebada", "#377eb8", "#984ea3")
+
 color.panel <- dittoColors()
+library(ggpubr)
 ```
 
 # Read in object
@@ -39,7 +41,7 @@ VlnPlot(dataObject,
               features = c( "nCount_RNA","nFeature_RNA", "cell.complexity", "percent.mt"),
               ncol = 4,
               group.by = 'group_no_sex',
-             # cols = group_colors,
+              cols = group_colors,
               pt.size = 0)  
 
 # Generate individual violin plots
@@ -49,7 +51,8 @@ plots <- lapply(c("nCount_RNA", "nFeature_RNA", "cell.complexity", "percent.mt")
           axis.title = element_text(size = 10),
           axis.title.x = element_blank(),
           plot.title = element_text(size = 10, face = "plain"),
-          legend.position = "none")
+          legend.position = "none") +
+    scale_fill_manual(values = group_colors)
 
 })
 
@@ -102,7 +105,8 @@ nuclei_count_plot <- ggplot(data2, aes(x = sample, y = frequency, fill = group))
         strip.background = element_blank(),
         strip.placement = "outside",  # Place group labels outside the x-axis
         plot.title.position = "plot",
-        legend.position = "none")
+        legend.position = "none") +
+  scale_fill_manual(values = group_colors)
 
 # Display the plot
 nuclei_count_plot
@@ -134,8 +138,8 @@ cellcyle <- dataObject@meta.data %>%
           legend.margin = margin(0, 0, 0, -.5, unit = "cm"),
           legend.text = element_text(size = 8),
           legend.title = element_text(size = 8),
-          legend.key.size = unit(0.5, "cm"))
-  scale_fill_manual(values = c("gray", "#669933", "#FFCC66"))
+          legend.key.size = unit(0.5, "cm")) +
+  scale_fill_manual(values = c("gray", "maroon", "gold3"))
 cellcyle
 ```
 
@@ -284,14 +288,14 @@ count_bar_time
 row1 <- ggarrange(
   NULL,
   ncol = 1,
-  labels = c("a)"), 
+  labels = c("A"), 
   font.label = list(size = 10)
 )
 # row 1 experimental set up 
 row2 <- ggarrange(
   v1,
   ncol = 1,
-  labels = c("b)"), 
+  labels = c("B"), 
   font.label = list(size = 10)
 )
 
@@ -299,7 +303,7 @@ row3 <- ggarrange(
   nuclei_count_plot,
   cellcyle,
   ncol = 2,
-  labels = c("c)","d)"), 
+  labels = c("C","D"), 
   widths = c(1.5, 1), 
   font.label = list(size = 10)
 )
@@ -307,7 +311,7 @@ row3 <- ggarrange(
 row4 <- ggarrange(
   umap,
   count_bar,
-  labels = c("e)", "f)"), 
+  labels = c("E", "F"), 
   font.label = list(size = 10)
   )
 

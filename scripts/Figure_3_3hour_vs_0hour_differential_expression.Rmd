@@ -1,5 +1,5 @@
 ---
-title: "Figure 2 - PS19 vs WT differential expression"
+title: "Figure 2 - PS19 versus WT differential expression"
 author: "Kimberly Olney, PhD"
 date: "07/24/2024"
 output:
@@ -33,7 +33,7 @@ negFC = 0
 FC = 0
 ```
 
-## Neuron: 3 vs 0 hours
+## Neuron: 3 versus 0 hours
 ```{r volcano_neuron, warning=FALSE}
 i <- "neuron"
   ind1_vs_ind2 <- read.delim(paste0("../results/DEGs/DESeq2_pseudobulk_exp_filter/", i, "_3_vs_0_hours_comparison_pseudobulk.txt"))
@@ -75,13 +75,13 @@ max <- nrow(ind1_vs_ind2)
     downFold <- downFold[1:10,]
 
     if (!1 %in% unique(data$color_adjpval_0.05)) {
-        my_colors <- c("blue","gray")
+        my_colors <- c(  "darkgreen","gray")
       } else if (!2 %in% unique(data$color_adjpval_0.05)) {
-        my_colors <- c("red","gray")
+        my_colors <- c( "purple","gray")
       } else if (!1 %in% unique(data$color_adjpval_0.05) && !2 %in% unique(data$color_adjpval_0.05)) {
         my_colors <- c("gray")
       } else {
-        my_colors <- c("red","blue","gray")
+        my_colors <- c( "purple",   "darkgreen","gray")
       }
       # plot
       hadjpval <- (-log10(max(data$pvalue[data$padj < qval], na.rm=TRUE)))
@@ -108,14 +108,14 @@ neuron_vol <- ggplot(data = data, aes(x = log2FoldChange,y = -log10(pvalue), col
       geom_vline(xintercept = posFC,
                  colour = "#000000",
                  linetype = "dashed") +
-      ggtitle(paste0(i, ": 3 vs 0 hours \nq-value < ", qval)) +
+      ggtitle(paste0(i, "\n3 versus 0 hours \nq-value < ", qval)) +
   scale_x_continuous(limits = c(-3, 3), breaks = seq(-3, 3, 1)) +
   scale_y_continuous(limits = c(0, 20), breaks = seq(0, 20, 5))
 neuron_vol
 rm(up10, upFold, up, down, down10, downFold)
 ```
 
-## Interneuron: 3 vs 0 hours
+## Interneuron: 3 versus 0 hours
 ```{r volcano_interneuron, warning=FALSE}
 i <- "interneuron"
   ind1_vs_ind2 <- read.delim(paste0("../results/DEGs/DESeq2_pseudobulk_exp_filter/", i, "_3_vs_0_hours_comparison_pseudobulk.txt"))
@@ -157,13 +157,13 @@ max <- nrow(ind1_vs_ind2)
     downFold <- downFold[1:10,]
 
     if (!1 %in% unique(data$color_adjpval_0.05)) {
-        my_colors <- c("blue","gray")
+        my_colors <- c(   "darkgreen","gray")
       } else if (!2 %in% unique(data$color_adjpval_0.05)) {
-        my_colors <- c("red","gray")
+        my_colors <- c( "purple","gray")
       } else if (!1 %in% unique(data$color_adjpval_0.05) && !2 %in% unique(data$color_adjpval_0.05)) {
         my_colors <- c("gray")
       } else {
-        my_colors <- c("red","blue","gray")
+        my_colors <- c( "purple",   "darkgreen","gray")
       }
       # plot
       hadjpval <- (-log10(max(data$pvalue[data$padj < qval], na.rm=TRUE)))
@@ -190,7 +190,7 @@ interneuron_vol <- ggplot(data = data, aes(x = log2FoldChange,y = -log10(pvalue)
       geom_vline(xintercept = posFC,
                  colour = "#000000",
                  linetype = "dashed") +
-      ggtitle(paste0(i, ": 3 vs 0 hours \nq-value < ", qval)) +
+      ggtitle(paste0(i, "\n3 versus 0 hours \nq-value < ", qval)) +
   scale_x_continuous(limits = c(-3, 3), breaks = seq(-3, 3, 1)) +
   scale_y_continuous(limits = c(0, 20), breaks = seq(0, 20, 5))
 interneuron_vol
@@ -570,7 +570,7 @@ row1 <- ggarrange(
   neuron_vol,
   neuron_up_and_down_enrich_plot,
   ncol = 2,
-  labels = c("a)", "b)"), 
+  labels = c("A", "B"), 
   widths = c(1,2),
   font.label = list(size = 10)
 )
@@ -579,17 +579,7 @@ row2 <- ggarrange(
   interneuron_vol,
   interneuron_up_and_down_enrich_plot,
   ncol = 2,
-  labels = c("c)", "d)"), 
-  widths = c(1,2),
-  font.label = list(size = 10)
-)
-
-
-row3 <- ggarrange(
-  astrocyte_vol,
-  astrocyte_up_and_down_enrich_plot,
-  ncol = 2,
-  labels = c("e)", "f)"), 
+  labels = c("C", "D"), 
   widths = c(1,2),
   font.label = list(size = 10)
 )

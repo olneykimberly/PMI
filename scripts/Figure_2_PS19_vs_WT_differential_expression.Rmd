@@ -1,5 +1,5 @@
 ---
-title: "Figure 2 - PS19 vs WT differential expression"
+title: "Figure 2 - PS19 versus WT differential expression"
 author: "Kimberly Olney, PhD"
 date: "07/24/2024"
 output:
@@ -42,7 +42,7 @@ FC = 0
 ```
 
 ## Neuron
-### 3 hours: PS19 vs WT 
+### 3 hours: PS19 versus WT 
 ```{r volcano_strain, warning=FALSE}
 
   ind1_vs_ind2 <- read.delim(paste0("../results/DEGs/DESeq2_pseudobulk_exp_filter/", i, "_PS19_vs_WT_comparison_3_hours_only.txt"))
@@ -117,14 +117,14 @@ neuron_3hour <- ggplot(data = data, aes(x = log2FoldChange,y = -log10(pvalue), c
       geom_vline(xintercept = posFC,
                  colour = "#000000",
                  linetype = "dashed") +
-      ggtitle(paste0("3 hours \n", i, ": PS19 vs WT \nq-value < ", qval)) +
+      ggtitle(paste0("3 hours \n", i, ": PS19 versus WT \nq-value < ", qval)) +
   scale_x_continuous(limits = c(-4, 4), breaks = seq(-4, 4, 1)) +
   scale_y_continuous(limits = c(0, 20), breaks = seq(0, 20, 5))
 neuron_3hour
 rm(up10, upFold, up, down, down10, downFold)
 ```
 
-### 0 hours: PS19 vs WT 
+### 0 hours: PS19 versus WT 
 ```{r}
   ind1_vs_ind2 <- read.delim(paste0("../results/DEGs/DESeq2_pseudobulk_exp_filter/", i, "_PS19_vs_WT_comparison_0_hours_only.txt"))
   ind1_vs_ind2 <- na.omit(ind1_vs_ind2)
@@ -198,7 +198,7 @@ neuron_0hour <- ggplot(data = data, aes(x = log2FoldChange,y = -log10(pvalue), c
       geom_vline(xintercept = posFC,
                  colour = "#000000",
                  linetype = "dashed") +
-      ggtitle(paste0("0 hours \n", i, ": PS19 vs WT \nq-value < ", qval)) +
+      ggtitle(paste0("0 hours \n", i, ": PS19 versus WT \nq-value < ", qval)) +
   scale_x_continuous(limits = c(-4, 4), breaks = seq(-4, 4, 1)) +
   scale_y_continuous(limits = c(0, 20), breaks = seq(0, 20, 5))
 neuron_0hour
@@ -206,7 +206,7 @@ rm(up10, upFold, up, down, down10, downFold)
 ```
 
 ## Interneuron
-### 3 hours: PS19 vs WT 
+### 3 hours: PS19 versus WT 
 ```{r volcano_strain, warning=FALSE}
 i <- "interneuron"
   ind1_vs_ind2 <- read.delim(paste0("../results/DEGs/DESeq2_pseudobulk_exp_filter/", i, "_PS19_vs_WT_comparison_3_hours_only.txt"))
@@ -281,14 +281,14 @@ interneuron_3hour <- ggplot(data = data, aes(x = log2FoldChange,y = -log10(pvalu
       geom_vline(xintercept = posFC,
                  colour = "#000000",
                  linetype = "dashed") +
-      ggtitle(paste0("3 hours \n", i, ": PS19 vs WT \nq-value < ", qval)) +
+      ggtitle(paste0("3 hours \n", i, ": PS19 versus WT \nq-value < ", qval)) +
   scale_x_continuous(limits = c(-4, 4), breaks = seq(-4, 4, 1)) +
   scale_y_continuous(limits = c(0, 20), breaks = seq(0, 20, 5))
 interneuron_3hour
 rm(up10, upFold, up, down, down10, downFold)
 ```
 
-### 0 hours: PS19 vs WT 
+### 0 hours: PS19 versus WT 
 ```{r}
   ind1_vs_ind2 <- read.delim(paste0("../results/DEGs/DESeq2_pseudobulk_exp_filter/", i, "_PS19_vs_WT_comparison_0_hours_only.txt"))
   ind1_vs_ind2 <- na.omit(ind1_vs_ind2)
@@ -362,14 +362,14 @@ interneuron_0hour <- ggplot(data = data, aes(x = log2FoldChange,y = -log10(pvalu
       geom_vline(xintercept = posFC,
                  colour = "#000000",
                  linetype = "dashed") +
-      ggtitle(paste0("0 hours \n", i, ": PS19 vs WT \nq-value < ", qval)) +
+      ggtitle(paste0("0 hours \n", i, ": PS19 versus WT \nq-value < ", qval)) +
   scale_x_continuous(limits = c(-4, 4), breaks = seq(-4, 4, 1)) +
   scale_y_continuous(limits = c(0, 20), breaks = seq(0, 20, 5))
 interneuron_0hour
 rm(up10, upFold, up, down, down10, downFold)
 ```
 ## Astrocyte
-### 3 hours: PS19 vs WT 
+### 3 hours: PS19 versus WT 
 ```{r volcano_strain, warning=FALSE}
 i <- "astrocyte"
   ind1_vs_ind2 <- read.delim(paste0("../results/DEGs/DESeq2_pseudobulk_exp_filter/", i, "_PS19_vs_WT_comparison_3_hours_only.txt"))
@@ -444,14 +444,14 @@ astrocyte_3hour <- ggplot(data = data, aes(x = log2FoldChange,y = -log10(pvalue)
       geom_vline(xintercept = posFC,
                  colour = "#000000",
                  linetype = "dashed") +
-      ggtitle(paste0("3 hours \n", i, ": PS19 vs WT \nq-value < ", qval)) +
+      ggtitle(paste0("3 hours \n", i, ": PS19 versus WT \nq-value < ", qval)) +
   scale_x_continuous(limits = c(-4, 4), breaks = seq(-4, 4, 1)) +
   scale_y_continuous(limits = c(0, 20), breaks = seq(0, 20, 5))
 astrocyte_3hour
 rm(up10, upFold, up, down, down10, downFold)
 ```
 
-### 0 hours: PS19 vs WT 
+### 0 hours: PS19 versus WT 
 ```{r}
   ind1_vs_ind2 <- read.delim(paste0("../results/DEGs/DESeq2_pseudobulk_exp_filter/", i, "_PS19_vs_WT_comparison_0_hours_only.txt"))
   ind1_vs_ind2 <- na.omit(ind1_vs_ind2)
@@ -525,7 +525,7 @@ astrocyte_0hour <- ggplot(data = data, aes(x = log2FoldChange,y = -log10(pvalue)
       geom_vline(xintercept = posFC,
                  colour = "#000000",
                  linetype = "dashed") +
-      ggtitle(paste0("0 hours \n", i, ": PS19 vs WT \nq-value < ", qval)) +
+      ggtitle(paste0("0 hours \n", i, ": PS19 versus WT \nq-value < ", qval)) +
   scale_x_continuous(limits = c(-4, 4), breaks = seq(-4, 4, 1)) +
   scale_y_continuous(limits = c(0, 20), breaks = seq(0, 20, 5))
 astrocyte_0hour
@@ -827,7 +827,7 @@ row1 <- ggarrange(
   neuron_3hour,
   upset_neuron,
   ncol = 3,
-  labels = c("a)", "b)", "c)"), 
+  labels = c("A", "B", "C"), 
   widths = c(1,1,1.25),
   font.label = list(size = 10)
 )
@@ -837,7 +837,7 @@ row2 <- ggarrange(
   interneuron_3hour,
   upset_interneuron,
   ncol = 3,
-  labels = c("d)", "e)", "f)"), 
+  labels = c("D", "E", "F"), 
   widths = c(1,1,1.25),
   font.label = list(size = 10)
 )
@@ -848,7 +848,7 @@ row3 <- ggarrange(
   astrocyte_3hour,
   upset_astrocyte,
   ncol = 3,
-  labels = c("g)", "h)", "i)"), 
+  labels = c("G", "H", "I"), 
   widths = c(1,1,1.25),
   font.label = list(size = 10)
 )

@@ -1,5 +1,5 @@
 ---
-title: "Figure 2 - PS19 vs WT differential expression"
+title: "Figure 4 - 3-hour versus 0-hour differential expression"
 author: "Kimberly Olney, PhD"
 date: "07/24/2024"
 output:
@@ -34,7 +34,7 @@ FC = 0
 ```
 
 
-## Asctrocyte: 3 vs 0 hours
+## Asctrocyte: 3 versus 0 hours
 ```{r volcano_astroctye, warning=FALSE}
 i <- "astrocyte"
   ind1_vs_ind2 <- read.delim(paste0("../results/DEGs/DESeq2_pseudobulk_exp_filter/", i, "_3_vs_0_hours_comparison_pseudobulk.txt"))
@@ -76,13 +76,13 @@ max <- nrow(ind1_vs_ind2)
     downFold <- downFold[1:10,]
 
     if (!1 %in% unique(data$color_adjpval_0.05)) {
-        my_colors <- c("blue","gray")
+        my_colors <- c( "darkgreen","gray")
       } else if (!2 %in% unique(data$color_adjpval_0.05)) {
-        my_colors <- c("red","gray")
+        my_colors <- c("purple","gray")
       } else if (!1 %in% unique(data$color_adjpval_0.05) && !2 %in% unique(data$color_adjpval_0.05)) {
         my_colors <- c("gray")
       } else {
-        my_colors <- c("red","blue","gray")
+        my_colors <- c("purple", "darkgreen","gray")
       }
       # plot
       hadjpval <- (-log10(max(data$pvalue[data$padj < qval], na.rm=TRUE)))
@@ -109,14 +109,14 @@ astrocyte_vol <- ggplot(data = data, aes(x = log2FoldChange,y = -log10(pvalue), 
       geom_vline(xintercept = posFC,
                  colour = "#000000",
                  linetype = "dashed") +
-      ggtitle(paste0(i, ": 3 vs 0 hours \nq-value < ", qval)) +
+      ggtitle(paste0(i, "\n3 versus 0 hours \nq-value < ", qval)) +
   scale_x_continuous(limits = c(-3, 3), breaks = seq(-3, 3, 1)) +
   scale_y_continuous(limits = c(0, 15), breaks = seq(0, 15, 5))
 astrocyte_vol
 rm(up10, upFold, up, down, down10, downFold)
 ```
 
-## Polydendrocyte: 3 vs 0 hours
+## Polydendrocyte: 3 versus 0 hours
 ```{r volcano_poly, warning=FALSE}
 i <- "polydendrocyte"
   ind1_vs_ind2 <- read.delim(paste0("../results/DEGs/DESeq2_pseudobulk_exp_filter/", i, "_3_vs_0_hours_comparison_pseudobulk.txt"))
@@ -158,13 +158,13 @@ max <- nrow(ind1_vs_ind2)
     downFold <- downFold[1:10,]
 
     if (!1 %in% unique(data$color_adjpval_0.05)) {
-        my_colors <- c("blue","gray")
+        my_colors <- c( "darkgreen","gray")
       } else if (!2 %in% unique(data$color_adjpval_0.05)) {
-        my_colors <- c("red","gray")
+        my_colors <- c("purple","gray")
       } else if (!1 %in% unique(data$color_adjpval_0.05) && !2 %in% unique(data$color_adjpval_0.05)) {
         my_colors <- c("gray")
       } else {
-        my_colors <- c("red","blue","gray")
+        my_colors <- c("purple", "darkgreen","gray")
       }
       # plot
       hadjpval <- (-log10(max(data$pvalue[data$padj < qval], na.rm=TRUE)))
@@ -190,7 +190,7 @@ poly_vol <- ggplot(data = data, aes(x = log2FoldChange,y = -log10(pvalue), color
       geom_vline(xintercept = posFC,
                  colour = "#000000",
                  linetype = "dashed") +
-      ggtitle(paste0(i, ": 3 vs 0 hours \nq-value < ", qval)) +
+      ggtitle(paste0(i, "\n3 versus 0 hours \nq-value < ", qval)) +
   scale_x_continuous(limits = c(-3, 3), breaks = seq(-3, 3, 1)) +
   scale_y_continuous(limits = c(0, 15), breaks = seq(0, 15, 5))
 poly_vol
@@ -198,7 +198,7 @@ rm(up10, upFold, up, down, down10, downFold)
 ```
 
 
-## Oligodendrocyte: 3 vs 0 hours
+## Oligodendrocyte: 3 versus 0 hours
 ```{r volcano_poly, warning=FALSE}
 i <- "oligodendrocyte"
   ind1_vs_ind2 <- read.delim(paste0("../results/DEGs/DESeq2_pseudobulk_exp_filter/", i, "_3_vs_0_hours_comparison_pseudobulk.txt"))
@@ -240,13 +240,13 @@ max <- nrow(ind1_vs_ind2)
     downFold <- downFold[1:10,]
 
     if (!1 %in% unique(data$color_adjpval_0.05)) {
-        my_colors <- c("blue","gray")
+        my_colors <- c( "darkgreen","gray")
       } else if (!2 %in% unique(data$color_adjpval_0.05)) {
-        my_colors <- c("red","gray")
+        my_colors <- c("purple","gray")
       } else if (!1 %in% unique(data$color_adjpval_0.05) && !2 %in% unique(data$color_adjpval_0.05)) {
         my_colors <- c("gray")
       } else {
-        my_colors <- c("red","blue","gray")
+        my_colors <- c("purple", "darkgreen","gray")
       }
       # plot
       hadjpval <- (-log10(max(data$pvalue[data$padj < qval], na.rm=TRUE)))
@@ -272,14 +272,14 @@ oligo_vol <- ggplot(data = data, aes(x = log2FoldChange,y = -log10(pvalue), colo
       geom_vline(xintercept = posFC,
                  colour = "#000000",
                  linetype = "dashed") +
-      ggtitle(paste0(i, ": 3 vs 0 hours \nq-value < ", qval)) +
+      ggtitle(paste0(i, "\n3 versus 0 hours \nq-value < ", qval)) +
   scale_x_continuous(limits = c(-3, 3), breaks = seq(-3, 3, 1)) +
   scale_y_continuous(limits = c(0, 15), breaks = seq(0, 15, 5))
 oligo_vol
 rm(up10, upFold, up, down, down10, downFold)
 ```
 
-## Fibroblast: 3 vs 0 hours
+## Fibroblast: 3 versus 0 hours
 ```{r volcano_fibro, warning=FALSE}
 i <- "fibroblast"
   ind1_vs_ind2 <- read.delim(paste0("../results/DEGs/DESeq2_pseudobulk_exp_filter/", i, "_3_vs_0_hours_comparison_pseudobulk.txt"))
@@ -321,13 +321,13 @@ max <- nrow(ind1_vs_ind2)
     downFold <- downFold[1:10,]
 
     if (!1 %in% unique(data$color_adjpval_0.05)) {
-        my_colors <- c("blue","gray")
+        my_colors <- c( "darkgreen","gray")
       } else if (!2 %in% unique(data$color_adjpval_0.05)) {
-        my_colors <- c("red","gray")
+        my_colors <- c("purple","gray")
       } else if (!1 %in% unique(data$color_adjpval_0.05) && !2 %in% unique(data$color_adjpval_0.05)) {
         my_colors <- c("gray")
       } else {
-        my_colors <- c("red","blue","gray")
+        my_colors <- c("purple", "darkgreen","gray")
       }
       # plot
       hadjpval <- (-log10(max(data$pvalue[data$padj < qval], na.rm=TRUE)))
@@ -354,7 +354,7 @@ fibroblast_vol <- ggplot(data = data, aes(x = log2FoldChange,y = -log10(pvalue),
       geom_vline(xintercept = posFC,
                  colour = "#000000",
                  linetype = "dashed") +
-      ggtitle(paste0(i, ": 3 vs 0 hours \nq-value < ", qval)) +
+      ggtitle(paste0(i, "\n3 versus 0 hours \nq-value < ", qval)) +
   scale_x_continuous(limits = c(-3, 3), breaks = seq(-3, 3, 1)) +
   scale_y_continuous(limits = c(0, 15), breaks = seq(0, 15, 5))
 fibroblast_vol
@@ -1020,7 +1020,7 @@ row1 <- ggarrange(
   astrocyte_vol,
   row1.split,
   ncol = 2,
-  labels = c("a)", "b)"), 
+  labels = c("A", "B"), 
   widths = c(1,2),
   font.label = list(size = 10)
 )
@@ -1029,7 +1029,7 @@ row2 <- ggarrange(
   oligo_vol,
   oligo_up_and_down_enrich_plot,
   ncol = 2,
-  labels = c("c)", "d)"), 
+  labels = c("C", "D"), 
   widths = c(1,2),
   font.label = list(size = 10)
 )
@@ -1045,7 +1045,7 @@ row3 <- ggarrange(
   fibroblast_vol,
   row3.split,
   ncol = 2,
-  labels = c("e)", "f)"), 
+  labels = c("E", "F"), 
   widths = c(1,2),
   font.label = list(size = 10)
 )
@@ -1055,7 +1055,7 @@ row4 <- ggarrange(
   poly_vol,
   poly_up_and_down_enrich_plot,
   ncol = 2,
-  labels = c("e)", "f)"), 
+  labels = c("G", "H"), 
   widths = c(1,2),
   font.label = list(size = 10)
 )
@@ -1071,7 +1071,7 @@ combind <-
     )
 combind
 
-path <- paste0("../manuscript_figures/Figure_4_updated")
+path <- paste0("../manuscript_figures/Figure_4")
 saveToPDF(paste0(path, ".pdf"), width = 7.5, height = 9)
 ```
 

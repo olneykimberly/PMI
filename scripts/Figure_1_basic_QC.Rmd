@@ -71,6 +71,23 @@ data_sample <- as.data.frame(table(dataObject$sample))
 colnames(data2) <- c("sample", "group","frequency")
 colnames(data_sample) <- c("sample","frequency")
 
+aov_result <- aov(frequency ~ group, data = data2)
+summary(aov_result)
+
+library(car)  # For Levene's Test
+
+# Perform ANOVA
+anova_result <- aov(frequency ~ group, data = data2)
+
+# Check residuals for normality
+qqnorm(residuals(anova_result))
+qqline(residuals(anova_result))
+shapiro.test(residuals(anova_result))
+
+# Check homogeneity of variances
+leveneTest(frequency ~ group, data = data2)
+
+
 data2$sample <- factor(data2$sample, levels = data2$sample)
 nuclei_count <- ggplot(data2, aes(x = sample, y = frequency, fill = group)) + 
   geom_col() +
@@ -122,11 +139,11 @@ dataObject <- CellCycleScoring(dataObject,
 
 # sample before integration 
 cellcyle <- dataObject@meta.data %>%
-  group_by(group_no_sex, Phase) %>%
+  group_by(group_no_sex, Phase) %>% 
   dplyr::count() %>%
-  group_by(group_no_sex) %>%
+  group_by() %>%
   dplyr::mutate(percent = 100*n/sum(n)) %>%
-  ungroup() %>%
+  ungroup()  %>%
   ggplot(aes(x=group_no_sex,y=percent, fill=Phase)) +
   geom_col() +
   ggtitle("Percentage of cell cycle phase") +
@@ -141,6 +158,28 @@ cellcyle <- dataObject@meta.data %>%
           legend.key.size = unit(0.5, "cm")) +
   scale_fill_manual(values = c("gray", "maroon", "gold3"))
 cellcyle
+
+
+cellcyle <- dataObject@meta.data %>%
+  group_by(group_no_sex, Phase) %>% 
+  dplyr::count() %>%
+  group_by() %>%
+  dplyr::mutate(percent = 100*n/sum(n)) %>%
+  ungroup() 
+
+# Reshape the data to a contingency table
+contingency_table <- cellcyle %>%
+  select(group_no_sex, Phase, percent) %>%
+  pivot_wider(names_from = group_no_sex, values_from = percent, values_fill = list(percent = 0))
+rownames(contingency_table) <- contingency_table$Phase
+contingency_table <- contingency_table %>%
+  select(-Phase)
+contingency_matrix <- as.matrix(contingency_table)
+print(contingency_matrix)
+
+# Perform the Chi-Square Test of Independence
+chi_square_result <- chisq.test(contingency_matrix)
+print(chi_square_result)
 ```
 
 # UMAP 

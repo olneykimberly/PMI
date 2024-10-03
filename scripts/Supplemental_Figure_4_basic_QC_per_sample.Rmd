@@ -1,0 +1,400 @@
+---
+title: "Supplemental Figure 4 - cell type abundance"
+author: "Kimberly Olney, PhD"
+date: "10/03/2024"
+output:
+  html_document:
+    theme: cerulean
+    toc: true
+    toc_float: true
+editor_options: 
+  chunk_output_type: inline
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(root.dir = ".", echo=TRUE, warning=FALSE, message=FALSE)
+```
+
+# Libraris, paths, colors
+https://satijalab.org/seurat/articles/essential_commands.html 
+```{r echo=FALSE, message=FALSE}
+source(here::here("/research/labs/neurology/fryer/m239830/PMI/scripts", "file_paths_and_colours.R"))
+treatment <- "PMI"
+group_colors <- c("lightblue", "#bebada", "#377eb8", "#984ea3")
+sample_colors <- c("lightblue","lightblue","lightblue","lightblue","#bebada","#bebada","#bebada","#bebada", "#377eb8",  "#377eb8",  "#377eb8",  "#377eb8",  "#377eb8", "#984ea3", "#984ea3", "#984ea3", "#984ea3", "#984ea3")
+color.panel <- dittoColors()
+library(ggpubr)
+```
+
+# Read in object
+```{r read_object}
+# read object
+dataObject <- readRDS(file = paste0("../rObjects/",treatment,".dataObject.clean.rds"))
+# inspect
+dataObject$sample <- factor(dataObject$sample, levels = c("P_52", "P_62", "P_67", "P_69", "J_3", "J_4", "B_7", "P_65", "P_53", "P_54", "P_64", "P_68", "P_71", "J_1", "J_2", "B_10", "B_8", "B_9"))
+```
+# QC violins 
+```{r violin}
+# nFeature, nCount, and cell.complexity violins
+VlnPlot(dataObject,
+              features = c( "nCount_RNA","nFeature_RNA", "cell.complexity", "percent.mt"),
+              ncol = 2,
+              group.by = 'sample',
+              cols = sample_colors,
+              pt.size = 0)  
+
+# Generate individual violin plots
+plots <- lapply(c("nCount_RNA", "nFeature_RNA", "cell.complexity", "percent.mt"), function(feature) {
+  VlnPlot(dataObject, features = feature, group.by = 'sample', pt.size = 0) + 
+    theme(axis.text = element_text(size = 10),
+          axis.title = element_text(size = 10),
+          axis.title.x = element_blank(),
+          plot.title = element_text(size = 10, face = "plain"),
+          legend.position = "none") +
+    scale_fill_manual(values = sample_colors)
+
+})
+
+# Combine the individual plots into a single plot
+v1 <- CombinePlots(plots, ncol = 4)
+
+```
+
+# DotPlot
+```{r dot_individual}
+markers.to.plot <-
+  c(
+"Clu", 
+"Gfap", 
+"Aqp4", 
+"Gja1", 
+"Cldn5", 
+"Adgrf5", 
+"Flt1", 
+"Col1a1", 
+"Col1a2", 
+"Dcn", 
+"Hexb", 
+"C1qa", 
+"C1qc", 
+"C1qb", 
+"Tmem119", 
+"Itgam", 
+"Tyrobp", 
+"P2ry12", 
+"Aif1", 
+"Rbfox3", 
+"Snap25", 
+"Syt1", 
+"Gad1", 
+"Gad2", 
+"Plp1", 
+"Mbp", 
+"Mog", 
+"Olig1", 
+"Pdgfra", 
+"Vcan", 
+"Tnr", 
+"Acta2", 
+"Rgs5", 
+"Vtn", 
+"Myl5"
+  )
+
+dot_ind <- DotPlot(dataObject,
+                   features = markers.to.plot, 
+                   dot.scale = 8) + RotatedAxis()
+dot_ind
+```
+
+# Relative abundance 
+```{r relative_cell_type}
+cell_types <- c("neuron", "interneuron", "astrocyte", "oligodendrocyte", "fibroblast", "polydendrocyte", "endothelial", "mural", "microglia")
+dataObject$individual_clusters <- factor(dataObject$individual_clusters, levels = cell_types)
+
+relative_abundance <- dataObject@meta.data %>%
+  group_by(individual_clusters, group_no_sex) %>%
+  dplyr::count() %>%
+  group_by(group_no_sex) %>%
+  dplyr::mutate(percent = 100 * n / sum(n)) %>%
+  ungroup()
+
+
+rel_abun <- ggplot(relative_abundance, aes(x = group_no_sex, y = percent, fill = individual_clusters)) +
+  geom_col() +
+geom_text(aes(label = ifelse(percent > 7, paste0(round(percent), "%"), "")), 
+            position = position_stack(vjust = 0.5), size = 3, color = "white") +
+  scale_fill_manual(values = color.panel) +
+  ggtitle("Percentage of cell type in each group") +
+  theme_bw() +
+    theme(axis.text.x = element_text(size = 10),
+          axis.text = element_text(size = 10),
+          axis.title = element_text(size = 10),
+          axis.title.x = element_blank(),
+          plot.title = element_text(size = 10, face = "plain")) + theme(
+  legend.title = element_blank(),
+  legend.position = "right",  # Move the legend closer
+  legend.box.margin = margin(0, 0, 0, -5),  # Remove extra margin around the legend
+  legend.spacing = unit(0.1, "cm"),  # Reduce space between legend keys
+  legend.key.size = unit(0.4, "cm"),  # Adjust the size of the legend keys
+  legend.margin = margin(0, 0, 0, -.1, unit = "cm"),
+  plot.title = element_text(size = 10)
+)
+
+#path <- paste0("../manuscript_figures/Supplemental_Figure_1_cell_type_abundance")
+#saveToPDF(paste0(path, ".pdf"), width = 7.5, height = 5)
+
+
+
+relative_abundance_sample <- dataObject@meta.data %>%
+  group_by(individual_clusters, sample) %>%
+  dplyr::count() %>%
+  group_by(sample) %>%
+  dplyr::mutate(percent = 100 * n / sum(n)) %>%
+  ungroup()
+
+
+rel_abun_sample <- ggplot(relative_abundance_sample, aes(x = sample, y = percent, fill = individual_clusters)) +
+  geom_col() +
+geom_text(aes(label = ifelse(percent > 7, paste0(round(percent), "%"), "")), 
+            position = position_stack(vjust = 0.5), size = 3, color = "white") +
+  scale_fill_manual(values = color.panel) +
+  ggtitle("Percentage of cell type within each sample") +
+  theme_bw() +
+    theme(axis.text.x = element_text(size = 10, angle = 45, hjust = 1),
+          axis.text = element_text(size = 10),
+          axis.title = element_text(size = 10),
+          axis.title.x = element_blank(),
+          plot.title = element_text(size = 10, face = "plain")) + theme(
+  legend.title = element_blank(),
+  legend.position = "right",  # Move the legend closer
+  legend.box.margin = margin(0, 0, 0, -5),  # Remove extra margin around the legend
+  legend.spacing = unit(0.1, "cm"),  # Reduce space between legend keys
+  legend.key.size = unit(0.4, "cm"),  # Adjust the size of the legend keys
+  legend.margin = margin(0, 0, 0, -.1, unit = "cm"),
+  plot.title = element_text(size = 10)
+)
+```
+
+# Chi test cell type proportion 
+```{r eval=FALSE}
+library(dplyr)
+library(tidyr)
+
+# Assuming 'cellcyle' is your data frame containing 'group_no_sex', 'Phase', and 'percent'
+contingency_table <- relative_abundance %>%
+  select(group_no_sex, individual_clusters, percent) %>%
+  pivot_wider(names_from = group_no_sex, values_from = percent, values_fill = list(percent = 0))
+
+# Set row names manually
+rownames(contingency_table) <- contingency_table$individual_clusters
+contingency_table <- contingency_table %>%
+  select(-individual_clusters)
+
+# Convert to matrix
+contingency_matrix <- as.matrix(contingency_table)
+
+# Perform the Chi-Square Test of Independence
+chi_square_result <- chisq.test(contingency_matrix)
+
+# Print the results
+print(chi_square_result)
+
+# Install and load required package if not already installed
+if (!requireNamespace("broom", quietly = TRUE)) {
+  install.packages("broom")
+}
+library(broom)
+
+# Prepare data for pairwise Fisher’s Exact Test
+pairwise_tests <- cellcyle %>%
+  pivot_wider(names_from = group_no_sex, values_from = percent, values_fill = list(percent = 0)) %>%
+  column_to_rownames(var = "Phase") %>%
+  as.matrix() %>%
+  {apply(., 1, function(x) {
+    fisher.test(matrix(x, nrow = 2)) %>% tidy()
+  })} %>%
+  bind_rows(.id = "Phase")
+
+# Print the results
+print(pairwise_tests)
+
+
+library(lme4)
+model <- lmer(percent ~ group_no_sex + (1 | mouse_id), data = cellcyle)
+summary(model)
+
+library(nnet)
+model <- multinom(Phase ~ group_no_sex, data = cellcyle)
+summary(model)
+```
+
+# Cell type count 
+```{r}
+Idents(dataObject) <- dataObject$individual_clusters
+cell_types <- unique(Idents(dataObject))
+
+count_per_cluster <- FetchData(dataObject,
+                               vars = c("ident", "orig.ident")) %>%
+  dplyr::count(ident, orig.ident) %>%
+  tidyr::spread(ident, n)
+count_per_cluster
+
+count_melt <- reshape2::melt(count_per_cluster)
+colnames(count_melt) <- c("ident", "cluster", "number of nuclei")
+count_max <- count_melt[which.max(count_melt$`number of nuclei`), ]
+count_max_value <- count_max$`number of nuclei`
+cellmax <- count_max_value + 10500 # so that the figure doesn't cut off the text
+count_bar <- ggplot(count_melt, aes(x = factor(cluster), y = `number of nuclei`, fill = `cluster`)) +
+  geom_bar(
+    stat = "identity",
+    colour = "black",
+    width = 1,
+    position = position_dodge(width = 0.8)
+  ) +
+  geom_text(
+    aes(label = `number of nuclei`),
+    position = position_dodge(width = 0.9),
+    vjust = -0.25,
+    angle = 45,
+    hjust = -.01, 
+    size = 3
+  ) +
+  theme_classic() + scale_fill_manual(values = color.panel) +
+  ggtitle("Number of nuclei per cell type") +  xlab("cluster") +
+      theme(axis.text = element_text(size = 10),
+          axis.title = element_text(size = 10),
+          axis.title.x = element_blank(),
+          axis.title.y = element_blank(),
+          axis.text.x = element_text(size = 10, angle = 45, hjust = 1), 
+          plot.title = element_text(size = 10),
+          legend.position = "none") +
+  scale_y_continuous(breaks = seq(0,60000, by = 10000), limits = c(0, cellmax))
+count_bar
+```
+
+
+# Cell type count by time 
+```{r}
+# Fetch data including time point
+count_per_cluster <- FetchData(dataObject,
+                               vars = c("ident", "orig.ident", "time")) %>%
+  dplyr::count(ident, orig.ident, time) %>%
+  tidyr::spread(ident, n)
+
+# Reshape the data for plotting
+count_melt <- reshape2::melt(count_per_cluster, id.vars = c("orig.ident", "time"))
+colnames(count_melt) <- c("orig.ident", "time", "cluster", "number_of_nuclei")
+
+# Find the maximum number of nuclei for plot scaling
+count_max <- count_melt[which.max(count_melt$number_of_nuclei), ]
+count_max_value <- count_max$number_of_nuclei
+cellmax <- count_max_value + 5000 # Adjust plot limits
+
+count_melt$cluster <- factor(count_melt$cluster, levels = c("neuron", "interneuron", "astrocyte", "oligodendrocyte", "fibroblast", "polydendrocyte", "endothelial", "mural", "microglia"))
+
+# Create the bar plot
+count_bar_time <- ggplot(count_melt, aes(x = factor(cluster), y = number_of_nuclei, fill = time)) +
+  geom_bar(
+    stat = "identity",
+    colour = "black",
+    width = 0.7,
+    position = position_dodge(width = 0.8)
+  ) +
+  geom_text(
+    aes(label = number_of_nuclei),
+    size = 3, 
+    position = position_dodge(width = 0.8),
+    vjust = 0,
+    angle = 75,
+    hjust = -.1
+  ) +
+  theme_classic() +
+  scale_fill_manual(values = c("0" = "lightblue", "3" = "gray20")) + # Adjust colors as needed
+  ggtitle("Number of nuclei per cell type by PMI") +
+  xlab("Cluster") +
+  ylab("Number of Nuclei") +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  scale_y_continuous(breaks = seq(0,40000, by = 5000), limits = c(0, cellmax)) +
+  theme(axis.title.x = element_blank(),
+        axis.title.y = element_blank(),
+  legend.title = element_text(size = 10),
+  legend.position = "right",  # Move the legend closer
+  legend.box.margin = margin(0, 0, 0, -5),  # Remove extra margin around the legend
+  legend.spacing = unit(0.1, "cm"),  # Reduce space between legend keys
+  legend.key.size = unit(0.4, "cm"),  # Adjust the size of the legend keys
+  legend.margin = margin(0, 0, 0, -.1, unit = "cm"),
+  plot.title = element_text(size = 10))
+count_bar_time
+```
+
+
+# Cell cycle
+```{r cellcycle}
+dataObject <- CellCycleScoring(dataObject, 
+                                        s.features = m.s.genes$gene_name, 
+                                        g2m.features = m.g2m.genes$gene_name, 
+                                        set.ident = TRUE)
+
+# sample before integration 
+cellcyle <- dataObject@meta.data %>%
+  group_by(sample, Phase) %>%
+  dplyr::count() %>%
+  group_by(sample) %>%
+  dplyr::mutate(percent = 100*n/sum(n)) %>%
+  ungroup() %>%
+  ggplot(aes(x=sample,y=percent, fill=Phase)) +
+  geom_col() +
+  ggtitle("Percentage of cell cycle phase") +
+  theme_classic() + 
+      theme(axis.text = element_text(size = 10),
+          axis.title = element_text(size = 10),
+          axis.title.x = element_blank(),
+          plot.title = element_text(size = 10),
+          legend.margin = margin(0, 0, 0, -.5, unit = "cm"),
+          legend.text = element_text(size = 8),
+          legend.title = element_text(size = 8),
+          legend.key.size = unit(0.5, "cm")) +
+  scale_fill_manual(values = c("gray", "navy", "gold3"))
+cellcyle
+```
+
+# Combine all plots 
+```{r}
+
+row1 <- ggarrange(
+  count_bar,
+  count_bar_time,
+  ncol = 2,
+  labels = c("A", "B"), 
+  widths = c(.85, 1.2),
+  font.label = list(size = 10)
+)
+row2 <- ggarrange(
+  rel_abun,
+  ncol = 1,
+  labels = c("C"), 
+  font.label = list(size = 10)
+)
+row3 <- ggarrange(
+  rel_abun_sample,
+  ncol = 1,
+  labels = c("D"), 
+  font.label = list(size = 10)
+)
+
+combind <-
+  ggarrange(
+    row1,
+    row2,
+    row3,
+    nrow = 3
+    )
+combind
+
+path <- paste0("../manuscript_figures/Supplemental_Fig_4")
+saveToPDF(paste0(path, ".pdf"), width = 7.5, height = 11)
+```
+
+

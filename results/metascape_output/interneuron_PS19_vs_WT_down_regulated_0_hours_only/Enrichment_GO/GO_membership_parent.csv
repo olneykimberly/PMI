@@ -1,0 +1,15 @@
+_MEMBER_Kansl1l,_LogP_Kansl1l,GO,Description,_PATTERN_,_RANK_,CHILD_GO_Kansl1l
+1,-6.8558060492375725,GO:0065007,biological regulation,M1,1,GO:0051343 positive regulation of cyclic-nucleotide phosphodiesterase activity
+1,-6.45891047761256,GO:0051179,localization,M1,1,GO:1905913 negative regulation of calcium ion export across plasma membrane
+1,-6.379398317880148,GO:0048518,positive regulation of biological process,M1,1,GO:0032516 positive regulation of phosphoprotein phosphatase activity
+1,-5.757286147750546,GO:0032502,developmental process,M1,1,GO:0060322 head development
+1,-5.713854918846746,GO:0042592,homeostatic process,M1,1,GO:0060316 positive regulation of ryanodine-sensitive calcium-release channel activity
+1,-5.44315058486939,GO:0040011,locomotion,M1,1,GO:0040011 locomotion
+1,-5.314346869269848,GO:0008152,metabolic process,M1,1,GO:0030162 regulation of proteolysis
+1,-5.247690203271772,GO:0032501,multicellular organismal process,M1,1,GO:1901844 regulation of cell communication by electrical coupling involved in cardiac conduction
+1,-5.010894877000047,GO:0050896,response to stimulus,M1,1,GO:0005513 detection of calcium ion
+1,-4.811335710901651,GO:0050789,regulation of biological process,M1,1,GO:0010649 regulation of cell communication by electrical coupling
+1,-4.4871940264423404,GO:0048519,negative regulation of biological process,M1,1,GO:0010801 negative regulation of peptidyl-threonine phosphorylation
+1,-3.3671239540084907,GO:0009987,cellular process,M1,1,GO:0051402 neuron apoptotic process
+1,-3.1340868043672216,GO:0022414,reproductive process,M1,1,GO:2000241 regulation of reproductive process
+1,-2.0347314764449766,GO:0002376,immune system process,M1,1,GO:0050864 regulation of B cell activation

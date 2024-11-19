@@ -1,0 +1,2 @@
+_MEMBER_Itm2c,_LogP_Itm2c,GO,_PATTERN_,_RANK_,GiniIndex,Category,CategoryID,Description,PARENT_GO,LogP,Enrichment,Z-score,#TotalGeneInLibrary,#GeneInGO,#GeneInHitList,#GeneInGOAndHitList,%InGO,STDV %InGO,GeneID,Hits,Log(q-value),EvidenceCutoff
+1,-2.7,PGB:00029,M1,1,0,PaGenBase,36,Tissue-specific: placenta,,-2.7,12,5.5,30286,305,25,3,12,6.5,4297|7077|8482,KMT2A|TIMP2|SEMA7A,0,0

@@ -1,0 +1,4 @@
+_MEMBER_Plcl1,_LogP_Plcl1,GO,Description,_PATTERN_,_RANK_,CHILD_GO_Plcl1
+1,-4.377243132491972,GO:0009987,cellular process,M1,1,GO:0098742 cell-cell adhesion via plasma-membrane adhesion molecules
+1,-3.9009606607907528,GO:0032502,developmental process,M1,1,GO:0008366 axon ensheathment
+1,-2.916138535170819,GO:0022414,reproductive process,M1,1,GO:0007283 spermatogenesis

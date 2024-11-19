@@ -1,0 +1,10 @@
+Cluster,Score,Type,Gene,Symbol,Network
+1,4.0,Seed,6133,RPL9,Itm2c_SUB1
+1,4.0,Clustered,6139,RPL17,Itm2c_SUB1
+1,4.0,Clustered,6161,RPL32,Itm2c_SUB1
+1,4.0,Clustered,6157,RPL27A,Itm2c_SUB1
+1,4.0,Clustered,6175,RPLP0,Itm2c_SUB1
+1,4.0,Clustered,6217,RPS16,Itm2c_SUB1
+1,4.0,Clustered,6202,RPS8,Itm2c_SUB1
+1,4.0,Clustered,6159,RPL29,Itm2c_SUB1
+1,4.0,Clustered,6164,RPL34,Itm2c_SUB1

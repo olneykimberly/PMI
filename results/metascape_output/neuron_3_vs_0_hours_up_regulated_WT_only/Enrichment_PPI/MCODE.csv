@@ -1,0 +1,5 @@
+Cluster,Score,Type,Gene,Symbol,Network
+1,1.0,Clustered,801,CALM1,Hdac4_SUB1
+1,1.0,Clustered,7529,YWHAB,Hdac4_SUB1
+1,1.0,Seed,4747,NEFL,Hdac4_SUB1
+1,1.0,Clustered,4297,KMT2A,Hdac4_SUB1

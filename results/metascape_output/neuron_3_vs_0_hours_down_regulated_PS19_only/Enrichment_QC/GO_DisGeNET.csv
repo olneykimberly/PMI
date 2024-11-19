@@ -1,0 +1,5 @@
+_MEMBER_Cdh19,_LogP_Cdh19,GO,_PATTERN_,_RANK_,GiniIndex,Category,CategoryID,Description,PARENT_GO,LogP,Enrichment,Z-score,#TotalGeneInLibrary,#GeneInGO,#GeneInHitList,#GeneInGOAndHitList,%InGO,STDV %InGO,GeneID,Hits,Log(q-value),EvidenceCutoff
+1,-4.7,C1861453,M1,1,0,DisGeNET,35,Pseudohyperkalemia Cardiff,,-4.7,52,12,30286,218,8,3,38,17,1628|3567|9975,DBP|IL5|NR1D2,-0.19,0
+1,-3.9,C0032584,M1,1,0,DisGeNET,35,polyps,,-3.9,29,9.1,30286,390,8,3,38,17,443|1628|3567,ASPA|DBP|IL5,0,0
+1,-3.2,C0024530,M1,1,0,DisGeNET,35,Malaria,,-3.2,17,6.7,30286,683,8,3,38,17,443|1628|3567,ASPA|DBP|IL5,0,0
+1,-3.1,C0013080,M1,1,0,DisGeNET,35,Down Syndrome,,-3.1,15,6.3,30286,765,8,3,38,17,443|1628|25902,ASPA|DBP|MTHFD1L,0,0

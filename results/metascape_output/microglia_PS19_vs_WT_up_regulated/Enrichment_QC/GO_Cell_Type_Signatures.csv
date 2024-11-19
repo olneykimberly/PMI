@@ -1,0 +1,2 @@
+_MEMBER_Bcl2,_LogP_Bcl2,GO,_PATTERN_,_RANK_,GiniIndex,Category,CategoryID,Description,PARENT_GO,LogP,Enrichment,Z-score,#TotalGeneInLibrary,#GeneInGO,#GeneInHitList,#GeneInGOAndHitList,%InGO,STDV %InGO,GeneID,Hits,Log(q-value),EvidenceCutoff
+1,-4.3,M39067,M1,1,0,Cell Type Signatures,7,MANNO MIDBRAIN NEUROTYPES HDA,,-4.3,36,10,30286,506,5,3,60,22,286|1130|23705,ANK1|LYST|CADM1,-0.14,0

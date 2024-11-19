@@ -1,0 +1,2 @@
+Category,CategoryID,GO,Description,PARENT_GO,LogP,Enrichment,Z-score,#TotalGeneInLibrary,#GeneInGO,#GeneInHitList,#GeneInGOAndHitList,%InGO,STDV %InGO,GeneID,Hits,Log(q-value),GeneList
+GO Biological Processes,19,GO:0097435,supramolecular fiber organization,19_GO:0009987 cellular process,-3.6,22,7.8,30286,592,7,3,43,19,395|800|10345,ARHGAP6|CALD1|TRDN,0,Unc5c

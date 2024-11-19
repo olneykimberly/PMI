@@ -1,0 +1,3 @@
+Gene,Gene Symbol,Description,Biological Process (GO),Protein Function (Protein Atlas),Subcellular Location (Protein Atlas),Hallmark Gene Sets
+9450,LY86,lymphocyte antigen 86,GO:0031666 positive regulation of lipopolysaccharide-mediated signaling pathway;GO:0031664 regulation of lipopolysaccharide-mediated signaling pathway;GO:0031663 lipopolysaccharide-mediated signaling pathway,Predicted secreted proteins,,(M5950)HALLMARK ALLOGRAFT REJECTION
+93664,CADPS2,calcium dependent secretion activator 2,GO:1990504 dense core granule exocytosis;GO:0032253 dense core granule localization;GO:0032252 secretory granule localization,Predicted intracellular proteins,Nucleoplasm;Vesicles (Approved),

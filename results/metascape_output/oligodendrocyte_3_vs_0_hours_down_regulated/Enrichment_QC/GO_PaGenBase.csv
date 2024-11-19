@@ -1,0 +1,2 @@
+_MEMBER_Plcl1,_LogP_Plcl1,GO,_PATTERN_,_RANK_,GiniIndex,Category,CategoryID,Description,PARENT_GO,LogP,Enrichment,Z-score,#TotalGeneInLibrary,#GeneInGO,#GeneInHitList,#GeneInGOAndHitList,%InGO,STDV %InGO,GeneID,Hits,Log(q-value),EvidenceCutoff
+1,-2.3,PGB:00065,M1,1,0,PaGenBase,36,Cell-specific: DRG,,-2.3,8.7,4.6,30286,455,23,3,13,7,443|8633|28513,ASPA|UNC5C|CDH19,0,0

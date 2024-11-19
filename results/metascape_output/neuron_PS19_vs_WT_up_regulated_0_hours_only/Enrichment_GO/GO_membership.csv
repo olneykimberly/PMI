@@ -1,0 +1,48 @@
+_MEMBER_Tbc1d13,_LogP_Tbc1d13,GO,Description,_PATTERN_,_RANK_,GiniIndex
+1,-2.6,R-HSA-9010553,Regulation of expression of SLITs and ROBOs,M1,1,0
+1,-3.2,R-HSA-156827,L13a-mediated translational silencing of Ceruloplasmin expression,M1,1,0
+1,-3.1,R-HSA-8953854,Metabolism of RNA,M1,1,0
+1,-2.2,hsa04144,Endocytosis,M1,1,0
+1,-2.5,R-HSA-112316,Neuronal System,M1,1,0
+1,-3.3,R-HSA-9633012,Response of EIF2AK4 (GCN2) to amino acid deficiency,M1,1,0
+1,-3.3,R-HSA-72689,Formation of a pool of free 40S subunits,M1,1,0
+1,-3.2,R-HSA-1799339,SRP-dependent cotranslational protein targeting to membrane,M1,1,0
+1,-4.5,R-HSA-927802,Nonsense-Mediated Decay (NMD),M1,1,0
+1,-2.8,R-HSA-9675108,Nervous system development,M1,1,0
+1,-2.4,R-HSA-9705683,SARS-CoV-2-host interactions,M1,1,0
+1,-2.4,GO:0043043,peptide biosynthetic process,M1,1,0
+1,-2,R-HSA-72766,Translation,M1,1,0
+1,-4,R-HSA-168255,Influenza Infection,M1,1,0
+1,-2.7,hsa03010,Ribosome,M1,1,0
+1,-3.1,R-HSA-72737,Cap-dependent Translation Initiation,M1,1,0
+1,-2,GO:0006518,peptide metabolic process,M1,1,0
+1,-2,GO:0016042,lipid catabolic process,M1,1,0
+1,-3.2,R-HSA-72706,GTP hydrolysis and joining of the 60S ribosomal subunit,M1,1,0
+1,-2.1,GO:0008202,steroid metabolic process,M1,1,0
+1,-4.3,R-HSA-168273,Influenza Viral RNA Transcription and Replication,M1,1,0
+1,-3.7,GO:0051260,protein homooligomerization,M1,1,0
+1,-2.3,R-HSA-376176,Signaling by ROBO receptors,M1,1,0
+1,-4.5,R-HSA-975957,Nonsense Mediated Decay (NMD) enhanced by the Exon Junction Complex (EJC),M1,1,0
+1,-2.5,GO:0006412,translation,M1,1,0
+1,-2.6,R-HSA-6791226,Major pathway of rRNA processing in the nucleolus and cytosol,M1,1,0
+1,-3.4,R-HSA-72764,Eukaryotic Translation Termination,M1,1,0
+1,-3.5,R-HSA-192823,Viral mRNA Translation,M1,1,0
+1,-2.1,R-HSA-112315,Transmission across Chemical Synapses,M1,1,0
+1,-3.2,GO:0051259,protein complex oligomerization,M1,1,0
+1,-3.5,R-HSA-156902,Peptide chain elongation,M1,1,0
+1,-2.4,R-HSA-72312,rRNA processing,M1,1,0
+1,-3.1,R-HSA-72613,Eukaryotic Translation Initiation,M1,1,0
+1,-3,GO:0002181,cytoplasmic translation,M1,1,0
+1,-3.1,R-HSA-2408522,Selenoamino acid metabolism,M1,1,0
+1,-3.6,CORUM:306,"Ribosome, cytoplasmic",M1,1,0
+1,-2.5,R-HSA-8868773,rRNA processing in the nucleus and cytosol,M1,1,0
+1,-3.4,R-HSA-975956,Nonsense Mediated Decay (NMD) independent of the Exon Junction Complex (EJC),M1,1,0
+1,-2.2,GO:0099177,regulation of trans-synaptic signaling,M1,1,0
+1,-3.4,R-HSA-2408557,Selenocysteine synthesis,M1,1,0
+1,-2.8,R-HSA-8957322,Metabolism of steroids,M1,1,0
+1,-2.8,R-HSA-9711097,Cellular response to starvation,M1,1,0
+1,-2,GO:0043604,amide biosynthetic process,M1,1,0
+1,-2.8,R-HSA-422475,Axon guidance,M1,1,0
+1,-2.2,GO:0050804,modulation of chemical synaptic transmission,M1,1,0
+1,-3.4,R-HSA-156842,Eukaryotic Translation Elongation,M1,1,0
+1,-2.3,hsa05171,Coronavirus disease - COVID-19,M1,1,0

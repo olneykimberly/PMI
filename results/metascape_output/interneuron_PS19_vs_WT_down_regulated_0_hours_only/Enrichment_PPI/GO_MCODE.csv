@@ -1,0 +1,593 @@
+Name,Category,CategoryID,GO,Description,PARENT_GO,LogP,Enrichment,Z-score,#TotalGeneInLibrary,#GeneInGO,#GeneInHitList,#GeneInGOAndHitList,%InGO,STDV %InGO,GeneID,Hits,Log(q-value)
+Kansl1l,Reactome Gene Sets,6,R-HSA-9620244,Long-term potentiation,,-9.4,1.3e+02,25,30286,24,50,5,10,4.2,801|805|808|4747|4900,CALM1|CALM2|CALM3|NEFL|NRGN,-5.1
+Kansl1l,Reactome Gene Sets,6,R-HSA-109582,Hemostasis,,-8.3,11,10,30286,622,50,11,22,5.9,226|801|805|808|830|1794|3021|4067|4282|7534|64805,ALDOA|CALM1|CALM2|CALM3|CAPZA2|DOCK2|H3-3B|LYN|MIF|YWHAZ|P2RY12,-4.5
+Kansl1l,GO Biological Processes,19,GO:0051343,positive regulation of cyclic-nucleotide phosphodiesterase activity,19_GO:0065007 biological regulation,-7.8,4.5e+02,37,30286,4,50,3,6,3.4,801|805|808,CALM1|CALM2|CALM3,-4.3
+Kansl1l,GO Biological Processes,19,GO:0032516,positive regulation of phosphoprotein phosphatase activity,19_GO:0048518 positive regulation of biological process,-7.6,1.3e+02,22,30286,19,50,4,8,3.8,801|805|808|3326,CALM1|CALM2|CALM3|HSP90AB1,-4.2
+Kansl1l,Reactome Gene Sets,6,R-HSA-983705,Signaling by the B Cell Receptor (BCR),,-7.5,32,14,30286,112,50,6,12,4.6,801|805|808|4067|6500|7314,CALM1|CALM2|CALM3|LYN|SKP1|UBB,-4.2
+Kansl1l,Reactome Gene Sets,6,R-HSA-442982,Ras activation upon Ca2+ influx through NMDA receptor,,-7.4,1.2e+02,21,30286,21,50,4,8,3.8,801|805|808|4747,CALM1|CALM2|CALM3|NEFL,-4.2
+Kansl1l,GO Biological Processes,19,GO:1905913,negative regulation of calcium ion export across plasma membrane,19_GO:0051179 localization,-7.4,3.6e+02,33,30286,5,50,3,6,3.4,801|805|808,CALM1|CALM2|CALM3,-4.2
+Kansl1l,Reactome Gene Sets,6,R-HSA-9617324,Negative regulation of NMDA receptor-mediated neuronal transmission,,-7.3,1.1e+02,21,30286,22,50,4,8,3.8,801|805|808|4747,CALM1|CALM2|CALM3|NEFL,-4.2
+Kansl1l,Reactome Gene Sets,6,R-HSA-438066,"Unblocking of NMDA receptors, glutamate binding and activation",,-7.3,1.1e+02,21,30286,22,50,4,8,3.8,801|805|808|4747,CALM1|CALM2|CALM3|NEFL,-4.2
+Kansl1l,KEGG Pathway,24,hsa04114,Oocyte meiosis,,-7.1,28,12,30286,131,50,6,12,4.6,801|805|808|6500|7529|7534,CALM1|CALM2|CALM3|SKP1|YWHAB|YWHAZ,-4.1
+Kansl1l,GO Biological Processes,19,GO:0051282,regulation of sequestering of calcium ion,19_GO:0042592 homeostatic process,-7.1,28,12,30286,132,50,6,12,4.6,801|805|808|3357|3358|4067,CALM1|CALM2|CALM3|HTR2B|HTR2C|LYN,-4.1
+Kansl1l,Reactome Gene Sets,6,R-HSA-111957,Cam-PDE 1 activation,,-7.1,3e+02,30,30286,6,50,3,6,3.4,801|805|808,CALM1|CALM2|CALM3,-4.1
+Kansl1l,Reactome Gene Sets,6,R-HSA-9022535,Loss of phosphorylation of MECP2 at T308,,-7.1,3e+02,30,30286,6,50,3,6,3.4,801|805|808,CALM1|CALM2|CALM3,-4.1
+Kansl1l,GO Biological Processes,19,GO:1905912,regulation of calcium ion export across plasma membrane,19_GO:0051179 localization,-7.1,3e+02,30,30286,6,50,3,6,3.4,801|805|808,CALM1|CALM2|CALM3,-4.1
+Kansl1l,Reactome Gene Sets,6,R-HSA-2454202,Fc epsilon receptor (FCERI) signaling,,-7,27,12,30286,134,50,6,12,4.6,801|805|808|4067|6500|7314,CALM1|CALM2|CALM3|LYN|SKP1|UBB,-4.1
+Kansl1l,Reactome Gene Sets,6,R-HSA-8982491,Glycogen metabolism,,-7,90,19,30286,27,50,4,8,3.8,801|805|808|7314,CALM1|CALM2|CALM3|UBB,-4.1
+Kansl1l,Reactome Gene Sets,6,R-HSA-9648002,RAS processing,,-7,90,19,30286,27,50,4,8,3.8,801|805|808|7314,CALM1|CALM2|CALM3|UBB,-4.1
+Kansl1l,Reactome Gene Sets,6,R-HSA-1445148,Translocation of SLC2A4 (GLUT4) to the plasma membrane,,-6.9,42,14,30286,72,50,5,10,4.2,801|805|808|7529|7534,CALM1|CALM2|CALM3|YWHAB|YWHAZ,-4.1
+Kansl1l,GO Biological Processes,19,GO:0010922,positive regulation of phosphatase activity,19_GO:0048518 positive regulation of biological process,-6.9,87,18,30286,28,50,4,8,3.8,801|805|808|3326,CALM1|CALM2|CALM3|HSP90AB1,-4.1
+Kansl1l,Reactome Gene Sets,6,R-HSA-5621481,C-type lectin receptors (CLRs),,-6.9,25,12,30286,143,50,6,12,4.6,801|805|808|4067|6500|7314,CALM1|CALM2|CALM3|LYN|SKP1|UBB,-4.1
+Kansl1l,Reactome Gene Sets,6,R-HSA-9824439,Bacterial Infection Pathways,,-6.9,41,14,30286,73,50,5,10,4.2,801|805|808|3326|7314,CALM1|CALM2|CALM3|HSP90AB1|UBB,-4.1
+Kansl1l,Reactome Gene Sets,6,R-HSA-442742,CREB1 phosphorylation through NMDA receptor-mediated activation of RAS signaling,,-6.8,84,18,30286,29,50,4,8,3.8,801|805|808|4747,CALM1|CALM2|CALM3|NEFL,-4
+Kansl1l,Reactome Gene Sets,6,R-HSA-5339562,Uptake and actions of bacterial toxins,,-6.7,78,17,30286,31,50,4,8,3.8,801|805|808|3326,CALM1|CALM2|CALM3|HSP90AB1,-4
+Kansl1l,GO Biological Processes,19,GO:0035304,regulation of protein dephosphorylation,19_GO:0008152 metabolic process,-6.7,38,14,30286,79,50,5,10,4.2,801|805|808|3326|7529,CALM1|CALM2|CALM3|HSP90AB1|YWHAB,-4
+Kansl1l,Reactome Gene Sets,6,R-HSA-438064,Post NMDA receptor activation events,,-6.7,38,13,30286,80,50,5,10,4.2,801|805|808|4747|4900,CALM1|CALM2|CALM3|NEFL|NRGN,-4
+Kansl1l,Reactome Gene Sets,6,R-HSA-983695,Antigen activates B Cell Receptor (BCR) leading to generation of second messengers,,-6.6,76,17,30286,32,50,4,8,3.8,801|805|808|4067,CALM1|CALM2|CALM3|LYN,-4
+Kansl1l,GO Biological Processes,19,GO:0060316,positive regulation of ryanodine-sensitive calcium-release channel activity,19_GO:0042592 homeostatic process,-6.6,2.3e+02,26,30286,8,50,3,6,3.4,801|805|808,CALM1|CALM2|CALM3,-4
+Kansl1l,GO Biological Processes,19,GO:0051342,regulation of cyclic-nucleotide phosphodiesterase activity,19_GO:0065007 biological regulation,-6.6,2.3e+02,26,30286,8,50,3,6,3.4,801|805|808,CALM1|CALM2|CALM3,-4
+Kansl1l,Reactome Gene Sets,6,R-HSA-76002,"Platelet activation, signaling and aggregation",,-6.6,16,10,30286,263,50,7,14,4.9,226|801|805|808|4067|7534|64805,ALDOA|CALM1|CALM2|CALM3|LYN|YWHAZ|P2RY12,-4
+Kansl1l,Reactome Gene Sets,6,R-HSA-2871809,FCERI mediated Ca+2 mobilization,,-6.6,73,17,30286,33,50,4,8,3.8,801|805|808|4067,CALM1|CALM2|CALM3|LYN,-4
+Kansl1l,Reactome Gene Sets,6,R-HSA-1168372,Downstream signaling events of B Cell Receptor (BCR),,-6.6,36,13,30286,83,50,5,10,4.2,801|805|808|6500|7314,CALM1|CALM2|CALM3|SKP1|UBB,-4
+Kansl1l,KEGG Pathway,24,hsa05012,Parkinson disease,,-6.6,16,10,30286,266,50,7,14,4.9,801|805|808|1350|4697|4718|7314,CALM1|CALM2|CALM3|COX7C|NDUFA4|NDUFC2|UBB,-4
+Kansl1l,GO Biological Processes,19,GO:0051336,regulation of hydrolase activity,19_GO:0065007 biological regulation,-6.5,8.1,8,30286,746,50,10,20,5.7,801|805|808|2045|2597|3326|3357|4067|23204|373509,CALM1|CALM2|CALM3|EPHA7|GAPDH|HSP90AB1|HTR2B|LYN|ARL6IP1|USP50,-3.9
+Kansl1l,Reactome Gene Sets,6,R-HSA-9619229,Activation of RAC1 downstream of NMDARs,,-6.5,2e+02,25,30286,9,50,3,6,3.4,801|805|808,CALM1|CALM2|CALM3,-3.9
+Kansl1l,Reactome Gene Sets,6,R-HSA-5673000,RAF activation,,-6.4,67,16,30286,36,50,4,8,3.8,801|805|808|7529,CALM1|CALM2|CALM3|YWHAB,-3.9
+Kansl1l,GO Biological Processes,19,GO:0031401,positive regulation of protein modification process,19_GO:0048518 positive regulation of biological process,-6.4,7.9,7.9,30286,764,50,10,20,5.7,801|805|808|2045|3326|3357|4067|4282|6500|7314,CALM1|CALM2|CALM3|EPHA7|HSP90AB1|HTR2B|LYN|MIF|SKP1|UBB,-3.8
+Kansl1l,Reactome Gene Sets,6,R-HSA-442755,Activation of NMDA receptors and postsynaptic events,,-6.3,33,12,30286,93,50,5,10,4.2,801|805|808|4747|4900,CALM1|CALM2|CALM3|NEFL|NRGN,-3.8
+Kansl1l,GO Biological Processes,19,GO:0031952,regulation of protein autophosphorylation,19_GO:0008152 metabolic process,-6.3,64,16,30286,38,50,4,8,3.8,801|805|808|2045,CALM1|CALM2|CALM3|EPHA7,-3.8
+Kansl1l,Reactome Gene Sets,6,R-HSA-71387,Metabolism of carbohydrates,,-6.3,15,9.5,30286,290,50,7,14,4.9,226|801|805|808|2597|7167|7314,ALDOA|CALM1|CALM2|CALM3|GAPDH|TPI1|UBB,-3.8
+Kansl1l,Reactome Gene Sets,6,R-HSA-442729,CREB1 phosphorylation through the activation of CaMKII/CaMKK/CaMKIV cascasde,,-6.3,1.8e+02,23,30286,10,50,3,6,3.4,801|805|808,CALM1|CALM2|CALM3,-3.8
+Kansl1l,Reactome Gene Sets,6,R-HSA-9664323,FCGR3A-mediated IL10 synthesis,,-6.2,61,15,30286,40,50,4,8,3.8,801|805|808|4067,CALM1|CALM2|CALM3|LYN,-3.8
+Kansl1l,KEGG Pathway,24,hsa04750,Inflammatory mediator regulation of TRP channels,,-6.2,31,12,30286,98,50,5,10,4.2,801|805|808|3357|3358,CALM1|CALM2|CALM3|HTR2B|HTR2C,-3.8
+Kansl1l,GO Biological Processes,19,GO:1901844,regulation of cell communication by electrical coupling involved in cardiac conduction,19_GO:0032501 multicellular organismal process,-6.2,1.7e+02,22,30286,11,50,3,6,3.4,801|805|808,CALM1|CALM2|CALM3,-3.7
+Kansl1l,Reactome Gene Sets,6,R-HSA-2025928,Calcineurin activates NFAT,,-6.2,1.7e+02,22,30286,11,50,3,6,3.4,801|805|808,CALM1|CALM2|CALM3,-3.7
+Kansl1l,GO Biological Processes,19,GO:0060315,negative regulation of ryanodine-sensitive calcium-release channel activity,19_GO:0042592 homeostatic process,-6.2,1.7e+02,22,30286,11,50,3,6,3.4,801|805|808,CALM1|CALM2|CALM3,-3.7
+Kansl1l,Reactome Gene Sets,6,R-HSA-5607764,CLEC7A (Dectin-1) signaling,,-6.2,30,12,30286,101,50,5,10,4.2,801|805|808|6500|7314,CALM1|CALM2|CALM3|SKP1|UBB,-3.7
+Kansl1l,Reactome Gene Sets,6,R-HSA-9656223,Signaling by RAF1 mutants,,-6.1,56,15,30286,43,50,4,8,3.8,801|805|808|7529,CALM1|CALM2|CALM3|YWHAB,-3.7
+Kansl1l,GO Biological Processes,19,GO:0035307,positive regulation of protein dephosphorylation,19_GO:0048518 positive regulation of biological process,-6.1,55,15,30286,44,50,4,8,3.8,801|805|808|3326,CALM1|CALM2|CALM3|HSP90AB1,-3.7
+Kansl1l,Reactome Gene Sets,6,R-HSA-388396,GPCR downstream signalling,,-6.1,8.6,7.9,30286,634,50,9,18,5.4,801|805|808|3357|3358|6019|9934|64805|122042,CALM1|CALM2|CALM3|HTR2B|HTR2C|RLN2|P2RY14|P2RY12|RXFP2,-3.7
+Kansl1l,GO Biological Processes,19,GO:0035303,regulation of dephosphorylation,19_GO:0008152 metabolic process,-6,29,12,30286,106,50,5,10,4.2,801|805|808|3326|7529,CALM1|CALM2|CALM3|HSP90AB1|YWHAB,-3.7
+Kansl1l,Reactome Gene Sets,6,R-HSA-451308,Activation of Ca-permeable Kainate Receptor,,-6,1.5e+02,21,30286,12,50,3,6,3.4,801|805|808,CALM1|CALM2|CALM3,-3.7
+Kansl1l,Reactome Gene Sets,6,R-HSA-451306,Ionotropic activity of kainate receptors,,-6,1.5e+02,21,30286,12,50,3,6,3.4,801|805|808,CALM1|CALM2|CALM3,-3.7
+Kansl1l,Reactome Gene Sets,6,R-HSA-1474151,"Tetrahydrobiopterin (BH4) synthesis, recycling, salvage and regulation",,-6,1.5e+02,21,30286,12,50,3,6,3.4,801|805|808,CALM1|CALM2|CALM3,-3.7
+Kansl1l,Reactome Gene Sets,6,R-HSA-203615,eNOS activation,,-6,1.5e+02,21,30286,12,50,3,6,3.4,801|805|808,CALM1|CALM2|CALM3,-3.7
+Kansl1l,Reactome Gene Sets,6,R-HSA-111932,CaMK IV-mediated phosphorylation of CREB,,-6,1.5e+02,21,30286,12,50,3,6,3.4,801|805|808,CALM1|CALM2|CALM3,-3.7
+Kansl1l,KEGG Pathway,24,hsa05022,Pathways of neurodegeneration - multiple diseases,,-6,10,8.2,30286,476,50,8,16,5.2,801|805|808|1350|4697|4718|4747|7314,CALM1|CALM2|CALM3|COX7C|NDUFA4|NDUFC2|NEFL|UBB,-3.6
+Kansl1l,Reactome Gene Sets,6,R-HSA-6802946,Signaling by moderate kinase activity BRAF mutants,,-6,52,14,30286,47,50,4,8,3.8,801|805|808|7529,CALM1|CALM2|CALM3|YWHAB,-3.6
+Kansl1l,Reactome Gene Sets,6,R-HSA-9649948,Signaling downstream of RAS mutants,,-6,52,14,30286,47,50,4,8,3.8,801|805|808|7529,CALM1|CALM2|CALM3|YWHAB,-3.6
+Kansl1l,Reactome Gene Sets,6,R-HSA-6802949,Signaling by RAS mutants,,-6,52,14,30286,47,50,4,8,3.8,801|805|808|7529,CALM1|CALM2|CALM3|YWHAB,-3.6
+Kansl1l,Reactome Gene Sets,6,R-HSA-6802955,Paradoxical activation of RAF signaling by kinase inactive BRAF,,-6,52,14,30286,47,50,4,8,3.8,801|805|808|7529,CALM1|CALM2|CALM3|YWHAB,-3.6
+Kansl1l,GO Biological Processes,19,GO:0043666,regulation of phosphoprotein phosphatase activity,19_GO:0008152 metabolic process,-6,52,14,30286,47,50,4,8,3.8,801|805|808|3326,CALM1|CALM2|CALM3|HSP90AB1,-3.6
+Kansl1l,Reactome Gene Sets,6,R-HSA-195721,Signaling by WNT,,-5.9,13,8.8,30286,331,50,7,14,4.9,801|805|808|3021|6500|7314|7534,CALM1|CALM2|CALM3|H3-3B|SKP1|UBB|YWHAZ,-3.6
+Kansl1l,Reactome Gene Sets,6,R-HSA-425561,Sodium/Calcium exchangers,,-5.9,1.4e+02,20,30286,13,50,3,6,3.4,801|805|808,CALM1|CALM2|CALM3,-3.6
+Kansl1l,GO Biological Processes,19,GO:0051280,negative regulation of release of sequestered calcium ion into cytosol,19_GO:0042592 homeostatic process,-5.9,1.4e+02,20,30286,13,50,3,6,3.4,801|805|808,CALM1|CALM2|CALM3,-3.6
+Kansl1l,Reactome Gene Sets,6,R-HSA-5210891,Uptake and function of anthrax toxins,,-5.9,1.4e+02,20,30286,13,50,3,6,3.4,801|805|808,CALM1|CALM2|CALM3,-3.6
+Kansl1l,Reactome Gene Sets,6,R-HSA-5607763,CLEC7A (Dectin-1) induces NFAT activation,,-5.9,1.4e+02,20,30286,13,50,3,6,3.4,801|805|808,CALM1|CALM2|CALM3,-3.6
+Kansl1l,GO Biological Processes,19,GO:0005513,detection of calcium ion,19_GO:0050896 response to stimulus,-5.9,1.4e+02,20,30286,13,50,3,6,3.4,801|805|808,CALM1|CALM2|CALM3,-3.6
+Kansl1l,Reactome Gene Sets,6,R-HSA-442720,CREB1 phosphorylation through the activation of Adenylate Cyclase,,-5.8,1.3e+02,20,30286,14,50,3,6,3.4,801|805|808,CALM1|CALM2|CALM3,-3.5
+Kansl1l,Reactome Gene Sets,6,R-HSA-9005891,Loss of function of MECP2 in Rett syndrome,,-5.8,1.3e+02,20,30286,14,50,3,6,3.4,801|805|808,CALM1|CALM2|CALM3,-3.5
+Kansl1l,Reactome Gene Sets,6,R-HSA-9675151,Disorders of Developmental Biology,,-5.8,1.3e+02,20,30286,14,50,3,6,3.4,801|805|808,CALM1|CALM2|CALM3,-3.5
+Kansl1l,Reactome Gene Sets,6,R-HSA-9005895,Pervasive developmental disorders,,-5.8,1.3e+02,20,30286,14,50,3,6,3.4,801|805|808,CALM1|CALM2|CALM3,-3.5
+Kansl1l,Reactome Gene Sets,6,R-HSA-418359,Reduction of cytosolic Ca++ levels,,-5.8,1.3e+02,20,30286,14,50,3,6,3.4,801|805|808,CALM1|CALM2|CALM3,-3.5
+Kansl1l,Reactome Gene Sets,6,R-HSA-9697154,Disorders of Nervous System Development,,-5.8,1.3e+02,20,30286,14,50,3,6,3.4,801|805|808,CALM1|CALM2|CALM3,-3.5
+Kansl1l,GO Biological Processes,19,GO:0010649,regulation of cell communication by electrical coupling,19_GO:0050789 regulation of biological process,-5.7,1.2e+02,19,30286,15,50,3,6,3.4,801|805|808,CALM1|CALM2|CALM3,-3.5
+Kansl1l,GO Biological Processes,19,GO:0051284,positive regulation of sequestering of calcium ion,19_GO:0042592 homeostatic process,-5.7,1.2e+02,19,30286,15,50,3,6,3.4,801|805|808,CALM1|CALM2|CALM3,-3.5
+Kansl1l,GO Biological Processes,19,GO:0035306,positive regulation of dephosphorylation,19_GO:0048518 positive regulation of biological process,-5.7,45,13,30286,54,50,4,8,3.8,801|805|808|3326,CALM1|CALM2|CALM3|HSP90AB1,-3.5
+Kansl1l,GO Biological Processes,19,GO:0010562,positive regulation of phosphorus metabolic process,19_GO:0048518 positive regulation of biological process,-5.7,7.8,7.4,30286,702,50,9,18,5.4,801|805|808|2045|3326|3357|3358|4067|4282,CALM1|CALM2|CALM3|EPHA7|HSP90AB1|HTR2B|HTR2C|LYN|MIF,-3.5
+Kansl1l,GO Biological Processes,19,GO:0045937,positive regulation of phosphate metabolic process,19_GO:0048518 positive regulation of biological process,-5.7,7.8,7.4,30286,702,50,9,18,5.4,801|805|808|2045|3326|3357|3358|4067|4282,CALM1|CALM2|CALM3|EPHA7|HSP90AB1|HTR2B|HTR2C|LYN|MIF,-3.5
+Kansl1l,Reactome Gene Sets,6,R-HSA-194315,Signaling by Rho GTPases,,-5.7,7.7,7.3,30286,706,50,9,18,5.4,801|805|808|1794|3021|3183|3326|7529|7534,CALM1|CALM2|CALM3|DOCK2|H3-3B|HNRNPC|HSP90AB1|YWHAB|YWHAZ,-3.4
+Kansl1l,Reactome Gene Sets,6,R-HSA-372790,Signaling by GPCR,,-5.7,7.7,7.3,30286,709,50,9,18,5.4,801|805|808|3357|3358|6019|9934|64805|122042,CALM1|CALM2|CALM3|HTR2B|HTR2C|RLN2|P2RY14|P2RY12|RXFP2,-3.4
+Kansl1l,Reactome Gene Sets,6,R-HSA-202131,Metabolism of nitric oxide: NOS3 activation and regulation,,-5.6,1.1e+02,18,30286,16,50,3,6,3.4,801|805|808,CALM1|CALM2|CALM3,-3.4
+Kansl1l,Reactome Gene Sets,6,R-HSA-70221,Glycogen breakdown (glycogenolysis),,-5.6,1.1e+02,18,30286,16,50,3,6,3.4,801|805|808,CALM1|CALM2|CALM3,-3.4
+Kansl1l,CORUM,33,CORUM:5199,Kinase maturation complex 1,,-5.6,1.1e+02,18,30286,16,50,3,6,3.4,3326|7529|7534,HSP90AB1|YWHAB|YWHAZ,-3.4
+Kansl1l,Reactome Gene Sets,6,R-HSA-9716542,"Signaling by Rho GTPases, Miro GTPases and RHOBTB3",,-5.6,7.6,7.2,30286,722,50,9,18,5.4,801|805|808|1794|3021|3183|3326|7529|7534,CALM1|CALM2|CALM3|DOCK2|H3-3B|HNRNPC|HSP90AB1|YWHAB|YWHAZ,-3.4
+Kansl1l,GO Biological Processes,19,GO:0010921,regulation of phosphatase activity,19_GO:0008152 metabolic process,-5.6,41,13,30286,59,50,4,8,3.8,801|805|808|3326,CALM1|CALM2|CALM3|HSP90AB1,-3.3
+Kansl1l,KEGG Pathway,24,hsa05010,Alzheimer disease,,-5.5,11,8.1,30286,384,50,7,14,4.9,801|805|808|1350|2597|4697|4718,CALM1|CALM2|CALM3|COX7C|GAPDH|NDUFA4|NDUFC2,-3.3
+Kansl1l,KEGG Pathway,24,hsa05418,Fluid shear stress and atherosclerosis,,-5.5,22,10,30286,139,50,5,10,4.2,801|805|808|3326|6613,CALM1|CALM2|CALM3|HSP90AB1|SUMO2,-3.3
+Kansl1l,GO Biological Processes,19,GO:0010801,negative regulation of peptidyl-threonine phosphorylation,19_GO:0048519 negative regulation of biological process,-5.4,96,17,30286,19,50,3,6,3.4,801|805|808,CALM1|CALM2|CALM3,-3.2
+Kansl1l,Reactome Gene Sets,6,R-HSA-8876725,Protein methylation,,-5.4,96,17,30286,19,50,3,6,3.4,801|805|808,CALM1|CALM2|CALM3,-3.2
+Kansl1l,Reactome Gene Sets,6,R-HSA-1280218,Adaptive Immune System,,-5.4,7.1,7,30286,768,50,9,18,5.4,801|805|808|830|4067|6500|7314|7529|7534,CALM1|CALM2|CALM3|CAPZA2|LYN|SKP1|UBB|YWHAB|YWHAZ,-3.2
+Kansl1l,GO Biological Processes,19,GO:0001934,positive regulation of protein phosphorylation,19_GO:0048518 positive regulation of biological process,-5.4,8.4,7.3,30286,578,50,8,16,5.2,801|805|808|2045|3326|3357|4067|4282,CALM1|CALM2|CALM3|EPHA7|HSP90AB1|HTR2B|LYN|MIF,-3.2
+Kansl1l,Reactome Gene Sets,6,R-HSA-6802952,Signaling by BRAF and RAF1 fusions,,-5.3,36,12,30286,67,50,4,8,3.8,801|805|808|7529,CALM1|CALM2|CALM3|YWHAB,-3.2
+Kansl1l,Reactome Gene Sets,6,R-HSA-163615,PKA activation,,-5.3,91,16,30286,20,50,3,6,3.4,801|805|808,CALM1|CALM2|CALM3,-3.2
+Kansl1l,GO Biological Processes,19,GO:0006091,generation of precursor metabolites and energy,19_GO:0008152 metabolic process,-5.3,10,7.7,30286,410,50,7,14,4.9,226|1350|2597|4697|4718|7167|400916,ALDOA|COX7C|GAPDH|NDUFA4|NDUFC2|TPI1|CHCHD10,-3.2
+Kansl1l,Reactome Gene Sets,6,R-HSA-5218921,VEGFR2 mediated cell proliferation,,-5.3,87,16,30286,21,50,3,6,3.4,801|805|808,CALM1|CALM2|CALM3,-3.1
+Kansl1l,GO Biological Processes,19,GO:0030162,regulation of proteolysis,19_GO:0008152 metabolic process,-5.2,8.1,7.1,30286,600,50,8,16,5.2,2045|2597|3326|4067|6613|7314|23204|373509,EPHA7|GAPDH|HSP90AB1|LYN|SUMO2|UBB|ARL6IP1|USP50,-3.1
+Kansl1l,GO Biological Processes,19,GO:0010881,regulation of cardiac muscle contraction by regulation of the release of sequestered calcium ion,19_GO:0042592 homeostatic process,-5.2,83,16,30286,22,50,3,6,3.4,801|805|808,CALM1|CALM2|CALM3,-3
+Kansl1l,Reactome Gene Sets,6,R-HSA-111931,PKA-mediated phosphorylation of CREB,,-5.2,83,16,30286,22,50,3,6,3.4,801|805|808,CALM1|CALM2|CALM3,-3
+Kansl1l,Reactome Gene Sets,6,R-HSA-5673001,RAF/MAP kinase cascade,,-5.2,13,8.2,30286,280,50,6,12,4.6,801|805|808|4747|7314|7529,CALM1|CALM2|CALM3|NEFL|UBB|YWHAB,-3
+Kansl1l,Reactome Gene Sets,6,R-HSA-5684996,MAPK1/MAPK3 signaling,,-5.1,13,8.1,30286,286,50,6,12,4.6,801|805|808|4747|7314|7529,CALM1|CALM2|CALM3|NEFL|UBB|YWHAB,-3
+Kansl1l,Reactome Gene Sets,6,R-HSA-9824443,Parasitic Infection Pathways,,-5.1,18,9.1,30286,164,50,5,10,4.2,801|805|808|3326|4067,CALM1|CALM2|CALM3|HSP90AB1|LYN,-3
+Kansl1l,Reactome Gene Sets,6,R-HSA-9658195,Leishmania infection,,-5.1,18,9.1,30286,164,50,5,10,4.2,801|805|808|3326|4067,CALM1|CALM2|CALM3|HSP90AB1|LYN,-3
+Kansl1l,GO Biological Processes,19,GO:0042327,positive regulation of phosphorylation,19_GO:0048518 positive regulation of biological process,-5.1,7.8,7,30286,623,50,8,16,5.2,801|805|808|2045|3326|3357|4067|4282,CALM1|CALM2|CALM3|EPHA7|HSP90AB1|HTR2B|LYN|MIF,-3
+Kansl1l,GO Biological Processes,19,GO:0055117,regulation of cardiac muscle contraction,19_GO:0032501 multicellular organismal process,-5.1,31,11,30286,77,50,4,8,3.8,801|805|808|29119,CALM1|CALM2|CALM3|CTNNA3,-3
+Kansl1l,Reactome Gene Sets,6,R-HSA-5627123,RHO GTPases activate PAKs,,-5.1,76,15,30286,24,50,3,6,3.4,801|805|808,CALM1|CALM2|CALM3,-2.9
+Kansl1l,Reactome Gene Sets,6,R-HSA-199991,Membrane Trafficking,,-5.1,7.6,6.9,30286,634,50,8,16,5.2,801|805|808|830|7314|7529|7534|60592,CALM1|CALM2|CALM3|CAPZA2|UBB|YWHAB|YWHAZ|SCOC,-2.9
+Kansl1l,Reactome Gene Sets,6,R-HSA-9664433,Leishmania parasite growth and survival,,-5,31,11,30286,79,50,4,8,3.8,801|805|808|4067,CALM1|CALM2|CALM3|LYN,-2.9
+Kansl1l,Reactome Gene Sets,6,R-HSA-9662851,Anti-inflammatory response favouring Leishmania parasite infection,,-5,31,11,30286,79,50,4,8,3.8,801|805|808|4067,CALM1|CALM2|CALM3|LYN,-2.9
+Kansl1l,GO Biological Processes,19,GO:0019722,calcium-mediated signaling,19_GO:0050896 response to stimulus,-5,18,8.9,30286,171,50,5,10,4.2,801|805|808|3357|64805,CALM1|CALM2|CALM3|HTR2B|P2RY12,-2.9
+Kansl1l,GO Biological Processes,19,GO:0031954,positive regulation of protein autophosphorylation,19_GO:0048518 positive regulation of biological process,-5,73,15,30286,25,50,3,6,3.4,801|805|808,CALM1|CALM2|CALM3,-2.9
+Kansl1l,Reactome Gene Sets,6,R-HSA-8978934,Metabolism of cofactors,,-5,73,15,30286,25,50,3,6,3.4,801|805|808,CALM1|CALM2|CALM3,-2.9
+Kansl1l,GO Biological Processes,19,GO:0060314,regulation of ryanodine-sensitive calcium-release channel activity,19_GO:0042592 homeostatic process,-5,73,15,30286,25,50,3,6,3.4,801|805|808,CALM1|CALM2|CALM3,-2.9
+Kansl1l,Reactome Gene Sets,6,R-HSA-5663202,Diseases of signal transduction by growth factor receptors and second messengers,,-5,9.2,7.2,30286,459,50,7,14,4.9,801|805|808|4067|6500|7314|7529,CALM1|CALM2|CALM3|LYN|SKP1|UBB|YWHAB,-2.9
+Kansl1l,Reactome Gene Sets,6,R-HSA-180024,DARPP-32 events,,-5,70,14,30286,26,50,3,6,3.4,801|805|808,CALM1|CALM2|CALM3,-2.9
+Kansl1l,GO Biological Processes,19,GO:0010882,regulation of cardiac muscle contraction by calcium ion signaling,19_GO:0032501 multicellular organismal process,-5,70,14,30286,26,50,3,6,3.4,801|805|808,CALM1|CALM2|CALM3,-2.9
+Kansl1l,Reactome Gene Sets,6,R-HSA-70263,Gluconeogenesis,,-5,70,14,30286,26,50,3,6,3.4,226|2597|7167,ALDOA|GAPDH|TPI1,-2.9
+Kansl1l,GO Biological Processes,19,GO:0051279,regulation of release of sequestered calcium ion into cytosol,19_GO:0042592 homeostatic process,-5,29,10,30286,83,50,4,8,3.8,801|805|808|4067,CALM1|CALM2|CALM3|LYN,-2.9
+Kansl1l,GO Biological Processes,19,GO:0032414,positive regulation of ion transmembrane transporter activity,19_GO:0051179 localization,-5,29,10,30286,83,50,4,8,3.8,801|805|808|4697,CALM1|CALM2|CALM3|NDUFA4,-2.9
+Kansl1l,GO Biological Processes,19,GO:0070372,regulation of ERK1 and ERK2 cascade,19_GO:0050896 response to stimulus,-4.9,12,7.7,30286,308,50,6,12,4.6,2045|3357|3358|4067|4282|7534,EPHA7|HTR2B|HTR2C|LYN|MIF|YWHAZ,-2.9
+Kansl1l,Reactome Gene Sets,6,R-HSA-6802957,Oncogenic MAPK signaling,,-4.9,29,10,30286,84,50,4,8,3.8,801|805|808|7529,CALM1|CALM2|CALM3|YWHAB,-2.9
+Kansl1l,Reactome Gene Sets,6,R-HSA-5628897,TP53 Regulates Metabolic Genes,,-4.9,28,10,30286,87,50,4,8,3.8,1350|4697|7529|7534,COX7C|NDUFA4|YWHAB|YWHAZ,-2.8
+Kansl1l,Reactome Gene Sets,6,R-HSA-5653656,Vesicle-mediated transport,,-4.9,7.2,6.6,30286,673,50,8,16,5.2,801|805|808|830|7314|7529|7534|60592,CALM1|CALM2|CALM3|CAPZA2|UBB|YWHAB|YWHAZ|SCOC,-2.8
+Kansl1l,GO Biological Processes,19,GO:0010800,positive regulation of peptidyl-threonine phosphorylation,19_GO:0048518 positive regulation of biological process,-4.9,65,14,30286,28,50,3,6,3.4,801|805|808,CALM1|CALM2|CALM3,-2.8
+Kansl1l,Reactome Gene Sets,6,R-HSA-1855204,Synthesis of IP3 and IP4 in the cytosol,,-4.9,65,14,30286,28,50,3,6,3.4,801|805|808,CALM1|CALM2|CALM3,-2.8
+Kansl1l,GO Biological Processes,19,GO:0051345,positive regulation of hydrolase activity,19_GO:0065007 biological regulation,-4.9,8.8,7,30286,482,50,7,14,4.9,801|805|808|3326|3357|4067|373509,CALM1|CALM2|CALM3|HSP90AB1|HTR2B|LYN|USP50,-2.8
+Kansl1l,GO Biological Processes,19,GO:0051302,regulation of cell division,19_GO:0050789 regulation of biological process,-4.9,16,8.5,30286,186,50,5,10,4.2,801|805|808|3357|4674,CALM1|CALM2|CALM3|HTR2B|NAP1L2,-2.8
+Kansl1l,Reactome Gene Sets,6,R-HSA-5218920,VEGFR2 mediated vascular permeability,,-4.8,63,14,30286,29,50,3,6,3.4,801|805|808,CALM1|CALM2|CALM3,-2.8
+Kansl1l,Reactome Gene Sets,6,R-HSA-9619483,Activation of AMPK downstream of NMDARs,,-4.8,63,14,30286,29,50,3,6,3.4,801|805|808,CALM1|CALM2|CALM3,-2.8
+Kansl1l,GO Biological Processes,19,GO:0098901,regulation of cardiac muscle cell action potential,19_GO:0050789 regulation of biological process,-4.8,63,14,30286,29,50,3,6,3.4,801|808|29119,CALM1|CALM3|CTNNA3,-2.8
+Kansl1l,KEGG Pathway,24,hsa04744,Phototransduction,,-4.8,63,14,30286,29,50,3,6,3.4,801|805|808,CALM1|CALM2|CALM3,-2.8
+Kansl1l,Reactome Gene Sets,6,R-HSA-5683057,MAPK family signaling cascades,,-4.8,11,7.5,30286,325,50,6,12,4.6,801|805|808|4747|7314|7529,CALM1|CALM2|CALM3|NEFL|UBB|YWHAB,-2.8
+Kansl1l,Reactome Gene Sets,6,R-HSA-195258,RHO GTPase Effectors,,-4.8,11,7.5,30286,326,50,6,12,4.6,801|805|808|3021|7529|7534,CALM1|CALM2|CALM3|H3-3B|YWHAB|YWHAZ,-2.8
+Kansl1l,Reactome Gene Sets,6,R-HSA-1640170,Cell Cycle,,-4.8,7,6.5,30286,692,50,8,16,5.2,3021|3326|4067|5000|6500|7314|7529|7534,H3-3B|HSP90AB1|LYN|ORC4|SKP1|UBB|YWHAB|YWHAZ,-2.7
+Kansl1l,GO Biological Processes,19,GO:0032411,positive regulation of transporter activity,19_GO:0051179 localization,-4.8,26,9.9,30286,92,50,4,8,3.8,801|805|808|4697,CALM1|CALM2|CALM3|NDUFA4,-2.7
+Kansl1l,Reactome Gene Sets,6,R-HSA-418360,Platelet calcium homeostasis,,-4.8,61,13,30286,30,50,3,6,3.4,801|805|808,CALM1|CALM2|CALM3,-2.7
+Kansl1l,GO Biological Processes,19,GO:1901021,positive regulation of calcium ion transmembrane transporter activity,19_GO:0051179 localization,-4.8,61,13,30286,30,50,3,6,3.4,801|805|808,CALM1|CALM2|CALM3,-2.7
+Kansl1l,KEGG Pathway,24,hsa05167,Kaposi sarcoma-associated herpesvirus infection,,-4.8,16,8.3,30286,194,50,5,10,4.2,801|805|808|4067|7314,CALM1|CALM2|CALM3|LYN|UBB,-2.7
+Kansl1l,GO Biological Processes,19,GO:0050848,regulation of calcium-mediated signaling,19_GO:0050896 response to stimulus,-4.7,26,9.8,30286,94,50,4,8,3.8,801|805|808|3358,CALM1|CALM2|CALM3|HTR2C,-2.7
+Kansl1l,Reactome Gene Sets,6,R-HSA-373076,Class A/1 (Rhodopsin-like receptors),,-4.7,11,7.4,30286,334,50,6,12,4.6,3357|3358|6019|9934|64805|122042,HTR2B|HTR2C|RLN2|P2RY14|P2RY12|RXFP2,-2.7
+Kansl1l,GO Biological Processes,19,GO:0010880,regulation of release of sequestered calcium ion into cytosol by sarcoplasmic reticulum,19_GO:0042592 homeostatic process,-4.7,59,13,30286,31,50,3,6,3.4,801|805|808,CALM1|CALM2|CALM3,-2.7
+Kansl1l,Reactome Gene Sets,6,R-HSA-9692914,SARS-CoV-1-host interactions,,-4.7,25,9.7,30286,96,50,4,8,3.8,5094|7314|7529|7534,PCBP2|UBB|YWHAB|YWHAZ,-2.7
+Kansl1l,GO Biological Processes,19,GO:1901020,negative regulation of calcium ion transmembrane transporter activity,19_GO:0051179 localization,-4.7,57,13,30286,32,50,3,6,3.4,801|805|808,CALM1|CALM2|CALM3,-2.7
+Kansl1l,Reactome Gene Sets,6,R-HSA-451326,Activation of kainate receptors upon glutamate binding,,-4.7,57,13,30286,32,50,3,6,3.4,801|805|808,CALM1|CALM2|CALM3,-2.7
+Kansl1l,Reactome Gene Sets,6,R-HSA-5626467,RHO GTPases activate IQGAPs,,-4.7,57,13,30286,32,50,3,6,3.4,801|805|808,CALM1|CALM2|CALM3,-2.7
+Kansl1l,GO Biological Processes,19,GO:0006942,regulation of striated muscle contraction,19_GO:0032501 multicellular organismal process,-4.7,25,9.6,30286,98,50,4,8,3.8,801|805|808|29119,CALM1|CALM2|CALM3|CTNNA3,-2.7
+Kansl1l,Reactome Gene Sets,6,R-HSA-9022692,Regulation of MECP2 expression and activity,,-4.7,55,13,30286,33,50,3,6,3.4,801|805|808,CALM1|CALM2|CALM3,-2.6
+Kansl1l,Reactome Gene Sets,6,R-HSA-112314,Neurotransmitter receptors and postsynaptic signal transmission,,-4.7,15,8,30286,205,50,5,10,4.2,801|805|808|4747|4900,CALM1|CALM2|CALM3|NEFL|NRGN,-2.6
+Kansl1l,Reactome Gene Sets,6,R-HSA-5576892,Phase 0 - rapid depolarisation,,-4.6,53,12,30286,34,50,3,6,3.4,801|805|808,CALM1|CALM2|CALM3,-2.6
+Kansl1l,GO Biological Processes,19,GO:1902253,regulation of intrinsic apoptotic signaling pathway by p53 class mediator,19_GO:0050896 response to stimulus,-4.6,53,12,30286,34,50,3,6,3.4,3190|4282|7314,HNRNPK|MIF|UBB,-2.6
+Kansl1l,GO Biological Processes,19,GO:0043270,positive regulation of monoatomic ion transport,19_GO:0051179 localization,-4.6,14,7.9,30286,211,50,5,10,4.2,801|805|808|4697|64805,CALM1|CALM2|CALM3|NDUFA4|P2RY12,-2.6
+Kansl1l,GO Biological Processes,19,GO:0002027,regulation of heart rate,19_GO:0032501 multicellular organismal process,-4.6,23,9.3,30286,104,50,4,8,3.8,801|805|808|29119,CALM1|CALM2|CALM3|CTNNA3,-2.6
+Kansl1l,GO Biological Processes,19,GO:0034764,positive regulation of transmembrane transport,19_GO:0051179 localization,-4.6,14,7.9,30286,213,50,5,10,4.2,801|805|808|4697|23204,CALM1|CALM2|CALM3|NDUFA4|ARL6IP1,-2.6
+Kansl1l,KEGG Pathway,24,hsa05417,Lipid and atherosclerosis,,-4.6,14,7.8,30286,215,50,5,10,4.2,801|805|808|3326|4067,CALM1|CALM2|CALM3|HSP90AB1|LYN,-2.6
+Kansl1l,Reactome Gene Sets,6,R-HSA-2514859,"Inactivation, recovery and regulation of the phototransduction cascade",,-4.5,50,12,30286,36,50,3,6,3.4,801|805|808,CALM1|CALM2|CALM3,-2.6
+Kansl1l,Reactome Gene Sets,6,R-HSA-111997,CaM pathway,,-4.5,49,12,30286,37,50,3,6,3.4,801|805|808,CALM1|CALM2|CALM3,-2.5
+Kansl1l,Reactome Gene Sets,6,R-HSA-2514856,The phototransduction cascade,,-4.5,49,12,30286,37,50,3,6,3.4,801|805|808,CALM1|CALM2|CALM3,-2.5
+Kansl1l,Reactome Gene Sets,6,R-HSA-111933,Calmodulin induced events,,-4.5,49,12,30286,37,50,3,6,3.4,801|805|808,CALM1|CALM2|CALM3,-2.5
+Kansl1l,Reactome Gene Sets,6,R-HSA-2672351,Stimuli-sensing channels,,-4.5,22,9,30286,109,50,4,8,3.8,801|805|808|7314,CALM1|CALM2|CALM3|UBB,-2.5
+Kansl1l,Reactome Gene Sets,6,R-HSA-8939211,ESR-mediated signaling,,-4.5,14,7.7,30286,222,50,5,10,4.2,801|805|808|3021|3326,CALM1|CALM2|CALM3|H3-3B|HSP90AB1,-2.5
+Kansl1l,GO Biological Processes,19,GO:0051347,positive regulation of transferase activity,19_GO:0065007 biological regulation,-4.5,9.7,6.9,30286,375,50,6,12,4.6,801|805|808|3326|3357|6500,CALM1|CALM2|CALM3|HSP90AB1|HTR2B|SKP1,-2.5
+Kansl1l,Reactome Gene Sets,6,R-HSA-111996,Ca-dependent events,,-4.4,47,12,30286,39,50,3,6,3.4,801|805|808,CALM1|CALM2|CALM3,-2.5
+Kansl1l,GO Biological Processes,19,GO:0051281,positive regulation of release of sequestered calcium ion into cytosol,19_GO:0042592 homeostatic process,-4.4,44,11,30286,41,50,3,6,3.4,801|805|808,CALM1|CALM2|CALM3,-2.4
+Kansl1l,GO Biological Processes,19,GO:0006119,oxidative phosphorylation,19_GO:0008152 metabolic process,-4.3,20,8.5,30286,121,50,4,8,3.8,1350|4697|4718|400916,COX7C|NDUFA4|NDUFC2|CHCHD10,-2.4
+Kansl1l,Reactome Gene Sets,6,R-HSA-1489509,DAG and IP3 signaling,,-4.3,42,11,30286,43,50,3,6,3.4,801|805|808,CALM1|CALM2|CALM3,-2.4
+Kansl1l,GO Biological Processes,19,GO:0010799,regulation of peptidyl-threonine phosphorylation,19_GO:0008152 metabolic process,-4.3,41,11,30286,44,50,3,6,3.4,801|805|808,CALM1|CALM2|CALM3,-2.3
+Kansl1l,GO Biological Processes,19,GO:0021762,substantia nigra development,19_GO:0032502 developmental process,-4.3,41,11,30286,44,50,3,6,3.4,801|805|808,CALM1|CALM2|CALM3,-2.3
+Kansl1l,Reactome Gene Sets,6,R-HSA-445355,Smooth Muscle Contraction,,-4.2,40,11,30286,45,50,3,6,3.4,801|805|808,CALM1|CALM2|CALM3,-2.3
+Kansl1l,GO Biological Processes,19,GO:0071902,positive regulation of protein serine/threonine kinase activity,19_GO:0048518 positive regulation of biological process,-4.2,19,8.3,30286,127,50,4,8,3.8,801|805|808|3357,CALM1|CALM2|CALM3|HTR2B,-2.3
+Kansl1l,KEGG Pathway,24,hsa04020,Calcium signaling pathway,,-4.2,12,7.1,30286,253,50,5,10,4.2,801|805|808|3357|3358,CALM1|CALM2|CALM3|HTR2B|HTR2C,-2.3
+Kansl1l,GO Biological Processes,19,GO:0006096,glycolytic process,19_GO:0008152 metabolic process,-4.2,40,11,30286,46,50,3,6,3.4,226|2597|7167,ALDOA|GAPDH|TPI1,-2.3
+Kansl1l,Reactome Gene Sets,6,R-HSA-114608,Platelet degranulation,,-4.2,19,8.2,30286,129,50,4,8,3.8,226|801|805|808,ALDOA|CALM1|CALM2|CALM3,-2.3
+Kansl1l,GO Biological Processes,19,GO:0045860,positive regulation of protein kinase activity,19_GO:0048518 positive regulation of biological process,-4.2,12,7.1,30286,256,50,5,10,4.2,801|805|808|3326|3357,CALM1|CALM2|CALM3|HSP90AB1|HTR2B,-2.3
+Kansl1l,Reactome Gene Sets,6,R-HSA-4570464,SUMOylation of RNA binding proteins,,-4.2,39,11,30286,47,50,3,6,3.4,3183|3190|6613,HNRNPC|HNRNPK|SUMO2,-2.3
+Kansl1l,Reactome Gene Sets,6,R-HSA-69231,Cyclin D associated events in G1,,-4.2,39,11,30286,47,50,3,6,3.4,4067|6500|7314,LYN|SKP1|UBB,-2.3
+Kansl1l,Reactome Gene Sets,6,R-HSA-69236,G1 Phase,,-4.2,39,11,30286,47,50,3,6,3.4,4067|6500|7314,LYN|SKP1|UBB,-2.3
+Kansl1l,GO Biological Processes,19,GO:2001258,negative regulation of cation channel activity,19_GO:0051179 localization,-4.2,38,10,30286,48,50,3,6,3.4,801|805|808,CALM1|CALM2|CALM3,-2.2
+Kansl1l,GO Biological Processes,19,GO:0046032,ADP catabolic process,19_GO:0008152 metabolic process,-4.2,38,10,30286,48,50,3,6,3.4,226|2597|7167,ALDOA|GAPDH|TPI1,-2.2
+Kansl1l,GO Biological Processes,19,GO:0000086,G2/M transition of mitotic cell cycle,19_GO:0009987 cellular process,-4.2,38,10,30286,48,50,3,6,3.4,801|805|808,CALM1|CALM2|CALM3,-2.2
+Kansl1l,Reactome Gene Sets,6,R-HSA-512988,"Interleukin-3, Interleukin-5 and GM-CSF signaling",,-4.2,38,10,30286,48,50,3,6,3.4,4067|7314|7534,LYN|UBB|YWHAZ,-2.2
+Kansl1l,Reactome Gene Sets,6,R-HSA-76005,Response to elevated platelet cytosolic Ca2+,,-4.1,18,8.1,30286,134,50,4,8,3.8,226|801|805|808,ALDOA|CALM1|CALM2|CALM3,-2.2
+Kansl1l,GO Biological Processes,19,GO:2001259,positive regulation of cation channel activity,19_GO:0051179 localization,-4.1,37,10,30286,49,50,3,6,3.4,801|805|808,CALM1|CALM2|CALM3,-2.2
+Kansl1l,GO Biological Processes,19,GO:1903170,negative regulation of calcium ion transmembrane transport,19_GO:0051179 localization,-4.1,37,10,30286,49,50,3,6,3.4,801|805|808,CALM1|CALM2|CALM3,-2.2
+Kansl1l,KEGG Pathway,24,hsa04915,Estrogen signaling pathway,,-4.1,18,8,30286,137,50,4,8,3.8,801|805|808|3326,CALM1|CALM2|CALM3|HSP90AB1,-2.2
+Kansl1l,Reactome Gene Sets,6,R-HSA-1483249,Inositol phosphate metabolism,,-4.1,36,10,30286,50,50,3,6,3.4,801|805|808,CALM1|CALM2|CALM3,-2.2
+Kansl1l,GO Biological Processes,19,GO:0019364,pyridine nucleotide catabolic process,19_GO:0008152 metabolic process,-4.1,36,10,30286,50,50,3,6,3.4,226|2597|7167,ALDOA|GAPDH|TPI1,-2.2
+Kansl1l,GO Biological Processes,19,GO:0071900,regulation of protein serine/threonine kinase activity,19_GO:0008152 metabolic process,-4.1,11,6.9,30286,267,50,5,10,4.2,801|805|808|3357|4067,CALM1|CALM2|CALM3|HTR2B|LYN,-2.2
+Kansl1l,GO Biological Processes,19,GO:0051338,regulation of transferase activity,19_GO:0065007 biological regulation,-4.1,6.6,5.9,30286,639,50,7,14,4.9,801|805|808|3326|3357|4067|6500,CALM1|CALM2|CALM3|HSP90AB1|HTR2B|LYN|SKP1,-2.2
+Kansl1l,Reactome Gene Sets,6,R-HSA-112315,Transmission across Chemical Synapses,,-4.1,11,6.9,30286,270,50,5,10,4.2,801|805|808|4747|4900,CALM1|CALM2|CALM3|NEFL|NRGN,-2.2
+Kansl1l,Reactome Gene Sets,6,R-HSA-112043,PLC beta mediated events,,-4.1,36,10,30286,51,50,3,6,3.4,801|805|808,CALM1|CALM2|CALM3,-2.2
+Kansl1l,GO Biological Processes,19,GO:0009181,purine ribonucleoside diphosphate catabolic process,19_GO:0008152 metabolic process,-4.1,36,10,30286,51,50,3,6,3.4,226|2597|7167,ALDOA|GAPDH|TPI1,-2.2
+Kansl1l,GO Biological Processes,19,GO:0009137,purine nucleoside diphosphate catabolic process,19_GO:0008152 metabolic process,-4.1,36,10,30286,51,50,3,6,3.4,226|2597|7167,ALDOA|GAPDH|TPI1,-2.2
+Kansl1l,Reactome Gene Sets,6,R-HSA-9678108,SARS-CoV-1 Infection,,-4,17,7.8,30286,142,50,4,8,3.8,5094|7314|7529|7534,PCBP2|UBB|YWHAB|YWHAZ,-2.2
+Kansl1l,GO Biological Processes,19,GO:0072526,pyridine-containing compound catabolic process,19_GO:0008152 metabolic process,-4,34,9.9,30286,53,50,3,6,3.4,226|2597|7167,ALDOA|GAPDH|TPI1,-2.1
+Kansl1l,GO Biological Processes,19,GO:0044839,cell cycle G2/M phase transition,19_GO:0009987 cellular process,-4,34,9.9,30286,53,50,3,6,3.4,801|805|808,CALM1|CALM2|CALM3,-2.1
+Kansl1l,GO Biological Processes,19,GO:0052548,regulation of endopeptidase activity,19_GO:0008152 metabolic process,-4,11,6.7,30286,280,50,5,10,4.2,2045|2597|4067|23204|373509,EPHA7|GAPDH|LYN|ARL6IP1|USP50,-2.1
+Kansl1l,GO Biological Processes,19,GO:0009191,ribonucleoside diphosphate catabolic process,19_GO:0008152 metabolic process,-4,34,9.8,30286,54,50,3,6,3.4,226|2597|7167,ALDOA|GAPDH|TPI1,-2.1
+Kansl1l,Reactome Gene Sets,6,R-HSA-9604323,Negative regulation of NOTCH4 signaling,,-4,34,9.8,30286,54,50,3,6,3.4,6500|7314|7534,SKP1|UBB|YWHAZ,-2.1
+Kansl1l,GO Biological Processes,19,GO:0046031,ADP metabolic process,19_GO:0008152 metabolic process,-4,34,9.8,30286,54,50,3,6,3.4,226|2597|7167,ALDOA|GAPDH|TPI1,-2.1
+Kansl1l,Reactome Gene Sets,6,R-HSA-3858494,Beta-catenin independent WNT signaling,,-4,17,7.7,30286,146,50,4,8,3.8,801|805|808|7314,CALM1|CALM2|CALM3|UBB,-2.1
+Kansl1l,Reactome Gene Sets,6,R-HSA-453279,Mitotic G1 phase and G1/S transition,,-4,16,7.6,30286,149,50,4,8,3.8,4067|5000|6500|7314,LYN|ORC4|SKP1|UBB,-2.1
+Kansl1l,Reactome Gene Sets,6,R-HSA-5578775,Ion homeostasis,,-4,32,9.6,30286,56,50,3,6,3.4,801|805|808,CALM1|CALM2|CALM3,-2.1
+Kansl1l,GO Biological Processes,19,GO:0048678,response to axon injury,19_GO:0050896 response to stimulus,-4,32,9.6,30286,56,50,3,6,3.4,4067|4747|64805,LYN|NEFL|P2RY12,-2.1
+Kansl1l,Reactome Gene Sets,6,R-HSA-112040,G-protein mediated events,,-4,32,9.6,30286,56,50,3,6,3.4,801|805|808,CALM1|CALM2|CALM3,-2.1
+Kansl1l,Reactome Gene Sets,6,R-HSA-2151201,Transcriptional activation of mitochondrial biogenesis,,-4,32,9.6,30286,56,50,3,6,3.4,801|805|808,CALM1|CALM2|CALM3,-2.1
+Kansl1l,Reactome Gene Sets,6,R-HSA-936837,Ion transport by P-type ATPases,,-3.9,32,9.5,30286,57,50,3,6,3.4,801|805|808,CALM1|CALM2|CALM3,-2.1
+Kansl1l,Reactome Gene Sets,6,R-HSA-500792,GPCR ligand binding,,-3.9,7.8,6,30286,468,50,6,12,4.6,3357|3358|6019|9934|64805|122042,HTR2B|HTR2C|RLN2|P2RY14|P2RY12|RXFP2,-2.1
+Kansl1l,GO Biological Processes,19,GO:0045859,regulation of protein kinase activity,19_GO:0008152 metabolic process,-3.9,7.7,6,30286,470,50,6,12,4.6,801|805|808|3326|3357|4067,CALM1|CALM2|CALM3|HSP90AB1|HTR2B|LYN,-2.1
+Kansl1l,GO Biological Processes,19,GO:0043269,regulation of monoatomic ion transport,19_GO:0051179 localization,-3.9,7.7,6,30286,470,50,6,12,4.6,801|805|808|4067|4697|64805,CALM1|CALM2|CALM3|LYN|NDUFA4|P2RY12,-2.1
+Kansl1l,GO Biological Processes,19,GO:0009134,nucleoside diphosphate catabolic process,19_GO:0008152 metabolic process,-3.9,31,9.4,30286,58,50,3,6,3.4,226|2597|7167,ALDOA|GAPDH|TPI1,-2.1
+Kansl1l,GO Biological Processes,19,GO:0034767,positive regulation of monoatomic ion transmembrane transport,19_GO:0051179 localization,-3.9,16,7.5,30286,154,50,4,8,3.8,801|805|808|4697,CALM1|CALM2|CALM3|NDUFA4,-2.1
+Kansl1l,GO Biological Processes,19,GO:0098900,regulation of action potential,19_GO:0050789 regulation of biological process,-3.9,31,9.3,30286,59,50,3,6,3.4,801|808|29119,CALM1|CALM3|CTNNA3,-2
+Kansl1l,Reactome Gene Sets,6,R-HSA-9006931,Signaling by Nuclear Receptors,,-3.9,10,6.5,30286,298,50,5,10,4.2,801|805|808|3021|3326,CALM1|CALM2|CALM3|H3-3B|HSP90AB1,-2
+Kansl1l,KEGG Pathway,24,hsa04110,Cell cycle,,-3.9,15,7.4,30286,157,50,4,8,3.8,5000|6500|7529|7534,ORC4|SKP1|YWHAB|YWHAZ,-2
+Kansl1l,GO Biological Processes,19,GO:0033674,positive regulation of kinase activity,19_GO:0048518 positive regulation of biological process,-3.9,10,6.4,30286,302,50,5,10,4.2,801|805|808|3326|3357,CALM1|CALM2|CALM3|HSP90AB1|HTR2B,-2
+Kansl1l,GO Biological Processes,19,GO:0046034,ATP metabolic process,19_GO:0008152 metabolic process,-3.8,15,7.3,30286,160,50,4,8,3.8,226|2597|4718|7167,ALDOA|GAPDH|NDUFC2|TPI1,-2
+Kansl1l,GO Biological Processes,19,GO:0052547,regulation of peptidase activity,19_GO:0008152 metabolic process,-3.8,10,6.4,30286,304,50,5,10,4.2,2045|2597|4067|23204|373509,EPHA7|GAPDH|LYN|ARL6IP1|USP50,-2
+Kansl1l,GO Biological Processes,19,GO:0009266,response to temperature stimulus,19_GO:0050896 response to stimulus,-3.8,15,7.3,30286,161,50,4,8,3.8,1006|3326|3357|4067,CDH8|HSP90AB1|HTR2B|LYN,-2
+Kansl1l,Reactome Gene Sets,6,R-HSA-8986944,Transcriptional Regulation by MECP2,,-3.8,29,9.1,30286,62,50,3,6,3.4,801|805|808,CALM1|CALM2|CALM3,-2
+Kansl1l,Reactome Gene Sets,6,R-HSA-4086398,Ca2+ pathway,,-3.8,29,9.1,30286,62,50,3,6,3.4,801|805|808,CALM1|CALM2|CALM3,-2
+Kansl1l,GO Biological Processes,19,GO:0034762,regulation of transmembrane transport,19_GO:0051179 localization,-3.8,7.4,5.8,30286,489,50,6,12,4.6,801|805|808|4067|4697|23204,CALM1|CALM2|CALM3|LYN|NDUFA4|ARL6IP1,-2
+Kansl1l,GO Biological Processes,19,GO:1904062,regulation of monoatomic cation transmembrane transport,19_GO:0051179 localization,-3.8,9.8,6.3,30286,309,50,5,10,4.2,801|805|808|4067|4697,CALM1|CALM2|CALM3|LYN|NDUFA4,-2
+Kansl1l,GO Biological Processes,19,GO:0009060,aerobic respiration,19_GO:0008152 metabolic process,-3.8,15,7.2,30286,165,50,4,8,3.8,1350|4697|4718|400916,COX7C|NDUFA4|NDUFC2|CHCHD10,-2
+Kansl1l,Reactome Gene Sets,6,R-HSA-69481,G2/M Checkpoints,,-3.8,15,7.1,30286,167,50,4,8,3.8,5000|7314|7529|7534,ORC4|UBB|YWHAB|YWHAZ,-2
+Kansl1l,GO Biological Processes,19,GO:0006937,regulation of muscle contraction,19_GO:0032501 multicellular organismal process,-3.8,15,7.1,30286,167,50,4,8,3.8,801|805|808|29119,CALM1|CALM2|CALM3|CTNNA3,-2
+Kansl1l,GO Biological Processes,19,GO:1903169,regulation of calcium ion transmembrane transport,19_GO:0051179 localization,-3.8,14,7.1,30286,168,50,4,8,3.8,801|805|808|4067,CALM1|CALM2|CALM3|LYN,-1.9
+Kansl1l,Reactome Gene Sets,6,R-HSA-418594,G alpha (i) signalling events,,-3.7,9.5,6.2,30286,318,50,5,10,4.2,801|805|808|9934|64805,CALM1|CALM2|CALM3|P2RY14|P2RY12,-1.9
+Kansl1l,GO Biological Processes,19,GO:0009179,purine ribonucleoside diphosphate metabolic process,19_GO:0008152 metabolic process,-3.7,28,8.8,30286,66,50,3,6,3.4,226|2597|7167,ALDOA|GAPDH|TPI1,-1.9
+Kansl1l,GO Biological Processes,19,GO:0009135,purine nucleoside diphosphate metabolic process,19_GO:0008152 metabolic process,-3.7,28,8.8,30286,66,50,3,6,3.4,226|2597|7167,ALDOA|GAPDH|TPI1,-1.9
+Kansl1l,GO Biological Processes,19,GO:0007420,brain development,19_GO:0032502 developmental process,-3.7,5.8,5.4,30286,729,50,7,14,4.9,801|805|808|2045|4747|7314|64805,CALM1|CALM2|CALM3|EPHA7|NEFL|UBB|P2RY12,-1.9
+Kansl1l,KEGG Pathway,24,hsa04720,Long-term potentiation,,-3.7,27,8.7,30286,67,50,3,6,3.4,801|805|808,CALM1|CALM2|CALM3,-1.9
+Kansl1l,GO Biological Processes,19,GO:0048857,neural nucleus development,19_GO:0032502 developmental process,-3.7,27,8.7,30286,67,50,3,6,3.4,801|805|808,CALM1|CALM2|CALM3,-1.9
+Kansl1l,KEGG Pathway,24,hsa00010,Glycolysis / Gluconeogenesis,,-3.7,27,8.7,30286,67,50,3,6,3.4,226|2597|7167,ALDOA|GAPDH|TPI1,-1.9
+Kansl1l,GO Biological Processes,19,GO:0051926,negative regulation of calcium ion transport,19_GO:0051179 localization,-3.7,27,8.6,30286,68,50,3,6,3.4,801|805|808,CALM1|CALM2|CALM3,-1.9
+Kansl1l,KEGG Pathway,24,hsa05031,Amphetamine addiction,,-3.7,26,8.6,30286,69,50,3,6,3.4,801|805|808,CALM1|CALM2|CALM3,-1.9
+Kansl1l,KEGG Pathway,24,hsa04924,Renin secretion,,-3.7,26,8.6,30286,69,50,3,6,3.4,801|805|808,CALM1|CALM2|CALM3,-1.9
+Kansl1l,GO Biological Processes,19,GO:0032787,monocarboxylic acid metabolic process,19_GO:0008152 metabolic process,-3.7,7,5.6,30286,520,50,6,12,4.6,226|2597|4282|7167|27306|401494,ALDOA|GAPDH|MIF|TPI1|HPGDS|HACD4,-1.9
+Kansl1l,GO Biological Processes,19,GO:0006090,pyruvate metabolic process,19_GO:0008152 metabolic process,-3.7,26,8.5,30286,70,50,3,6,3.4,226|2597|7167,ALDOA|GAPDH|TPI1,-1.9
+Kansl1l,Reactome Gene Sets,6,R-HSA-68949,Orc1 removal from chromatin,,-3.7,26,8.4,30286,71,50,3,6,3.4,5000|6500|7314,ORC4|SKP1|UBB,-1.9
+Kansl1l,GO Biological Processes,19,GO:0032413,negative regulation of ion transmembrane transporter activity,19_GO:0051179 localization,-3.6,25,8.4,30286,72,50,3,6,3.4,801|805|808,CALM1|CALM2|CALM3,-1.8
+Kansl1l,KEGG Pathway,24,hsa05200,Pathways in cancer,,-3.6,6.8,5.5,30286,531,50,6,12,4.6,801|805|808|3326|6500|29119,CALM1|CALM2|CALM3|HSP90AB1|SKP1|CTNNA3,-1.8
+Kansl1l,GO Biological Processes,19,GO:0043549,regulation of kinase activity,19_GO:0008152 metabolic process,-3.6,6.8,5.5,30286,532,50,6,12,4.6,801|805|808|3326|3357|4067,CALM1|CALM2|CALM3|HSP90AB1|HTR2B|LYN,-1.8
+Kansl1l,Reactome Gene Sets,6,R-HSA-9006934,Signaling by Receptor Tyrosine Kinases,,-3.6,6.8,5.5,30286,534,50,6,12,4.6,801|805|808|4067|7314|7529,CALM1|CALM2|CALM3|LYN|UBB|YWHAB,-1.8
+Kansl1l,Reactome Gene Sets,6,R-HSA-70171,Glycolysis,,-3.6,25,8.3,30286,73,50,3,6,3.4,226|2597|7167,ALDOA|GAPDH|TPI1,-1.8
+Kansl1l,GO Biological Processes,19,GO:0009205,purine ribonucleoside triphosphate metabolic process,19_GO:0008152 metabolic process,-3.6,13,6.7,30286,184,50,4,8,3.8,226|2597|4718|7167,ALDOA|GAPDH|NDUFC2|TPI1,-1.8
+Kansl1l,Reactome Gene Sets,6,R-HSA-69306,DNA Replication,,-3.6,13,6.7,30286,186,50,4,8,3.8,3021|5000|6500|7314,H3-3B|ORC4|SKP1|UBB,-1.8
+Kansl1l,Reactome Gene Sets,6,R-HSA-983712,Ion channel transport,,-3.6,13,6.7,30286,186,50,4,8,3.8,801|805|808|7314,CALM1|CALM2|CALM3|UBB,-1.8
+Kansl1l,KEGG Pathway,24,hsa01230,Biosynthesis of amino acids,,-3.6,24,8.2,30286,75,50,3,6,3.4,226|2597|7167,ALDOA|GAPDH|TPI1,-1.8
+Kansl1l,KEGG Pathway,24,hsa05214,Glioma,,-3.6,24,8.2,30286,75,50,3,6,3.4,801|805|808,CALM1|CALM2|CALM3,-1.8
+Kansl1l,GO Biological Processes,19,GO:1901019,regulation of calcium ion transmembrane transporter activity,19_GO:0051179 localization,-3.6,24,8.2,30286,75,50,3,6,3.4,801|805|808,CALM1|CALM2|CALM3,-1.8
+Kansl1l,KEGG Pathway,24,hsa05034,Alcoholism,,-3.6,13,6.6,30286,188,50,4,8,3.8,801|805|808|3021,CALM1|CALM2|CALM3|H3-3B,-1.8
+Kansl1l,GO Biological Processes,19,GO:0034765,regulation of monoatomic ion transmembrane transport,19_GO:0051179 localization,-3.6,8.7,5.9,30286,349,50,5,10,4.2,801|805|808|4067|4697,CALM1|CALM2|CALM3|LYN|NDUFA4,-1.8
+Kansl1l,GO Biological Processes,19,GO:0009185,ribonucleoside diphosphate metabolic process,19_GO:0008152 metabolic process,-3.6,24,8.1,30286,76,50,3,6,3.4,226|2597|7167,ALDOA|GAPDH|TPI1,-1.8
+Kansl1l,KEGG Pathway,24,hsa04971,Gastric acid secretion,,-3.6,24,8.1,30286,76,50,3,6,3.4,801|805|808,CALM1|CALM2|CALM3,-1.8
+Kansl1l,KEGG Pathway,24,hsa05133,Pertussis,,-3.6,24,8.1,30286,76,50,3,6,3.4,801|805|808,CALM1|CALM2|CALM3,-1.8
+Kansl1l,GO Biological Processes,19,GO:0060322,head development,19_GO:0032502 developmental process,-3.6,5.4,5.1,30286,778,50,7,14,4.9,801|805|808|2045|4747|7314|64805,CALM1|CALM2|CALM3|EPHA7|NEFL|UBB|P2RY12,-1.8
+Kansl1l,GO Biological Processes,19,GO:0009144,purine nucleoside triphosphate metabolic process,19_GO:0008152 metabolic process,-3.6,13,6.6,30286,190,50,4,8,3.8,226|2597|4718|7167,ALDOA|GAPDH|NDUFC2|TPI1,-1.8
+Kansl1l,GO Biological Processes,19,GO:0009199,ribonucleoside triphosphate metabolic process,19_GO:0008152 metabolic process,-3.6,13,6.6,30286,191,50,4,8,3.8,226|2597|4718|7167,ALDOA|GAPDH|NDUFC2|TPI1,-1.8
+Kansl1l,Reactome Gene Sets,6,R-HSA-9009391,Extra-nuclear estrogen signaling,,-3.5,24,8.1,30286,77,50,3,6,3.4,801|805|808,CALM1|CALM2|CALM3,-1.8
+Kansl1l,GO Biological Processes,19,GO:0045333,cellular respiration,19_GO:0008152 metabolic process,-3.5,12,6.5,30286,196,50,4,8,3.8,1350|4697|4718|400916,COX7C|NDUFA4|NDUFC2|CHCHD10,-1.7
+Kansl1l,Reactome Gene Sets,6,R-HSA-69278,"Cell Cycle, Mitotic",,-3.5,6.5,5.3,30286,561,50,6,12,4.6,3021|3326|4067|5000|6500|7314,H3-3B|HSP90AB1|LYN|ORC4|SKP1|UBB,-1.7
+Kansl1l,GO Biological Processes,19,GO:0006325,chromatin organization,19_GO:0009987 cellular process,-3.5,5.3,5,30286,797,50,7,14,4.9,3021|3151|3183|4674|6500|23270|124512,H3-3B|HMGN2|HNRNPC|NAP1L2|SKP1|TSPYL4|METTL23,-1.7
+Kansl1l,Canonical Pathways,11,M223,PID BETA CATENIN NUC PATHWAY,,-3.5,23,7.9,30286,80,50,3,6,3.4,6500|7529|7534,SKP1|YWHAB|YWHAZ,-1.7
+Kansl1l,Reactome Gene Sets,6,R-HSA-3700989,Transcriptional Regulation by TP53,,-3.5,8.4,5.7,30286,362,50,5,10,4.2,1350|4697|7314|7529|7534,COX7C|NDUFA4|UBB|YWHAB|YWHAZ,-1.7
+Kansl1l,KEGG Pathway,24,hsa05014,Amyotrophic lateral sclerosis,,-3.5,8.3,5.7,30286,364,50,5,10,4.2,1350|4697|4718|4747|400916,COX7C|NDUFA4|NDUFC2|NEFL|CHCHD10,-1.7
+Kansl1l,Hallmark Gene Sets,23,M5891,HALLMARK HYPOXIA,,-3.5,12,6.4,30286,200,50,4,8,3.8,226|2597|4282|7167,ALDOA|GAPDH|MIF|TPI1,-1.7
+Kansl1l,GO Biological Processes,19,GO:1904427,positive regulation of calcium ion transmembrane transport,19_GO:0051179 localization,-3.5,22,7.8,30286,82,50,3,6,3.4,801|805|808,CALM1|CALM2|CALM3,-1.7
+Kansl1l,Reactome Gene Sets,6,R-HSA-2871837,FCERI mediated NF-kB activation,,-3.5,22,7.8,30286,82,50,3,6,3.4,4067|6500|7314,LYN|SKP1|UBB,-1.7
+Kansl1l,Reactome Gene Sets,6,R-HSA-168928,DDX58/IFIH1-mediated induction of interferon-alpha/beta,,-3.5,22,7.8,30286,82,50,3,6,3.4,3326|5094|7314,HSP90AB1|PCBP2|UBB,-1.7
+Kansl1l,Reactome Gene Sets,6,R-HSA-9013694,Signaling by NOTCH4,,-3.5,22,7.8,30286,82,50,3,6,3.4,6500|7314|7534,SKP1|UBB|YWHAZ,-1.7
+Kansl1l,KEGG Pathway,24,hsa04080,Neuroactive ligand-receptor interaction,,-3.5,8.3,5.7,30286,367,50,5,10,4.2,3357|3358|6019|9934|122042,HTR2B|HTR2C|RLN2|P2RY14|RXFP2,-1.7
+Kansl1l,GO Biological Processes,19,GO:0009132,nucleoside diphosphate metabolic process,19_GO:0008152 metabolic process,-3.5,22,7.8,30286,83,50,3,6,3.4,226|2597|7167,ALDOA|GAPDH|TPI1,-1.7
+Kansl1l,KEGG Pathway,24,hsa05415,Diabetic cardiomyopathy,,-3.5,12,6.4,30286,203,50,4,8,3.8,1350|2597|4697|4718,COX7C|GAPDH|NDUFA4|NDUFC2,-1.7
+Kansl1l,Reactome Gene Sets,6,R-HSA-9705683,SARS-CoV-2-host interactions,,-3.5,12,6.4,30286,203,50,4,8,3.8,3326|7314|7529|7534,HSP90AB1|UBB|YWHAB|YWHAZ,-1.7
+Kansl1l,GO Biological Processes,19,GO:0008016,regulation of heart contraction,19_GO:0032501 multicellular organismal process,-3.4,12,6.3,30286,204,50,4,8,3.8,801|805|808|29119,CALM1|CALM2|CALM3|CTNNA3,-1.7
+Kansl1l,KEGG Pathway,24,hsa05203,Viral carcinogenesis,,-3.4,12,6.3,30286,204,50,4,8,3.8,3190|4067|7529|7534,HNRNPK|LYN|YWHAB|YWHAZ,-1.7
+Kansl1l,Reactome Gene Sets,6,R-HSA-70326,Glucose metabolism,,-3.4,22,7.7,30286,84,50,3,6,3.4,226|2597|7167,ALDOA|GAPDH|TPI1,-1.7
+Kansl1l,GO Biological Processes,19,GO:0009141,nucleoside triphosphate metabolic process,19_GO:0008152 metabolic process,-3.4,12,6.3,30286,206,50,4,8,3.8,226|2597|4718|7167,ALDOA|GAPDH|NDUFC2|TPI1,-1.7
+Kansl1l,GO Biological Processes,19,GO:0045936,negative regulation of phosphate metabolic process,19_GO:0048519 negative regulation of biological process,-3.4,8,5.6,30286,378,50,5,10,4.2,801|805|808|4067|7529,CALM1|CALM2|CALM3|LYN|YWHAB,-1.7
+Kansl1l,GO Biological Processes,19,GO:0010563,negative regulation of phosphorus metabolic process,19_GO:0048519 negative regulation of biological process,-3.4,8,5.6,30286,379,50,5,10,4.2,801|805|808|4067|7529,CALM1|CALM2|CALM3|LYN|YWHAB,-1.7
+Kansl1l,KEGG Pathway,24,hsa05170,Human immunodeficiency virus 1 infection,,-3.4,11,6.2,30286,212,50,4,8,3.8,801|805|808|6500,CALM1|CALM2|CALM3|SKP1,-1.6
+Kansl1l,Reactome Gene Sets,6,R-HSA-450531,Regulation of mRNA stability by proteins that bind AU-rich elements,,-3.4,21,7.5,30286,88,50,3,6,3.4,7314|7529|7534,UBB|YWHAB|YWHAZ,-1.6
+Kansl1l,GO Biological Processes,19,GO:0045185,maintenance of protein location,19_GO:0051179 localization,-3.4,21,7.5,30286,88,50,3,6,3.4,6500|7529|400916,SKP1|YWHAB|CHCHD10,-1.6
+Kansl1l,GO Biological Processes,19,GO:0030901,midbrain development,19_GO:0032502 developmental process,-3.4,21,7.5,30286,88,50,3,6,3.4,801|805|808,CALM1|CALM2|CALM3,-1.6
+Kansl1l,Reactome Gene Sets,6,R-HSA-418346,Platelet homeostasis,,-3.4,21,7.5,30286,88,50,3,6,3.4,801|805|808,CALM1|CALM2|CALM3,-1.6
+Kansl1l,GO Biological Processes,19,GO:0019646,aerobic electron transport chain,19_GO:0008152 metabolic process,-3.4,20,7.5,30286,89,50,3,6,3.4,1350|4697|4718,COX7C|NDUFA4|NDUFC2,-1.6
+Kansl1l,Reactome Gene Sets,6,R-HSA-1428517,Aerobic respiration and respiratory electron transport,,-3.4,11,6.1,30286,215,50,4,8,3.8,1350|4697|4718|7314,COX7C|NDUFA4|NDUFC2|UBB,-1.6
+Kansl1l,Reactome Gene Sets,6,R-HSA-9711123,Cellular response to chemical stress,,-3.4,11,6.1,30286,215,50,4,8,3.8,1350|4697|6500|7314,COX7C|NDUFA4|SKP1|UBB,-1.6
+Kansl1l,Reactome Gene Sets,6,R-HSA-69052,Switching of origins to a post-replicative state,,-3.3,20,7.4,30286,91,50,3,6,3.4,5000|6500|7314,ORC4|SKP1|UBB,-1.6
+Kansl1l,GO Biological Processes,19,GO:0009154,purine ribonucleotide catabolic process,19_GO:0008152 metabolic process,-3.3,20,7.4,30286,91,50,3,6,3.4,226|2597|7167,ALDOA|GAPDH|TPI1,-1.6
+Kansl1l,GO Biological Processes,19,GO:1904063,negative regulation of cation transmembrane transport,19_GO:0051179 localization,-3.3,20,7.3,30286,92,50,3,6,3.4,801|805|808,CALM1|CALM2|CALM3,-1.6
+Kansl1l,Reactome Gene Sets,6,R-HSA-111885,Opioid Signalling,,-3.3,20,7.3,30286,92,50,3,6,3.4,801|805|808,CALM1|CALM2|CALM3,-1.6
+Kansl1l,GO Biological Processes,19,GO:0032412,regulation of monoatomic ion transmembrane transporter activity,19_GO:0051179 localization,-3.3,11,6,30286,221,50,4,8,3.8,801|805|808|4697,CALM1|CALM2|CALM3|NDUFA4,-1.6
+Kansl1l,KEGG Pathway,24,hsa04970,Salivary secretion,,-3.3,20,7.3,30286,93,50,3,6,3.4,801|805|808,CALM1|CALM2|CALM3,-1.6
+Kansl1l,KEGG Pathway,24,hsa04912,GnRH signaling pathway,,-3.3,20,7.3,30286,93,50,3,6,3.4,801|805|808,CALM1|CALM2|CALM3,-1.6
+Kansl1l,GO Biological Processes,19,GO:0032465,regulation of cytokinesis,19_GO:0050789 regulation of biological process,-3.3,20,7.3,30286,93,50,3,6,3.4,801|805|808,CALM1|CALM2|CALM3,-1.6
+Kansl1l,GO Biological Processes,19,GO:0042775,mitochondrial ATP synthesis coupled electron transport,19_GO:0008152 metabolic process,-3.3,19,7.2,30286,94,50,3,6,3.4,1350|4697|4718,COX7C|NDUFA4|NDUFC2,-1.6
+Kansl1l,GO Biological Processes,19,GO:0042773,ATP synthesis coupled electron transport,19_GO:0008152 metabolic process,-3.3,19,7.2,30286,94,50,3,6,3.4,1350|4697|4718,COX7C|NDUFA4|NDUFC2,-1.6
+Kansl1l,Reactome Gene Sets,6,R-HSA-5625740,RHO GTPases activate PKNs,,-3.3,19,7.2,30286,94,50,3,6,3.4,3021|7529|7534,H3-3B|YWHAB|YWHAZ,-1.6
+Kansl1l,Reactome Gene Sets,6,R-HSA-1592230,Mitochondrial biogenesis,,-3.3,19,7.2,30286,95,50,3,6,3.4,801|805|808,CALM1|CALM2|CALM3,-1.6
+Kansl1l,GO Biological Processes,19,GO:0032410,negative regulation of transporter activity,19_GO:0051179 localization,-3.3,19,7.2,30286,96,50,3,6,3.4,801|805|808,CALM1|CALM2|CALM3,-1.6
+Kansl1l,GO Biological Processes,19,GO:0007200,phospholipase C-activating G protein-coupled receptor signaling pathway,19_GO:0050896 response to stimulus,-3.3,19,7.2,30286,96,50,3,6,3.4,3357|3358|64805,HTR2B|HTR2C|P2RY12,-1.6
+Kansl1l,GO Biological Processes,19,GO:0022898,regulation of transmembrane transporter activity,19_GO:0051179 localization,-3.3,11,5.9,30286,229,50,4,8,3.8,801|805|808|4697,CALM1|CALM2|CALM3|NDUFA4,-1.5
+Kansl1l,KEGG Pathway,24,hsa04713,Circadian entrainment,,-3.3,19,7.1,30286,97,50,3,6,3.4,801|805|808,CALM1|CALM2|CALM3,-1.5
+Kansl1l,KEGG Pathway,24,hsa04070,Phosphatidylinositol signaling system,,-3.3,19,7.1,30286,97,50,3,6,3.4,801|805|808,CALM1|CALM2|CALM3,-1.5
+Kansl1l,GO Biological Processes,19,GO:0009261,ribonucleotide catabolic process,19_GO:0008152 metabolic process,-3.3,19,7.1,30286,97,50,3,6,3.4,226|2597|7167,ALDOA|GAPDH|TPI1,-1.5
+Kansl1l,Reactome Gene Sets,6,R-HSA-112316,Neuronal System,,-3.2,7.4,5.3,30286,410,50,5,10,4.2,801|805|808|4747|4900,CALM1|CALM2|CALM3|NEFL|NRGN,-1.5
+Kansl1l,KEGG Pathway,24,hsa04925,Aldosterone synthesis and secretion,,-3.2,19,7.1,30286,98,50,3,6,3.4,801|805|808,CALM1|CALM2|CALM3,-1.5
+Kansl1l,Reactome Gene Sets,6,R-HSA-4420097,VEGFA-VEGFR2 Pathway,,-3.2,18,7,30286,99,50,3,6,3.4,801|805|808,CALM1|CALM2|CALM3,-1.5
+Kansl1l,Reactome Gene Sets,6,R-HSA-9679506,SARS-CoV Infections,,-3.2,7.3,5.3,30286,414,50,5,10,4.2,3326|5094|7314|7529|7534,HSP90AB1|PCBP2|UBB|YWHAB|YWHAZ,-1.5
+Kansl1l,GO Biological Processes,19,GO:0006195,purine nucleotide catabolic process,19_GO:0008152 metabolic process,-3.2,18,7,30286,100,50,3,6,3.4,226|2597|7167,ALDOA|GAPDH|TPI1,-1.5
+Kansl1l,GO Biological Processes,19,GO:0034766,negative regulation of monoatomic ion transmembrane transport,19_GO:0051179 localization,-3.2,18,7,30286,100,50,3,6,3.4,801|805|808,CALM1|CALM2|CALM3,-1.5
+Kansl1l,Reactome Gene Sets,6,R-HSA-157118,Signaling by NOTCH,,-3.2,10,5.8,30286,235,50,4,8,3.8,3021|6500|7314|7534,H3-3B|SKP1|UBB|YWHAZ,-1.5
+Kansl1l,KEGG Pathway,24,hsa04916,Melanogenesis,,-3.2,18,7,30286,101,50,3,6,3.4,801|805|808,CALM1|CALM2|CALM3,-1.5
+Kansl1l,GO Biological Processes,19,GO:0031400,negative regulation of protein modification process,19_GO:0048519 negative regulation of biological process,-3.2,7.1,5.2,30286,426,50,5,10,4.2,801|805|808|4067|7529,CALM1|CALM2|CALM3|LYN|YWHAB,-1.5
+Kansl1l,KEGG Pathway,24,hsa04625,C-type lectin receptor signaling pathway,,-3.2,17,6.8,30286,104,50,3,6,3.4,801|805|808,CALM1|CALM2|CALM3,-1.5
+Kansl1l,Reactome Gene Sets,6,R-HSA-2187338,Visual phototransduction,,-3.2,17,6.8,30286,104,50,3,6,3.4,801|805|808,CALM1|CALM2|CALM3,-1.5
+Kansl1l,GO Biological Processes,19,GO:0006338,chromatin remodeling,19_GO:0009987 cellular process,-3.2,5.6,4.8,30286,653,50,6,12,4.6,3021|3183|4674|6500|23270|124512,H3-3B|HNRNPC|NAP1L2|SKP1|TSPYL4|METTL23,-1.5
+Kansl1l,GO Biological Processes,19,GO:0050807,regulation of synapse organization,19_GO:0050789 regulation of biological process,-3.2,10,5.7,30286,243,50,4,8,3.8,1006|2045|4747|7534,CDH8|EPHA7|NEFL|YWHAZ,-1.5
+Kansl1l,GO Biological Processes,19,GO:0072523,purine-containing compound catabolic process,19_GO:0008152 metabolic process,-3.2,17,6.8,30286,105,50,3,6,3.4,226|2597|7167,ALDOA|GAPDH|TPI1,-1.5
+Kansl1l,GO Biological Processes,19,GO:0090257,regulation of muscle system process,19_GO:0032501 multicellular organismal process,-3.1,9.9,5.7,30286,245,50,4,8,3.8,801|805|808|29119,CALM1|CALM2|CALM3|CTNNA3,-1.5
+Kansl1l,GO Biological Processes,19,GO:0051402,neuron apoptotic process,19_GO:0009987 cellular process,-3.1,17,6.8,30286,106,50,3,6,3.4,2045|2597|4747,EPHA7|GAPDH|NEFL,-1.5
+Kansl1l,GO Biological Processes,19,GO:0051924,regulation of calcium ion transport,19_GO:0051179 localization,-3.1,9.8,5.7,30286,247,50,4,8,3.8,801|805|808|4067,CALM1|CALM2|CALM3|LYN,-1.4
+Kansl1l,KEGG Pathway,24,hsa04922,Glucagon signaling pathway,,-3.1,17,6.7,30286,107,50,3,6,3.4,801|805|808,CALM1|CALM2|CALM3,-1.4
+Kansl1l,GO Biological Processes,19,GO:0050803,regulation of synapse structure or activity,19_GO:0065007 biological regulation,-3.1,9.7,5.6,30286,249,50,4,8,3.8,1006|2045|4747|7534,CDH8|EPHA7|NEFL|YWHAZ,-1.4
+Kansl1l,Reactome Gene Sets,6,R-HSA-194138,Signaling by VEGF,,-3.1,17,6.7,30286,108,50,3,6,3.4,801|805|808,CALM1|CALM2|CALM3,-1.4
+Kansl1l,GO Biological Processes,19,GO:1901796,regulation of signal transduction by p53 class mediator,19_GO:0050896 response to stimulus,-3.1,17,6.7,30286,108,50,3,6,3.4,3190|4282|7314,HNRNPK|MIF|UBB,-1.4
+Kansl1l,GO Biological Processes,19,GO:0016052,carbohydrate catabolic process,19_GO:0008152 metabolic process,-3.1,17,6.7,30286,108,50,3,6,3.4,226|2597|7167,ALDOA|GAPDH|TPI1,-1.4
+Kansl1l,GO Biological Processes,19,GO:0043408,regulation of MAPK cascade,19_GO:0050896 response to stimulus,-3.1,5.4,4.7,30286,669,50,6,12,4.6,2045|3357|3358|4067|4282|7534,EPHA7|HTR2B|HTR2C|LYN|MIF|YWHAZ,-1.4
+Kansl1l,Reactome Gene Sets,6,R-HSA-425393,Transport of inorganic cations/anions and amino acids/oligopeptides,,-3.1,17,6.6,30286,110,50,3,6,3.4,801|805|808,CALM1|CALM2|CALM3,-1.4
+Kansl1l,GO Biological Processes,19,GO:0042391,regulation of membrane potential,19_GO:0065007 biological regulation,-3.1,6.8,5,30286,446,50,5,10,4.2,801|808|7314|29119|400916,CALM1|CALM3|UBB|CTNNA3|CHCHD10,-1.4
+Kansl1l,Reactome Gene Sets,6,R-HSA-611105,Respiratory electron transport,,-3.1,16,6.6,30286,112,50,3,6,3.4,1350|4697|4718,COX7C|NDUFA4|NDUFC2,-1.4
+Kansl1l,GO Biological Processes,19,GO:1903522,regulation of blood circulation,19_GO:0032501 multicellular organismal process,-3.1,9.4,5.5,30286,258,50,4,8,3.8,801|805|808|29119,CALM1|CALM2|CALM3|CTNNA3,-1.4
+Kansl1l,GO Biological Processes,19,GO:0032409,regulation of transporter activity,19_GO:0065007 biological regulation,-3,9.3,5.5,30286,260,50,4,8,3.8,801|805|808|4697,CALM1|CALM2|CALM3|NDUFA4,-1.4
+Kansl1l,KEGG Pathway,24,hsa01200,Carbon metabolism,,-3,16,6.5,30286,115,50,3,6,3.4,226|2597|7167,ALDOA|GAPDH|TPI1,-1.4
+Kansl1l,GO Biological Processes,19,GO:2000278,regulation of DNA biosynthetic process,19_GO:0008152 metabolic process,-3,16,6.5,30286,115,50,3,6,3.4,1602|3183|3326,DACH1|HNRNPC|HSP90AB1,-1.4
+Kansl1l,GO Biological Processes,19,GO:0022904,respiratory electron transport chain,19_GO:0008152 metabolic process,-3,16,6.4,30286,116,50,3,6,3.4,1350|4697|4718,COX7C|NDUFA4|NDUFC2,-1.4
+Kansl1l,GO Biological Processes,19,GO:2001257,regulation of cation channel activity,19_GO:0051179 localization,-3,16,6.4,30286,116,50,3,6,3.4,801|805|808,CALM1|CALM2|CALM3,-1.4
+Kansl1l,GO Biological Processes,19,GO:0015980,energy derivation by oxidation of organic compounds,19_GO:0008152 metabolic process,-3,9.2,5.4,30286,264,50,4,8,3.8,1350|4697|4718|400916,COX7C|NDUFA4|NDUFC2|CHCHD10,-1.4
+Kansl1l,GO Biological Processes,19,GO:0051928,positive regulation of calcium ion transport,19_GO:0051179 localization,-3,16,6.4,30286,117,50,3,6,3.4,801|805|808,CALM1|CALM2|CALM3,-1.4
+Kansl1l,GO Biological Processes,19,GO:0006633,fatty acid biosynthetic process,19_GO:0008152 metabolic process,-3,16,6.4,30286,117,50,3,6,3.4,4282|27306|401494,MIF|HPGDS|HACD4,-1.4
+Kansl1l,GO Biological Processes,19,GO:0019362,pyridine nucleotide metabolic process,19_GO:0008152 metabolic process,-3,16,6.4,30286,117,50,3,6,3.4,226|2597|7167,ALDOA|GAPDH|TPI1,-1.4
+Kansl1l,GO Biological Processes,19,GO:0046496,nicotinamide nucleotide metabolic process,19_GO:0008152 metabolic process,-3,16,6.4,30286,117,50,3,6,3.4,226|2597|7167,ALDOA|GAPDH|TPI1,-1.4
+Kansl1l,GO Biological Processes,19,GO:0006334,nucleosome assembly,19_GO:0009987 cellular process,-3,15,6.4,30286,118,50,3,6,3.4,3021|4674|23270,H3-3B|NAP1L2|TSPYL4,-1.3
+Kansl1l,KEGG Pathway,24,hsa04722,Neurotrophin signaling pathway,,-3,15,6.3,30286,119,50,3,6,3.4,801|805|808,CALM1|CALM2|CALM3,-1.3
+Kansl1l,Reactome Gene Sets,6,R-HSA-69239,Synthesis of DNA,,-3,15,6.3,30286,120,50,3,6,3.4,5000|6500|7314,ORC4|SKP1|UBB,-1.3
+Kansl1l,Reactome Gene Sets,6,R-HSA-449147,Signaling by Interleukins,,-3,6.4,4.8,30286,473,50,5,10,4.2,4067|4282|6500|7314|7534,LYN|MIF|SKP1|UBB|YWHAZ,-1.3
+Kansl1l,GO Biological Processes,19,GO:0009166,nucleotide catabolic process,19_GO:0008152 metabolic process,-3,15,6.2,30286,123,50,3,6,3.4,226|2597|7167,ALDOA|GAPDH|TPI1,-1.3
+Kansl1l,GO Biological Processes,19,GO:0072524,pyridine-containing compound metabolic process,19_GO:0008152 metabolic process,-2.9,15,6.2,30286,124,50,3,6,3.4,226|2597|7167,ALDOA|GAPDH|TPI1,-1.3
+Kansl1l,Reactome Gene Sets,6,R-HSA-6798695,Neutrophil degranulation,,-2.9,6.3,4.8,30286,480,50,5,10,4.2,226|1794|3326|4282|4718,ALDOA|DOCK2|HSP90AB1|MIF|NDUFC2,-1.3
+Kansl1l,Reactome Gene Sets,6,R-HSA-8953854,Metabolism of RNA,,-2.9,5,4.4,30286,726,50,6,12,4.6,3183|3190|5094|7314|7529|7534,HNRNPC|HNRNPK|PCBP2|UBB|YWHAB|YWHAZ,-1.3
+Kansl1l,Canonical Pathways,11,M186,PID PDGFRB PATHWAY,,-2.9,14,6.1,30286,129,50,3,6,3.4,4067|7529|7534,LYN|YWHAB|YWHAZ,-1.2
+Kansl1l,Reactome Gene Sets,6,R-HSA-162909,Host Interactions of HIV factors,,-2.9,14,6,30286,130,50,3,6,3.4,1794|6500|7314,DOCK2|SKP1|UBB,-1.2
+Kansl1l,Reactome Gene Sets,6,R-HSA-69206,G1/S Transition,,-2.9,14,6,30286,131,50,3,6,3.4,5000|6500|7314,ORC4|SKP1|UBB,-1.2
+Kansl1l,GO Biological Processes,19,GO:1901292,nucleoside phosphate catabolic process,19_GO:0008152 metabolic process,-2.9,14,6,30286,132,50,3,6,3.4,226|2597|7167,ALDOA|GAPDH|TPI1,-1.2
+Kansl1l,KEGG Pathway,24,hsa04728,Dopaminergic synapse,,-2.9,14,6,30286,132,50,3,6,3.4,801|805|808,CALM1|CALM2|CALM3,-1.2
+Kansl1l,Reactome Gene Sets,6,R-HSA-5576891,Cardiac conduction,,-2.9,14,6,30286,132,50,3,6,3.4,801|805|808,CALM1|CALM2|CALM3,-1.2
+Kansl1l,Reactome Gene Sets,6,R-HSA-69620,Cell Cycle Checkpoints,,-2.9,8.3,5.1,30286,292,50,4,8,3.8,5000|7314|7529|7534,ORC4|UBB|YWHAB|YWHAZ,-1.2
+Kansl1l,GO Biological Processes,19,GO:0043271,negative regulation of monoatomic ion transport,19_GO:0051179 localization,-2.9,14,6,30286,133,50,3,6,3.4,801|805|808,CALM1|CALM2|CALM3,-1.2
+Kansl1l,KEGG Pathway,24,hsa04270,Vascular smooth muscle contraction,,-2.8,14,5.9,30286,134,50,3,6,3.4,801|805|808,CALM1|CALM2|CALM3,-1.2
+Kansl1l,KEGG Pathway,24,hsa00190,Oxidative phosphorylation,,-2.8,14,5.9,30286,134,50,3,6,3.4,1350|4697|4718,COX7C|NDUFA4|NDUFC2,-1.2
+Kansl1l,GO Biological Processes,19,GO:0044092,negative regulation of molecular function,19_GO:0065007 biological regulation,-2.8,4.8,4.3,30286,751,50,6,12,4.6,801|805|808|2597|4067|23204,CALM1|CALM2|CALM3|GAPDH|LYN|ARL6IP1,-1.2
+Kansl1l,GO Biological Processes,19,GO:0001933,negative regulation of protein phosphorylation,19_GO:0048519 negative regulation of biological process,-2.8,8.2,5.1,30286,296,50,4,8,3.8,801|805|808|4067,CALM1|CALM2|CALM3|LYN,-1.2
+Kansl1l,Reactome Gene Sets,6,R-HSA-163200,"Respiratory electron transport, ATP synthesis by chemiosmotic coupling, and heat production by uncoupling proteins.",,-2.8,13,5.9,30286,136,50,3,6,3.4,1350|4697|4718,COX7C|NDUFA4|NDUFC2,-1.2
+Kansl1l,Reactome Gene Sets,6,R-HSA-9694516,SARS-CoV-2 Infection,,-2.8,8.1,5,30286,299,50,4,8,3.8,3326|7314|7529|7534,HSP90AB1|UBB|YWHAB|YWHAZ,-1.2
+Kansl1l,KEGG Pathway,24,hsa04910,Insulin signaling pathway,,-2.8,13,5.9,30286,137,50,3,6,3.4,801|805|808,CALM1|CALM2|CALM3,-1.2
+Kansl1l,GO Biological Processes,19,GO:0034728,nucleosome organization,19_GO:0009987 cellular process,-2.8,13,5.8,30286,138,50,3,6,3.4,3021|4674|23270,H3-3B|NAP1L2|TSPYL4,-1.2
+Kansl1l,GO Biological Processes,19,GO:1904064,positive regulation of cation transmembrane transport,19_GO:0051179 localization,-2.8,13,5.8,30286,138,50,3,6,3.4,801|805|808,CALM1|CALM2|CALM3,-1.2
+Kansl1l,KEGG Pathway,24,hsa04371,Apelin signaling pathway,,-2.8,13,5.8,30286,139,50,3,6,3.4,801|805|808,CALM1|CALM2|CALM3,-1.2
+Kansl1l,Reactome Gene Sets,6,R-HSA-68867,Assembly of the pre-replicative complex,,-2.8,13,5.8,30286,141,50,3,6,3.4,3021|5000|7314,H3-3B|ORC4|UBB,-1.2
+Kansl1l,GO Biological Processes,19,GO:0002831,regulation of response to biotic stimulus,19_GO:0050896 response to stimulus,-2.8,5.8,4.5,30286,524,50,5,10,4.2,4067|4282|5094|7534|373509,LYN|MIF|PCBP2|YWHAZ|USP50,-1.1
+Kansl1l,Reactome Gene Sets,6,R-HSA-9006925,Intracellular signaling by second messengers,,-2.8,7.8,4.9,30286,310,50,4,8,3.8,801|805|808|7314,CALM1|CALM2|CALM3|UBB,-1.1
+Kansl1l,GO Biological Processes,19,GO:0044772,mitotic cell cycle phase transition,19_GO:0009987 cellular process,-2.8,13,5.7,30286,143,50,3,6,3.4,801|805|808,CALM1|CALM2|CALM3,-1.1
+Kansl1l,GO Biological Processes,19,GO:0034763,negative regulation of transmembrane transport,19_GO:0051179 localization,-2.8,13,5.7,30286,144,50,3,6,3.4,801|805|808,CALM1|CALM2|CALM3,-1.1
+Kansl1l,GO Biological Processes,19,GO:0051592,response to calcium ion,19_GO:0050896 response to stimulus,-2.7,12,5.6,30286,146,50,3,6,3.4,801|805|808,CALM1|CALM2|CALM3,-1.1
+Kansl1l,GO Biological Processes,19,GO:0042326,negative regulation of phosphorylation,19_GO:0048519 negative regulation of biological process,-2.7,7.7,4.8,30286,316,50,4,8,3.8,801|805|808|4067,CALM1|CALM2|CALM3|LYN,-1.1
+Kansl1l,GO Biological Processes,19,GO:0019752,carboxylic acid metabolic process,19_GO:0008152 metabolic process,-2.7,4.6,4.2,30286,789,50,6,12,4.6,226|2597|4282|7167|27306|401494,ALDOA|GAPDH|MIF|TPI1|HPGDS|HACD4,-1.1
+Kansl1l,GO Biological Processes,19,GO:0051640,organelle localization,19_GO:0051179 localization,-2.7,5.6,4.4,30286,542,50,5,10,4.2,801|4067|4747|7314|7534,CALM1|LYN|NEFL|UBB|YWHAZ,-1.1
+Kansl1l,Reactome Gene Sets,6,R-HSA-9612973,Autophagy,,-2.7,12,5.5,30286,151,50,3,6,3.4,3326|7314|23710,HSP90AB1|UBB|GABARAPL1,-1.1
+Kansl1l,KEGG Pathway,24,hsa04921,Oxytocin signaling pathway,,-2.7,12,5.5,30286,154,50,3,6,3.4,801|805|808,CALM1|CALM2|CALM3,-1.1
+Kansl1l,KEGG Pathway,24,hsa04261,Adrenergic signaling in cardiomyocytes,,-2.7,12,5.5,30286,154,50,3,6,3.4,801|805|808,CALM1|CALM2|CALM3,-1.1
+Kansl1l,KEGG Pathway,24,hsa04932,Non-alcoholic fatty liver disease,,-2.7,12,5.4,30286,155,50,3,6,3.4,1350|4697|4718,COX7C|NDUFA4|NDUFC2,-1
+Kansl1l,GO Biological Processes,19,GO:0044770,cell cycle phase transition,19_GO:0009987 cellular process,-2.7,12,5.4,30286,156,50,3,6,3.4,801|805|808,CALM1|CALM2|CALM3,-1
+Kansl1l,KEGG Pathway,24,hsa04218,Cellular senescence,,-2.7,12,5.4,30286,156,50,3,6,3.4,801|805|808,CALM1|CALM2|CALM3,-1
+Kansl1l,KEGG Pathway,24,hsa04390,Hippo signaling pathway,,-2.6,12,5.4,30286,157,50,3,6,3.4,7529|7534|29119,YWHAB|YWHAZ|CTNNA3,-1
+Kansl1l,GO Biological Processes,19,GO:0007292,female gamete generation,19_GO:0022414 reproductive process,-2.6,12,5.4,30286,158,50,3,6,3.4,5000|7314|122042,ORC4|UBB|RXFP2,-1
+Kansl1l,Reactome Gene Sets,6,R-HSA-69002,DNA Replication Pre-Initiation,,-2.6,12,5.4,30286,158,50,3,6,3.4,3021|5000|7314,H3-3B|ORC4|UBB,-1
+Kansl1l,Hallmark Gene Sets,23,M5935,HALLMARK FATTY ACID METABOLISM,,-2.6,12,5.4,30286,158,50,3,6,3.4,226|4282|23710,ALDOA|MIF|GABARAPL1,-1
+Kansl1l,GO Biological Processes,19,GO:0044057,regulation of system process,19_GO:0032501 multicellular organismal process,-2.6,5.4,4.3,30286,561,50,5,10,4.2,801|805|808|3358|29119,CALM1|CALM2|CALM3|HTR2C|CTNNA3,-1
+Kansl1l,GO Biological Processes,19,GO:0019318,hexose metabolic process,19_GO:0008152 metabolic process,-2.6,11,5.4,30286,159,50,3,6,3.4,226|2597|7167,ALDOA|GAPDH|TPI1,-1
+Kansl1l,Reactome Gene Sets,6,R-HSA-69242,S Phase,,-2.6,11,5.3,30286,162,50,3,6,3.4,5000|6500|7314,ORC4|SKP1|UBB,-1
+Kansl1l,GO Biological Processes,19,GO:0062207,regulation of pattern recognition receptor signaling pathway,19_GO:0044419 biological process involved in interspecies interaction between organisms,-2.6,11,5.2,30286,166,50,3,6,3.4,4067|5094|373509,LYN|PCBP2|USP50,-0.97
+Kansl1l,GO Biological Processes,19,GO:0051235,maintenance of location,19_GO:0051179 localization,-2.6,11,5.2,30286,166,50,3,6,3.4,6500|7529|400916,SKP1|YWHAB|CHCHD10,-0.97
+Kansl1l,KEGG Pathway,24,hsa04022,cGMP-PKG signaling pathway,,-2.6,11,5.2,30286,166,50,3,6,3.4,801|805|808,CALM1|CALM2|CALM3,-0.97
+Kansl1l,GO Biological Processes,19,GO:0072330,monocarboxylic acid biosynthetic process,19_GO:0008152 metabolic process,-2.6,11,5.2,30286,167,50,3,6,3.4,4282|27306|401494,MIF|HPGDS|HACD4,-0.97
+Kansl1l,Reactome Gene Sets,6,R-HSA-983231,Factors involved in megakaryocyte development and platelet production,,-2.6,11,5.2,30286,168,50,3,6,3.4,830|1794|3021,CAPZA2|DOCK2|H3-3B,-0.96
+Kansl1l,GO Biological Processes,19,GO:0022900,electron transport chain,19_GO:0008152 metabolic process,-2.6,11,5.2,30286,168,50,3,6,3.4,1350|4697|4718,COX7C|NDUFA4|NDUFC2,-0.96
+Kansl1l,GO Biological Processes,19,GO:0040011,locomotion,19_GO:0040011 locomotion,-2.5,6.6,4.4,30286,366,50,4,8,3.8,1794|2045|4282|4747,DOCK2|EPHA7|MIF|NEFL,-0.9
+Kansl1l,Reactome Gene Sets,6,R-HSA-109581,Apoptosis,,-2.5,10,5,30286,180,50,3,6,3.4,7314|7529|7534,UBB|YWHAB|YWHAZ,-0.88
+Kansl1l,GO Biological Processes,19,GO:0005996,monosaccharide metabolic process,19_GO:0008152 metabolic process,-2.5,10,5,30286,180,50,3,6,3.4,226|2597|7167,ALDOA|GAPDH|TPI1,-0.88
+Kansl1l,KEGG Pathway,24,hsa05152,Tuberculosis,,-2.5,10,5,30286,180,50,3,6,3.4,801|805|808,CALM1|CALM2|CALM3,-0.88
+Kansl1l,Reactome Gene Sets,6,R-HSA-3108232,SUMO E3 ligases SUMOylate target proteins,,-2.5,9.9,4.9,30286,183,50,3,6,3.4,3183|3190|6613,HNRNPC|HNRNPK|SUMO2,-0.86
+Kansl1l,GO Biological Processes,19,GO:0046434,organophosphate catabolic process,19_GO:0008152 metabolic process,-2.5,9.9,4.9,30286,184,50,3,6,3.4,226|2597|7167,ALDOA|GAPDH|TPI1,-0.86
+Kansl1l,GO Biological Processes,19,GO:0009150,purine ribonucleotide metabolic process,19_GO:0008152 metabolic process,-2.4,6.3,4.3,30286,382,50,4,8,3.8,226|2597|4718|7167,ALDOA|GAPDH|NDUFC2|TPI1,-0.84
+Kansl1l,Reactome Gene Sets,6,R-HSA-2990846,SUMOylation,,-2.4,9.6,4.8,30286,189,50,3,6,3.4,3183|3190|6613,HNRNPC|HNRNPK|SUMO2,-0.83
+Kansl1l,GO Biological Processes,19,GO:0061136,regulation of proteasomal protein catabolic process,19_GO:0008152 metabolic process,-2.4,9.6,4.8,30286,189,50,3,6,3.4,3326|6613|7314,HSP90AB1|SUMO2|UBB,-0.83
+Kansl1l,GO Biological Processes,19,GO:2001242,regulation of intrinsic apoptotic signaling pathway,19_GO:0050896 response to stimulus,-2.4,9.6,4.8,30286,190,50,3,6,3.4,3190|4282|7314,HNRNPK|MIF|UBB,-0.82
+Kansl1l,GO Biological Processes,19,GO:2000116,regulation of cysteine-type endopeptidase activity,19_GO:0008152 metabolic process,-2.4,9.6,4.8,30286,190,50,3,6,3.4,2045|23204|373509,EPHA7|ARL6IP1|USP50,-0.82
+Kansl1l,GO Biological Processes,19,GO:0010959,regulation of metal ion transport,19_GO:0051179 localization,-2.4,6.1,4.2,30286,394,50,4,8,3.8,801|805|808|4067,CALM1|CALM2|CALM3|LYN,-0.8
+Kansl1l,Reactome Gene Sets,6,R-HSA-69275,G2/M Transition,,-2.4,9.2,4.7,30286,197,50,3,6,3.4,3326|6500|7314,HSP90AB1|SKP1|UBB,-0.78
+Kansl1l,Reactome Gene Sets,6,R-HSA-196854,Metabolism of vitamins and cofactors,,-2.4,9.2,4.7,30286,198,50,3,6,3.4,801|805|808,CALM1|CALM2|CALM3,-0.77
+Kansl1l,GO Biological Processes,19,GO:0031396,regulation of protein ubiquitination,19_GO:0008152 metabolic process,-2.4,9.2,4.7,30286,198,50,3,6,3.4,3326|6500|7314,HSP90AB1|SKP1|UBB,-0.77
+Kansl1l,GO Biological Processes,19,GO:0009259,ribonucleotide metabolic process,19_GO:0008152 metabolic process,-2.4,6,4.1,30286,402,50,4,8,3.8,226|2597|4718|7167,ALDOA|GAPDH|NDUFC2|TPI1,-0.77
+Kansl1l,Reactome Gene Sets,6,R-HSA-453274,Mitotic G2-G2/M phases,,-2.4,9.1,4.7,30286,199,50,3,6,3.4,3326|6500|7314,HSP90AB1|SKP1|UBB,-0.77
+Kansl1l,Hallmark Gene Sets,23,M5921,HALLMARK COMPLEMENT,,-2.4,9.1,4.7,30286,200,50,3,6,3.4,801|808|4067,CALM1|CALM3|LYN,-0.77
+Kansl1l,Hallmark Gene Sets,23,M5936,HALLMARK OXIDATIVE PHOSPHORYLATION,,-2.4,9.1,4.7,30286,200,50,3,6,3.4,1350|4697|4718,COX7C|NDUFA4|NDUFC2,-0.77
+Kansl1l,Hallmark Gene Sets,23,M5924,HALLMARK MTORC1 SIGNALING,,-2.4,9.1,4.7,30286,200,50,3,6,3.4,226|2597|7167,ALDOA|GAPDH|TPI1,-0.77
+Kansl1l,Hallmark Gene Sets,23,M5937,HALLMARK GLYCOLYSIS,,-2.4,9.1,4.7,30286,200,50,3,6,3.4,226|4282|7167,ALDOA|MIF|TPI1,-0.77
+Kansl1l,GO Biological Processes,19,GO:0051656,establishment of organelle localization,19_GO:0051179 localization,-2.3,5.9,4.1,30286,410,50,4,8,3.8,4067|4747|7314|7534,LYN|NEFL|UBB|YWHAZ,-0.74
+Kansl1l,Reactome Gene Sets,6,R-HSA-397014,Muscle contraction,,-2.3,8.9,4.6,30286,205,50,3,6,3.4,801|805|808,CALM1|CALM2|CALM3,-0.74
+Kansl1l,Reactome Gene Sets,6,R-HSA-72163,mRNA Splicing - Major Pathway,,-2.3,8.8,4.6,30286,207,50,3,6,3.4,3183|3190|5094,HNRNPC|HNRNPK|PCBP2,-0.73
+Kansl1l,GO Biological Processes,19,GO:0019693,ribose phosphate metabolic process,19_GO:0008152 metabolic process,-2.3,5.8,4,30286,416,50,4,8,3.8,226|2597|4718|7167,ALDOA|GAPDH|NDUFC2|TPI1,-0.73
+Kansl1l,KEGG Pathway,24,hsa04015,Rap1 signaling pathway,,-2.3,8.7,4.5,30286,210,50,3,6,3.4,801|805|808,CALM1|CALM2|CALM3,-0.71
+Kansl1l,Reactome Gene Sets,6,R-HSA-5357801,Programmed Cell Death,,-2.3,8.5,4.5,30286,213,50,3,6,3.4,7314|7529|7534,UBB|YWHAB|YWHAZ,-0.7
+Kansl1l,GO Biological Processes,19,GO:0070374,positive regulation of ERK1 and ERK2 cascade,19_GO:0048518 positive regulation of biological process,-2.3,8.5,4.5,30286,215,50,3,6,3.4,3357|3358|4282,HTR2B|HTR2C|MIF,-0.69
+Kansl1l,Reactome Gene Sets,6,R-HSA-72172,mRNA Splicing,,-2.3,8.5,4.5,30286,215,50,3,6,3.4,3183|3190|5094,HNRNPC|HNRNPK|PCBP2,-0.69
+Kansl1l,GO Biological Processes,19,GO:1901136,carbohydrate derivative catabolic process,19_GO:0008152 metabolic process,-2.2,8.2,4.4,30286,222,50,3,6,3.4,226|2597|7167,ALDOA|GAPDH|TPI1,-0.65
+Kansl1l,Reactome Gene Sets,6,R-HSA-211859,Biological oxidations,,-2.2,8.2,4.4,30286,222,50,3,6,3.4,3326|27306|494143,HSP90AB1|HPGDS|CHAC2,-0.65
+Kansl1l,GO Biological Processes,19,GO:0045088,regulation of innate immune response,19_GO:0044419 biological process involved in interspecies interaction between organisms,-2.2,5.5,3.9,30286,440,50,4,8,3.8,4067|5094|7534|373509,LYN|PCBP2|YWHAZ|USP50,-0.65
+Kansl1l,KEGG Pathway,24,hsa05208,Chemical carcinogenesis - reactive oxygen species,,-2.2,8.1,4.4,30286,223,50,3,6,3.4,1350|4697|4718,COX7C|NDUFA4|NDUFC2,-0.65
+Kansl1l,GO Biological Processes,19,GO:0050730,regulation of peptidyl-tyrosine phosphorylation,19_GO:0008152 metabolic process,-2.2,8.1,4.3,30286,225,50,3,6,3.4,2045|4067|4282,EPHA7|LYN|MIF,-0.64
+Kansl1l,KEGG Pathway,24,hsa05163,Human cytomegalovirus infection,,-2.2,8.1,4.3,30286,225,50,3,6,3.4,801|805|808,CALM1|CALM2|CALM3,-0.64
+Kansl1l,KEGG Pathway,24,hsa04024,cAMP signaling pathway,,-2.2,8.1,4.3,30286,225,50,3,6,3.4,801|805|808,CALM1|CALM2|CALM3,-0.64
+Kansl1l,GO Biological Processes,19,GO:0065004,protein-DNA complex assembly,19_GO:0009987 cellular process,-2.2,8,4.3,30286,227,50,3,6,3.4,3021|4674|23270,H3-3B|NAP1L2|TSPYL4,-0.63
+Kansl1l,GO Biological Processes,19,GO:1903050,regulation of proteolysis involved in protein catabolic process,19_GO:0008152 metabolic process,-2.2,8,4.3,30286,228,50,3,6,3.4,3326|6613|7314,HSP90AB1|SUMO2|UBB,-0.62
+Kansl1l,GO Biological Processes,19,GO:0050920,regulation of chemotaxis,19_GO:0040011 locomotion,-2.2,7.9,4.3,30286,229,50,3,6,3.4,4067|4282|64805,LYN|MIF|P2RY12,-0.62
+Kansl1l,GO Biological Processes,19,GO:0002685,regulation of leukocyte migration,19_GO:0040011 locomotion,-2.2,7.9,4.3,30286,230,50,3,6,3.4,4067|4282|64805,LYN|MIF|P2RY12,-0.61
+Kansl1l,GO Biological Processes,19,GO:0045137,development of primary sexual characteristics,19_GO:0022414 reproductive process,-2.2,7.9,4.3,30286,230,50,3,6,3.4,1602|7314|122042,DACH1|UBB|RXFP2,-0.61
+Kansl1l,Reactome Gene Sets,6,R-HSA-162906,HIV Infection,,-2.2,7.9,4.3,30286,231,50,3,6,3.4,1794|6500|7314,DOCK2|SKP1|UBB,-0.61
+Kansl1l,GO Biological Processes,19,GO:0045861,negative regulation of proteolysis,19_GO:0048519 negative regulation of biological process,-2.2,7.9,4.3,30286,231,50,3,6,3.4,2597|3326|23204,GAPDH|HSP90AB1|ARL6IP1,-0.61
+Kansl1l,GO Biological Processes,19,GO:0032102,negative regulation of response to external stimulus,19_GO:0048519 negative regulation of biological process,-2.2,5.3,3.8,30286,453,50,4,8,3.8,4067|4282|5094|7534,LYN|MIF|PCBP2|YWHAZ,-0.61
+Kansl1l,KEGG Pathway,24,hsa04714,Thermogenesis,,-2.2,7.8,4.2,30286,232,50,3,6,3.4,1350|4697|4718,COX7C|NDUFA4|NDUFC2,-0.61
+Kansl1l,Reactome Gene Sets,6,R-HSA-201681,TCF dependent signaling in response to WNT,,-2.2,7.8,4.2,30286,232,50,3,6,3.4,3021|7314|7534,H3-3B|UBB|YWHAZ,-0.61
+Kansl1l,KEGG Pathway,24,hsa04014,Ras signaling pathway,,-2.2,7.7,4.2,30286,236,50,3,6,3.4,801|805|808,CALM1|CALM2|CALM3,-0.59
+Kansl1l,GO Biological Processes,19,GO:0006163,purine nucleotide metabolic process,19_GO:0008152 metabolic process,-2.1,5.2,3.7,30286,463,50,4,8,3.8,226|2597|4718|7167,ALDOA|GAPDH|NDUFC2|TPI1,-0.58
+Kansl1l,GO Biological Processes,19,GO:0044283,small molecule biosynthetic process,19_GO:0008152 metabolic process,-2.1,5.2,3.7,30286,464,50,4,8,3.8,4282|7167|27306|401494,MIF|TPI1|HPGDS|HACD4,-0.58
+Kansl1l,Reactome Gene Sets,6,R-HSA-382551,Transport of small molecules,,-2.1,4.1,3.5,30286,737,50,5,10,4.2,801|805|808|6500|7314,CALM1|CALM2|CALM3|SKP1|UBB,-0.58
+Kansl1l,GO Biological Processes,19,GO:1903320,regulation of protein modification by small protein conjugation or removal,19_GO:0008152 metabolic process,-2.1,7.5,4.1,30286,241,50,3,6,3.4,3326|6500|7314,HSP90AB1|SKP1|UBB,-0.57
+Kansl1l,GO Biological Processes,19,GO:0010564,regulation of cell cycle process,19_GO:0050789 regulation of biological process,-2.1,4.1,3.4,30286,746,50,5,10,4.2,801|805|808|1602|373509,CALM1|CALM2|CALM3|DACH1|USP50,-0.56
+Kansl1l,GO Biological Processes,19,GO:0043523,regulation of neuron apoptotic process,19_GO:0050789 regulation of biological process,-2.1,7.4,4.1,30286,244,50,3,6,3.4,2045|4747|7314,EPHA7|NEFL|UBB,-0.55
+Kansl1l,GO Biological Processes,19,GO:1901873,regulation of post-translational protein modification,19_GO:0008152 metabolic process,-2.1,7.4,4.1,30286,246,50,3,6,3.4,3326|6500|7314,HSP90AB1|SKP1|UBB,-0.54
+Kansl1l,KEGG Pathway,24,hsa05132,Salmonella infection,,-2.1,7.4,4.1,30286,247,50,3,6,3.4,2597|3326|6500,GAPDH|HSP90AB1|SKP1,-0.54
+Kansl1l,KEGG Pathway,24,hsa05131,Shigellosis,,-2.1,7.4,4.1,30286,247,50,3,6,3.4,3021|6500|7314,H3-3B|SKP1|UBB,-0.54
+Kansl1l,Reactome Gene Sets,6,R-HSA-425407,SLC-mediated transmembrane transport,,-2.1,7.3,4.1,30286,249,50,3,6,3.4,801|805|808,CALM1|CALM2|CALM3,-0.53
+Kansl1l,GO Biological Processes,19,GO:0072521,purine-containing compound metabolic process,19_GO:0008152 metabolic process,-2.1,4.9,3.6,30286,492,50,4,8,3.8,226|2597|4718|7167,ALDOA|GAPDH|NDUFC2|TPI1,-0.5
+Kansl1l,GO Biological Processes,19,GO:0045087,innate immune response,19_GO:0044419 biological process involved in interspecies interaction between organisms,-2.1,3.9,3.3,30286,775,50,5,10,4.2,801|2597|4067|4282|5094,CALM1|GAPDH|LYN|MIF|PCBP2,-0.49
+Kansl1l,GO Biological Processes,19,GO:0031668,cellular response to extracellular stimulus,19_GO:0050896 response to stimulus,-2,7,3.9,30286,260,50,3,6,3.4,4067|7534|23710,LYN|YWHAZ|GABARAPL1,-0.48
+Kansl1l,GO Biological Processes,19,GO:0001819,positive regulation of cytokine production,19_GO:0048518 positive regulation of biological process,-2,4.8,3.5,30286,500,50,4,8,3.8,2597|3357|4282|373509,GAPDH|HTR2B|MIF|USP50,-0.48
+Kansl1l,Reactome Gene Sets,6,R-HSA-1280215,Cytokine Signaling in Immune system,,-2,3.9,3.3,30286,786,50,5,10,4.2,4067|4282|6500|7314|7534,LYN|MIF|SKP1|UBB|YWHAZ,-0.47
+Kansl1l,GO Biological Processes,19,GO:0009991,response to extracellular stimulus,19_GO:0050896 response to stimulus,-2,4.8,3.5,30286,508,50,4,8,3.8,3358|4067|7534|23710,HTR2C|LYN|YWHAZ|GABARAPL1,-0.45
+Kansl1l_MCODE_ALL,GO Biological Processes,19,GO:0035304,regulation of protein dephosphorylation,19_GO:0008152 metabolic process,-7.9,1.4e+02,23,30286,79,11,4,36,15,805|808|3326|7529,CALM2|CALM3|HSP90AB1|YWHAB,-4.3
+Kansl1l_MCODE_ALL,GO Biological Processes,19,GO:0032516,positive regulation of phosphoprotein phosphatase activity,19_GO:0048518 positive regulation of biological process,-7.5,4.3e+02,36,30286,19,11,3,27,13,805|808|3326,CALM2|CALM3|HSP90AB1,-4.2
+Kansl1l_MCODE_ALL,GO Biological Processes,19,GO:0035303,regulation of dephosphorylation,19_GO:0008152 metabolic process,-7.3,1e+02,20,30286,106,11,4,36,15,805|808|3326|7529,CALM2|CALM3|HSP90AB1|YWHAB,-4.2
+Kansl1l_MCODE_ALL,GO Biological Processes,19,GO:0010922,positive regulation of phosphatase activity,19_GO:0048518 positive regulation of biological process,-6.9,2.9e+02,30,30286,28,11,3,27,13,805|808|3326,CALM2|CALM3|HSP90AB1,-4.1
+Kansl1l_MCODE_ALL,KEGG Pathway,24,hsa05418,Fluid shear stress and atherosclerosis,,-6.9,79,18,30286,139,11,4,36,15,805|808|3326|6613,CALM2|CALM3|HSP90AB1|SUMO2,-4.1
+Kansl1l_MCODE_ALL,Reactome Gene Sets,6,R-HSA-5339562,Uptake and actions of bacterial toxins,,-6.8,2.7e+02,28,30286,31,11,3,27,13,805|808|3326,CALM2|CALM3|HSP90AB1,-4
+Kansl1l_MCODE_ALL,Reactome Gene Sets,6,R-HSA-5673000,RAF activation,,-6.6,2.3e+02,26,30286,36,11,3,27,13,805|808|7529,CALM2|CALM3|YWHAB,-4
+Kansl1l_MCODE_ALL,Reactome Gene Sets,6,R-HSA-9656223,Signaling by RAF1 mutants,,-6.4,1.9e+02,24,30286,43,11,3,27,13,805|808|7529,CALM2|CALM3|YWHAB,-3.8
+Kansl1l_MCODE_ALL,GO Biological Processes,19,GO:0035307,positive regulation of protein dephosphorylation,19_GO:0048518 positive regulation of biological process,-6.3,1.9e+02,24,30286,44,11,3,27,13,805|808|3326,CALM2|CALM3|HSP90AB1,-3.8
+Kansl1l_MCODE_ALL,GO Biological Processes,19,GO:0043666,regulation of phosphoprotein phosphatase activity,19_GO:0008152 metabolic process,-6.2,1.8e+02,23,30286,47,11,3,27,13,805|808|3326,CALM2|CALM3|HSP90AB1,-3.8
+Kansl1l_MCODE_ALL,Reactome Gene Sets,6,R-HSA-6802949,Signaling by RAS mutants,,-6.2,1.8e+02,23,30286,47,11,3,27,13,805|808|7529,CALM2|CALM3|YWHAB,-3.8
+Kansl1l_MCODE_ALL,Reactome Gene Sets,6,R-HSA-9649948,Signaling downstream of RAS mutants,,-6.2,1.8e+02,23,30286,47,11,3,27,13,805|808|7529,CALM2|CALM3|YWHAB,-3.8
+Kansl1l_MCODE_ALL,Reactome Gene Sets,6,R-HSA-6802955,Paradoxical activation of RAF signaling by kinase inactive BRAF,,-6.2,1.8e+02,23,30286,47,11,3,27,13,805|808|7529,CALM2|CALM3|YWHAB,-3.8
+Kansl1l_MCODE_ALL,Reactome Gene Sets,6,R-HSA-6802946,Signaling by moderate kinase activity BRAF mutants,,-6.2,1.8e+02,23,30286,47,11,3,27,13,805|808|7529,CALM2|CALM3|YWHAB,-3.8
+Kansl1l_MCODE_ALL,GO Biological Processes,19,GO:0035306,positive regulation of dephosphorylation,19_GO:0048518 positive regulation of biological process,-6.1,1.5e+02,21,30286,54,11,3,27,13,805|808|3326,CALM2|CALM3|HSP90AB1,-3.7
+Kansl1l_MCODE_ALL,GO Biological Processes,19,GO:0010921,regulation of phosphatase activity,19_GO:0008152 metabolic process,-5.9,1.4e+02,20,30286,59,11,3,27,13,805|808|3326,CALM2|CALM3|HSP90AB1,-3.6
+Kansl1l_MCODE_ALL,Reactome Gene Sets,6,R-HSA-6802952,Signaling by BRAF and RAF1 fusions,,-5.8,1.2e+02,19,30286,67,11,3,27,13,805|808|7529,CALM2|CALM3|YWHAB,-3.5
+Kansl1l_MCODE_ALL,Reactome Gene Sets,6,R-HSA-1445148,Translocation of SLC2A4 (GLUT4) to the plasma membrane,,-5.7,1.1e+02,18,30286,72,11,3,27,13,805|808|7529,CALM2|CALM3|YWHAB,-3.4
+Kansl1l_MCODE_ALL,Reactome Gene Sets,6,R-HSA-9824439,Bacterial Infection Pathways,,-5.7,1.1e+02,18,30286,73,11,3,27,13,805|808|3326,CALM2|CALM3|HSP90AB1,-3.4
+Kansl1l_MCODE_ALL,GO Biological Processes,19,GO:0045937,positive regulation of phosphate metabolic process,19_GO:0048518 positive regulation of biological process,-5.6,20,9.5,30286,702,11,5,45,15,805|808|3326|3358|4282,CALM2|CALM3|HSP90AB1|HTR2C|MIF,-3.3
+Kansl1l_MCODE_ALL,GO Biological Processes,19,GO:0010562,positive regulation of phosphorus metabolic process,19_GO:0048518 positive regulation of biological process,-5.6,20,9.5,30286,702,11,5,45,15,805|808|3326|3358|4282,CALM2|CALM3|HSP90AB1|HTR2C|MIF,-3.3
+Kansl1l_MCODE_ALL,Reactome Gene Sets,6,R-HSA-6802957,Oncogenic MAPK signaling,,-5.5,98,17,30286,84,11,3,27,13,805|808|7529,CALM2|CALM3|YWHAB,-3.3
+Kansl1l_MCODE_ALL,GO Biological Processes,19,GO:0051336,regulation of hydrolase activity,19_GO:0065007 biological regulation,-5.4,18,9.2,30286,746,11,5,45,15,805|808|3326|23204|373509,CALM2|CALM3|HSP90AB1|ARL6IP1|USP50,-3.2
+Kansl1l_MCODE_ALL,GO Biological Processes,19,GO:0050848,regulation of calcium-mediated signaling,19_GO:0050896 response to stimulus,-5.3,88,16,30286,94,11,3,27,13,805|808|3358,CALM2|CALM3|HTR2C,-3.2
+Kansl1l_MCODE_ALL,KEGG Pathway,24,hsa04750,Inflammatory mediator regulation of TRP channels,,-5.3,84,16,30286,98,11,3,27,13,805|808|3358,CALM2|CALM3|HTR2C,-3.1
+Kansl1l_MCODE_ALL,KEGG Pathway,24,hsa04114,Oocyte meiosis,,-4.9,63,14,30286,131,11,3,27,13,805|808|7529,CALM2|CALM3|YWHAB,-2.8
+Kansl1l_MCODE_ALL,GO Biological Processes,19,GO:0051282,regulation of sequestering of calcium ion,19_GO:0042592 homeostatic process,-4.9,63,14,30286,132,11,3,27,13,805|808|3358,CALM2|CALM3|HTR2C,-2.8
+Kansl1l_MCODE_ALL,KEGG Pathway,24,hsa04915,Estrogen signaling pathway,,-4.8,60,13,30286,137,11,3,27,13,805|808|3326,CALM2|CALM3|HSP90AB1,-2.8
+Kansl1l_MCODE_ALL,GO Biological Processes,19,GO:0051345,positive regulation of hydrolase activity,19_GO:0065007 biological regulation,-4.7,23,9.2,30286,482,11,4,36,15,805|808|3326|373509,CALM2|CALM3|HSP90AB1|USP50,-2.7
+Kansl1l_MCODE_ALL,Reactome Gene Sets,6,R-HSA-9658195,Leishmania infection,,-4.6,50,12,30286,164,11,3,27,13,805|808|3326,CALM2|CALM3|HSP90AB1,-2.6
+Kansl1l_MCODE_ALL,Reactome Gene Sets,6,R-HSA-9824443,Parasitic Infection Pathways,,-4.6,50,12,30286,164,11,3,27,13,805|808|3326,CALM2|CALM3|HSP90AB1,-2.6
+Kansl1l_MCODE_ALL,GO Biological Processes,19,GO:0001934,positive regulation of protein phosphorylation,19_GO:0048518 positive regulation of biological process,-4.4,19,8.4,30286,578,11,4,36,15,805|808|3326|4282,CALM2|CALM3|HSP90AB1|MIF,-2.4
+Kansl1l_MCODE_ALL,GO Biological Processes,19,GO:0030162,regulation of proteolysis,19_GO:0008152 metabolic process,-4.3,18,8.2,30286,600,11,4,36,15,3326|6613|23204|373509,HSP90AB1|SUMO2|ARL6IP1|USP50,-2.4
+Kansl1l_MCODE_ALL,GO Biological Processes,19,GO:0042327,positive regulation of phosphorylation,19_GO:0048518 positive regulation of biological process,-4.3,18,8,30286,623,11,4,36,15,805|808|3326|4282,CALM2|CALM3|HSP90AB1|MIF,-2.3
+Kansl1l_MCODE_ALL,GO Biological Processes,19,GO:0034764,positive regulation of transmembrane transport,19_GO:0051179 localization,-4.3,39,11,30286,213,11,3,27,13,805|808|23204,CALM2|CALM3|ARL6IP1,-2.3
+Kansl1l_MCODE_ALL,KEGG Pathway,24,hsa05417,Lipid and atherosclerosis,,-4.3,38,10,30286,215,11,3,27,13,805|808|3326,CALM2|CALM3|HSP90AB1,-2.3
+Kansl1l_MCODE_ALL,Reactome Gene Sets,6,R-HSA-8939211,ESR-mediated signaling,,-4.2,37,10,30286,222,11,3,27,13,805|808|3326,CALM2|CALM3|HSP90AB1,-2.3
+Kansl1l_MCODE_ALL,Reactome Gene Sets,6,R-HSA-194315,Signaling by Rho GTPases,,-4.1,16,7.5,30286,706,11,4,36,15,805|808|3326|7529,CALM2|CALM3|HSP90AB1|YWHAB,-2.2
+Kansl1l_MCODE_ALL,KEGG Pathway,24,hsa04020,Calcium signaling pathway,,-4,33,9.6,30286,253,11,3,27,13,805|808|3358,CALM2|CALM3|HTR2C,-2.2
+Kansl1l_MCODE_ALL,Reactome Gene Sets,6,R-HSA-9716542,"Signaling by Rho GTPases, Miro GTPases and RHOBTB3",,-4,15,7.4,30286,722,11,4,36,15,805|808|3326|7529,CALM2|CALM3|HSP90AB1|YWHAB,-2.1
+Kansl1l_MCODE_ALL,GO Biological Processes,19,GO:0045860,positive regulation of protein kinase activity,19_GO:0048518 positive regulation of biological process,-4,32,9.6,30286,256,11,3,27,13,805|808|3326,CALM2|CALM3|HSP90AB1,-2.1
+Kansl1l_MCODE_ALL,GO Biological Processes,19,GO:0031401,positive regulation of protein modification process,19_GO:0048518 positive regulation of biological process,-3.9,14,7.2,30286,764,11,4,36,15,805|808|3326|4282,CALM2|CALM3|HSP90AB1|MIF,-2.1
+Kansl1l_MCODE_ALL,Reactome Gene Sets,6,R-HSA-5673001,RAF/MAP kinase cascade,,-3.9,29,9.1,30286,280,11,3,27,13,805|808|7529,CALM2|CALM3|YWHAB,-2.1
+Kansl1l_MCODE_ALL,Reactome Gene Sets,6,R-HSA-5684996,MAPK1/MAPK3 signaling,,-3.9,29,9,30286,286,11,3,27,13,805|808|7529,CALM2|CALM3|YWHAB,-2
+Kansl1l_MCODE_ALL,Reactome Gene Sets,6,R-HSA-71387,Metabolism of carbohydrates,,-3.9,28,9,30286,290,11,3,27,13,805|808|7167,CALM2|CALM3|TPI1,-2
+Kansl1l_MCODE_ALL,Reactome Gene Sets,6,R-HSA-9006931,Signaling by Nuclear Receptors,,-3.8,28,8.8,30286,298,11,3,27,13,805|808|3326,CALM2|CALM3|HSP90AB1,-2
+Kansl1l_MCODE_ALL,GO Biological Processes,19,GO:0033674,positive regulation of kinase activity,19_GO:0048518 positive regulation of biological process,-3.8,27,8.8,30286,302,11,3,27,13,805|808|3326,CALM2|CALM3|HSP90AB1,-2
+Kansl1l_MCODE_ALL,Reactome Gene Sets,6,R-HSA-5683057,MAPK family signaling cascades,,-3.7,25,8.4,30286,325,11,3,27,13,805|808|7529,CALM2|CALM3|YWHAB,-1.9
+Kansl1l_MCODE_ALL,Reactome Gene Sets,6,R-HSA-195258,RHO GTPase Effectors,,-3.7,25,8.4,30286,326,11,3,27,13,805|808|7529,CALM2|CALM3|YWHAB,-1.9
+Kansl1l_MCODE_ALL,GO Biological Processes,19,GO:0051347,positive regulation of transferase activity,19_GO:0065007 biological regulation,-3.5,22,7.8,30286,375,11,3,27,13,805|808|3326,CALM2|CALM3|HSP90AB1,-1.8
+Kansl1l_MCODE_ALL,GO Biological Processes,19,GO:0045936,negative regulation of phosphate metabolic process,19_GO:0048519 negative regulation of biological process,-3.5,22,7.8,30286,378,11,3,27,13,805|808|7529,CALM2|CALM3|YWHAB,-1.8
+Kansl1l_MCODE_ALL,GO Biological Processes,19,GO:0010563,negative regulation of phosphorus metabolic process,19_GO:0048519 negative regulation of biological process,-3.5,22,7.8,30286,379,11,3,27,13,805|808|7529,CALM2|CALM3|YWHAB,-1.8
+Kansl1l_MCODE_ALL,GO Biological Processes,19,GO:0031400,negative regulation of protein modification process,19_GO:0048519 negative regulation of biological process,-3.4,19,7.3,30286,426,11,3,27,13,805|808|7529,CALM2|CALM3|YWHAB,-1.6
+Kansl1l_MCODE_ALL,Reactome Gene Sets,6,R-HSA-5663202,Diseases of signal transduction by growth factor receptors and second messengers,,-3.3,18,7,30286,459,11,3,27,13,805|808|7529,CALM2|CALM3|YWHAB,-1.6
+Kansl1l_MCODE_ALL,GO Biological Processes,19,GO:0045859,regulation of protein kinase activity,19_GO:0008152 metabolic process,-3.3,18,6.9,30286,470,11,3,27,13,805|808|3326,CALM2|CALM3|HSP90AB1,-1.5
+Kansl1l_MCODE_ALL,GO Biological Processes,19,GO:0034762,regulation of transmembrane transport,19_GO:0051179 localization,-3.2,17,6.8,30286,489,11,3,27,13,805|808|23204,CALM2|CALM3|ARL6IP1,-1.5
+Kansl1l_MCODE_ALL,KEGG Pathway,24,hsa05200,Pathways in cancer,,-3.1,16,6.4,30286,531,11,3,27,13,805|808|3326,CALM2|CALM3|HSP90AB1,-1.4
+Kansl1l_MCODE_ALL,GO Biological Processes,19,GO:0043549,regulation of kinase activity,19_GO:0008152 metabolic process,-3.1,16,6.4,30286,532,11,3,27,13,805|808|3326,CALM2|CALM3|HSP90AB1,-1.4
+Kansl1l_MCODE_ALL,Reactome Gene Sets,6,R-HSA-9006934,Signaling by Receptor Tyrosine Kinases,,-3.1,15,6.4,30286,534,11,3,27,13,805|808|7529,CALM2|CALM3|YWHAB,-1.4
+Kansl1l_MCODE_ALL,GO Biological Processes,19,GO:0044057,regulation of system process,19_GO:0032501 multicellular organismal process,-3,15,6.3,30286,561,11,3,27,13,805|808|3358,CALM2|CALM3|HTR2C,-1.4
+Kansl1l_MCODE_ALL,Reactome Gene Sets,6,R-HSA-109582,Hemostasis,,-2.9,13,5.9,30286,622,11,3,27,13,805|808|4282,CALM2|CALM3|MIF,-1.2
+Kansl1l_MCODE_ALL,Reactome Gene Sets,6,R-HSA-199991,Membrane Trafficking,,-2.9,13,5.8,30286,634,11,3,27,13,805|808|7529,CALM2|CALM3|YWHAB,-1.2
+Kansl1l_MCODE_ALL,Reactome Gene Sets,6,R-HSA-388396,GPCR downstream signalling,,-2.9,13,5.8,30286,634,11,3,27,13,805|808|3358,CALM2|CALM3|HTR2C,-1.2
+Kansl1l_MCODE_ALL,GO Biological Processes,19,GO:0051338,regulation of transferase activity,19_GO:0065007 biological regulation,-2.9,13,5.8,30286,639,11,3,27,13,805|808|3326,CALM2|CALM3|HSP90AB1,-1.2
+Kansl1l_MCODE_ALL,Reactome Gene Sets,6,R-HSA-5653656,Vesicle-mediated transport,,-2.8,12,5.6,30286,673,11,3,27,13,805|808|7529,CALM2|CALM3|YWHAB,-1.2
+Kansl1l_MCODE_ALL,Reactome Gene Sets,6,R-HSA-372790,Signaling by GPCR,,-2.7,12,5.5,30286,709,11,3,27,13,805|808|3358,CALM2|CALM3|HTR2C,-1.1
+Kansl1l_MCODE_ALL,GO Biological Processes,19,GO:0010564,regulation of cell cycle process,19_GO:0050789 regulation of biological process,-2.7,11,5.3,30286,746,11,3,27,13,805|808|373509,CALM2|CALM3|USP50,-1.1
+Kansl1l_MCODE_ALL,GO Biological Processes,19,GO:0044092,negative regulation of molecular function,19_GO:0065007 biological regulation,-2.7,11,5.3,30286,751,11,3,27,13,805|808|23204,CALM2|CALM3|ARL6IP1,-1
+Kansl1l_MCODE_ALL,Reactome Gene Sets,6,R-HSA-1280218,Adaptive Immune System,,-2.6,11,5.2,30286,768,11,3,27,13,805|808|7529,CALM2|CALM3|YWHAB,-1
+Kansl1l_SUB1_MCODE_1,GO Biological Processes,19,GO:0035304,regulation of protein dephosphorylation,19_GO:0008152 metabolic process,-8.5,1.9e+02,28,30286,79,8,4,50,18,805|808|3326|7529,CALM2|CALM3|HSP90AB1|YWHAB,-4.5
+Kansl1l_SUB1_MCODE_1,GO Biological Processes,19,GO:0035303,regulation of dephosphorylation,19_GO:0008152 metabolic process,-8,1.4e+02,24,30286,106,8,4,50,18,805|808|3326|7529,CALM2|CALM3|HSP90AB1|YWHAB,-4.3
+Kansl1l_SUB1_MCODE_1,GO Biological Processes,19,GO:0032516,positive regulation of phosphoprotein phosphatase activity,19_GO:0048518 positive regulation of biological process,-7.9,6e+02,42,30286,19,8,3,38,17,805|808|3326,CALM2|CALM3|HSP90AB1,-4.3
+Kansl1l_SUB1_MCODE_1,KEGG Pathway,24,hsa05418,Fluid shear stress and atherosclerosis,,-7.5,1.1e+02,21,30286,139,8,4,50,18,805|808|3326|6613,CALM2|CALM3|HSP90AB1|SUMO2,-4.2
+Kansl1l_SUB1_MCODE_1,GO Biological Processes,19,GO:0010922,positive regulation of phosphatase activity,19_GO:0048518 positive regulation of biological process,-7.4,4.1e+02,35,30286,28,8,3,38,17,805|808|3326,CALM2|CALM3|HSP90AB1,-4.2
+Kansl1l_SUB1_MCODE_1,Reactome Gene Sets,6,R-HSA-5339562,Uptake and actions of bacterial toxins,,-7.3,3.7e+02,33,30286,31,8,3,38,17,805|808|3326,CALM2|CALM3|HSP90AB1,-4.2
+Kansl1l_SUB1_MCODE_1,Reactome Gene Sets,6,R-HSA-5673000,RAF activation,,-7.1,3.2e+02,31,30286,36,8,3,38,17,805|808|7529,CALM2|CALM3|YWHAB,-4.1
+Kansl1l_SUB1_MCODE_1,Reactome Gene Sets,6,R-HSA-9656223,Signaling by RAF1 mutants,,-6.8,2.6e+02,28,30286,43,8,3,38,17,805|808|7529,CALM2|CALM3|YWHAB,-4
+Kansl1l_SUB1_MCODE_1,GO Biological Processes,19,GO:0035307,positive regulation of protein dephosphorylation,19_GO:0048518 positive regulation of biological process,-6.8,2.6e+02,28,30286,44,8,3,38,17,805|808|3326,CALM2|CALM3|HSP90AB1,-4
+Kansl1l_SUB1_MCODE_1,Reactome Gene Sets,6,R-HSA-9649948,Signaling downstream of RAS mutants,,-6.7,2.4e+02,27,30286,47,8,3,38,17,805|808|7529,CALM2|CALM3|YWHAB,-4
+Kansl1l_SUB1_MCODE_1,Reactome Gene Sets,6,R-HSA-6802949,Signaling by RAS mutants,,-6.7,2.4e+02,27,30286,47,8,3,38,17,805|808|7529,CALM2|CALM3|YWHAB,-4
+Kansl1l_SUB1_MCODE_1,Reactome Gene Sets,6,R-HSA-6802946,Signaling by moderate kinase activity BRAF mutants,,-6.7,2.4e+02,27,30286,47,8,3,38,17,805|808|7529,CALM2|CALM3|YWHAB,-4
+Kansl1l_SUB1_MCODE_1,GO Biological Processes,19,GO:0043666,regulation of phosphoprotein phosphatase activity,19_GO:0008152 metabolic process,-6.7,2.4e+02,27,30286,47,8,3,38,17,805|808|3326,CALM2|CALM3|HSP90AB1,-4
+Kansl1l_SUB1_MCODE_1,Reactome Gene Sets,6,R-HSA-6802955,Paradoxical activation of RAF signaling by kinase inactive BRAF,,-6.7,2.4e+02,27,30286,47,8,3,38,17,805|808|7529,CALM2|CALM3|YWHAB,-4
+Kansl1l_SUB1_MCODE_1,GO Biological Processes,19,GO:0035306,positive regulation of dephosphorylation,19_GO:0048518 positive regulation of biological process,-6.5,2.1e+02,25,30286,54,8,3,38,17,805|808|3326,CALM2|CALM3|HSP90AB1,-3.9
+Kansl1l_SUB1_MCODE_1,GO Biological Processes,19,GO:0010562,positive regulation of phosphorus metabolic process,19_GO:0048518 positive regulation of biological process,-6.5,27,11,30286,702,8,5,62,17,805|808|3326|3358|4282,CALM2|CALM3|HSP90AB1|HTR2C|MIF,-3.9
+Kansl1l_SUB1_MCODE_1,GO Biological Processes,19,GO:0045937,positive regulation of phosphate metabolic process,19_GO:0048518 positive regulation of biological process,-6.5,27,11,30286,702,8,5,62,17,805|808|3326|3358|4282,CALM2|CALM3|HSP90AB1|HTR2C|MIF,-3.9
+Kansl1l_SUB1_MCODE_1,GO Biological Processes,19,GO:0010921,regulation of phosphatase activity,19_GO:0008152 metabolic process,-6.4,1.9e+02,24,30286,59,8,3,38,17,805|808|3326,CALM2|CALM3|HSP90AB1,-3.9
+Kansl1l_SUB1_MCODE_1,Reactome Gene Sets,6,R-HSA-6802952,Signaling by BRAF and RAF1 fusions,,-6.2,1.7e+02,22,30286,67,8,3,38,17,805|808|7529,CALM2|CALM3|YWHAB,-3.8
+Kansl1l_SUB1_MCODE_1,Reactome Gene Sets,6,R-HSA-1445148,Translocation of SLC2A4 (GLUT4) to the plasma membrane,,-6.1,1.6e+02,22,30286,72,8,3,38,17,805|808|7529,CALM2|CALM3|YWHAB,-3.7
+Kansl1l_SUB1_MCODE_1,Reactome Gene Sets,6,R-HSA-9824439,Bacterial Infection Pathways,,-6.1,1.6e+02,21,30286,73,8,3,38,17,805|808|3326,CALM2|CALM3|HSP90AB1,-3.7
+Kansl1l_SUB1_MCODE_1,Reactome Gene Sets,6,R-HSA-6802957,Oncogenic MAPK signaling,,-5.9,1.4e+02,20,30286,84,8,3,38,17,805|808|7529,CALM2|CALM3|YWHAB,-3.6
+Kansl1l_SUB1_MCODE_1,GO Biological Processes,19,GO:0050848,regulation of calcium-mediated signaling,19_GO:0050896 response to stimulus,-5.8,1.2e+02,19,30286,94,8,3,38,17,805|808|3358,CALM2|CALM3|HTR2C,-3.5
+Kansl1l_SUB1_MCODE_1,KEGG Pathway,24,hsa04750,Inflammatory mediator regulation of TRP channels,,-5.7,1.2e+02,19,30286,98,8,3,38,17,805|808|3358,CALM2|CALM3|HTR2C,-3.5
+Kansl1l_SUB1_MCODE_1,KEGG Pathway,24,hsa04114,Oocyte meiosis,,-5.4,87,16,30286,131,8,3,38,17,805|808|7529,CALM2|CALM3|YWHAB,-3.2
+Kansl1l_SUB1_MCODE_1,GO Biological Processes,19,GO:0051282,regulation of sequestering of calcium ion,19_GO:0042592 homeostatic process,-5.4,86,16,30286,132,8,3,38,17,805|808|3358,CALM2|CALM3|HTR2C,-3.2
+Kansl1l_SUB1_MCODE_1,KEGG Pathway,24,hsa04915,Estrogen signaling pathway,,-5.3,83,16,30286,137,8,3,38,17,805|808|3326,CALM2|CALM3|HSP90AB1,-3.1
+Kansl1l_SUB1_MCODE_1,Reactome Gene Sets,6,R-HSA-9658195,Leishmania infection,,-5.1,69,14,30286,164,8,3,38,17,805|808|3326,CALM2|CALM3|HSP90AB1,-2.9
+Kansl1l_SUB1_MCODE_1,Reactome Gene Sets,6,R-HSA-9824443,Parasitic Infection Pathways,,-5.1,69,14,30286,164,8,3,38,17,805|808|3326,CALM2|CALM3|HSP90AB1,-2.9
+Kansl1l_SUB1_MCODE_1,GO Biological Processes,19,GO:0001934,positive regulation of protein phosphorylation,19_GO:0048518 positive regulation of biological process,-5.1,26,9.9,30286,578,8,4,50,18,805|808|3326|4282,CALM2|CALM3|HSP90AB1|MIF,-2.9
+Kansl1l_SUB1_MCODE_1,GO Biological Processes,19,GO:0042327,positive regulation of phosphorylation,19_GO:0048518 positive regulation of biological process,-4.9,24,9.6,30286,623,8,4,50,18,805|808|3326|4282,CALM2|CALM3|HSP90AB1|MIF,-2.9
+Kansl1l_SUB1_MCODE_1,Reactome Gene Sets,6,R-HSA-194315,Signaling by Rho GTPases,,-4.7,21,8.9,30286,706,8,4,50,18,805|808|3326|7529,CALM2|CALM3|HSP90AB1|YWHAB,-2.7
+Kansl1l_SUB1_MCODE_1,KEGG Pathway,24,hsa05417,Lipid and atherosclerosis,,-4.7,53,12,30286,215,8,3,38,17,805|808|3326,CALM2|CALM3|HSP90AB1,-2.7
+Kansl1l_SUB1_MCODE_1,Reactome Gene Sets,6,R-HSA-9716542,"Signaling by Rho GTPases, Miro GTPases and RHOBTB3",,-4.7,21,8.8,30286,722,8,4,50,18,805|808|3326|7529,CALM2|CALM3|HSP90AB1|YWHAB,-2.7
+Kansl1l_SUB1_MCODE_1,Reactome Gene Sets,6,R-HSA-8939211,ESR-mediated signaling,,-4.7,51,12,30286,222,8,3,38,17,805|808|3326,CALM2|CALM3|HSP90AB1,-2.7
+Kansl1l_SUB1_MCODE_1,GO Biological Processes,19,GO:0031401,positive regulation of protein modification process,19_GO:0048518 positive regulation of biological process,-4.6,20,8.6,30286,764,8,4,50,18,805|808|3326|4282,CALM2|CALM3|HSP90AB1|MIF,-2.6
+Kansl1l_SUB1_MCODE_1,KEGG Pathway,24,hsa04020,Calcium signaling pathway,,-4.5,45,11,30286,253,8,3,38,17,805|808|3358,CALM2|CALM3|HTR2C,-2.5
+Kansl1l_SUB1_MCODE_1,GO Biological Processes,19,GO:0045860,positive regulation of protein kinase activity,19_GO:0048518 positive regulation of biological process,-4.5,44,11,30286,256,8,3,38,17,805|808|3326,CALM2|CALM3|HSP90AB1,-2.5
+Kansl1l_SUB1_MCODE_1,Reactome Gene Sets,6,R-HSA-5673001,RAF/MAP kinase cascade,,-4.4,41,11,30286,280,8,3,38,17,805|808|7529,CALM2|CALM3|YWHAB,-2.4
+Kansl1l_SUB1_MCODE_1,Reactome Gene Sets,6,R-HSA-5684996,MAPK1/MAPK3 signaling,,-4.3,40,11,30286,286,8,3,38,17,805|808|7529,CALM2|CALM3|YWHAB,-2.4
+Kansl1l_SUB1_MCODE_1,Reactome Gene Sets,6,R-HSA-71387,Metabolism of carbohydrates,,-4.3,39,11,30286,290,8,3,38,17,805|808|7167,CALM2|CALM3|TPI1,-2.4
+Kansl1l_SUB1_MCODE_1,Reactome Gene Sets,6,R-HSA-9006931,Signaling by Nuclear Receptors,,-4.3,38,10,30286,298,8,3,38,17,805|808|3326,CALM2|CALM3|HSP90AB1,-2.3
+Kansl1l_SUB1_MCODE_1,GO Biological Processes,19,GO:0033674,positive regulation of kinase activity,19_GO:0048518 positive regulation of biological process,-4.3,38,10,30286,302,8,3,38,17,805|808|3326,CALM2|CALM3|HSP90AB1,-2.3
+Kansl1l_SUB1_MCODE_1,Reactome Gene Sets,6,R-HSA-5683057,MAPK family signaling cascades,,-4.2,35,10,30286,325,8,3,38,17,805|808|7529,CALM2|CALM3|YWHAB,-2.3
+Kansl1l_SUB1_MCODE_1,Reactome Gene Sets,6,R-HSA-195258,RHO GTPase Effectors,,-4.2,35,10,30286,326,8,3,38,17,805|808|7529,CALM2|CALM3|YWHAB,-2.3
+Kansl1l_SUB1_MCODE_1,GO Biological Processes,19,GO:0051347,positive regulation of transferase activity,19_GO:0065007 biological regulation,-4,30,9.3,30286,375,8,3,38,17,805|808|3326,CALM2|CALM3|HSP90AB1,-2.1
+Kansl1l_SUB1_MCODE_1,GO Biological Processes,19,GO:0045936,negative regulation of phosphate metabolic process,19_GO:0048519 negative regulation of biological process,-4,30,9.2,30286,378,8,3,38,17,805|808|7529,CALM2|CALM3|YWHAB,-2.1
+Kansl1l_SUB1_MCODE_1,GO Biological Processes,19,GO:0010563,negative regulation of phosphorus metabolic process,19_GO:0048519 negative regulation of biological process,-4,30,9.2,30286,379,8,3,38,17,805|808|7529,CALM2|CALM3|YWHAB,-2.1
+Kansl1l_SUB1_MCODE_1,GO Biological Processes,19,GO:0031400,negative regulation of protein modification process,19_GO:0048519 negative regulation of biological process,-3.8,27,8.7,30286,426,8,3,38,17,805|808|7529,CALM2|CALM3|YWHAB,-2
+Kansl1l_SUB1_MCODE_1,Reactome Gene Sets,6,R-HSA-5663202,Diseases of signal transduction by growth factor receptors and second messengers,,-3.7,25,8.3,30286,459,8,3,38,17,805|808|7529,CALM2|CALM3|YWHAB,-1.9
+Kansl1l_SUB1_MCODE_1,GO Biological Processes,19,GO:0045859,regulation of protein kinase activity,19_GO:0008152 metabolic process,-3.7,24,8.2,30286,470,8,3,38,17,805|808|3326,CALM2|CALM3|HSP90AB1,-1.9
+Kansl1l_SUB1_MCODE_1,GO Biological Processes,19,GO:0051345,positive regulation of hydrolase activity,19_GO:0065007 biological regulation,-3.7,24,8.1,30286,482,8,3,38,17,805|808|3326,CALM2|CALM3|HSP90AB1,-1.9
+Kansl1l_SUB1_MCODE_1,KEGG Pathway,24,hsa05200,Pathways in cancer,,-3.6,21,7.7,30286,531,8,3,38,17,805|808|3326,CALM2|CALM3|HSP90AB1,-1.8
+Kansl1l_SUB1_MCODE_1,GO Biological Processes,19,GO:0043549,regulation of kinase activity,19_GO:0008152 metabolic process,-3.5,21,7.7,30286,532,8,3,38,17,805|808|3326,CALM2|CALM3|HSP90AB1,-1.8
+Kansl1l_SUB1_MCODE_1,Reactome Gene Sets,6,R-HSA-9006934,Signaling by Receptor Tyrosine Kinases,,-3.5,21,7.7,30286,534,8,3,38,17,805|808|7529,CALM2|CALM3|YWHAB,-1.8
+Kansl1l_SUB1_MCODE_1,GO Biological Processes,19,GO:0044057,regulation of system process,19_GO:0032501 multicellular organismal process,-3.5,20,7.5,30286,561,8,3,38,17,805|808|3358,CALM2|CALM3|HTR2C,-1.7
+Kansl1l_SUB1_MCODE_1,Reactome Gene Sets,6,R-HSA-109582,Hemostasis,,-3.3,18,7.1,30286,622,8,3,38,17,805|808|4282,CALM2|CALM3|MIF,-1.6
+Kansl1l_SUB1_MCODE_1,Reactome Gene Sets,6,R-HSA-199991,Membrane Trafficking,,-3.3,18,7,30286,634,8,3,38,17,805|808|7529,CALM2|CALM3|YWHAB,-1.6
+Kansl1l_SUB1_MCODE_1,Reactome Gene Sets,6,R-HSA-388396,GPCR downstream signalling,,-3.3,18,7,30286,634,8,3,38,17,805|808|3358,CALM2|CALM3|HTR2C,-1.6
+Kansl1l_SUB1_MCODE_1,GO Biological Processes,19,GO:0051338,regulation of transferase activity,19_GO:0065007 biological regulation,-3.3,18,7,30286,639,8,3,38,17,805|808|3326,CALM2|CALM3|HSP90AB1,-1.6
+Kansl1l_SUB1_MCODE_1,Reactome Gene Sets,6,R-HSA-5653656,Vesicle-mediated transport,,-3.2,17,6.8,30286,673,8,3,38,17,805|808|7529,CALM2|CALM3|YWHAB,-1.5
+Kansl1l_SUB1_MCODE_1,Reactome Gene Sets,6,R-HSA-372790,Signaling by GPCR,,-3.2,16,6.6,30286,709,8,3,38,17,805|808|3358,CALM2|CALM3|HTR2C,-1.5
+Kansl1l_SUB1_MCODE_1,GO Biological Processes,19,GO:0051336,regulation of hydrolase activity,19_GO:0065007 biological regulation,-3.1,15,6.4,30286,746,8,3,38,17,805|808|3326,CALM2|CALM3|HSP90AB1,-1.4
+Kansl1l_SUB1_MCODE_1,Reactome Gene Sets,6,R-HSA-1280218,Adaptive Immune System,,-3.1,15,6.3,30286,768,8,3,38,17,805|808|7529,CALM2|CALM3|YWHAB,-1.4

@@ -1,0 +1,6 @@
+Network,Annotation
+Ccdc115,R-HSA-5673001|RAF/MAP kinase cascade|-7.7;R-HSA-5684996|MAPK1/MAPK3 signaling|-7.6;R-HSA-5683057|MAPK family signaling cascades|-7.2
+Ccdc115_MCODE_ALL,R-HSA-8953854|Metabolism of RNA|-8.2;R-HSA-5654738|Signaling by FGFR2|-7.7;CORUM:5199|Kinase maturation complex 1|-7.5
+Ccdc115_SUB1_MCODE_1,R-HSA-72163|mRNA Splicing - Major Pathway|-7.5;R-HSA-72172|mRNA Splicing|-7.4;R-HSA-72203|Processing of Capped Intron-Containing Pre-mRNA|-6.9
+Ccdc115_SUB1_MCODE_2,R-HSA-5654727|Negative regulation of FGFR2 signaling|-8.3;R-HSA-5663202|Diseases of signal transduction by growth factor receptors and second messengers|-7.3;R-HSA-5654738|Signaling by FGFR2|-7.3
+Ccdc115_SUB1_MCODE_3,CORUM:5199|Kinase maturation complex 1|-9.9;R-HSA-9705683|SARS-CoV-2-host interactions|-6.5;R-HSA-9694516|SARS-CoV-2 Infection|-6.0

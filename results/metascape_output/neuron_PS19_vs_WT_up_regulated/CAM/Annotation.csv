@@ -1,0 +1,3 @@
+Gene,Gene Symbol,Description,Biological Process (GO),Protein Function (Protein Atlas),Canonical Pathways,Hallmark Gene Sets
+221035,REEP3,receptor accessory protein 3,GO:0007084 mitotic nuclear membrane reassembly;GO:0101024 mitotic nuclear membrane organization;GO:0071786 endoplasmic reticulum tubular network organization,,,
+80274,SCUBE1,"signal peptide, CUB domain and EGF like domain containing 1",GO:0007512 adult heart development;GO:0045880 positive regulation of smoothened signaling pathway;GO:0045446 endothelial cell differentiation,Predicted secreted proteins; Predicted intracellular proteins,(M5883)NABA SECRETED FACTORS; (M5885)NABA MATRISOME ASSOCIATED; (M5889)NABA MATRISOME,(M5916)HALLMARK APICAL SURFACE

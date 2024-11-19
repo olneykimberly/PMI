@@ -1,0 +1,13 @@
+Category,CategoryID,GO,Description,PARENT_GO,LogP,Enrichment,Z-score,#TotalGeneInLibrary,#GeneInGO,#GeneInHitList,#GeneInGOAndHitList,%InGO,STDV %InGO,GeneID,Hits,Log(q-value),GeneList
+GO Biological Processes,19,GO:0098742,cell-cell adhesion via plasma-membrane adhesion molecules,19_GO:0009987 cellular process,-4.4,20,8.6,30286,261,23,4,17,7.9,3556|5010|28513|57451,IL1RAP|CLDN11|CDH19|TENM2,-0.31,Plcl1
+GO Biological Processes,19,GO:0098609,cell-cell adhesion,19_GO:0009987 cellular process,-4.3,12,7.2,30286,542,23,5,22,8.6,3556|5010|28513|57451|81671,IL1RAP|CLDN11|CDH19|TENM2|VMP1,-0.31,Plcl1
+GO Biological Processes,19,GO:0008366,axon ensheathment,19_GO:0032502 developmental process,-3.9,31,9.3,30286,129,23,3,13,7,443|4336|5010,ASPA|MOBP|CLDN11,-0.18,Plcl1
+GO Biological Processes,19,GO:0007272,ensheathment of neurons,19_GO:0032502 developmental process,-3.9,31,9.3,30286,129,23,3,13,7,443|4336|5010,ASPA|MOBP|CLDN11,-0.18,Plcl1
+GO Biological Processes,19,GO:0010001,glial cell differentiation,19_GO:0032502 developmental process,-3.2,18,7,30286,216,23,3,13,7,443|3908|4336,ASPA|LAMA2|MOBP,0,Plcl1
+GO Biological Processes,19,GO:0034330,cell junction organization,19_GO:0009987 cellular process,-3.2,9.9,5.7,30286,533,23,4,17,7.9,3556|5010|28513|81671,IL1RAP|CLDN11|CDH19|VMP1,0,Plcl1
+GO Biological Processes,19,GO:0032989,cellular anatomical entity morphogenesis,19_GO:0032502 developmental process,-3,8.7,5.3,30286,605,23,4,17,7.9,3908|4336|8633|29767,LAMA2|MOBP|UNC5C|TMOD2,0,Plcl1
+GO Biological Processes,19,GO:0042063,gliogenesis,19_GO:0032502 developmental process,-3,15,6.2,30286,272,23,3,13,7,443|3908|4336,ASPA|LAMA2|MOBP,0,Plcl1
+GO Biological Processes,19,GO:0007283,spermatogenesis,19_GO:0022414 reproductive process,-2.9,8.3,5.1,30286,632,23,4,17,7.9,5010|7182|7704|59338,CLDN11|NR2C2|ZBTB16|PLEKHA1,0,Plcl1
+GO Biological Processes,19,GO:0034329,cell junction assembly,19_GO:0009987 cellular process,-2.9,14,6,30286,283,23,3,13,7,5010|28513|81671,CLDN11|CDH19|VMP1,0,Plcl1
+GO Biological Processes,19,GO:0048232,male gamete generation,19_GO:0022414 reproductive process,-2.9,8.1,5.1,30286,649,23,4,17,7.9,5010|7182|7704|59338,CLDN11|NR2C2|ZBTB16|PLEKHA1,0,Plcl1
+GO Biological Processes,19,GO:0030036,actin cytoskeleton organization,19_GO:0009987 cellular process,-2.1,7.3,4.1,30286,544,23,3,13,7,8476|9844|29767,CDC42BPA|ELMO1|TMOD2,0,Plcl1

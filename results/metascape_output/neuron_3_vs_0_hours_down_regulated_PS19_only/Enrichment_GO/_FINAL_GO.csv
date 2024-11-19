@@ -1,0 +1,2 @@
+_MEMBER_Cdh19,_LogP_Cdh19,GO,_PATTERN_,_RANK_,GiniIndex,Category,CategoryID,Description,PARENT_GO,LogP,Enrichment,Z-score,#TotalGeneInLibrary,#GeneInGO,#GeneInHitList,#GeneInGOAndHitList,%InGO,STDV %InGO,GeneID,Hits,Log(q-value),EvidenceCutoff,GROUP_ID,FirstInGroupByEnrichment,FirstInGroupByLogP
+1,-4.4302536518905855,GO:0048511,M1,1,0,GO Biological Processes,19,rhythmic process,19_GO:0048511 rhythmic process,-4.4302536518905855,42.377798507462686,11.059591626077125,30286,268,8,3,37.5,17.116329922036442,1628|9975|148523,DBP|NR1D2|CIART,-0.1028742805977361,0,1,1,1

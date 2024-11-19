@@ -35,6 +35,7 @@ dataObject <- readRDS(file = paste0("../rObjects/",treatment,".dataObject.clean.
 # inspect
 dataObject$sample <- factor(dataObject$sample, levels = c("J_3", "J_4", "B_7", "P_65", "P_52", "P_62", "P_67", "P_69", "B_10", "B_8", "B_9", "J_1", "J_2", "P_53", "P_54", "P_64", "P_68", "P_71"))
 ```
+
 # QC violins 
 ```{r violin}
 # nFeature, nCount, and cell.complexity violins
@@ -131,6 +132,44 @@ nuclei_count_plot <- ggplot(data2, aes(x = sample, y = frequency, fill = group))
 
 # Display the plot
 nuclei_count_plot
+```
+```{r ANOVA}
+# Load necessary libraries
+library(ggplot2)
+library(car)  # For Levene's Test
+
+# Check Assumptions
+
+# 1. Shapiro-Wilk test for normality of nuclei count by group
+# Fit a linear model
+anova_model <- aov(frequency ~ group, data = data2)
+
+# Extract residuals
+residuals <- residuals(anova_model)
+
+# Shapiro-Wilk test on residuals
+shapiro_test <- shapiro.test(residuals)
+print(shapiro_test)
+
+# 2. Levene's Test for homogeneity of variances
+levene_test <- leveneTest(frequency ~ group, data = data2)
+print(levene_test)
+
+# Run the ANOVA
+anova_result <- summary(anova_model)
+print(anova_result)
+
+# Post-hoc Analysis (if ANOVA is significant)
+if (anova_result[[1]][["Pr(>F)"]][1] < 0.05) {
+  tukey_result <- TukeyHSD(anova_model)
+  print(tukey_result)
+}
+# Fit the ANOVA model
+anova_model <- aov(frequency ~ group, data = data2)
+
+# Get confidence intervals for the group means
+conf_intervals <- confint(anova_model)
+print(conf_intervals)
 
 ```
 
@@ -245,6 +284,7 @@ umap <- p + theme(
 baseplot <- DimPlot(dataObject, reduction = "umap")
 baseplot
 ```
+
 # Cell type count 
 ```{r}
 Idents(dataObject) <- dataObject$individual_clusters
@@ -290,6 +330,7 @@ count_bar
 ```
 
 
+# Count per cluster
 ```{r}
 # Fetch data including time point
 count_per_cluster <- FetchData(dataObject,

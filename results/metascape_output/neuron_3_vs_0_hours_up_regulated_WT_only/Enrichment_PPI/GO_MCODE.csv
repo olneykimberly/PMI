@@ -1,0 +1,58 @@
+Name,Category,CategoryID,GO,Description,PARENT_GO,LogP,Enrichment,Z-score,#TotalGeneInLibrary,#GeneInGO,#GeneInHitList,#GeneInGOAndHitList,%InGO,STDV %InGO,GeneID,Hits,Log(q-value)
+Hdac4,Reactome Gene Sets,6,R-HSA-5576892,Phase 0 - rapid depolarisation,,-6.7,2.4e+02,27,30286,34,11,3,27,13,801|6324|6327,CALM1|SCN1B|SCN2B,-2.3
+Hdac4,GO Biological Processes,19,GO:0032412,regulation of monoatomic ion transmembrane transporter activity,19_GO:0051179 localization,-6.1,50,14,30286,221,11,4,36,15,801|5621|6324|6327,CALM1|PRNP|SCN1B|SCN2B,-2.3
+Hdac4,GO Biological Processes,19,GO:0051899,membrane depolarization,19_GO:0065007 biological regulation,-6,1.5e+02,21,30286,55,11,3,27,13,4297|6324|6327,KMT2A|SCN1B|SCN2B,-2.3
+Hdac4,GO Biological Processes,19,GO:0022898,regulation of transmembrane transporter activity,19_GO:0051179 localization,-6,48,14,30286,229,11,4,36,15,801|5621|6324|6327,CALM1|PRNP|SCN1B|SCN2B,-2.3
+Hdac4,GO Biological Processes,19,GO:0032409,regulation of transporter activity,19_GO:0065007 biological regulation,-5.8,42,13,30286,260,11,4,36,15,801|5621|6324|6327,CALM1|PRNP|SCN1B|SCN2B,-2.2
+Hdac4,GO Biological Processes,19,GO:1904062,regulation of monoatomic cation transmembrane transport,19_GO:0051179 localization,-5.5,36,12,30286,309,11,4,36,15,801|5621|6324|6327,CALM1|PRNP|SCN1B|SCN2B,-2.2
+Hdac4,GO Biological Processes,19,GO:0009791,post-embryonic development,19_GO:0032502 developmental process,-5.4,95,17,30286,87,11,3,27,13,4297|4692|80274,KMT2A|NDN|SCUBE1,-2.1
+Hdac4,GO Biological Processes,19,GO:0034765,regulation of monoatomic ion transmembrane transport,19_GO:0051179 localization,-5.3,32,11,30286,349,11,4,36,15,801|5621|6324|6327,CALM1|PRNP|SCN1B|SCN2B,-2.1
+Hdac4,GO Biological Processes,19,GO:0002027,regulation of heart rate,19_GO:0032501 multicellular organismal process,-5.2,79,15,30286,104,11,3,27,13,801|6324|6327,CALM1|SCN1B|SCN2B,-2
+Hdac4,GO Biological Processes,19,GO:0010959,regulation of metal ion transport,19_GO:0051179 localization,-5.1,28,10,30286,394,11,4,36,15,801|5621|6324|6327,CALM1|PRNP|SCN1B|SCN2B,-1.9
+Hdac4,Reactome Gene Sets,6,R-HSA-5576891,Cardiac conduction,,-4.9,63,14,30286,132,11,3,27,13,801|6324|6327,CALM1|SCN1B|SCN2B,-1.8
+Hdac4,GO Biological Processes,19,GO:0042391,regulation of membrane potential,19_GO:0065007 biological regulation,-4.9,25,9.6,30286,446,11,4,36,15,801|4297|6324|6327,CALM1|KMT2A|SCN1B|SCN2B,-1.8
+Hdac4,GO Biological Processes,19,GO:0043269,regulation of monoatomic ion transport,19_GO:0051179 localization,-4.8,23,9.3,30286,470,11,4,36,15,801|5621|6324|6327,CALM1|PRNP|SCN1B|SCN2B,-1.7
+Hdac4,GO Biological Processes,19,GO:0034762,regulation of transmembrane transport,19_GO:0051179 localization,-4.7,23,9.1,30286,489,11,4,36,15,801|5621|6324|6327,CALM1|PRNP|SCN1B|SCN2B,-1.7
+Hdac4,GO Biological Processes,19,GO:0010035,response to inorganic substance,19_GO:0050896 response to stimulus,-4.6,21,8.8,30286,527,11,4,36,15,801|4297|4747|5621,CALM1|KMT2A|NEFL|PRNP,-1.6
+Hdac4,GO Biological Processes,19,GO:0008016,regulation of heart contraction,19_GO:0032501 multicellular organismal process,-4.3,40,11,30286,204,11,3,27,13,801|6324|6327,CALM1|SCN1B|SCN2B,-1.4
+Hdac4,Reactome Gene Sets,6,R-HSA-397014,Muscle contraction,,-4.3,40,11,30286,205,11,3,27,13,801|6324|6327,CALM1|SCN1B|SCN2B,-1.4
+Hdac4,GO Biological Processes,19,GO:1903522,regulation of blood circulation,19_GO:0032501 multicellular organismal process,-4,32,9.5,30286,258,11,3,27,13,801|6324|6327,CALM1|SCN1B|SCN2B,-1.1
+Hdac4,Reactome Gene Sets,6,R-HSA-5673001,RAF/MAP kinase cascade,,-3.9,29,9.1,30286,280,11,3,27,13,801|4747|7529,CALM1|NEFL|YWHAB,-1
+Hdac4,Reactome Gene Sets,6,R-HSA-5684996,MAPK1/MAPK3 signaling,,-3.9,29,9,30286,286,11,3,27,13,801|4747|7529,CALM1|NEFL|YWHAB,-1
+Hdac4,Reactome Gene Sets,6,R-HSA-5683057,MAPK family signaling cascades,,-3.7,25,8.4,30286,325,11,3,27,13,801|4747|7529,CALM1|NEFL|YWHAB,-0.86
+Hdac4,GO Biological Processes,19,GO:0010038,response to metal ion,19_GO:0050896 response to stimulus,-3.6,23,8,30286,360,11,3,27,13,801|4297|5621,CALM1|KMT2A|PRNP,-0.74
+Hdac4,GO Biological Processes,19,GO:0007409,axonogenesis,19_GO:0032502 developmental process,-3.6,23,7.9,30286,366,11,3,27,13,4692|4747|6324,NDN|NEFL|SCN1B,-0.73
+Hdac4,GO Biological Processes,19,GO:0045936,negative regulation of phosphate metabolic process,19_GO:0048519 negative regulation of biological process,-3.5,22,7.8,30286,378,11,3,27,13,801|5621|7529,CALM1|PRNP|YWHAB,-0.72
+Hdac4,GO Biological Processes,19,GO:0010563,negative regulation of phosphorus metabolic process,19_GO:0048519 negative regulation of biological process,-3.5,22,7.8,30286,379,11,3,27,13,801|5621|7529,CALM1|PRNP|YWHAB,-0.72
+Hdac4,GO Biological Processes,19,GO:0008015,blood circulation,19_GO:0032501 multicellular organismal process,-3.4,20,7.4,30286,418,11,3,27,13,6324|6327|23576,SCN1B|SCN2B|DDAH1,-0.61
+Hdac4,GO Biological Processes,19,GO:0061564,axon development,19_GO:0032502 developmental process,-3.4,20,7.3,30286,421,11,3,27,13,4692|4747|6324,NDN|NEFL|SCN1B,-0.61
+Hdac4,GO Biological Processes,19,GO:0031400,negative regulation of protein modification process,19_GO:0048519 negative regulation of biological process,-3.4,19,7.3,30286,426,11,3,27,13,801|5621|7529,CALM1|PRNP|YWHAB,-0.61
+Hdac4,GO Biological Processes,19,GO:0048667,cell morphogenesis involved in neuron differentiation,19_GO:0032502 developmental process,-3.3,19,7.2,30286,440,11,3,27,13,4692|4747|6324,NDN|NEFL|SCN1B,-0.58
+Hdac4,KEGG Pathway,24,hsa05022,Pathways of neurodegeneration - multiple diseases,,-3.2,17,6.9,30286,476,11,3,27,13,801|4747|5621,CALM1|NEFL|PRNP,-0.51
+Hdac4,GO Biological Processes,19,GO:0048812,neuron projection morphogenesis,19_GO:0032502 developmental process,-3.2,17,6.8,30286,484,11,3,27,13,4692|4747|6324,NDN|NEFL|SCN1B,-0.51
+Hdac4,GO Biological Processes,19,GO:0071363,cellular response to growth factor stimulus,19_GO:0050896 response to stimulus,-3.2,17,6.8,30286,488,11,3,27,13,3096|4297|4692,HIVEP1|KMT2A|NDN,-0.51
+Hdac4,GO Biological Processes,19,GO:0120039,plasma membrane bounded cell projection morphogenesis,19_GO:0032502 developmental process,-3.2,17,6.8,30286,489,11,3,27,13,4692|4747|6324,NDN|NEFL|SCN1B,-0.51
+Hdac4,GO Biological Processes,19,GO:0050804,modulation of chemical synaptic transmission,19_GO:0050789 regulation of biological process,-3.2,17,6.7,30286,493,11,3,27,13,4297|4747|5621,KMT2A|NEFL|PRNP,-0.51
+Hdac4,GO Biological Processes,19,GO:0048858,cell projection morphogenesis,19_GO:0032502 developmental process,-3.2,17,6.7,30286,494,11,3,27,13,4692|4747|6324,NDN|NEFL|SCN1B,-0.51
+Hdac4,GO Biological Processes,19,GO:0099177,regulation of trans-synaptic signaling,19_GO:0050789 regulation of biological process,-3.2,17,6.7,30286,494,11,3,27,13,4297|4747|5621,KMT2A|NEFL|PRNP,-0.51
+Hdac4,GO Biological Processes,19,GO:0003013,circulatory system process,19_GO:0032501 multicellular organismal process,-3.2,16,6.6,30286,508,11,3,27,13,6324|6327|23576,SCN1B|SCN2B|DDAH1,-0.48
+Hdac4,GO Biological Processes,19,GO:0070848,response to growth factor,19_GO:0050896 response to stimulus,-3.1,16,6.5,30286,520,11,3,27,13,3096|4297|4692,HIVEP1|KMT2A|NDN,-0.46
+Hdac4,Reactome Gene Sets,6,R-HSA-422475,Axon guidance,,-3.1,15,6.3,30286,548,11,3,27,13,5621|6324|6327,PRNP|SCN1B|SCN2B,-0.4
+Hdac4,GO Biological Processes,19,GO:0044057,regulation of system process,19_GO:0032501 multicellular organismal process,-3,15,6.3,30286,561,11,3,27,13,801|6324|6327,CALM1|SCN1B|SCN2B,-0.38
+Hdac4,Reactome Gene Sets,6,R-HSA-9675108,Nervous system development,,-3,14,6.2,30286,573,11,3,27,13,5621|6324|6327,PRNP|SCN1B|SCN2B,-0.37
+Hdac4,GO Biological Processes,19,GO:0032989,cellular anatomical entity morphogenesis,19_GO:0032502 developmental process,-2.9,14,6,30286,605,11,3,27,13,4692|4747|6324,NDN|NEFL|SCN1B,-0.31
+Hdac4,Reactome Gene Sets,6,R-HSA-9709957,Sensory Perception,,-2.9,14,6,30286,609,11,3,27,13,801|6324|6327,CALM1|SCN1B|SCN2B,-0.31
+Hdac4,GO Biological Processes,19,GO:0120035,regulation of plasma membrane bounded cell projection organization,19_GO:0050789 regulation of biological process,-2.8,13,5.7,30286,659,11,3,27,13,4747|5621|6324,NEFL|PRNP|SCN1B,-0.22
+Hdac4,GO Biological Processes,19,GO:0031344,regulation of cell projection organization,19_GO:0050789 regulation of biological process,-2.8,12,5.6,30286,676,11,3,27,13,4747|5621|6324,NEFL|PRNP|SCN1B,-0.19
+Hdac4,GO Biological Processes,19,GO:0000902,cell morphogenesis,19_GO:0032502 developmental process,-2.8,12,5.6,30286,681,11,3,27,13,4692|4747|6324,NDN|NEFL|SCN1B,-0.19
+Hdac4,GO Biological Processes,19,GO:0031175,neuron projection development,19_GO:0032502 developmental process,-2.8,12,5.6,30286,691,11,3,27,13,4692|4747|6324,NDN|NEFL|SCN1B,-0.18
+Hdac4,GO Biological Processes,19,GO:0031401,positive regulation of protein modification process,19_GO:0048518 positive regulation of biological process,-2.6,11,5.2,30286,764,11,3,27,13,801|4692|5621,CALM1|NDN|PRNP,-0.065
+Hdac4,GO Biological Processes,19,GO:0008285,negative regulation of cell population proliferation,19_GO:0048519 negative regulation of biological process,-2.6,10,5.1,30286,791,11,3,27,13,4297|5621|23576,KMT2A|PRNP|DDAH1,-0.03
+Hdac4_MCODE_ALL,Reactome Gene Sets,6,R-HSA-5673001,RAF/MAP kinase cascade,,-5.5,81,15,30286,280,4,3,75,22,801|4747|7529,CALM1|NEFL|YWHAB,-2.2
+Hdac4_MCODE_ALL,Reactome Gene Sets,6,R-HSA-5684996,MAPK1/MAPK3 signaling,,-5.5,79,15,30286,286,4,3,75,22,801|4747|7529,CALM1|NEFL|YWHAB,-2.2
+Hdac4_MCODE_ALL,Reactome Gene Sets,6,R-HSA-5683057,MAPK family signaling cascades,,-5.3,70,14,30286,325,4,3,75,22,801|4747|7529,CALM1|NEFL|YWHAB,-2.1
+Hdac4_MCODE_ALL,GO Biological Processes,19,GO:0010035,response to inorganic substance,19_GO:0050896 response to stimulus,-4.7,43,11,30286,527,4,3,75,22,801|4297|4747,CALM1|KMT2A|NEFL,-1.7
+Hdac4_SUB1_MCODE_1,Reactome Gene Sets,6,R-HSA-5673001,RAF/MAP kinase cascade,,-5.5,81,15,30286,280,4,3,75,22,801|4747|7529,CALM1|NEFL|YWHAB,-2.2
+Hdac4_SUB1_MCODE_1,Reactome Gene Sets,6,R-HSA-5684996,MAPK1/MAPK3 signaling,,-5.5,79,15,30286,286,4,3,75,22,801|4747|7529,CALM1|NEFL|YWHAB,-2.2
+Hdac4_SUB1_MCODE_1,Reactome Gene Sets,6,R-HSA-5683057,MAPK family signaling cascades,,-5.3,70,14,30286,325,4,3,75,22,801|4747|7529,CALM1|NEFL|YWHAB,-2.1
+Hdac4_SUB1_MCODE_1,GO Biological Processes,19,GO:0010035,response to inorganic substance,19_GO:0050896 response to stimulus,-4.7,43,11,30286,527,4,3,75,22,801|4297|4747,CALM1|KMT2A|NEFL,-1.7

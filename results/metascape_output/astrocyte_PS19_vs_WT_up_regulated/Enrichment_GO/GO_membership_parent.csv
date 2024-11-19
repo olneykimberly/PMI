@@ -1,0 +1,11 @@
+_MEMBER_Sulf1,_LogP_Sulf1,GO,Description,_PATTERN_,_RANK_,CHILD_GO_Sulf1
+1,-4.603909505681457,GO:0002376,immune system process,M1,1,GO:0050778 positive regulation of immune response
+1,-3.5061693947443087,GO:0050789,regulation of biological process,M1,1,GO:0120035 regulation of plasma membrane bounded cell projection organization
+1,-3.482677805923037,GO:0032502,developmental process,M1,1,GO:0010977 negative regulation of neuron projection development
+1,-3.2948827353074233,GO:0048519,negative regulation of biological process,M1,1,GO:0051129 negative regulation of cellular component organization
+1,-3.281464305980929,GO:0050896,response to stimulus,M1,1,GO:0071345 cellular response to cytokine stimulus
+1,-3.233743039234086,GO:0048518,positive regulation of biological process,M1,1,GO:0031349 positive regulation of defense response
+1,-3.1851973290079254,GO:0044419,biological process involved in interspecies interaction between organisms,M1,1,GO:0045087 innate immune response
+1,-2.325688112734994,GO:0065007,biological regulation,M1,1,GO:0032535 regulation of cellular component size
+1,-2.2378786328255837,GO:0051179,localization,M1,1,GO:0015711 organic anion transport
+1,-2.142658962921357,GO:0040011,locomotion,M1,1,GO:0040013 negative regulation of locomotion

@@ -1,0 +1,11 @@
+_MEMBER_Abi2,_LogP_Abi2,GO,Description,_PATTERN_,_RANK_,CHILD_GO_Abi2
+1,-7.194515008132106,GO:0048519,negative regulation of biological process,M1,1,GO:1900272 negative regulation of long-term synaptic potentiation
+1,-6.600203383550963,GO:0050789,regulation of biological process,M1,1,GO:0050807 regulation of synapse organization
+1,-6.547738479672897,GO:0065007,biological regulation,M1,1,GO:0050803 regulation of synapse structure or activity
+1,-6.348671141892021,GO:0009987,cellular process,M1,1,GO:0034330 cell junction organization
+1,-5.551024825096324,GO:0048518,positive regulation of biological process,M1,1,GO:1900271 regulation of long-term synaptic potentiation
+1,-4.357048439907013,GO:0032502,developmental process,M1,1,GO:0007416 synapse assembly
+1,-4.261140445886352,GO:0032501,multicellular organismal process,M1,1,GO:0007613 memory
+1,-2.966691268196863,GO:0051179,localization,M1,1,GO:0006869 lipid transport
+1,-2.723847882801952,GO:0042592,homeostatic process,M1,1,GO:0030003 intracellular monoatomic cation homeostasis
+1,-2.2960746863063575,GO:0008152,metabolic process,M1,1,GO:0030162 regulation of proteolysis

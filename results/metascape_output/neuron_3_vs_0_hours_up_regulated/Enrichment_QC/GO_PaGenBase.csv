@@ -1,0 +1,2 @@
+_MEMBER_Npas2,_LogP_Npas2,GO,_PATTERN_,_RANK_,GiniIndex,Category,CategoryID,Description,PARENT_GO,LogP,Enrichment,Z-score,#TotalGeneInLibrary,#GeneInGO,#GeneInHitList,#GeneInGOAndHitList,%InGO,STDV %InGO,GeneID,Hits,Log(q-value),EvidenceCutoff
+1,-2.3,PGB:00065,M1,1,0,PaGenBase,36,Cell-specific: DRG,,-2.3,4.4,3.7,30286,455,75,5,6.7,2.9,1301|1850|3745|3800|4297,COL11A1|DUSP8|KCNB1|KIF5C|KMT2A,0,0

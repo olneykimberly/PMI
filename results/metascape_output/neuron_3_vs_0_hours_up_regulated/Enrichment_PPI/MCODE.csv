@@ -1,0 +1,9 @@
+Cluster,Score,Type,Gene,Symbol,Network
+1,3.5,Clustered,6193,RPS5,Npas2_SUB1
+1,3.5,Clustered,6139,RPL17,Npas2_SUB1
+1,3.5,Clustered,3788,KCNS2,Npas2_SUB1
+1,3.5,Clustered,3787,KCNS1,Npas2_SUB1
+1,3.5,Seed,6154,RPL26,Npas2_SUB1
+1,3.5,Clustered,6201,RPS7,Npas2_SUB1
+1,3.5,Clustered,3745,KCNB1,Npas2_SUB1
+1,3.5,Clustered,6160,RPL31,Npas2_SUB1

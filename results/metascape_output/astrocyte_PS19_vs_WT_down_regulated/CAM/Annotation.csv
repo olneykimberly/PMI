@@ -1,0 +1,4 @@
+Gene,Gene Symbol,Description,Biological Process (GO),Protein Function (Protein Atlas),Subcellular Location (Protein Atlas),Hallmark Gene Sets
+5411,PNN,"pinin, desmosome associated protein","GO:0000377 RNA splicing, via transesterification reactions with bulged adenosine as nucleophile;GO:0000398 mRNA splicing, via spliceosome;GO:0000375 RNA splicing, via transesterification reactions",Transporters:Primary Active Transporters; Predicted intracellular proteins,Nuclear speckles (Supported),(M5925)HALLMARK E2F TARGETS
+132720,FAM241A,family with sequence similarity 241 member A,,,Golgi apparatus (Enhanced),
+153339,TMEM167A,transmembrane protein 167A,GO:0045054 constitutive secretory pathway;GO:0009306 protein secretion;GO:0035592 establishment of protein localization to extracellular region,,Vesicles (Approved),

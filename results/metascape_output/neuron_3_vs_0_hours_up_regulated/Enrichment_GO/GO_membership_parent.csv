@@ -1,0 +1,15 @@
+_MEMBER_Npas2,_LogP_Npas2,GO,Description,_PATTERN_,_RANK_,CHILD_GO_Npas2
+1,-6.833934803606751,GO:0051179,localization,M1,1,GO:1903530 regulation of secretion by cell
+1,-5.229604546328532,GO:0065007,biological regulation,M1,1,GO:0001508 action potential
+1,-5.062585662936666,GO:0009987,cellular process,M1,1,GO:0051260 protein homooligomerization
+1,-4.78662325527532,GO:0008152,metabolic process,M1,1,GO:0002181 cytoplasmic translation
+1,-4.174570256372228,GO:0048518,positive regulation of biological process,M1,1,GO:0043065 positive regulation of apoptotic process
+1,-3.9719591872244564,GO:0048519,negative regulation of biological process,M1,1,GO:0033144 negative regulation of intracellular steroid hormone receptor signaling pathway
+1,-3.7357969459088265,GO:0002376,immune system process,M1,1,GO:0046649 lymphocyte activation
+1,-3.56345917588107,GO:0050896,response to stimulus,M1,1,GO:0010038 response to metal ion
+1,-3.3673577077326766,GO:0032501,multicellular organismal process,M1,1,GO:0019226 transmission of nerve impulse
+1,-3.149533582847612,GO:0048511,rhythmic process,M1,1,GO:0032922 circadian regulation of gene expression
+1,-2.8195627051157484,GO:0042592,homeostatic process,M1,1,GO:0019725 cellular homeostasis
+1,-2.6596608203605925,GO:0032502,developmental process,M1,1,GO:0007420 brain development
+1,-2.391105092842973,GO:0040007,growth,M1,1,GO:0048589 developmental growth
+1,-2.2391348903918775,GO:0050789,regulation of biological process,M1,1,GO:0099536 synaptic signaling

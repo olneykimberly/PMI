@@ -1,0 +1,5 @@
+_MEMBER_Lrp1b,_LogP_Lrp1b,GO,_PATTERN_,_RANK_,GiniIndex,Category,CategoryID,Description,PARENT_GO,LogP,Enrichment,Z-score,#TotalGeneInLibrary,#GeneInGO,#GeneInHitList,#GeneInGOAndHitList,%InGO,STDV %InGO,GeneID,Hits,Log(q-value),EvidenceCutoff
+1,-4.7,C0019569,M1,1,0,DisGeNET,35,Hirschsprung Disease,,-4.7,47,12,30286,384,5,3,60,22,5101|22871|23236,PCDH9|NLGN1|PLCB1,-0.65,0
+1,-4.7,C0037369,M1,1,0,DisGeNET,35,Smoking,,-4.7,46,12,30286,391,5,3,60,22,5101|23236|253559,PCDH9|PLCB1|CADM2,-0.65,0
+1,-4,C0041696,M1,1,0,DisGeNET,35,Unipolar Depression,,-4,28,9,30286,641,5,3,60,22,4045|5101|23236,LSAMP|PCDH9|PLCB1,-0.15,0
+1,-4,C0023508,M1,1,0,DisGeNET,35,White Blood Cell Count procedure,,-4,27,8.7,30286,681,5,3,60,22,4045|22871|23236,LSAMP|NLGN1|PLCB1,-0.15,0

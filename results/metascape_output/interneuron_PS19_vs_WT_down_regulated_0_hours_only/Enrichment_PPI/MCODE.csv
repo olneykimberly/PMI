@@ -1,0 +1,12 @@
+Cluster,Score,Type,Gene,Symbol,Network
+1,1.25,Clustered,7529,YWHAB,Kansl1l_SUB1
+1,1.25,Clustered,3326,HSP90AB1,Kansl1l_SUB1
+1,1.25,Seed,4282,MIF,Kansl1l_SUB1
+1,1.25,Clustered,6613,SUMO2,Kansl1l_SUB1
+1,1.25,Clustered,805,CALM2,Kansl1l_SUB1
+1,1.25,Clustered,808,CALM3,Kansl1l_SUB1
+1,1.25,Clustered,3358,HTR2C,Kansl1l_SUB1
+1,1.25,Clustered,7167,TPI1,Kansl1l_SUB1
+2,1.0,Clustered,3151,HMGN2,Kansl1l_SUB1
+2,1.0,Seed,373509,USP50,Kansl1l_SUB1
+2,1.0,Clustered,23204,ARL6IP1,Kansl1l_SUB1

@@ -1,0 +1,64 @@
+Category,CategoryID,GO,Description,PARENT_GO,LogP,Enrichment,Z-score,#TotalGeneInLibrary,#GeneInGO,#GeneInHitList,#GeneInGOAndHitList,%InGO,STDV %InGO,GeneID,Hits,Log(q-value),GeneList
+CORUM,33,CORUM:306,"Ribosome, cytoplasmic",,-6.1,54,14,30286,80,28,4,14,6.6,6170|6227|6232|23521,RPL39|RPS21|RPS27|RPL13A,-2.3,Rpl37a
+Reactome Gene Sets,6,R-HSA-192823,Viral mRNA Translation,,-5.8,48,14,30286,90,28,4,14,6.6,6170|6227|6232|23521,RPL39|RPS21|RPS27|RPL13A,-2.3,Rpl37a
+Reactome Gene Sets,6,R-HSA-156902,Peptide chain elongation,,-5.8,48,14,30286,90,28,4,14,6.6,6170|6227|6232|23521,RPL39|RPS21|RPS27|RPL13A,-2.3,Rpl37a
+Reactome Gene Sets,6,R-HSA-156842,Eukaryotic Translation Elongation,,-5.8,46,13,30286,94,28,4,14,6.6,6170|6227|6232|23521,RPL39|RPS21|RPS27|RPL13A,-2.3,Rpl37a
+Reactome Gene Sets,6,R-HSA-72764,Eukaryotic Translation Termination,,-5.8,46,13,30286,94,28,4,14,6.6,6170|6227|6232|23521,RPL39|RPS21|RPS27|RPL13A,-2.3,Rpl37a
+Reactome Gene Sets,6,R-HSA-2408557,Selenocysteine synthesis,,-5.8,46,13,30286,94,28,4,14,6.6,6170|6227|6232|23521,RPL39|RPS21|RPS27|RPL13A,-2.3,Rpl37a
+Reactome Gene Sets,6,R-HSA-975956,Nonsense Mediated Decay (NMD) independent of the Exon Junction Complex (EJC),,-5.7,45,13,30286,96,28,4,14,6.6,6170|6227|6232|23521,RPL39|RPS21|RPS27|RPL13A,-2.3,Rpl37a
+Reactome Gene Sets,6,R-HSA-9633012,Response of EIF2AK4 (GCN2) to amino acid deficiency,,-5.6,42,13,30286,102,28,4,14,6.6,6170|6227|6232|23521,RPL39|RPS21|RPS27|RPL13A,-2.3,Rpl37a
+Reactome Gene Sets,6,R-HSA-72689,Formation of a pool of free 40S subunits,,-5.6,42,13,30286,102,28,4,14,6.6,6170|6227|6232|23521,RPL39|RPS21|RPS27|RPL13A,-2.3,Rpl37a
+Reactome Gene Sets,6,R-HSA-156827,L13a-mediated translational silencing of Ceruloplasmin expression,,-5.5,39,12,30286,112,28,4,14,6.6,6170|6227|6232|23521,RPL39|RPS21|RPS27|RPL13A,-2.3,Rpl37a
+Reactome Gene Sets,6,R-HSA-1799339,SRP-dependent cotranslational protein targeting to membrane,,-5.5,38,12,30286,113,28,4,14,6.6,6170|6227|6232|23521,RPL39|RPS21|RPS27|RPL13A,-2.3,Rpl37a
+Reactome Gene Sets,6,R-HSA-72706,GTP hydrolysis and joining of the 60S ribosomal subunit,,-5.5,38,12,30286,113,28,4,14,6.6,6170|6227|6232|23521,RPL39|RPS21|RPS27|RPL13A,-2.3,Rpl37a
+Reactome Gene Sets,6,R-HSA-975957,Nonsense Mediated Decay (NMD) enhanced by the Exon Junction Complex (EJC),,-5.4,37,12,30286,116,28,4,14,6.6,6170|6227|6232|23521,RPL39|RPS21|RPS27|RPL13A,-2.3,Rpl37a
+Reactome Gene Sets,6,R-HSA-927802,Nonsense-Mediated Decay (NMD),,-5.4,37,12,30286,116,28,4,14,6.6,6170|6227|6232|23521,RPL39|RPS21|RPS27|RPL13A,-2.3,Rpl37a
+Reactome Gene Sets,6,R-HSA-2408522,Selenoamino acid metabolism,,-5.4,36,12,30286,119,28,4,14,6.6,6170|6227|6232|23521,RPL39|RPS21|RPS27|RPL13A,-2.3,Rpl37a
+Reactome Gene Sets,6,R-HSA-72737,Cap-dependent Translation Initiation,,-5.4,36,12,30286,120,28,4,14,6.6,6170|6227|6232|23521,RPL39|RPS21|RPS27|RPL13A,-2.3,Rpl37a
+Reactome Gene Sets,6,R-HSA-72613,Eukaryotic Translation Initiation,,-5.4,36,12,30286,120,28,4,14,6.6,6170|6227|6232|23521,RPL39|RPS21|RPS27|RPL13A,-2.3,Rpl37a
+GO Biological Processes,19,GO:0002181,cytoplasmic translation,19_GO:0008152 metabolic process,-5.3,34,11,30286,127,28,4,14,6.6,6170|6227|6232|23521,RPL39|RPS21|RPS27|RPL13A,-2.2,Rpl37a
+Reactome Gene Sets,6,R-HSA-168273,Influenza Viral RNA Transcription and Replication,,-5.1,32,11,30286,136,28,4,14,6.6,6170|6227|6232|23521,RPL39|RPS21|RPS27|RPL13A,-2.1,Rpl37a
+Reactome Gene Sets,6,R-HSA-422475,Axon guidance,,-5,12,7.8,30286,548,28,6,21,7.8,3984|5621|6170|6227|6232|23521,LIMK1|PRNP|RPL39|RPS21|RPS27|RPL13A,-2,Rpl37a
+Reactome Gene Sets,6,R-HSA-9675108,Nervous system development,,-4.9,11,7.6,30286,573,28,6,21,7.8,3984|5621|6170|6227|6232|23521,LIMK1|PRNP|RPL39|RPS21|RPS27|RPL13A,-1.9,Rpl37a
+Reactome Gene Sets,6,R-HSA-168255,Influenza Infection,,-4.9,28,10,30286,157,28,4,14,6.6,6170|6227|6232|23521,RPL39|RPS21|RPS27|RPL13A,-1.9,Rpl37a
+Reactome Gene Sets,6,R-HSA-9711097,Cellular response to starvation,,-4.9,28,10,30286,157,28,4,14,6.6,6170|6227|6232|23521,RPL39|RPS21|RPS27|RPL13A,-1.9,Rpl37a
+KEGG Pathway,24,hsa03010,Ribosome,,-4.8,25,9.7,30286,170,28,4,14,6.6,6170|6227|6232|23521,RPL39|RPS21|RPS27|RPL13A,-1.8,Rpl37a
+Reactome Gene Sets,6,R-HSA-9010553,Regulation of expression of SLITs and ROBOs,,-4.7,25,9.7,30286,172,28,4,14,6.6,6170|6227|6232|23521,RPL39|RPS21|RPS27|RPL13A,-1.8,Rpl37a
+Reactome Gene Sets,6,R-HSA-6791226,Major pathway of rRNA processing in the nucleolus and cytosol,,-4.6,23,9.3,30286,185,28,4,14,6.6,6170|6227|6232|23521,RPL39|RPS21|RPS27|RPL13A,-1.7,Rpl37a
+Reactome Gene Sets,6,R-HSA-8868773,rRNA processing in the nucleus and cytosol,,-4.5,22,9,30286,195,28,4,14,6.6,6170|6227|6232|23521,RPL39|RPS21|RPS27|RPL13A,-1.6,Rpl37a
+Reactome Gene Sets,6,R-HSA-72312,rRNA processing,,-4.4,21,8.8,30286,205,28,4,14,6.6,6170|6227|6232|23521,RPL39|RPS21|RPS27|RPL13A,-1.6,Rpl37a
+Reactome Gene Sets,6,R-HSA-376176,Signaling by ROBO receptors,,-4.3,20,8.5,30286,219,28,4,14,6.6,6170|6227|6232|23521,RPL39|RPS21|RPS27|RPL13A,-1.5,Rpl37a
+KEGG Pathway,24,hsa05171,Coronavirus disease - COVID-19,,-4.2,19,8.2,30286,233,28,4,14,6.6,6170|6227|6232|23521,RPL39|RPS21|RPS27|RPL13A,-1.4,Rpl37a
+GO Biological Processes,19,GO:0030516,regulation of axon extension,19_GO:0040007 growth,-4.1,35,10,30286,92,28,3,11,5.8,3984|4504|118813,LIMK1|MT3|ZFYVE27,-1.2,Rpl37a
+GO Biological Processes,19,GO:0061387,regulation of extent of cell growth,19_GO:0040007 growth,-3.9,30,9.2,30286,109,28,3,11,5.8,3984|4504|118813,LIMK1|MT3|ZFYVE27,-1,Rpl37a
+Reactome Gene Sets,6,R-HSA-72766,Translation,,-3.8,15,7.2,30286,292,28,4,14,6.6,6170|6227|6232|23521,RPL39|RPS21|RPS27|RPL13A,-1,Rpl37a
+GO Biological Processes,19,GO:0048638,regulation of developmental growth,19_GO:0040007 growth,-3.6,13,6.7,30286,330,28,4,14,6.6,3984|4504|59284|118813,LIMK1|MT3|CACNG7|ZFYVE27,-0.84,Rpl37a
+Reactome Gene Sets,6,R-HSA-71291,Metabolism of amino acids and derivatives,,-3.5,12,6.3,30286,367,28,4,14,6.6,6170|6227|6232|23521,RPL39|RPS21|RPS27|RPL13A,-0.68,Rpl37a
+GO Biological Processes,19,GO:0050770,regulation of axonogenesis,19_GO:0032502 developmental process,-3.4,21,7.5,30286,156,28,3,11,5.8,3984|4504|118813,LIMK1|MT3|ZFYVE27,-0.63,Rpl37a
+GO Biological Processes,19,GO:0006412,translation,19_GO:0008152 metabolic process,-3.4,11,6.1,30286,392,28,4,14,6.6,6170|6227|6232|23521,RPL39|RPS21|RPS27|RPL13A,-0.6,Rpl37a
+GO Biological Processes,19,GO:0030307,positive regulation of cell growth,19_GO:0040007 growth,-3.3,20,7.4,30286,163,28,3,11,5.8,3984|59284|118813,LIMK1|CACNG7|ZFYVE27,-0.6,Rpl37a
+GO Biological Processes,19,GO:0048639,positive regulation of developmental growth,19_GO:0040007 growth,-3.3,19,7.2,30286,169,28,3,11,5.8,3984|59284|118813,LIMK1|CACNG7|ZFYVE27,-0.56,Rpl37a
+GO Biological Processes,19,GO:0001558,regulation of cell growth,19_GO:0040007 growth,-3.2,10,5.9,30286,418,28,4,14,6.6,3984|4504|59284|118813,LIMK1|MT3|CACNG7|ZFYVE27,-0.52,Rpl37a
+GO Biological Processes,19,GO:0043043,peptide biosynthetic process,19_GO:0008152 metabolic process,-3.2,10,5.8,30286,421,28,4,14,6.6,6170|6227|6232|23521,RPL39|RPS21|RPS27|RPL13A,-0.52,Rpl37a
+GO Biological Processes,19,GO:0008361,regulation of cell size,19_GO:0065007 biological regulation,-3.2,17,6.8,30286,188,28,3,11,5.8,3984|4504|118813,LIMK1|MT3|ZFYVE27,-0.46,Rpl37a
+GO Biological Processes,19,GO:0031329,regulation of cellular catabolic process,19_GO:0008152 metabolic process,-3.2,6.9,5.1,30286,788,28,5,18,7.2,4504|5127|25851|57060|59284,MT3|CDK16|TECPR1|PCBP4|CACNG7,-0.46,Rpl37a
+GO Biological Processes,19,GO:0034249,negative regulation of amide metabolic process,19_GO:0048519 negative regulation of biological process,-2.9,14,6,30286,234,28,3,11,5.8,1191|5621|23521,CLU|PRNP|RPL13A,-0.2,Rpl37a
+GO Biological Processes,19,GO:0043523,regulation of neuron apoptotic process,19_GO:0050789 regulation of biological process,-2.8,13,5.9,30286,244,28,3,11,5.8,1191|4504|5621,CLU|MT3|PRNP,-0.17,Rpl37a
+GO Biological Processes,19,GO:0043604,amide biosynthetic process,19_GO:0008152 metabolic process,-2.8,8,5,30286,542,28,4,14,6.6,6170|6227|6232|23521,RPL39|RPS21|RPS27|RPL13A,-0.17,Rpl37a
+GO Biological Processes,19,GO:0006518,peptide metabolic process,19_GO:0008152 metabolic process,-2.8,7.9,4.9,30286,551,28,4,14,6.6,6170|6227|6232|23521,RPL39|RPS21|RPS27|RPL13A,-0.15,Rpl37a
+GO Biological Processes,19,GO:0045927,positive regulation of growth,19_GO:0040007 growth,-2.8,13,5.7,30286,258,28,3,11,5.8,3984|59284|118813,LIMK1|CACNG7|ZFYVE27,-0.12,Rpl37a
+GO Biological Processes,19,GO:1902532,negative regulation of intracellular signal transduction,19_GO:0048519 negative regulation of biological process,-2.7,7.3,4.7,30286,591,28,4,14,6.6,1191|5621|11113|57447,CLU|PRNP|CIT|NDRG2,-0.056,Rpl37a
+GO Biological Processes,19,GO:0040008,regulation of growth,19_GO:0040007 growth,-2.6,7,4.6,30286,618,28,4,14,6.6,3984|4504|59284|118813,LIMK1|MT3|CACNG7|ZFYVE27,0,Rpl37a
+GO Biological Processes,19,GO:0120035,regulation of plasma membrane bounded cell projection organization,19_GO:0050789 regulation of biological process,-2.5,6.6,4.4,30286,659,28,4,14,6.6,3984|4504|5621|118813,LIMK1|MT3|PRNP|ZFYVE27,0,Rpl37a
+GO Biological Processes,19,GO:0031344,regulation of cell projection organization,19_GO:0050789 regulation of biological process,-2.5,6.4,4.3,30286,676,28,4,14,6.6,3984|4504|5621|118813,LIMK1|MT3|PRNP|ZFYVE27,0,Rpl37a
+GO Biological Processes,19,GO:0031647,regulation of protein stability,19_GO:0065007 biological regulation,-2.5,10,4.9,30286,326,28,3,11,5.8,1191|4504|5621,CLU|MT3|PRNP,0,Rpl37a
+Reactome Gene Sets,6,R-HSA-195258,RHO GTPase Effectors,,-2.5,10,4.9,30286,326,28,3,11,5.8,3984|6232|11113,LIMK1|RPS27|CIT,0,Rpl37a
+Reactome Gene Sets,6,R-HSA-8953854,Metabolism of RNA,,-2.4,6,4.1,30286,726,28,4,14,6.6,6170|6227|6232|23521,RPL39|RPS21|RPS27|RPL13A,0,Rpl37a
+GO Biological Processes,19,GO:0051129,negative regulation of cellular component organization,19_GO:0048519 negative regulation of biological process,-2.4,5.9,4.1,30286,733,28,4,14,6.6,1191|4504|5621|23521,CLU|MT3|PRNP|RPL13A,0,Rpl37a
+GO Biological Processes,19,GO:0006979,response to oxidative stress,19_GO:0050896 response to stimulus,-2.3,8.9,4.6,30286,366,28,3,11,5.8,824|4504|5621,CAPN2|MT3|PRNP,0,Rpl37a
+GO Biological Processes,19,GO:0032535,regulation of cellular component size,19_GO:0065007 biological regulation,-2.3,8.8,4.6,30286,370,28,3,11,5.8,3984|4504|118813,LIMK1|MT3|ZFYVE27,0,Rpl37a
+GO Biological Processes,19,GO:0050767,regulation of neurogenesis,19_GO:0032502 developmental process,-2.3,8.3,4.4,30286,393,28,3,11,5.8,3984|4504|118813,LIMK1|MT3|ZFYVE27,0,Rpl37a
+GO Biological Processes,19,GO:1903311,regulation of mRNA metabolic process,19_GO:0008152 metabolic process,-2.2,8,4.3,30286,404,28,3,11,5.8,26528|57060|59284,DAZAP1|PCBP4|CACNG7,0,Rpl37a
+GO Biological Processes,19,GO:0010975,regulation of neuron projection development,19_GO:0032502 developmental process,-2.1,7.1,4,30286,460,28,3,11,5.8,3984|4504|118813,LIMK1|MT3|ZFYVE27,0,Rpl37a
+GO Biological Processes,19,GO:0051960,regulation of nervous system development,19_GO:0032502 developmental process,-2,6.9,3.9,30286,468,28,3,11,5.8,3984|4504|118813,LIMK1|MT3|ZFYVE27,0,Rpl37a
+KEGG Pathway,24,hsa05022,Pathways of neurodegeneration - multiple diseases,,-2,6.8,3.9,30286,476,28,3,11,5.8,824|5621|201625,CAPN2|PRNP|DNAH12,0,Rpl37a

@@ -1,0 +1,2 @@
+_MEMBER_Lrp4,_LogP_Lrp4,GO,_PATTERN_,_RANK_,GiniIndex,Category,CategoryID,Description,PARENT_GO,LogP,Enrichment,Z-score,#TotalGeneInLibrary,#GeneInGO,#GeneInHitList,#GeneInGOAndHitList,%InGO,STDV %InGO,GeneID,Hits,Log(q-value),EvidenceCutoff,GROUP_ID,FirstInGroupByEnrichment,FirstInGroupByLogP
+1,-4.2570161401799815,GO:0048511,M1,1,0,GO Biological Processes,19,rhythmic process,19_GO:0048511 rhythmic process,-4.2570161401799815,37.669154228855724,10.395755023735083,30286,268,9,3,33.333333333333336,15.713484026367725,1628|7008|148523,DBP|TEF|CIART,0.0,0,1,1,1

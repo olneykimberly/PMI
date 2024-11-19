@@ -1,0 +1,2 @@
+_MEMBER_Per2,_LogP_Per2,GO,_PATTERN_,_RANK_,GiniIndex,Category,CategoryID,Description,PARENT_GO,LogP,Enrichment,Z-score,#TotalGeneInLibrary,#GeneInGO,#GeneInHitList,#GeneInGOAndHitList,%InGO,STDV %InGO,GeneID,Hits,Log(q-value),EvidenceCutoff
+1,-3.2,COVID010,M1,1,0,COVID,200,RNA_Blanco-Melo_A549-ACE2_Up,,-3.2,18,6.9,30286,300,17,3,18,9.2,8863|56261|153222,PER3|GPCPD1|CREBRF,0,0

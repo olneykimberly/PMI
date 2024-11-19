@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<graph label="Ccdc115_MCODE_ALL" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:cy="http://www.cytoscape.org" xmlns="http://www.cs.rpi.edu/XGMML" >
+  <att name="documentVersion" value="1.1"/>
+  <att name="networkMetadata">
+    <rdf:RDF>
+      <rdf:Description rdf:about="http://www.cytoscape.org/">
+        <dc:type>Protein-Protein Interaction</dc:type>
+        <dc:description>N/A</dc:description>
+        <dc:identifier>N/A</dc:identifier>
+        <dc:date>2024-07-16 14:21:19</dc:date>
+        <dc:title>Cytoscape Network</dc:title>
+        <dc:source>http://www.cytoscape.org/</dc:source>
+        <dc:format>Cytoscape-XGMML</dc:format>
+      </rdf:Description>
+    </rdf:RDF>
+  </att>
+  <att type="string" name="backgroundColor" value="#ffffff"/>
+  <att type="real" name="GRAPH_VIEW_ZOOM" value="1.0"/>
+  <att type="real" name="GRAPH_VIEW_CENTER_X" value="300.0"/>
+  <att type="real" name="GRAPH_VIEW_CENTER_Y" value="300.0"/>
+  <node label="FGF1" id="1">
+    <att type="string" name="canonicalName" value="FGF1"/>
+    <att type="string" name="Gene" value="2246"/>
+    <att type="string" name="Symbol" value="FGF1"/>
+    <att type="integer" name="id_type_id" value="1"/>
+    <att type="integer" name="MCODE_CLUSTER_ID" value="2"/>
+    <att type="real" name="MCODE_SCORE" value="1.25"/>
+    <att type="string" name="MCODE_TYPE" value="Seed"/>
+    <att type="integer" name="DEGREE" value="2"/>
+    <graphics type="CIRCLE" x="178.34051681856403" y="184.34996758198363"/>
+  </node>
+  <node label="FGFR2" id="2">
+    <att type="string" name="canonicalName" value="FGFR2"/>
+    <att type="string" name="Gene" value="2263"/>
+    <att type="string" name="Symbol" value="FGFR2"/>
+    <att type="integer" name="id_type_id" value="1"/>
+    <att type="integer" name="MCODE_CLUSTER_ID" value="2"/>
+    <att type="real" name="MCODE_SCORE" value="1.25"/>
+    <att type="string" name="MCODE_TYPE" value="Clustered"/>
+    <att type="integer" name="DEGREE" value="3"/>
+    <graphics type="CIRCLE" x="234.87003725362257" y="310.3537390710068"/>
+  </node>
+  <node label="LYN" id="3">
+    <att type="string" name="canonicalName" value="LYN"/>
+    <att type="string" name="Gene" value="4067"/>
+    <att type="string" name="Symbol" value="LYN"/>
+    <att type="integer" name="id_type_id" value="1"/>
+    <att type="integer" name="MCODE_CLUSTER_ID" value="2"/>
+    <att type="real" name="MCODE_SCORE" value="1.25"/>
+    <att type="string" name="MCODE_TYPE" value="Clustered"/>
+    <att type="integer" name="DEGREE" value="2"/>
+    <graphics type="CIRCLE" x="239.2434734793698" y="230.50097220054244"/>
+  </node>
+  <node label="UBB" id="4">
+    <att type="string" name="canonicalName" value="UBB"/>
+    <att type="string" name="Gene" value="7314"/>
+    <att type="string" name="Symbol" value="UBB"/>
+    <att type="integer" name="id_type_id" value="1"/>
+    <att type="integer" name="MCODE_CLUSTER_ID" value="2"/>
+    <att type="real" name="MCODE_SCORE" value="1.25"/>
+    <att type="string" name="MCODE_TYPE" value="Clustered"/>
+    <att type="integer" name="DEGREE" value="3"/>
+    <graphics type="CIRCLE" x="234.45870045399727" y="296.8728093615232"/>
+  </node>
+  <node label="HNRNPH1" id="5">
+    <att type="string" name="canonicalName" value="HNRNPH1"/>
+    <att type="string" name="Gene" value="3187"/>
+    <att type="string" name="Symbol" value="HNRNPH1"/>
+    <att type="integer" name="id_type_id" value="1"/>
+    <att type="integer" name="MCODE_CLUSTER_ID" value="1"/>
+    <att type="real" name="MCODE_SCORE" value="1.1666666666666667"/>
+    <att type="string" name="MCODE_TYPE" value="Clustered"/>
+    <att type="integer" name="DEGREE" value="3"/>
+    <graphics type="CIRCLE" x="208.96303956473184" y="328.02909071912285"/>
+  </node>
+  <node label="SNU13" id="6">
+    <att type="string" name="canonicalName" value="SNU13"/>
+    <att type="string" name="Gene" value="4809"/>
+    <att type="string" name="Symbol" value="SNU13"/>
+    <att type="integer" name="id_type_id" value="1"/>
+    <att type="integer" name="MCODE_CLUSTER_ID" value="1"/>
+    <att type="real" name="MCODE_SCORE" value="1.1666666666666667"/>
+    <att type="string" name="MCODE_TYPE" value="Clustered"/>
+    <att type="integer" name="DEGREE" value="2"/>
+    <graphics type="CIRCLE" x="310.43379797096236" y="193.9148797193694"/>
+  </node>
+  <node label="PCBP2" id="7">
+    <att type="string" name="canonicalName" value="PCBP2"/>
+    <att type="string" name="Gene" value="5094"/>
+    <att type="string" name="Symbol" value="PCBP2"/>
+    <att type="integer" name="id_type_id" value="1"/>
+    <att type="integer" name="MCODE_CLUSTER_ID" value="1"/>
+    <att type="real" name="MCODE_SCORE" value="1.1666666666666667"/>
+    <att type="string" name="MCODE_TYPE" value="Clustered"/>
+    <att type="integer" name="DEGREE" value="2"/>
+    <graphics type="CIRCLE" x="359.5643502342963" y="339.7259010869632"/>
+  </node>
+  <node label="TOP1" id="8">
+    <att type="string" name="canonicalName" value="TOP1"/>
+    <att type="string" name="Gene" value="7150"/>
+    <att type="string" name="Symbol" value="TOP1"/>
+    <att type="integer" name="id_type_id" value="1"/>
+    <att type="integer" name="MCODE_CLUSTER_ID" value="1"/>
+    <att type="real" name="MCODE_SCORE" value="1.1666666666666667"/>
+    <att type="string" name="MCODE_TYPE" value="Clustered"/>
+    <att type="integer" name="DEGREE" value="2"/>
+    <graphics type="CIRCLE" x="401.6619943463751" y="166.61383363623355"/>
+  </node>
+  <node label="BRCC3" id="9">
+    <att type="string" name="canonicalName" value="BRCC3"/>
+    <att type="string" name="Gene" value="79184"/>
+    <att type="string" name="Symbol" value="BRCC3"/>
+    <att type="integer" name="id_type_id" value="1"/>
+    <att type="integer" name="MCODE_CLUSTER_ID" value="1"/>
+    <att type="real" name="MCODE_SCORE" value="1.1666666666666667"/>
+    <att type="string" name="MCODE_TYPE" value="Clustered"/>
+    <att type="integer" name="DEGREE" value="2"/>
+    <graphics type="CIRCLE" x="373.00801239444644" y="236.66583858715694"/>
+  </node>
+  <node label="HNRNPA3" id="10">
+    <att type="string" name="canonicalName" value="HNRNPA3"/>
+    <att type="string" name="Gene" value="220988"/>
+    <att type="string" name="Symbol" value="HNRNPA3"/>
+    <att type="integer" name="id_type_id" value="1"/>
+    <att type="integer" name="MCODE_CLUSTER_ID" value="1"/>
+    <att type="real" name="MCODE_SCORE" value="1.1666666666666667"/>
+    <att type="string" name="MCODE_TYPE" value="Clustered"/>
+    <att type="integer" name="DEGREE" value="3"/>
+    <graphics type="CIRCLE" x="267.7148513648152" y="334.72752731944684"/>
+  </node>
+  <node label="HSP90AB1" id="11">
+    <att type="string" name="canonicalName" value="HSP90AB1"/>
+    <att type="string" name="Gene" value="3326"/>
+    <att type="string" name="Symbol" value="HSP90AB1"/>
+    <att type="integer" name="id_type_id" value="1"/>
+    <att type="integer" name="MCODE_CLUSTER_ID" value="3"/>
+    <att type="real" name="MCODE_SCORE" value="1.0"/>
+    <att type="string" name="MCODE_TYPE" value="Seed"/>
+    <att type="integer" name="DEGREE" value="2"/>
+    <graphics type="CIRCLE" x="383.8232763056357" y="351.6604819935603"/>
+  </node>
+  <node label="YWHAB" id="12">
+    <att type="string" name="canonicalName" value="YWHAB"/>
+    <att type="string" name="Gene" value="7529"/>
+    <att type="string" name="Symbol" value="YWHAB"/>
+    <att type="integer" name="id_type_id" value="1"/>
+    <att type="integer" name="MCODE_CLUSTER_ID" value="3"/>
+    <att type="real" name="MCODE_SCORE" value="1.0"/>
+    <att type="string" name="MCODE_TYPE" value="Clustered"/>
+    <att type="integer" name="DEGREE" value="2"/>
+    <graphics type="CIRCLE" x="371.41762561313976" y="202.55786921653004"/>
+  </node>
+  <node label="YWHAZ" id="13">
+    <att type="string" name="canonicalName" value="YWHAZ"/>
+    <att type="string" name="Gene" value="7534"/>
+    <att type="string" name="Symbol" value="YWHAZ"/>
+    <att type="integer" name="id_type_id" value="1"/>
+    <att type="integer" name="MCODE_CLUSTER_ID" value="3"/>
+    <att type="real" name="MCODE_SCORE" value="1.0"/>
+    <att type="string" name="MCODE_TYPE" value="Clustered"/>
+    <att type="integer" name="DEGREE" value="2"/>
+    <graphics type="CIRCLE" x="226.97374881156793" y="317.3987988081275"/>
+  </node>
+  <edge label="220988 (pp) 3187" source="10" target="5">
+    <att type="string" name="canonicalName" value="220988 (pp) 3187"/>
+    <att type="string" name="interaction" value="pp"/>
+    <att type="int" name="SCORE" value="783"/>
+    <att type="string" name="support" value="{&quot;StringDB&quot;: &quot;physical&quot;, &quot;StringEvidence&quot;: &quot;textmining:0.773,experiments:0.639,coexpression:0.550,database:0.374&quot;, &quot;BioGrid&quot;: &quot;physical&quot;, &quot;BioGrid_PubMed&quot;: &quot;35271311,26760575,26344197,22939629&quot;, &quot;BioGrid_Type&quot;: &quot;Co-fractionation,Affinity Capture-MS,Affinity Capture-RNA&quot;, &quot;BioGrid_Score&quot;: &quot;1.0,0.805&quot;, &quot;String_Score_Physical&quot;: 783, &quot;String_Score_Combined&quot;: 977}"/>
+  </edge>
+  <edge label="220988 (pp) 5094" source="10" target="7">
+    <att type="string" name="canonicalName" value="220988 (pp) 5094"/>
+    <att type="string" name="interaction" value="pp"/>
+    <att type="int" name="SCORE" value="445"/>
+    <att type="string" name="support" value="{&quot;StringDB&quot;: &quot;physical&quot;, &quot;StringEvidence&quot;: &quot;coexpression:0.774,database:0.374,textmining:0.327,experiments:0.075&quot;, &quot;String_Score_Physical&quot;: 445, &quot;String_Score_Combined&quot;: 915}"/>
+  </edge>
+  <edge label="220988 (pp) 7150" source="10" target="8">
+    <att type="string" name="canonicalName" value="220988 (pp) 7150"/>
+    <att type="string" name="interaction" value="pp"/>
+    <att type="int" name="SCORE" value="422"/>
+    <att type="string" name="support" value="{&quot;StringDB&quot;: &quot;physical&quot;, &quot;StringEvidence&quot;: &quot;experiments:0.397,coexpression:0.187,textmining:0.022&quot;, &quot;BioGrid&quot;: &quot;physical&quot;, &quot;BioGrid_PubMed&quot;: &quot;35271311,15848144&quot;, &quot;BioGrid_Type&quot;: &quot;Affinity Capture-MS&quot;, &quot;String_Score_Physical&quot;: 422, &quot;String_Score_Combined&quot;: 540}"/>
+  </edge>
+  <edge label="2246 (pp) 2263" source="1" target="2">
+    <att type="string" name="canonicalName" value="2246 (pp) 2263"/>
+    <att type="string" name="interaction" value="pp"/>
+    <att type="int" name="SCORE" value="999"/>
+    <att type="string" name="support" value="{&quot;StringDB&quot;: &quot;physical&quot;, &quot;StringEvidence&quot;: &quot;textmining:0.997,experiments:0.995,database:0.896,coexpression:0.022&quot;, &quot;OmniPath&quot;: &quot;omnipath,kinaseextra,pathwayextra,ligrecextra&quot;, &quot;OmniPath_Reference&quot;: &quot;BioGRID;CellCall;CellPhoneDB;DIP;HPRD;Lit-BM-17;PhosphoPoint;SPIKE_LC;Wang,Baccin2019;BioGRID;CellCall;CellChatDB;CellPhoneDB;CellTalkDB;Cellinker;DIP;DLRP_Cellinker;DLRP_talklr;EMBRACE;Fantom5_LRdb;HPRD;HPRD_LRdb;HPRD_talklr;ICELLNET;LRdb;Lit-BM-17;Ramilowski2015;Ramilowski2015_Baccin2019;SIGNOR;SPIKE_LC;STRING_talklr;SignaLink3;Wang;connectomeDB2020;iTALK;talklr&quot;, &quot;BioGrid&quot;: &quot;physical&quot;, &quot;BioGrid_PubMed&quot;: &quot;8576175,7499435,33961781,25241761,22955284,18199118,1697263,11714710,11069186,10618369&quot;, &quot;BioGrid_Type&quot;: &quot;Protein-peptide,Co-localization,Affinity Capture-MS,Reconstituted Complex,Co-crystal Structure&quot;, &quot;BioGrid_Score&quot;: &quot;0.999999943&quot;, &quot;String_Score_Physical&quot;: 999, &quot;String_Score_Combined&quot;: 999}"/>
+  </edge>
+  <edge label="2246 (pp) 7314" source="1" target="4">
+    <att type="string" name="canonicalName" value="2246 (pp) 7314"/>
+    <att type="string" name="interaction" value="pp"/>
+    <att type="int" name="SCORE" value="499"/>
+    <att type="string" name="support" value="{&quot;StringDB&quot;: &quot;physical&quot;, &quot;StringEvidence&quot;: &quot;database:0.479,coexpression:0.015&quot;, &quot;String_Score_Physical&quot;: 499, &quot;String_Score_Combined&quot;: 507}"/>
+  </edge>
+  <edge label="2263 (pp) 4067" source="2" target="3">
+    <att type="string" name="canonicalName" value="2263 (pp) 4067"/>
+    <att type="string" name="interaction" value="pp"/>
+    <att type="int" name="SCORE" value="328"/>
+    <att type="string" name="support" value="{&quot;StringDB&quot;: &quot;physical&quot;, &quot;StringEvidence&quot;: &quot;experiments:0.299,textmining:0.055&quot;, &quot;BioGrid&quot;: &quot;physical&quot;, &quot;BioGrid_PubMed&quot;: &quot;15190072&quot;, &quot;BioGrid_Type&quot;: &quot;Affinity Capture-Western&quot;, &quot;String_Score_Physical&quot;: 328, &quot;String_Score_Combined&quot;: 365}"/>
+  </edge>
+  <edge label="2263 (pp) 7314" source="2" target="4">
+    <att type="string" name="canonicalName" value="2263 (pp) 7314"/>
+    <att type="string" name="interaction" value="pp"/>
+    <att type="int" name="SCORE" value="505"/>
+    <att type="string" name="support" value="{&quot;StringDB&quot;: &quot;physical&quot;, &quot;StringEvidence&quot;: &quot;database:0.479,experiments:0.010&quot;, &quot;OmniPath&quot;: &quot;ligrecextra&quot;, &quot;OmniPath_Reference&quot;: &quot;LRdb;Reactome_LRdb&quot;, &quot;String_Score_Physical&quot;: 505, &quot;String_Score_Combined&quot;: 505}"/>
+  </edge>
+  <edge label="3187 (pp) 5094" source="5" target="7">
+    <att type="string" name="canonicalName" value="3187 (pp) 5094"/>
+    <att type="string" name="interaction" value="pp"/>
+    <att type="int" name="SCORE" value="400"/>
+    <att type="string" name="support" value="{&quot;StringDB&quot;: &quot;physical&quot;, &quot;StringEvidence&quot;: &quot;textmining:0.492,coexpression:0.488,database:0.374&quot;, &quot;String_Score_Physical&quot;: 400, &quot;String_Score_Combined&quot;: 844}"/>
+  </edge>
+  <edge label="3187 (pp) 79184" source="5" target="9">
+    <att type="string" name="canonicalName" value="3187 (pp) 79184"/>
+    <att type="string" name="interaction" value="pp"/>
+    <att type="int" name="SCORE" value="292"/>
+    <att type="string" name="support" value="{&quot;StringDB&quot;: &quot;physical&quot;, &quot;StringEvidence&quot;: &quot;experiments:0.262,coexpression:0.003&quot;, &quot;BioGrid&quot;: &quot;physical&quot;, &quot;BioGrid_PubMed&quot;: &quot;26760575&quot;, &quot;BioGrid_Type&quot;: &quot;Affinity Capture-RNA&quot;, &quot;String_Score_Physical&quot;: 292, &quot;String_Score_Combined&quot;: 294}"/>
+  </edge>
+  <edge label="3326 (pp) 7529" source="11" target="12">
+    <att type="string" name="canonicalName" value="3326 (pp) 7529"/>
+    <att type="string" name="interaction" value="pp"/>
+    <att type="int" name="SCORE" value="201"/>
+    <att type="string" name="support" value="{&quot;StringDB&quot;: &quot;physical&quot;, &quot;StringEvidence&quot;: &quot;textmining:0.345,experiments:0.168,coexpression:0.131&quot;, &quot;BioGrid&quot;: &quot;physical&quot;, &quot;BioGrid_PubMed&quot;: &quot;35831314,15324660&quot;, &quot;BioGrid_Type&quot;: &quot;Co-fractionation,Affinity Capture-MS&quot;, &quot;String_Score_Physical&quot;: 201, &quot;String_Score_Combined&quot;: 545}"/>
+  </edge>
+  <edge label="3326 (pp) 7534" source="11" target="13">
+    <att type="string" name="canonicalName" value="3326 (pp) 7534"/>
+    <att type="string" name="interaction" value="pp"/>
+    <att type="int" name="SCORE" value="185"/>
+    <att type="string" name="support" value="{&quot;StringDB&quot;: &quot;physical&quot;, &quot;StringEvidence&quot;: &quot;textmining:0.764,experiments:0.151,coexpression:0.144&quot;, &quot;BioGrid&quot;: &quot;physical&quot;, &quot;BioGrid_PubMed&quot;: &quot;35831314&quot;, &quot;BioGrid_Type&quot;: &quot;Co-fractionation&quot;, &quot;String_Score_Physical&quot;: 185, &quot;String_Score_Combined&quot;: 835}"/>
+  </edge>
+  <edge label="4067 (pp) 7314" source="3" target="4">
+    <att type="string" name="canonicalName" value="4067 (pp) 7314"/>
+    <att type="string" name="interaction" value="pp"/>
+    <att type="int" name="SCORE" value="549"/>
+    <att type="string" name="support" value="{&quot;StringDB&quot;: &quot;physical&quot;, &quot;StringEvidence&quot;: &quot;database:0.479,experiments:0.099,textmining:0.010&quot;, &quot;OmniPath&quot;: &quot;kinaseextra&quot;, &quot;OmniPath_Reference&quot;: &quot;HPRD;PhosphoPoint&quot;, &quot;String_Score_Physical&quot;: 549, &quot;String_Score_Combined&quot;: 554}"/>
+  </edge>
+  <edge label="4809 (pp) 7150" source="6" target="8">
+    <att type="string" name="canonicalName" value="4809 (pp) 7150"/>
+    <att type="string" name="interaction" value="pp"/>
+    <att type="int" name="SCORE" value="211"/>
+    <att type="string" name="support" value="{&quot;StringDB&quot;: &quot;physical&quot;, &quot;StringEvidence&quot;: &quot;experiments:0.178,textmining:0.122,coexpression:0.024&quot;, &quot;BioGrid&quot;: &quot;physical&quot;, &quot;BioGrid_PubMed&quot;: &quot;35271311&quot;, &quot;BioGrid_Type&quot;: &quot;Affinity Capture-MS&quot;, &quot;String_Score_Physical&quot;: 211, &quot;String_Score_Combined&quot;: 324}"/>
+  </edge>
+  <edge label="4809 (pp) 79184" source="6" target="9">
+    <att type="string" name="canonicalName" value="4809 (pp) 79184"/>
+    <att type="string" name="interaction" value="pp"/>
+    <att type="int" name="SCORE" value="185"/>
+    <att type="string" name="support" value="{&quot;StringDB&quot;: &quot;physical&quot;, &quot;StringEvidence&quot;: &quot;experiments:0.150,coexpression:0.077,textmining:0.021&quot;, &quot;String_Score_Physical&quot;: 185, &quot;String_Score_Combined&quot;: 263}"/>
+  </edge>
+  <edge label="7529 (pp) 7534" source="12" target="13">
+    <att type="string" name="canonicalName" value="7529 (pp) 7534"/>
+    <att type="string" name="interaction" value="pp"/>
+    <att type="int" name="SCORE" value="982"/>
+    <att type="string" name="support" value="{&quot;StringDB&quot;: &quot;physical&quot;, &quot;StringEvidence&quot;: &quot;database:0.896,experiments:0.824,textmining:0.441,coexpression:0.180,cooccurrence:0.008&quot;, &quot;OmniPath&quot;: &quot;pathwayextra&quot;, &quot;OmniPath_Reference&quot;: &quot;Wang&quot;, &quot;BioGrid&quot;: &quot;genetic,physical&quot;, &quot;BioGrid_PubMed&quot;: &quot;36931259,35831314,35271311,34857952,33961781,31536960,26496610,26344197,24255178&quot;, &quot;BioGrid_Type&quot;: &quot;Negative Genetic,Proximity Label-MS,Co-fractionation,Affinity Capture-MS&quot;, &quot;BioGrid_Score&quot;: &quot;0.013230082,1.0,0.99999379,1.721582556&quot;, &quot;String_Score_Physical&quot;: 982, &quot;String_Score_Combined&quot;: 992}"/>
+  </edge>
+</graph>

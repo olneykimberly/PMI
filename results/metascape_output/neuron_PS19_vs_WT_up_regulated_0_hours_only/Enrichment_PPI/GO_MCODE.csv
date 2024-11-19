@@ -1,0 +1,112 @@
+Name,Category,CategoryID,GO,Description,PARENT_GO,LogP,Enrichment,Z-score,#TotalGeneInLibrary,#GeneInGO,#GeneInHitList,#GeneInGOAndHitList,%InGO,STDV %InGO,GeneID,Hits,Log(q-value)
+Tbc1d13,CORUM,33,CORUM:306,"Ribosome, cytoplasmic",,-5.2,81,15,30286,80,14,3,21,11,6167|6223|6235,RPL37|RPS19|RPS29,-2.6
+Tbc1d13,Reactome Gene Sets,6,R-HSA-192823,Viral mRNA Translation,,-5,72,15,30286,90,14,3,21,11,6167|6223|6235,RPL37|RPS19|RPS29,-2.5
+Tbc1d13,Reactome Gene Sets,6,R-HSA-156902,Peptide chain elongation,,-5,72,15,30286,90,14,3,21,11,6167|6223|6235,RPL37|RPS19|RPS29,-2.5
+Tbc1d13,Reactome Gene Sets,6,R-HSA-156842,Eukaryotic Translation Elongation,,-5,69,14,30286,94,14,3,21,11,6167|6223|6235,RPL37|RPS19|RPS29,-2.5
+Tbc1d13,Reactome Gene Sets,6,R-HSA-72764,Eukaryotic Translation Termination,,-5,69,14,30286,94,14,3,21,11,6167|6223|6235,RPL37|RPS19|RPS29,-2.5
+Tbc1d13,Reactome Gene Sets,6,R-HSA-2408557,Selenocysteine synthesis,,-5,69,14,30286,94,14,3,21,11,6167|6223|6235,RPL37|RPS19|RPS29,-2.5
+Tbc1d13,Reactome Gene Sets,6,R-HSA-975956,Nonsense Mediated Decay (NMD) independent of the Exon Junction Complex (EJC),,-5,68,14,30286,96,14,3,21,11,6167|6223|6235,RPL37|RPS19|RPS29,-2.4
+Tbc1d13,Reactome Gene Sets,6,R-HSA-9633012,Response of EIF2AK4 (GCN2) to amino acid deficiency,,-4.9,64,14,30286,102,14,3,21,11,6167|6223|6235,RPL37|RPS19|RPS29,-2.4
+Tbc1d13,Reactome Gene Sets,6,R-HSA-72689,Formation of a pool of free 40S subunits,,-4.9,64,14,30286,102,14,3,21,11,6167|6223|6235,RPL37|RPS19|RPS29,-2.4
+Tbc1d13,Reactome Gene Sets,6,R-HSA-156827,L13a-mediated translational silencing of Ceruloplasmin expression,,-4.8,58,13,30286,112,14,3,21,11,6167|6223|6235,RPL37|RPS19|RPS29,-2.3
+Tbc1d13,Reactome Gene Sets,6,R-HSA-1799339,SRP-dependent cotranslational protein targeting to membrane,,-4.7,57,13,30286,113,14,3,21,11,6167|6223|6235,RPL37|RPS19|RPS29,-2.3
+Tbc1d13,Reactome Gene Sets,6,R-HSA-72706,GTP hydrolysis and joining of the 60S ribosomal subunit,,-4.7,57,13,30286,113,14,3,21,11,6167|6223|6235,RPL37|RPS19|RPS29,-2.3
+Tbc1d13,Reactome Gene Sets,6,R-HSA-975957,Nonsense Mediated Decay (NMD) enhanced by the Exon Junction Complex (EJC),,-4.7,56,13,30286,116,14,3,21,11,6167|6223|6235,RPL37|RPS19|RPS29,-2.3
+Tbc1d13,Reactome Gene Sets,6,R-HSA-927802,Nonsense-Mediated Decay (NMD),,-4.7,56,13,30286,116,14,3,21,11,6167|6223|6235,RPL37|RPS19|RPS29,-2.3
+Tbc1d13,Reactome Gene Sets,6,R-HSA-2408522,Selenoamino acid metabolism,,-4.7,55,13,30286,119,14,3,21,11,6167|6223|6235,RPL37|RPS19|RPS29,-2.2
+Tbc1d13,Reactome Gene Sets,6,R-HSA-72737,Cap-dependent Translation Initiation,,-4.7,54,13,30286,120,14,3,21,11,6167|6223|6235,RPL37|RPS19|RPS29,-2.2
+Tbc1d13,Reactome Gene Sets,6,R-HSA-72613,Eukaryotic Translation Initiation,,-4.7,54,13,30286,120,14,3,21,11,6167|6223|6235,RPL37|RPS19|RPS29,-2.2
+Tbc1d13,GO Biological Processes,19,GO:0002181,cytoplasmic translation,19_GO:0008152 metabolic process,-4.6,51,12,30286,127,14,3,21,11,6167|6223|6235,RPL37|RPS19|RPS29,-2.2
+Tbc1d13,Reactome Gene Sets,6,R-HSA-168273,Influenza Viral RNA Transcription and Replication,,-4.5,48,12,30286,136,14,3,21,11,6167|6223|6235,RPL37|RPS19|RPS29,-2.1
+Tbc1d13,Reactome Gene Sets,6,R-HSA-168255,Influenza Infection,,-4.3,41,11,30286,157,14,3,21,11,6167|6223|6235,RPL37|RPS19|RPS29,-1.9
+Tbc1d13,Reactome Gene Sets,6,R-HSA-9711097,Cellular response to starvation,,-4.3,41,11,30286,157,14,3,21,11,6167|6223|6235,RPL37|RPS19|RPS29,-1.9
+Tbc1d13,KEGG Pathway,24,hsa03010,Ribosome,,-4.2,38,10,30286,170,14,3,21,11,6167|6223|6235,RPL37|RPS19|RPS29,-1.9
+Tbc1d13,Reactome Gene Sets,6,R-HSA-9010553,Regulation of expression of SLITs and ROBOs,,-4.2,38,10,30286,172,14,3,21,11,6167|6223|6235,RPL37|RPS19|RPS29,-1.8
+Tbc1d13,Reactome Gene Sets,6,R-HSA-6791226,Major pathway of rRNA processing in the nucleolus and cytosol,,-4.1,35,10,30286,185,14,3,21,11,6167|6223|6235,RPL37|RPS19|RPS29,-1.8
+Tbc1d13,Reactome Gene Sets,6,R-HSA-8868773,rRNA processing in the nucleus and cytosol,,-4,33,9.7,30286,195,14,3,21,11,6167|6223|6235,RPL37|RPS19|RPS29,-1.7
+Tbc1d13,Reactome Gene Sets,6,R-HSA-422475,Axon guidance,,-4,16,7.5,30286,548,14,4,29,12,1759|6167|6223|6235,DNM1|RPL37|RPS19|RPS29,-1.7
+Tbc1d13,Reactome Gene Sets,6,R-HSA-72312,rRNA processing,,-4,32,9.5,30286,205,14,3,21,11,6167|6223|6235,RPL37|RPS19|RPS29,-1.6
+Tbc1d13,Reactome Gene Sets,6,R-HSA-9675108,Nervous system development,,-4,15,7.3,30286,573,14,4,29,12,1759|6167|6223|6235,DNM1|RPL37|RPS19|RPS29,-1.6
+Tbc1d13,Reactome Gene Sets,6,R-HSA-376176,Signaling by ROBO receptors,,-3.9,30,9.1,30286,219,14,3,21,11,6167|6223|6235,RPL37|RPS19|RPS29,-1.6
+Tbc1d13,KEGG Pathway,24,hsa05171,Coronavirus disease - COVID-19,,-3.8,28,8.8,30286,233,14,3,21,11,6167|6223|6235,RPL37|RPS19|RPS29,-1.5
+Tbc1d13,Reactome Gene Sets,6,R-HSA-72766,Translation,,-3.5,22,7.8,30286,292,14,3,21,11,6167|6223|6235,RPL37|RPS19|RPS29,-1.2
+Tbc1d13,Reactome Gene Sets,6,R-HSA-71291,Metabolism of amino acids and derivatives,,-3.2,18,6.9,30286,367,14,3,21,11,6167|6223|6235,RPL37|RPS19|RPS29,-0.93
+Tbc1d13,GO Biological Processes,19,GO:0006412,translation,19_GO:0008152 metabolic process,-3.2,17,6.7,30286,392,14,3,21,11,6167|6223|6235,RPL37|RPS19|RPS29,-0.85
+Tbc1d13,GO Biological Processes,19,GO:0043043,peptide biosynthetic process,19_GO:0008152 metabolic process,-3.1,15,6.4,30286,421,14,3,21,11,6167|6223|6235,RPL37|RPS19|RPS29,-0.77
+Tbc1d13,GO Biological Processes,19,GO:0043604,amide biosynthetic process,19_GO:0008152 metabolic process,-2.7,12,5.5,30286,542,14,3,21,11,6167|6223|6235,RPL37|RPS19|RPS29,-0.46
+Tbc1d13,GO Biological Processes,19,GO:0006518,peptide metabolic process,19_GO:0008152 metabolic process,-2.7,12,5.5,30286,551,14,3,21,11,6167|6223|6235,RPL37|RPS19|RPS29,-0.44
+Tbc1d13,Reactome Gene Sets,6,R-HSA-8953854,Metabolism of RNA,,-2.4,8.9,4.7,30286,726,14,3,21,11,6167|6223|6235,RPL37|RPS19|RPS29,-0.11
+Tbc1d13_MCODE_ALL,CORUM,33,CORUM:306,"Ribosome, cytoplasmic",,-6.8,2.3e+02,26,30286,80,5,3,60,22,6167|6223|6235,RPL37|RPS19|RPS29,-3.4
+Tbc1d13_MCODE_ALL,Reactome Gene Sets,6,R-HSA-192823,Viral mRNA Translation,,-6.6,2e+02,25,30286,90,5,3,60,22,6167|6223|6235,RPL37|RPS19|RPS29,-3.4
+Tbc1d13_MCODE_ALL,Reactome Gene Sets,6,R-HSA-156902,Peptide chain elongation,,-6.6,2e+02,25,30286,90,5,3,60,22,6167|6223|6235,RPL37|RPS19|RPS29,-3.4
+Tbc1d13_MCODE_ALL,Reactome Gene Sets,6,R-HSA-156842,Eukaryotic Translation Elongation,,-6.5,1.9e+02,24,30286,94,5,3,60,22,6167|6223|6235,RPL37|RPS19|RPS29,-3.4
+Tbc1d13_MCODE_ALL,Reactome Gene Sets,6,R-HSA-72764,Eukaryotic Translation Termination,,-6.5,1.9e+02,24,30286,94,5,3,60,22,6167|6223|6235,RPL37|RPS19|RPS29,-3.4
+Tbc1d13_MCODE_ALL,Reactome Gene Sets,6,R-HSA-2408557,Selenocysteine synthesis,,-6.5,1.9e+02,24,30286,94,5,3,60,22,6167|6223|6235,RPL37|RPS19|RPS29,-3.4
+Tbc1d13_MCODE_ALL,Reactome Gene Sets,6,R-HSA-975956,Nonsense Mediated Decay (NMD) independent of the Exon Junction Complex (EJC),,-6.5,1.9e+02,24,30286,96,5,3,60,22,6167|6223|6235,RPL37|RPS19|RPS29,-3.4
+Tbc1d13_MCODE_ALL,Reactome Gene Sets,6,R-HSA-9633012,Response of EIF2AK4 (GCN2) to amino acid deficiency,,-6.4,1.8e+02,23,30286,102,5,3,60,22,6167|6223|6235,RPL37|RPS19|RPS29,-3.4
+Tbc1d13_MCODE_ALL,Reactome Gene Sets,6,R-HSA-72689,Formation of a pool of free 40S subunits,,-6.4,1.8e+02,23,30286,102,5,3,60,22,6167|6223|6235,RPL37|RPS19|RPS29,-3.4
+Tbc1d13_MCODE_ALL,Reactome Gene Sets,6,R-HSA-156827,L13a-mediated translational silencing of Ceruloplasmin expression,,-6.3,1.6e+02,22,30286,112,5,3,60,22,6167|6223|6235,RPL37|RPS19|RPS29,-3.4
+Tbc1d13_MCODE_ALL,Reactome Gene Sets,6,R-HSA-1799339,SRP-dependent cotranslational protein targeting to membrane,,-6.3,1.6e+02,22,30286,113,5,3,60,22,6167|6223|6235,RPL37|RPS19|RPS29,-3.4
+Tbc1d13_MCODE_ALL,Reactome Gene Sets,6,R-HSA-72706,GTP hydrolysis and joining of the 60S ribosomal subunit,,-6.3,1.6e+02,22,30286,113,5,3,60,22,6167|6223|6235,RPL37|RPS19|RPS29,-3.4
+Tbc1d13_MCODE_ALL,Reactome Gene Sets,6,R-HSA-975957,Nonsense Mediated Decay (NMD) enhanced by the Exon Junction Complex (EJC),,-6.3,1.6e+02,22,30286,116,5,3,60,22,6167|6223|6235,RPL37|RPS19|RPS29,-3.4
+Tbc1d13_MCODE_ALL,Reactome Gene Sets,6,R-HSA-927802,Nonsense-Mediated Decay (NMD),,-6.3,1.6e+02,22,30286,116,5,3,60,22,6167|6223|6235,RPL37|RPS19|RPS29,-3.4
+Tbc1d13_MCODE_ALL,Reactome Gene Sets,6,R-HSA-2408522,Selenoamino acid metabolism,,-6.2,1.5e+02,21,30286,119,5,3,60,22,6167|6223|6235,RPL37|RPS19|RPS29,-3.4
+Tbc1d13_MCODE_ALL,Reactome Gene Sets,6,R-HSA-72737,Cap-dependent Translation Initiation,,-6.2,1.5e+02,21,30286,120,5,3,60,22,6167|6223|6235,RPL37|RPS19|RPS29,-3.4
+Tbc1d13_MCODE_ALL,Reactome Gene Sets,6,R-HSA-72613,Eukaryotic Translation Initiation,,-6.2,1.5e+02,21,30286,120,5,3,60,22,6167|6223|6235,RPL37|RPS19|RPS29,-3.4
+Tbc1d13_MCODE_ALL,GO Biological Processes,19,GO:0002181,cytoplasmic translation,19_GO:0008152 metabolic process,-6.1,1.4e+02,21,30286,127,5,3,60,22,6167|6223|6235,RPL37|RPS19|RPS29,-3.4
+Tbc1d13_MCODE_ALL,Reactome Gene Sets,6,R-HSA-168273,Influenza Viral RNA Transcription and Replication,,-6.1,1.3e+02,20,30286,136,5,3,60,22,6167|6223|6235,RPL37|RPS19|RPS29,-3.3
+Tbc1d13_MCODE_ALL,Reactome Gene Sets,6,R-HSA-9711097,Cellular response to starvation,,-5.9,1.2e+02,19,30286,157,5,3,60,22,6167|6223|6235,RPL37|RPS19|RPS29,-3.2
+Tbc1d13_MCODE_ALL,Reactome Gene Sets,6,R-HSA-168255,Influenza Infection,,-5.9,1.2e+02,19,30286,157,5,3,60,22,6167|6223|6235,RPL37|RPS19|RPS29,-3.2
+Tbc1d13_MCODE_ALL,KEGG Pathway,24,hsa03010,Ribosome,,-5.8,1.1e+02,18,30286,170,5,3,60,22,6167|6223|6235,RPL37|RPS19|RPS29,-3.1
+Tbc1d13_MCODE_ALL,Reactome Gene Sets,6,R-HSA-9010553,Regulation of expression of SLITs and ROBOs,,-5.7,1.1e+02,18,30286,172,5,3,60,22,6167|6223|6235,RPL37|RPS19|RPS29,-3.1
+Tbc1d13_MCODE_ALL,Reactome Gene Sets,6,R-HSA-6791226,Major pathway of rRNA processing in the nucleolus and cytosol,,-5.7,98,17,30286,185,5,3,60,22,6167|6223|6235,RPL37|RPS19|RPS29,-3
+Tbc1d13_MCODE_ALL,Reactome Gene Sets,6,R-HSA-8868773,rRNA processing in the nucleus and cytosol,,-5.6,93,17,30286,195,5,3,60,22,6167|6223|6235,RPL37|RPS19|RPS29,-3
+Tbc1d13_MCODE_ALL,Reactome Gene Sets,6,R-HSA-72312,rRNA processing,,-5.5,89,16,30286,205,5,3,60,22,6167|6223|6235,RPL37|RPS19|RPS29,-2.9
+Tbc1d13_MCODE_ALL,Reactome Gene Sets,6,R-HSA-376176,Signaling by ROBO receptors,,-5.4,83,16,30286,219,5,3,60,22,6167|6223|6235,RPL37|RPS19|RPS29,-2.8
+Tbc1d13_MCODE_ALL,KEGG Pathway,24,hsa05171,Coronavirus disease - COVID-19,,-5.4,78,15,30286,233,5,3,60,22,6167|6223|6235,RPL37|RPS19|RPS29,-2.8
+Tbc1d13_MCODE_ALL,Reactome Gene Sets,6,R-HSA-72766,Translation,,-5.1,62,14,30286,292,5,3,60,22,6167|6223|6235,RPL37|RPS19|RPS29,-2.5
+Tbc1d13_MCODE_ALL,Reactome Gene Sets,6,R-HSA-71291,Metabolism of amino acids and derivatives,,-4.8,50,12,30286,367,5,3,60,22,6167|6223|6235,RPL37|RPS19|RPS29,-2.3
+Tbc1d13_MCODE_ALL,GO Biological Processes,19,GO:0006412,translation,19_GO:0008152 metabolic process,-4.7,46,12,30286,392,5,3,60,22,6167|6223|6235,RPL37|RPS19|RPS29,-2.2
+Tbc1d13_MCODE_ALL,GO Biological Processes,19,GO:0043043,peptide biosynthetic process,19_GO:0008152 metabolic process,-4.6,43,11,30286,421,5,3,60,22,6167|6223|6235,RPL37|RPS19|RPS29,-2.2
+Tbc1d13_MCODE_ALL,GO Biological Processes,19,GO:0043604,amide biosynthetic process,19_GO:0008152 metabolic process,-4.3,34,9.8,30286,542,5,3,60,22,6167|6223|6235,RPL37|RPS19|RPS29,-1.9
+Tbc1d13_MCODE_ALL,Reactome Gene Sets,6,R-HSA-422475,Axon guidance,,-4.2,33,9.8,30286,548,5,3,60,22,6167|6223|6235,RPL37|RPS19|RPS29,-1.9
+Tbc1d13_MCODE_ALL,GO Biological Processes,19,GO:0006518,peptide metabolic process,19_GO:0008152 metabolic process,-4.2,33,9.7,30286,551,5,3,60,22,6167|6223|6235,RPL37|RPS19|RPS29,-1.9
+Tbc1d13_MCODE_ALL,Reactome Gene Sets,6,R-HSA-9675108,Nervous system development,,-4.2,32,9.5,30286,573,5,3,60,22,6167|6223|6235,RPL37|RPS19|RPS29,-1.8
+Tbc1d13_MCODE_ALL,Reactome Gene Sets,6,R-HSA-8953854,Metabolism of RNA,,-3.9,25,8.4,30286,726,5,3,60,22,6167|6223|6235,RPL37|RPS19|RPS29,-1.6
+Tbc1d13_SUB1_MCODE_1,CORUM,33,CORUM:306,"Ribosome, cytoplasmic",,-6.8,2.3e+02,26,30286,80,5,3,60,22,6167|6223|6235,RPL37|RPS19|RPS29,-3.4
+Tbc1d13_SUB1_MCODE_1,Reactome Gene Sets,6,R-HSA-192823,Viral mRNA Translation,,-6.6,2e+02,25,30286,90,5,3,60,22,6167|6223|6235,RPL37|RPS19|RPS29,-3.4
+Tbc1d13_SUB1_MCODE_1,Reactome Gene Sets,6,R-HSA-156902,Peptide chain elongation,,-6.6,2e+02,25,30286,90,5,3,60,22,6167|6223|6235,RPL37|RPS19|RPS29,-3.4
+Tbc1d13_SUB1_MCODE_1,Reactome Gene Sets,6,R-HSA-2408557,Selenocysteine synthesis,,-6.5,1.9e+02,24,30286,94,5,3,60,22,6167|6223|6235,RPL37|RPS19|RPS29,-3.4
+Tbc1d13_SUB1_MCODE_1,Reactome Gene Sets,6,R-HSA-72764,Eukaryotic Translation Termination,,-6.5,1.9e+02,24,30286,94,5,3,60,22,6167|6223|6235,RPL37|RPS19|RPS29,-3.4
+Tbc1d13_SUB1_MCODE_1,Reactome Gene Sets,6,R-HSA-156842,Eukaryotic Translation Elongation,,-6.5,1.9e+02,24,30286,94,5,3,60,22,6167|6223|6235,RPL37|RPS19|RPS29,-3.4
+Tbc1d13_SUB1_MCODE_1,Reactome Gene Sets,6,R-HSA-975956,Nonsense Mediated Decay (NMD) independent of the Exon Junction Complex (EJC),,-6.5,1.9e+02,24,30286,96,5,3,60,22,6167|6223|6235,RPL37|RPS19|RPS29,-3.4
+Tbc1d13_SUB1_MCODE_1,Reactome Gene Sets,6,R-HSA-9633012,Response of EIF2AK4 (GCN2) to amino acid deficiency,,-6.4,1.8e+02,23,30286,102,5,3,60,22,6167|6223|6235,RPL37|RPS19|RPS29,-3.4
+Tbc1d13_SUB1_MCODE_1,Reactome Gene Sets,6,R-HSA-72689,Formation of a pool of free 40S subunits,,-6.4,1.8e+02,23,30286,102,5,3,60,22,6167|6223|6235,RPL37|RPS19|RPS29,-3.4
+Tbc1d13_SUB1_MCODE_1,Reactome Gene Sets,6,R-HSA-156827,L13a-mediated translational silencing of Ceruloplasmin expression,,-6.3,1.6e+02,22,30286,112,5,3,60,22,6167|6223|6235,RPL37|RPS19|RPS29,-3.4
+Tbc1d13_SUB1_MCODE_1,Reactome Gene Sets,6,R-HSA-72706,GTP hydrolysis and joining of the 60S ribosomal subunit,,-6.3,1.6e+02,22,30286,113,5,3,60,22,6167|6223|6235,RPL37|RPS19|RPS29,-3.4
+Tbc1d13_SUB1_MCODE_1,Reactome Gene Sets,6,R-HSA-1799339,SRP-dependent cotranslational protein targeting to membrane,,-6.3,1.6e+02,22,30286,113,5,3,60,22,6167|6223|6235,RPL37|RPS19|RPS29,-3.4
+Tbc1d13_SUB1_MCODE_1,Reactome Gene Sets,6,R-HSA-975957,Nonsense Mediated Decay (NMD) enhanced by the Exon Junction Complex (EJC),,-6.3,1.6e+02,22,30286,116,5,3,60,22,6167|6223|6235,RPL37|RPS19|RPS29,-3.4
+Tbc1d13_SUB1_MCODE_1,Reactome Gene Sets,6,R-HSA-927802,Nonsense-Mediated Decay (NMD),,-6.3,1.6e+02,22,30286,116,5,3,60,22,6167|6223|6235,RPL37|RPS19|RPS29,-3.4
+Tbc1d13_SUB1_MCODE_1,Reactome Gene Sets,6,R-HSA-2408522,Selenoamino acid metabolism,,-6.2,1.5e+02,21,30286,119,5,3,60,22,6167|6223|6235,RPL37|RPS19|RPS29,-3.4
+Tbc1d13_SUB1_MCODE_1,Reactome Gene Sets,6,R-HSA-72613,Eukaryotic Translation Initiation,,-6.2,1.5e+02,21,30286,120,5,3,60,22,6167|6223|6235,RPL37|RPS19|RPS29,-3.4
+Tbc1d13_SUB1_MCODE_1,Reactome Gene Sets,6,R-HSA-72737,Cap-dependent Translation Initiation,,-6.2,1.5e+02,21,30286,120,5,3,60,22,6167|6223|6235,RPL37|RPS19|RPS29,-3.4
+Tbc1d13_SUB1_MCODE_1,GO Biological Processes,19,GO:0002181,cytoplasmic translation,19_GO:0008152 metabolic process,-6.1,1.4e+02,21,30286,127,5,3,60,22,6167|6223|6235,RPL37|RPS19|RPS29,-3.4
+Tbc1d13_SUB1_MCODE_1,Reactome Gene Sets,6,R-HSA-168273,Influenza Viral RNA Transcription and Replication,,-6.1,1.3e+02,20,30286,136,5,3,60,22,6167|6223|6235,RPL37|RPS19|RPS29,-3.3
+Tbc1d13_SUB1_MCODE_1,Reactome Gene Sets,6,R-HSA-9711097,Cellular response to starvation,,-5.9,1.2e+02,19,30286,157,5,3,60,22,6167|6223|6235,RPL37|RPS19|RPS29,-3.2
+Tbc1d13_SUB1_MCODE_1,Reactome Gene Sets,6,R-HSA-168255,Influenza Infection,,-5.9,1.2e+02,19,30286,157,5,3,60,22,6167|6223|6235,RPL37|RPS19|RPS29,-3.2
+Tbc1d13_SUB1_MCODE_1,KEGG Pathway,24,hsa03010,Ribosome,,-5.8,1.1e+02,18,30286,170,5,3,60,22,6167|6223|6235,RPL37|RPS19|RPS29,-3.1
+Tbc1d13_SUB1_MCODE_1,Reactome Gene Sets,6,R-HSA-9010553,Regulation of expression of SLITs and ROBOs,,-5.7,1.1e+02,18,30286,172,5,3,60,22,6167|6223|6235,RPL37|RPS19|RPS29,-3.1
+Tbc1d13_SUB1_MCODE_1,Reactome Gene Sets,6,R-HSA-6791226,Major pathway of rRNA processing in the nucleolus and cytosol,,-5.7,98,17,30286,185,5,3,60,22,6167|6223|6235,RPL37|RPS19|RPS29,-3
+Tbc1d13_SUB1_MCODE_1,Reactome Gene Sets,6,R-HSA-8868773,rRNA processing in the nucleus and cytosol,,-5.6,93,17,30286,195,5,3,60,22,6167|6223|6235,RPL37|RPS19|RPS29,-3
+Tbc1d13_SUB1_MCODE_1,Reactome Gene Sets,6,R-HSA-72312,rRNA processing,,-5.5,89,16,30286,205,5,3,60,22,6167|6223|6235,RPL37|RPS19|RPS29,-2.9
+Tbc1d13_SUB1_MCODE_1,Reactome Gene Sets,6,R-HSA-376176,Signaling by ROBO receptors,,-5.4,83,16,30286,219,5,3,60,22,6167|6223|6235,RPL37|RPS19|RPS29,-2.8
+Tbc1d13_SUB1_MCODE_1,KEGG Pathway,24,hsa05171,Coronavirus disease - COVID-19,,-5.4,78,15,30286,233,5,3,60,22,6167|6223|6235,RPL37|RPS19|RPS29,-2.8
+Tbc1d13_SUB1_MCODE_1,Reactome Gene Sets,6,R-HSA-72766,Translation,,-5.1,62,14,30286,292,5,3,60,22,6167|6223|6235,RPL37|RPS19|RPS29,-2.5
+Tbc1d13_SUB1_MCODE_1,Reactome Gene Sets,6,R-HSA-71291,Metabolism of amino acids and derivatives,,-4.8,50,12,30286,367,5,3,60,22,6167|6223|6235,RPL37|RPS19|RPS29,-2.3
+Tbc1d13_SUB1_MCODE_1,GO Biological Processes,19,GO:0006412,translation,19_GO:0008152 metabolic process,-4.7,46,12,30286,392,5,3,60,22,6167|6223|6235,RPL37|RPS19|RPS29,-2.2
+Tbc1d13_SUB1_MCODE_1,GO Biological Processes,19,GO:0043043,peptide biosynthetic process,19_GO:0008152 metabolic process,-4.6,43,11,30286,421,5,3,60,22,6167|6223|6235,RPL37|RPS19|RPS29,-2.2
+Tbc1d13_SUB1_MCODE_1,GO Biological Processes,19,GO:0043604,amide biosynthetic process,19_GO:0008152 metabolic process,-4.3,34,9.8,30286,542,5,3,60,22,6167|6223|6235,RPL37|RPS19|RPS29,-1.9
+Tbc1d13_SUB1_MCODE_1,Reactome Gene Sets,6,R-HSA-422475,Axon guidance,,-4.2,33,9.8,30286,548,5,3,60,22,6167|6223|6235,RPL37|RPS19|RPS29,-1.9
+Tbc1d13_SUB1_MCODE_1,GO Biological Processes,19,GO:0006518,peptide metabolic process,19_GO:0008152 metabolic process,-4.2,33,9.7,30286,551,5,3,60,22,6167|6223|6235,RPL37|RPS19|RPS29,-1.9
+Tbc1d13_SUB1_MCODE_1,Reactome Gene Sets,6,R-HSA-9675108,Nervous system development,,-4.2,32,9.5,30286,573,5,3,60,22,6167|6223|6235,RPL37|RPS19|RPS29,-1.8
+Tbc1d13_SUB1_MCODE_1,Reactome Gene Sets,6,R-HSA-8953854,Metabolism of RNA,,-3.9,25,8.4,30286,726,5,3,60,22,6167|6223|6235,RPL37|RPS19|RPS29,-1.6

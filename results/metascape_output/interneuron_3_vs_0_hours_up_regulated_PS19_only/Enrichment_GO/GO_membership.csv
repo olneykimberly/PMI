@@ -1,0 +1,41 @@
+_MEMBER_Btg2,_LogP_Btg2,GO,Description,_PATTERN_,_RANK_,GiniIndex
+1,-5,R-HSA-9010553,Regulation of expression of SLITs and ROBOs,M1,1,0
+1,-3.9,GO:0006412,translation,M1,1,0
+1,-4.7,R-HSA-376176,Signaling by ROBO receptors,M1,1,0
+1,-3.2,R-HSA-8953854,Metabolism of RNA,M1,1,0
+1,-5.7,R-HSA-9633012,Response of EIF2AK4 (GCN2) to amino acid deficiency,M1,1,0
+1,-5.7,R-HSA-72689,Formation of a pool of free 40S subunits,M1,1,0
+1,-5.6,R-HSA-1799339,SRP-dependent cotranslational protein targeting to membrane,M1,1,0
+1,-5.5,R-HSA-927802,Nonsense-Mediated Decay (NMD),M1,1,0
+1,-3.5,R-HSA-9675108,Nervous system development,M1,1,0
+1,-5.6,R-HSA-156827,L13a-mediated translational silencing of Ceruloplasmin expression,M1,1,0
+1,-3.8,GO:0043043,peptide biosynthetic process,M1,1,0
+1,-5.1,R-HSA-168255,Influenza Infection,M1,1,0
+1,-5,hsa03010,Ribosome,M1,1,0
+1,-4.6,GO:0034249,negative regulation of amide metabolic process,M1,1,0
+1,-5.5,R-HSA-72737,Cap-dependent Translation Initiation,M1,1,0
+1,-3.5,GO:0006518,peptide metabolic process,M1,1,0
+1,-5.6,R-HSA-72706,GTP hydrolysis and joining of the 60S ribosomal subunit,M1,1,0
+1,-3.6,GO:0034248,regulation of amide metabolic process,M1,1,0
+1,-5.3,R-HSA-168273,Influenza Viral RNA Transcription and Replication,M1,1,0
+1,-4.3,R-HSA-72766,Translation,M1,1,0
+1,-5.5,R-HSA-975957,Nonsense Mediated Decay (NMD) enhanced by the Exon Junction Complex (EJC),M1,1,0
+1,-4.8,R-HSA-8868773,rRNA processing in the nucleus and cytosol,M1,1,0
+1,-4.9,R-HSA-6791226,Major pathway of rRNA processing in the nucleolus and cytosol,M1,1,0
+1,-5.8,R-HSA-72764,Eukaryotic Translation Termination,M1,1,0
+1,-5.9,R-HSA-192823,Viral mRNA Translation,M1,1,0
+1,-5.9,R-HSA-156902,Peptide chain elongation,M1,1,0
+1,-4.8,R-HSA-72312,rRNA processing,M1,1,0
+1,-5.5,R-HSA-72613,Eukaryotic Translation Initiation,M1,1,0
+1,-5.4,GO:0002181,cytoplasmic translation,M1,1,0
+1,-5.5,R-HSA-2408522,Selenoamino acid metabolism,M1,1,0
+1,-4,R-HSA-71291,Metabolism of amino acids and derivatives,M1,1,0
+1,-5.8,R-HSA-156842,Eukaryotic Translation Elongation,M1,1,0
+1,-6,CORUM:306,"Ribosome, cytoplasmic",M1,1,0
+1,-5.8,R-HSA-975956,Nonsense Mediated Decay (NMD) independent of the Exon Junction Complex (EJC),M1,1,0
+1,-5.8,R-HSA-2408557,Selenocysteine synthesis,M1,1,0
+1,-5.7,CORUM:3055,Nop56p-associated pre-rRNA complex,M1,1,0
+1,-5.1,R-HSA-9711097,Cellular response to starvation,M1,1,0
+1,-3.5,GO:0043604,amide biosynthetic process,M1,1,0
+1,-3.5,R-HSA-422475,Axon guidance,M1,1,0
+1,-4.6,hsa05171,Coronavirus disease - COVID-19,M1,1,0

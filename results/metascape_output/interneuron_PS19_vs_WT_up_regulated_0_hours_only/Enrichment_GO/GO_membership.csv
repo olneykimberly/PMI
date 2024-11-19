@@ -1,0 +1,64 @@
+_MEMBER_Rpl37a,_LogP_Rpl37a,GO,Description,_PATTERN_,_RANK_,GiniIndex
+1,-3.6,GO:0048638,regulation of developmental growth,M1,1,0
+1,-2.9,GO:0034249,negative regulation of amide metabolic process,M1,1,0
+1,-2.5,GO:0120035,regulation of plasma membrane bounded cell projection organization,M1,1,0
+1,-2.4,R-HSA-8953854,Metabolism of RNA,M1,1,0
+1,-3.2,GO:0031329,regulation of cellular catabolic process,M1,1,0
+1,-5.6,R-HSA-9633012,Response of EIF2AK4 (GCN2) to amino acid deficiency,M1,1,0
+1,-5.6,R-HSA-72689,Formation of a pool of free 40S subunits,M1,1,0
+1,-5.5,R-HSA-1799339,SRP-dependent cotranslational protein targeting to membrane,M1,1,0
+1,-5.4,R-HSA-927802,Nonsense-Mediated Decay (NMD),M1,1,0
+1,-4.9,R-HSA-9675108,Nervous system development,M1,1,0
+1,-5.5,R-HSA-156827,L13a-mediated translational silencing of Ceruloplasmin expression,M1,1,0
+1,-3.2,GO:0043043,peptide biosynthetic process,M1,1,0
+1,-2,GO:0051960,regulation of nervous system development,M1,1,0
+1,-4.9,R-HSA-168255,Influenza Infection,M1,1,0
+1,-4.8,hsa03010,Ribosome,M1,1,0
+1,-3.9,GO:0061387,regulation of extent of cell growth,M1,1,0
+1,-3.8,R-HSA-72766,Translation,M1,1,0
+1,-2.5,GO:0031344,regulation of cell projection organization,M1,1,0
+1,-2.4,GO:0051129,negative regulation of cellular component organization,M1,1,0
+1,-5.4,R-HSA-72737,Cap-dependent Translation Initiation,M1,1,0
+1,-2.8,GO:0006518,peptide metabolic process,M1,1,0
+1,-2.3,GO:0050767,regulation of neurogenesis,M1,1,0
+1,-2.5,GO:0031647,regulation of protein stability,M1,1,0
+1,-2.1,GO:0010975,regulation of neuron projection development,M1,1,0
+1,-2.7,GO:1902532,negative regulation of intracellular signal transduction,M1,1,0
+1,-5.5,R-HSA-72706,GTP hydrolysis and joining of the 60S ribosomal subunit,M1,1,0
+1,-3.3,GO:0030307,positive regulation of cell growth,M1,1,0
+1,-2.8,GO:0045927,positive regulation of growth,M1,1,0
+1,-2,hsa05022,Pathways of neurodegeneration - multiple diseases,M1,1,0
+1,-5.1,R-HSA-168273,Influenza Viral RNA Transcription and Replication,M1,1,0
+1,-4.3,R-HSA-376176,Signaling by ROBO receptors,M1,1,0
+1,-5.4,R-HSA-975957,Nonsense Mediated Decay (NMD) enhanced by the Exon Junction Complex (EJC),M1,1,0
+1,-4.7,R-HSA-9010553,Regulation of expression of SLITs and ROBOs,M1,1,0
+1,-4.1,GO:0030516,regulation of axon extension,M1,1,0
+1,-3.4,GO:0006412,translation,M1,1,0
+1,-2.5,R-HSA-195258,RHO GTPase Effectors,M1,1,0
+1,-2.8,GO:0043523,regulation of neuron apoptotic process,M1,1,0
+1,-5.8,R-HSA-72764,Eukaryotic Translation Termination,M1,1,0
+1,-2.3,GO:0032535,regulation of cellular component size,M1,1,0
+1,-5.8,R-HSA-192823,Viral mRNA Translation,M1,1,0
+1,-3.4,GO:0050770,regulation of axonogenesis,M1,1,0
+1,-5.8,R-HSA-156902,Peptide chain elongation,M1,1,0
+1,-4.4,R-HSA-72312,rRNA processing,M1,1,0
+1,-5.4,R-HSA-72613,Eukaryotic Translation Initiation,M1,1,0
+1,-5.3,GO:0002181,cytoplasmic translation,M1,1,0
+1,-5.4,R-HSA-2408522,Selenoamino acid metabolism,M1,1,0
+1,-4.6,R-HSA-6791226,Major pathway of rRNA processing in the nucleolus and cytosol,M1,1,0
+1,-3.5,R-HSA-71291,Metabolism of amino acids and derivatives,M1,1,0
+1,-4.5,R-HSA-8868773,rRNA processing in the nucleus and cytosol,M1,1,0
+1,-6.1,CORUM:306,"Ribosome, cytoplasmic",M1,1,0
+1,-2.2,GO:1903311,regulation of mRNA metabolic process,M1,1,0
+1,-5.7,R-HSA-975956,Nonsense Mediated Decay (NMD) independent of the Exon Junction Complex (EJC),M1,1,0
+1,-3.2,GO:0008361,regulation of cell size,M1,1,0
+1,-5.8,R-HSA-2408557,Selenocysteine synthesis,M1,1,0
+1,-2.6,GO:0040008,regulation of growth,M1,1,0
+1,-3.2,GO:0001558,regulation of cell growth,M1,1,0
+1,-4.9,R-HSA-9711097,Cellular response to starvation,M1,1,0
+1,-2.8,GO:0043604,amide biosynthetic process,M1,1,0
+1,-5,R-HSA-422475,Axon guidance,M1,1,0
+1,-2.3,GO:0006979,response to oxidative stress,M1,1,0
+1,-5.8,R-HSA-156842,Eukaryotic Translation Elongation,M1,1,0
+1,-3.3,GO:0048639,positive regulation of developmental growth,M1,1,0
+1,-4.2,hsa05171,Coronavirus disease - COVID-19,M1,1,0

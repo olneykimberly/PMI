@@ -1,0 +1,48 @@
+Category,CategoryID,GO,Description,PARENT_GO,LogP,Enrichment,Z-score,#TotalGeneInLibrary,#GeneInGO,#GeneInHitList,#GeneInGOAndHitList,%InGO,STDV %InGO,GeneID,Hits,Log(q-value),GeneList
+GO Biological Processes,19,GO:1900272,negative regulation of long-term synaptic potentiation,19_GO:0048519 negative regulation of biological process,-7.2,3.6e+02,33,30286,14,18,3,17,8.8,348|5621|5764,APOE|PRNP|PTN,-2.9,Abi2
+GO Biological Processes,19,GO:0050807,regulation of synapse organization,19_GO:0050789 regulation of biological process,-6.6,35,13,30286,243,18,5,28,11,348|2823|5621|7534|22883,APOE|GPM6A|PRNP|YWHAZ|CLSTN1,-2.7,Abi2
+GO Biological Processes,19,GO:0050803,regulation of synapse structure or activity,19_GO:0065007 biological regulation,-6.5,34,13,30286,249,18,5,28,11,348|2823|5621|7534|22883,APOE|GPM6A|PRNP|YWHAZ|CLSTN1,-2.7,Abi2
+GO Biological Processes,19,GO:0034330,cell junction organization,19_GO:0009987 cellular process,-6.3,19,10,30286,533,18,6,33,11,348|2557|2823|5621|27445|81671,APOE|GABRA4|GPM6A|PRNP|PCLO|VMP1,-2.6,Abi2
+GO Biological Processes,19,GO:0050808,synapse organization,19_GO:0009987 cellular process,-5.9,25,11,30286,337,18,5,28,11,348|2557|2823|5621|27445,APOE|GABRA4|GPM6A|PRNP|PCLO,-2.3,Abi2
+GO Biological Processes,19,GO:1900271,regulation of long-term synaptic potentiation,19_GO:0048518 positive regulation of biological process,-5.6,1.1e+02,18,30286,47,18,3,17,8.8,348|5621|5764,APOE|PRNP|PTN,-2,Abi2
+GO Biological Processes,19,GO:0034329,cell junction assembly,19_GO:0009987 cellular process,-4.7,24,9.4,30286,283,18,4,22,9.8,2557|2823|27445|81671,GABRA4|GPM6A|PCLO|VMP1,-1.2,Abi2
+GO Biological Processes,19,GO:0007416,synapse assembly,19_GO:0032502 developmental process,-4.4,43,11,30286,117,18,3,17,8.8,2557|2823|27445,GABRA4|GPM6A|PCLO,-0.93,Abi2
+GO Biological Processes,19,GO:0007613,memory,19_GO:0032501 multicellular organismal process,-4.3,40,11,30286,126,18,3,17,8.8,348|5621|5764,APOE|PRNP|PTN,-0.89,Abi2
+GO Biological Processes,19,GO:0050804,modulation of chemical synaptic transmission,19_GO:0050789 regulation of biological process,-3.8,14,6.9,30286,493,18,4,22,9.8,348|5621|5764|22883,APOE|PRNP|PTN|CLSTN1,-0.46,Abi2
+GO Biological Processes,19,GO:0099177,regulation of trans-synaptic signaling,19_GO:0050789 regulation of biological process,-3.7,14,6.9,30286,494,18,4,22,9.8,348|5621|5764|22883,APOE|PRNP|PTN|CLSTN1,-0.46,Abi2
+GO Biological Processes,19,GO:0048167,regulation of synaptic plasticity,19_GO:0050789 regulation of biological process,-3.6,23,8,30286,216,18,3,17,8.8,348|5621|5764,APOE|PRNP|PTN,-0.32,Abi2
+GO Biological Processes,19,GO:0120035,regulation of plasma membrane bounded cell projection organization,19_GO:0050789 regulation of biological process,-3.3,10,5.8,30286,659,18,4,22,9.8,348|2823|5621|5764,APOE|GPM6A|PRNP|PTN,-0.08,Abi2
+GO Biological Processes,19,GO:0007611,learning or memory,19_GO:0032501 multicellular organismal process,-3.2,18,7,30286,278,18,3,17,8.8,348|5621|5764,APOE|PRNP|PTN,-0.08,Abi2
+GO Biological Processes,19,GO:0031344,regulation of cell projection organization,19_GO:0050789 regulation of biological process,-3.2,10,5.7,30286,676,18,4,22,9.8,348|2823|5621|5764,APOE|GPM6A|PRNP|PTN,-0.08,Abi2
+GO Biological Processes,19,GO:0050890,cognition,19_GO:0032501 multicellular organismal process,-3.1,16,6.5,30286,322,18,3,17,8.8,348|5621|5764,APOE|PRNP|PTN,0,Abi2
+GO Biological Processes,19,GO:0008285,negative regulation of cell population proliferation,19_GO:0048519 negative regulation of biological process,-3,8.5,5.2,30286,791,18,4,22,9.8,348|2495|5621|5764,APOE|FTH1|PRNP|PTN,0,Abi2
+GO Biological Processes,19,GO:0006869,lipid transport,19_GO:0051179 localization,-3,15,6.2,30286,348,18,3,17,8.8,348|64137|81671,APOE|ABCG4|VMP1,0,Abi2
+GO Biological Processes,19,GO:0034765,regulation of monoatomic ion transmembrane transport,19_GO:0051179 localization,-3,14,6.2,30286,349,18,3,17,8.8,3760|5621|81671,KCNJ3|PRNP|VMP1,0,Abi2
+GO Biological Processes,19,GO:0031346,positive regulation of cell projection organization,19_GO:0048518 positive regulation of biological process,-2.9,14,6.1,30286,360,18,3,17,8.8,348|2823|5764,APOE|GPM6A|PTN,0,Abi2
+GO Biological Processes,19,GO:0010876,lipid localization,19_GO:0051179 localization,-2.8,13,5.8,30286,383,18,3,17,8.8,348|64137|81671,APOE|ABCG4|VMP1,0,Abi2
+GO Biological Processes,19,GO:0098916,anterograde trans-synaptic signaling,19_GO:0050789 regulation of biological process,-2.7,12,5.6,30286,415,18,3,17,8.8,348|2557|27445,APOE|GABRA4|PCLO,0,Abi2
+GO Biological Processes,19,GO:0007268,chemical synaptic transmission,19_GO:0050789 regulation of biological process,-2.7,12,5.6,30286,415,18,3,17,8.8,348|2557|27445,APOE|GABRA4|PCLO,0,Abi2
+GO Biological Processes,19,GO:0030003,intracellular monoatomic cation homeostasis,19_GO:0042592 homeostatic process,-2.7,12,5.5,30286,423,18,3,17,8.8,348|2495|5621,APOE|FTH1|PRNP,0,Abi2
+GO Biological Processes,19,GO:0098771,inorganic ion homeostasis,19_GO:0042592 homeostatic process,-2.7,12,5.5,30286,430,18,3,17,8.8,348|2495|5621,APOE|FTH1|PRNP,0,Abi2
+GO Biological Processes,19,GO:0006873,intracellular monoatomic ion homeostasis,19_GO:0042592 homeostatic process,-2.7,12,5.5,30286,432,18,3,17,8.8,348|2495|5621,APOE|FTH1|PRNP,0,Abi2
+GO Biological Processes,19,GO:0099537,trans-synaptic signaling,19_GO:0050789 regulation of biological process,-2.7,12,5.5,30286,432,18,3,17,8.8,348|2557|27445,APOE|GABRA4|PCLO,0,Abi2
+GO Biological Processes,19,GO:0099536,synaptic signaling,19_GO:0050789 regulation of biological process,-2.6,11,5.2,30286,461,18,3,17,8.8,348|2557|27445,APOE|GABRA4|PCLO,0,Abi2
+GO Biological Processes,19,GO:0043269,regulation of monoatomic ion transport,19_GO:0051179 localization,-2.6,11,5.2,30286,470,18,3,17,8.8,3760|5621|81671,KCNJ3|PRNP|VMP1,0,Abi2
+GO Biological Processes,19,GO:0072657,protein localization to membrane,19_GO:0051179 localization,-2.6,11,5.2,30286,475,18,3,17,8.8,348|5764|22883,APOE|PTN|CLSTN1,0,Abi2
+GO Biological Processes,19,GO:0034762,regulation of transmembrane transport,19_GO:0051179 localization,-2.5,10,5.1,30286,489,18,3,17,8.8,3760|5621|81671,KCNJ3|PRNP|VMP1,0,Abi2
+GO Biological Processes,19,GO:0055080,monoatomic cation homeostasis,19_GO:0042592 homeostatic process,-2.5,10,5,30286,497,18,3,17,8.8,348|2495|5621,APOE|FTH1|PRNP,0,Abi2
+GO Biological Processes,19,GO:0050801,monoatomic ion homeostasis,19_GO:0042592 homeostatic process,-2.5,10,5,30286,507,18,3,17,8.8,348|2495|5621,APOE|FTH1|PRNP,0,Abi2
+GO Biological Processes,19,GO:0051640,organelle localization,19_GO:0051179 localization,-2.4,9.3,4.8,30286,542,18,3,17,8.8,7534|27445|81671,YWHAZ|PCLO|VMP1,0,Abi2
+GO Biological Processes,19,GO:0051668,localization within membrane,19_GO:0051179 localization,-2.4,9,4.7,30286,559,18,3,17,8.8,348|5764|22883,APOE|PTN|CLSTN1,0,Abi2
+GO Biological Processes,19,GO:0055082,intracellular chemical homeostasis,19_GO:0042592 homeostatic process,-2.3,8.8,4.6,30286,575,18,3,17,8.8,348|2495|5621,APOE|FTH1|PRNP,0,Abi2
+GO Biological Processes,19,GO:1902532,negative regulation of intracellular signal transduction,19_GO:0048519 negative regulation of biological process,-2.3,8.5,4.5,30286,591,18,3,17,8.8,348|5621|7534,APOE|PRNP|YWHAZ,0,Abi2
+GO Biological Processes,19,GO:0030162,regulation of proteolysis,19_GO:0008152 metabolic process,-2.3,8.4,4.5,30286,600,18,3,17,8.8,348|1471|5621,APOE|CST3|PRNP,0,Abi2
+GO Biological Processes,19,GO:0007610,behavior,19_GO:0032501 multicellular organismal process,-2.3,8.2,4.4,30286,619,18,3,17,8.8,348|5621|5764,APOE|PRNP|PTN,0,Abi2
+GO Biological Processes,19,GO:0030001,metal ion transport,19_GO:0051179 localization,-2.2,8,4.3,30286,634,18,3,17,8.8,2495|2823|3760,FTH1|GPM6A|KCNJ3,0,Abi2
+Reactome Gene Sets,6,R-HSA-5653656,Vesicle-mediated transport,,-2.2,7.5,4.2,30286,673,18,3,17,8.8,348|2495|7534,APOE|FTH1|YWHAZ,0,Abi2
+GO Biological Processes,19,GO:0019725,cellular homeostasis,19_GO:0042592 homeostatic process,-2.1,7.4,4.1,30286,683,18,3,17,8.8,348|2495|5621,APOE|FTH1|PRNP,0,Abi2
+GO Biological Processes,19,GO:0031175,neuron projection development,19_GO:0032502 developmental process,-2.1,7.3,4.1,30286,691,18,3,17,8.8,348|2823|5764,APOE|GPM6A|PTN,0,Abi2
+GO Biological Processes,19,GO:0098660,inorganic ion transmembrane transport,19_GO:0051179 localization,-2.1,7,4,30286,726,18,3,17,8.8,2557|2823|3760,GABRA4|GPM6A|KCNJ3,0,Abi2
+GO Biological Processes,19,GO:0051129,negative regulation of cellular component organization,19_GO:0048519 negative regulation of biological process,-2.1,6.9,3.9,30286,733,18,3,17,8.8,348|1471|5621,APOE|CST3|PRNP,0,Abi2
+Reactome Gene Sets,6,R-HSA-382551,Transport of small molecules,,-2,6.8,3.9,30286,737,18,3,17,8.8,348|2495|64137,APOE|FTH1|ABCG4,0,Abi2
+GO Biological Processes,19,GO:0044092,negative regulation of molecular function,19_GO:0065007 biological regulation,-2,6.7,3.9,30286,751,18,3,17,8.8,348|1471|5621,APOE|CST3|PRNP,0,Abi2

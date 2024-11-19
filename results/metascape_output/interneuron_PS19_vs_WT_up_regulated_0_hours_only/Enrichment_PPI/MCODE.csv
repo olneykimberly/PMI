@@ -1,0 +1,5 @@
+Cluster,Score,Type,Gene,Symbol,Network
+1,1.5,Clustered,6232,RPS27,Rpl37a_SUB1
+1,1.5,Clustered,6227,RPS21,Rpl37a_SUB1
+1,1.5,Clustered,23521,RPL13A,Rpl37a_SUB1
+1,1.5,Seed,6170,RPL39,Rpl37a_SUB1

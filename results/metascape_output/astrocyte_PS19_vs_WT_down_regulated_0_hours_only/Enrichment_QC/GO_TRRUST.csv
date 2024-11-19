@@ -1,0 +1,2 @@
+_MEMBER_Abi2,_LogP_Abi2,GO,_PATTERN_,_RANK_,GiniIndex,Category,CategoryID,Description,PARENT_GO,LogP,Enrichment,Z-score,#TotalGeneInLibrary,#GeneInGO,#GeneInHitList,#GeneInGOAndHitList,%InGO,STDV %InGO,GeneID,Hits,Log(q-value),EvidenceCutoff
+1,-2.5,TRR01256,M1,1,0,TRRUST,34,Regulated by: SP1,,-2.5,9.6,4.9,30286,526,18,3,17,8.8,348|5621|5764,APOE|PRNP|PTN,0,0

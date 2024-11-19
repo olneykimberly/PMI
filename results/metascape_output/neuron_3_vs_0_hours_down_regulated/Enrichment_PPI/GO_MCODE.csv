@@ -1,0 +1,7 @@
+Name,Category,CategoryID,GO,Description,PARENT_GO,LogP,Enrichment,Z-score,#TotalGeneInLibrary,#GeneInGO,#GeneInHitList,#GeneInGOAndHitList,%InGO,STDV %InGO,GeneID,Hits,Log(q-value)
+Gm973,KEGG Pathway,24,hsa04710,Circadian rhythm,,-13,4.9e+02,50,30286,34,9,5,56,17,1628|8863|9572|9975|79365,DBP|PER3|NR1D1|NR1D2|BHLHE41,-8.5
+Gm973,GO Biological Processes,19,GO:0048511,rhythmic process,19_GO:0048511 rhythmic process,-10,75,21,30286,268,9,6,67,16,1628|3131|8863|9572|9975|79365,DBP|HLF|PER3|NR1D1|NR1D2|BHLHE41,-6.4
+Gm973,GO Biological Processes,19,GO:0007623,circadian rhythm,19_GO:0048511 rhythmic process,-7.3,99,20,30286,136,9,4,44,17,8863|9572|9975|79365,PER3|NR1D1|NR1D2|BHLHE41,-3.5
+Gm973,GO Biological Processes,19,GO:0032922,circadian regulation of gene expression,19_GO:0048511 rhythmic process,-6,1.4e+02,21,30286,70,9,3,33,16,8863|9572|79365,PER3|NR1D1|BHLHE41,-2.4
+Gm973,Reactome Gene Sets,6,R-HSA-400253,Circadian Clock,,-6,1.4e+02,21,30286,70,9,3,33,16,1628|9572|79365,DBP|NR1D1|BHLHE41,-2.4
+Gm973,GO Biological Processes,19,GO:0042752,regulation of circadian rhythm,19_GO:0048511 rhythmic process,-5.4,89,16,30286,114,9,3,33,16,8863|9572|9975,PER3|NR1D1|NR1D2,-1.8

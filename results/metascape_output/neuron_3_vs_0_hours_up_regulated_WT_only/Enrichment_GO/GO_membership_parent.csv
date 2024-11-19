@@ -1,0 +1,11 @@
+_MEMBER_Hdac4,_LogP_Hdac4,GO,Description,_PATTERN_,_RANK_,CHILD_GO_Hdac4
+1,-6.111287037362058,GO:0032501,multicellular organismal process,M1,1,GO:0008016 regulation of heart contraction
+1,-5.501521395263423,GO:0050789,regulation of biological process,M1,1,GO:0050804 modulation of chemical synaptic transmission
+1,-5.228758761301684,GO:0051179,localization,M1,1,GO:1904062 regulation of monoatomic cation transmembrane transport
+1,-4.844540938143129,GO:0065007,biological regulation,M1,1,GO:0051899 membrane depolarization
+1,-4.2460488783742845,GO:0032502,developmental process,M1,1,GO:0009791 post-embryonic development
+1,-3.562627647311958,GO:0050896,response to stimulus,M1,1,GO:0008277 regulation of G protein-coupled receptor signaling pathway
+1,-3.541665150739753,GO:0048519,negative regulation of biological process,M1,1,GO:0045936 negative regulation of phosphate metabolic process
+1,-2.532173335661839,GO:0009987,cellular process,M1,1,GO:0050808 synapse organization
+1,-2.4133174658277468,GO:0048518,positive regulation of biological process,M1,1,GO:0031401 positive regulation of protein modification process
+1,-2.1304071055902103,GO:0008152,metabolic process,M1,1,GO:0045859 regulation of protein kinase activity

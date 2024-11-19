@@ -1,0 +1,6 @@
+Name,Category,CategoryID,GO,Description,PARENT_GO,LogP,Enrichment,Z-score,#TotalGeneInLibrary,#GeneInGO,#GeneInHitList,#GeneInGOAndHitList,%InGO,STDV %InGO,GeneID,Hits,Log(q-value)
+Sulf1,Reactome Gene Sets,6,R-HSA-388396,GPCR downstream signalling,,-6.7,48,14,30286,634,4,4,1e+02,22,1903|2788|6344|9630,S1PR3|GNG7|SCTR|GNA14,-2.5
+Sulf1,Reactome Gene Sets,6,R-HSA-372790,Signaling by GPCR,,-6.5,43,13,30286,709,4,4,1e+02,22,1903|2788|6344|9630,S1PR3|GNG7|SCTR|GNA14,-2.5
+Sulf1,GO Biological Processes,19,GO:0007188,adenylate cyclase-modulating G protein-coupled receptor signaling pathway,19_GO:0050896 response to stimulus,-5.8,98,17,30286,232,4,3,75,22,1903|6344|9630,S1PR3|SCTR|GNA14,-1.9
+Sulf1,Reactome Gene Sets,6,R-HSA-418594,G alpha (i) signalling events,,-5.3,71,15,30286,318,4,3,75,22,1903|2788|9630,S1PR3|GNG7|GNA14,-1.6
+Sulf1,Reactome Gene Sets,6,R-HSA-500792,GPCR ligand binding,,-4.8,49,12,30286,468,4,3,75,22,1903|2788|6344,S1PR3|GNG7|SCTR,-1.2

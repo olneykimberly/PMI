@@ -1,0 +1,8 @@
+_MEMBER_Lrp1b,_LogP_Lrp1b,GO,Description,_PATTERN_,_RANK_,CHILD_GO_Lrp1b
+1,-7.863838721361779,GO:0009987,cellular process,M1,1,GO:0098609 cell-cell adhesion
+1,-6.4652502596272345,GO:0050789,regulation of biological process,M1,1,GO:0099536 synaptic signaling
+1,-5.486125407589931,GO:0032502,developmental process,M1,1,GO:0007420 brain development
+1,-4.064054573878424,GO:0065007,biological regulation,M1,1,GO:0050803 regulation of synapse structure or activity
+1,-3.5194603556618387,GO:0040011,locomotion,M1,1,GO:0030336 negative regulation of cell migration
+1,-3.2996243255912123,GO:0048519,negative regulation of biological process,M1,1,GO:0032102 negative regulation of response to external stimulus
+1,-3.108490190950277,GO:0050896,response to stimulus,M1,1,GO:0010035 response to inorganic substance

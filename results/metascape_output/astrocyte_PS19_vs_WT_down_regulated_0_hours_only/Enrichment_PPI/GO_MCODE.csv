@@ -1,0 +1,8 @@
+Name,Category,CategoryID,GO,Description,PARENT_GO,LogP,Enrichment,Z-score,#TotalGeneInLibrary,#GeneInGO,#GeneInHitList,#GeneInGOAndHitList,%InGO,STDV %InGO,GeneID,Hits,Log(q-value)
+Abi2,GO Biological Processes,19,GO:0050807,regulation of synapse organization,19_GO:0050789 regulation of biological process,-5.7,93,17,30286,243,4,3,75,22,348|5621|22883,APOE|PRNP|CLSTN1,-1.6
+Abi2,GO Biological Processes,19,GO:0050803,regulation of synapse structure or activity,19_GO:0065007 biological regulation,-5.7,91,16,30286,249,4,3,75,22,348|5621|22883,APOE|PRNP|CLSTN1,-1.6
+Abi2,GO Biological Processes,19,GO:0050804,modulation of chemical synaptic transmission,19_GO:0050789 regulation of biological process,-4.8,46,12,30286,493,4,3,75,22,348|5621|22883,APOE|PRNP|CLSTN1,-1
+Abi2,GO Biological Processes,19,GO:0099177,regulation of trans-synaptic signaling,19_GO:0050789 regulation of biological process,-4.8,46,12,30286,494,4,3,75,22,348|5621|22883,APOE|PRNP|CLSTN1,-1
+Abi2,GO Biological Processes,19,GO:0030162,regulation of proteolysis,19_GO:0008152 metabolic process,-4.5,38,10,30286,600,4,3,75,22,348|1471|5621,APOE|CST3|PRNP,-0.89
+Abi2,GO Biological Processes,19,GO:0051129,negative regulation of cellular component organization,19_GO:0048519 negative regulation of biological process,-4.3,31,9.4,30286,733,4,3,75,22,348|1471|5621,APOE|CST3|PRNP,-0.74
+Abi2,GO Biological Processes,19,GO:0044092,negative regulation of molecular function,19_GO:0065007 biological regulation,-4.2,30,9.3,30286,751,4,3,75,22,348|1471|5621,APOE|CST3|PRNP,-0.74

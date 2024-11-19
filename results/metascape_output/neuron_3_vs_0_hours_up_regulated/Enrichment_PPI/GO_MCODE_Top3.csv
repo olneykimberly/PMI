@@ -1,0 +1,4 @@
+Network,Annotation
+Npas2,R-HSA-168255|Influenza Infection|-10.1;R-HSA-1296072|Voltage gated Potassium channels|-9.4;R-HSA-168273|Influenza Viral RNA Transcription and Replication|-8.7
+Npas2_MCODE_ALL,"CORUM:306|Ribosome, cytoplasmic|-11.2;R-HSA-192823|Viral mRNA Translation|-10.9;R-HSA-156902|Peptide chain elongation|-10.9"
+Npas2_SUB1_MCODE_1,"CORUM:306|Ribosome, cytoplasmic|-11.2;R-HSA-192823|Viral mRNA Translation|-10.9;R-HSA-156902|Peptide chain elongation|-10.9"

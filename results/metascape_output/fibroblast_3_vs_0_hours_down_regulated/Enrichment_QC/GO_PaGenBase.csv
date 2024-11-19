@@ -1,0 +1,2 @@
+_MEMBER_Per2,_LogP_Per2,GO,_PATTERN_,_RANK_,GiniIndex,Category,CategoryID,Description,PARENT_GO,LogP,Enrichment,Z-score,#TotalGeneInLibrary,#GeneInGO,#GeneInHitList,#GeneInGOAndHitList,%InGO,STDV %InGO,GeneID,Hits,Log(q-value),EvidenceCutoff
+1,-2.6,PGB:00002,M1,1,0,PaGenBase,36,Tissue-specific: kidney,,-2.6,11,5.3,30286,483,17,3,18,9.2,5625|9376|192668,PRODH|SLC22A8|CYS1,0,0

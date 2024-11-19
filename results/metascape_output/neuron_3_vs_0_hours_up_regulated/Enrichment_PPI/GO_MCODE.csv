@@ -1,0 +1,236 @@
+Name,Category,CategoryID,GO,Description,PARENT_GO,LogP,Enrichment,Z-score,#TotalGeneInLibrary,#GeneInGO,#GeneInHitList,#GeneInGOAndHitList,%InGO,STDV %InGO,GeneID,Hits,Log(q-value)
+Npas2,Reactome Gene Sets,6,R-HSA-168255,Influenza Infection,,-10,50,18,30286,157,27,7,26,8.4,811|6139|6154|6160|6193|6201|9883,CALR|RPL17|RPL26|RPL31|RPS5|RPS7|POM121,-7.4
+Npas2,Reactome Gene Sets,6,R-HSA-1296072,Voltage gated Potassium channels,,-9.4,1.3e+02,25,30286,43,27,5,19,7.5,3737|3745|3787|3788|9196,KCNA2|KCNB1|KCNS1|KCNS2|KCNAB3,-6.8
+Npas2,Reactome Gene Sets,6,R-HSA-168273,Influenza Viral RNA Transcription and Replication,,-8.7,49,17,30286,136,27,6,22,8,6139|6154|6160|6193|6201|9883,RPL17|RPL26|RPL31|RPS5|RPS7|POM121,-6.1
+Npas2,CORUM,33,CORUM:306,"Ribosome, cytoplasmic",,-8.1,70,18,30286,80,27,5,19,7.5,6139|6154|6160|6193|6201,RPL17|RPL26|RPL31|RPS5|RPS7,-5.5
+Npas2,Reactome Gene Sets,6,R-HSA-192823,Viral mRNA Translation,,-7.8,62,17,30286,90,27,5,19,7.5,6139|6154|6160|6193|6201,RPL17|RPL26|RPL31|RPS5|RPS7,-5.3
+Npas2,Reactome Gene Sets,6,R-HSA-156902,Peptide chain elongation,,-7.8,62,17,30286,90,27,5,19,7.5,6139|6154|6160|6193|6201,RPL17|RPL26|RPL31|RPS5|RPS7,-5.3
+Npas2,GO Biological Processes,19,GO:0051260,protein homooligomerization,19_GO:0009987 cellular process,-7.8,35,14,30286,193,27,6,22,8,3737|3745|3787|3788|5621|6506,KCNA2|KCNB1|KCNS1|KCNS2|PRNP|SLC1A2,-5.3
+Npas2,Reactome Gene Sets,6,R-HSA-72764,Eukaryotic Translation Termination,,-7.7,60,17,30286,94,27,5,19,7.5,6139|6154|6160|6193|6201,RPL17|RPL26|RPL31|RPS5|RPS7,-5.2
+Npas2,Reactome Gene Sets,6,R-HSA-156842,Eukaryotic Translation Elongation,,-7.7,60,17,30286,94,27,5,19,7.5,6139|6154|6160|6193|6201,RPL17|RPL26|RPL31|RPS5|RPS7,-5.2
+Npas2,Reactome Gene Sets,6,R-HSA-2408557,Selenocysteine synthesis,,-7.7,60,17,30286,94,27,5,19,7.5,6139|6154|6160|6193|6201,RPL17|RPL26|RPL31|RPS5|RPS7,-5.2
+Npas2,Reactome Gene Sets,6,R-HSA-975956,Nonsense Mediated Decay (NMD) independent of the Exon Junction Complex (EJC),,-7.7,58,17,30286,96,27,5,19,7.5,6139|6154|6160|6193|6201,RPL17|RPL26|RPL31|RPS5|RPS7,-5.2
+Npas2,Reactome Gene Sets,6,R-HSA-72689,Formation of a pool of free 40S subunits,,-7.5,55,16,30286,102,27,5,19,7.5,6139|6154|6160|6193|6201,RPL17|RPL26|RPL31|RPS5|RPS7,-5.1
+Npas2,Reactome Gene Sets,6,R-HSA-9633012,Response of EIF2AK4 (GCN2) to amino acid deficiency,,-7.5,55,16,30286,102,27,5,19,7.5,6139|6154|6160|6193|6201,RPL17|RPL26|RPL31|RPS5|RPS7,-5.1
+Npas2,Reactome Gene Sets,6,R-HSA-1296071,Potassium Channels,,-7.5,54,16,30286,103,27,5,19,7.5,3737|3745|3787|3788|9196,KCNA2|KCNB1|KCNS1|KCNS2|KCNAB3,-5.1
+Npas2,Reactome Gene Sets,6,R-HSA-156827,L13a-mediated translational silencing of Ceruloplasmin expression,,-7.3,50,16,30286,112,27,5,19,7.5,6139|6154|6160|6193|6201,RPL17|RPL26|RPL31|RPS5|RPS7,-4.9
+Npas2,Reactome Gene Sets,6,R-HSA-1799339,SRP-dependent cotranslational protein targeting to membrane,,-7.3,50,15,30286,113,27,5,19,7.5,6139|6154|6160|6193|6201,RPL17|RPL26|RPL31|RPS5|RPS7,-4.9
+Npas2,Reactome Gene Sets,6,R-HSA-72706,GTP hydrolysis and joining of the 60S ribosomal subunit,,-7.3,50,15,30286,113,27,5,19,7.5,6139|6154|6160|6193|6201,RPL17|RPL26|RPL31|RPS5|RPS7,-4.9
+Npas2,Reactome Gene Sets,6,R-HSA-975957,Nonsense Mediated Decay (NMD) enhanced by the Exon Junction Complex (EJC),,-7.2,48,15,30286,116,27,5,19,7.5,6139|6154|6160|6193|6201,RPL17|RPL26|RPL31|RPS5|RPS7,-4.8
+Npas2,Reactome Gene Sets,6,R-HSA-927802,Nonsense-Mediated Decay (NMD),,-7.2,48,15,30286,116,27,5,19,7.5,6139|6154|6160|6193|6201,RPL17|RPL26|RPL31|RPS5|RPS7,-4.8
+Npas2,Reactome Gene Sets,6,R-HSA-2408522,Selenoamino acid metabolism,,-7.2,47,15,30286,119,27,5,19,7.5,6139|6154|6160|6193|6201,RPL17|RPL26|RPL31|RPS5|RPS7,-4.8
+Npas2,Reactome Gene Sets,6,R-HSA-72613,Eukaryotic Translation Initiation,,-7.2,47,15,30286,120,27,5,19,7.5,6139|6154|6160|6193|6201,RPL17|RPL26|RPL31|RPS5|RPS7,-4.8
+Npas2,Reactome Gene Sets,6,R-HSA-72737,Cap-dependent Translation Initiation,,-7.2,47,15,30286,120,27,5,19,7.5,6139|6154|6160|6193|6201,RPL17|RPL26|RPL31|RPS5|RPS7,-4.8
+Npas2,GO Biological Processes,19,GO:0051259,protein complex oligomerization,19_GO:0009987 cellular process,-7.1,26,12,30286,254,27,6,22,8,3737|3745|3787|3788|5621|6506,KCNA2|KCNB1|KCNS1|KCNS2|PRNP|SLC1A2,-4.7
+Npas2,GO Biological Processes,19,GO:0002181,cytoplasmic translation,19_GO:0008152 metabolic process,-7,44,15,30286,127,27,5,19,7.5,6139|6154|6160|6193|6201,RPL17|RPL26|RPL31|RPS5|RPS7,-4.7
+Npas2,Reactome Gene Sets,6,R-HSA-9711097,Cellular response to starvation,,-6.6,36,13,30286,157,27,5,19,7.5,6139|6154|6160|6193|6201,RPL17|RPL26|RPL31|RPS5|RPS7,-4.3
+Npas2,GO Biological Processes,19,GO:0071805,potassium ion transmembrane transport,19_GO:0051179 localization,-6.5,34,13,30286,165,27,5,19,7.5,3737|3745|3787|3788|9196,KCNA2|KCNB1|KCNS1|KCNS2|KCNAB3,-4.2
+Npas2,KEGG Pathway,24,hsa03010,Ribosome,,-6.4,33,12,30286,170,27,5,19,7.5,6139|6154|6160|6193|6201,RPL17|RPL26|RPL31|RPS5|RPS7,-4.1
+Npas2,Reactome Gene Sets,6,R-HSA-422475,Axon guidance,,-6.4,14,9.4,30286,548,27,7,26,8.4,5621|6139|6154|6160|6193|6201|8851,PRNP|RPL17|RPL26|RPL31|RPS5|RPS7|CDK5R1,-4.1
+Npas2,Reactome Gene Sets,6,R-HSA-9010553,Regulation of expression of SLITs and ROBOs,,-6.4,33,12,30286,172,27,5,19,7.5,6139|6154|6160|6193|6201,RPL17|RPL26|RPL31|RPS5|RPS7,-4.1
+Npas2,GO Biological Processes,19,GO:0006518,peptide metabolic process,19_GO:0008152 metabolic process,-6.4,14,9.4,30286,551,27,7,26,8.4,1203|6139|6154|6160|6193|6201|6506,CLN5|RPL17|RPL26|RPL31|RPS5|RPS7|SLC1A2,-4.1
+Npas2,GO Biological Processes,19,GO:0006813,potassium ion transport,19_GO:0051179 localization,-6.3,32,12,30286,176,27,5,19,7.5,3737|3745|3787|3788|9196,KCNA2|KCNB1|KCNS1|KCNS2|KCNAB3,-4.1
+Npas2,Reactome Gene Sets,6,R-HSA-9675108,Nervous system development,,-6.3,14,9.2,30286,573,27,7,26,8.4,5621|6139|6154|6160|6193|6201|8851,PRNP|RPL17|RPL26|RPL31|RPS5|RPS7|CDK5R1,-4
+Npas2,Reactome Gene Sets,6,R-HSA-6791226,Major pathway of rRNA processing in the nucleolus and cytosol,,-6.2,30,12,30286,185,27,5,19,7.5,6139|6154|6160|6193|6201,RPL17|RPL26|RPL31|RPS5|RPS7,-4
+Npas2,Reactome Gene Sets,6,R-HSA-8868773,rRNA processing in the nucleus and cytosol,,-6.1,29,12,30286,195,27,5,19,7.5,6139|6154|6160|6193|6201,RPL17|RPL26|RPL31|RPS5|RPS7,-3.9
+Npas2,Reactome Gene Sets,6,R-HSA-72312,rRNA processing,,-6,27,11,30286,205,27,5,19,7.5,6139|6154|6160|6193|6201,RPL17|RPL26|RPL31|RPS5|RPS7,-3.7
+Npas2,GO Biological Processes,19,GO:1901379,regulation of potassium ion transmembrane transport,19_GO:0051179 localization,-6,52,14,30286,86,27,4,15,6.8,3787|3788|5621|9196,KCNS1|KCNS2|PRNP|KCNAB3,-3.7
+Npas2,Reactome Gene Sets,6,R-HSA-376176,Signaling by ROBO receptors,,-5.9,26,11,30286,219,27,5,19,7.5,6139|6154|6160|6193|6201,RPL17|RPL26|RPL31|RPS5|RPS7,-3.6
+Npas2,Reactome Gene Sets,6,R-HSA-112316,Neuronal System,,-5.9,16,9.4,30286,410,27,6,22,8,3737|3745|3787|3788|6506|9196,KCNA2|KCNB1|KCNS1|KCNS2|SLC1A2|KCNAB3,-3.6
+Npas2,GO Biological Processes,19,GO:0043043,peptide biosynthetic process,19_GO:0008152 metabolic process,-5.8,16,9.2,30286,421,27,6,22,8,6139|6154|6160|6193|6201|6506,RPL17|RPL26|RPL31|RPS5|RPS7|SLC1A2,-3.5
+Npas2,KEGG Pathway,24,hsa05171,Coronavirus disease - COVID-19,,-5.7,24,11,30286,233,27,5,19,7.5,6139|6154|6160|6193|6201,RPL17|RPL26|RPL31|RPS5|RPS7,-3.5
+Npas2,GO Biological Processes,19,GO:0043266,regulation of potassium ion transport,19_GO:0051179 localization,-5.7,44,13,30286,102,27,4,15,6.8,3787|3788|5621|9196,KCNS1|KCNS2|PRNP|KCNAB3,-3.5
+Npas2,GO Biological Processes,19,GO:0090314,positive regulation of protein targeting to membrane,19_GO:0051179 localization,-5.7,1.2e+02,19,30286,28,27,3,11,6,3745|5621|8851,KCNB1|PRNP|CDK5R1,-3.4
+Npas2,CORUM,33,CORUM:3055,Nop56p-associated pre-rRNA complex,,-5.7,43,13,30286,104,27,4,15,6.8,6139|6154|6160|6201,RPL17|RPL26|RPL31|RPS7,-3.4
+Npas2,GO Biological Processes,19,GO:0090313,regulation of protein targeting to membrane,19_GO:0051179 localization,-5.4,99,17,30286,34,27,3,11,6,3745|5621|8851,KCNB1|PRNP|CDK5R1,-3.2
+Npas2,GO Biological Processes,19,GO:0033144,negative regulation of intracellular steroid hormone receptor signaling pathway,19_GO:0048519 negative regulation of biological process,-5.3,91,16,30286,37,27,3,11,6,406|811|9575,BMAL1|CALR|CLOCK,-3.1
+Npas2,Reactome Gene Sets,6,R-HSA-72766,Translation,,-5.3,19,9.3,30286,292,27,5,19,7.5,6139|6154|6160|6193|6201,RPL17|RPL26|RPL31|RPS5|RPS7,-3
+Npas2,GO Biological Processes,19,GO:0043604,amide biosynthetic process,19_GO:0008152 metabolic process,-5.2,12,8,30286,542,27,6,22,8,6139|6154|6160|6193|6201|6506,RPL17|RPL26|RPL31|RPS5|RPS7|SLC1A2,-2.9
+Npas2,CORUM,33,CORUM:308,"60S ribosomal subunit, cytoplasmic",,-5,72,14,30286,47,27,3,11,6,6139|6154|6160,RPL17|RPL26|RPL31,-2.8
+Npas2,Reactome Gene Sets,6,R-HSA-71291,Metabolism of amino acids and derivatives,,-4.8,15,8.2,30286,367,27,5,19,7.5,6139|6154|6160|6193|6201,RPL17|RPL26|RPL31|RPS5|RPS7,-2.6
+Npas2,Reactome Gene Sets,6,R-HSA-1638091,Heparan sulfate/heparin (HS-GAG) metabolism,,-4.7,59,13,30286,57,27,3,11,6,9672|9951|126792,SDC3|HS3ST4|B3GALT6,-2.6
+Npas2,GO Biological Processes,19,GO:0006412,translation,19_GO:0008152 metabolic process,-4.6,14,7.9,30286,392,27,5,19,7.5,6139|6154|6160|6193|6201,RPL17|RPL26|RPL31|RPS5|RPS7,-2.5
+Npas2,GO Biological Processes,19,GO:0032922,circadian regulation of gene expression,19_GO:0048511 rhythmic process,-4.5,48,12,30286,70,27,3,11,6,406|4297|9575,BMAL1|KMT2A|CLOCK,-2.3
+Npas2,Reactome Gene Sets,6,R-HSA-8953854,Metabolism of RNA,,-4.4,9.3,6.7,30286,726,27,6,22,8,6139|6154|6160|6193|6201|9883,RPL17|RPL26|RPL31|RPS5|RPS7|POM121,-2.3
+Npas2,GO Biological Processes,19,GO:0033143,regulation of intracellular steroid hormone receptor signaling pathway,19_GO:0050896 response to stimulus,-4.4,46,12,30286,73,27,3,11,6,406|811|9575,BMAL1|CALR|CLOCK,-2.3
+Npas2,GO Biological Processes,19,GO:1903533,regulation of protein targeting,19_GO:0051179 localization,-4.3,43,11,30286,79,27,3,11,6,3745|5621|8851,KCNB1|PRNP|CDK5R1,-2.2
+Npas2,GO Biological Processes,19,GO:0006029,proteoglycan metabolic process,19_GO:0008152 metabolic process,-4.2,40,11,30286,84,27,3,11,6,1301|9951|126792,COL11A1|HS3ST4|B3GALT6,-2.1
+Npas2,GO Biological Processes,19,GO:0034762,regulation of transmembrane transport,19_GO:0051179 localization,-4.2,11,7,30286,489,27,5,19,7.5,3787|3788|5621|6506|9196,KCNS1|KCNS2|PRNP|SLC1A2|KCNAB3,-2
+Npas2,GO Biological Processes,19,GO:0048511,rhythmic process,19_GO:0048511 rhythmic process,-4,17,7.7,30286,268,27,4,15,6.8,406|4297|8851|9575,BMAL1|KMT2A|CDK5R1|CLOCK,-1.9
+Npas2,GO Biological Processes,19,GO:0070201,regulation of establishment of protein localization,19_GO:0051179 localization,-4,10,6.6,30286,537,27,5,19,7.5,406|3745|5621|8851|9575,BMAL1|KCNB1|PRNP|CDK5R1|CLOCK,-1.8
+Npas2,GO Biological Processes,19,GO:1905477,positive regulation of protein localization to membrane,19_GO:0051179 localization,-4,32,9.5,30286,105,27,3,11,6,3745|5621|8851,KCNB1|PRNP|CDK5R1,-1.8
+Npas2,Reactome Gene Sets,6,R-HSA-71387,Metabolism of carbohydrates,,-3.9,15,7.4,30286,290,27,4,15,6.8,9672|9883|9951|126792,SDC3|POM121|HS3ST4|B3GALT6,-1.8
+Npas2,Reactome Gene Sets,6,R-HSA-9694516,SARS-CoV-2 Infection,,-3.9,15,7.3,30286,299,27,4,15,6.8,6193|6201|9672|9883,RPS5|RPS7|SDC3|POM121,-1.7
+Npas2,GO Biological Processes,19,GO:0042752,regulation of circadian rhythm,19_GO:0048511 rhythmic process,-3.8,30,9.1,30286,114,27,3,11,6,406|3737|9575,BMAL1|KCNA2|CLOCK,-1.7
+Npas2,GO Biological Processes,19,GO:1904062,regulation of monoatomic cation transmembrane transport,19_GO:0051179 localization,-3.8,15,7.1,30286,309,27,4,15,6.8,3787|3788|5621|9196,KCNS1|KCNS2|PRNP|KCNAB3,-1.7
+Npas2,GO Biological Processes,19,GO:0009416,response to light stimulus,19_GO:0050896 response to stimulus,-3.8,14,7.1,30286,315,27,4,15,6.8,4297|6154|6506|9575,KMT2A|RPL26|SLC1A2|CLOCK,-1.7
+Npas2,Reactome Gene Sets,6,R-HSA-1630316,Glycosaminoglycan metabolism,,-3.7,27,8.6,30286,126,27,3,11,6,9672|9951|126792,SDC3|HS3ST4|B3GALT6,-1.6
+Npas2,GO Biological Processes,19,GO:0098662,inorganic cation transmembrane transport,19_GO:0051179 localization,-3.7,8.9,6,30286,630,27,5,19,7.5,3737|3745|3787|3788|9196,KCNA2|KCNB1|KCNS1|KCNS2|KCNAB3,-1.6
+Npas2,GO Biological Processes,19,GO:0030001,metal ion transport,19_GO:0051179 localization,-3.7,8.8,6,30286,634,27,5,19,7.5,3737|3745|3787|3788|9196,KCNA2|KCNB1|KCNS1|KCNS2|KCNAB3,-1.5
+Npas2,GO Biological Processes,19,GO:0098655,monoatomic cation transmembrane transport,19_GO:0051179 localization,-3.6,8.7,5.9,30286,646,27,5,19,7.5,3737|3745|3787|3788|9196,KCNA2|KCNB1|KCNS1|KCNS2|KCNAB3,-1.5
+Npas2,GO Biological Processes,19,GO:0007623,circadian rhythm,19_GO:0048511 rhythmic process,-3.6,25,8.3,30286,136,27,3,11,6,406|4297|9575,BMAL1|KMT2A|CLOCK,-1.5
+Npas2,GO Biological Processes,19,GO:0034765,regulation of monoatomic ion transmembrane transport,19_GO:0051179 localization,-3.6,13,6.7,30286,349,27,4,15,6.8,3787|3788|5621|9196,KCNS1|KCNS2|PRNP|KCNAB3,-1.5
+Npas2,GO Biological Processes,19,GO:0010038,response to metal ion,19_GO:0050896 response to stimulus,-3.6,12,6.5,30286,360,27,4,15,6.8,811|3745|4297|5621,CALR|KCNB1|KMT2A|PRNP,-1.5
+Npas2,GO Biological Processes,19,GO:0044272,sulfur compound biosynthetic process,19_GO:0008152 metabolic process,-3.4,21,7.6,30286,159,27,3,11,6,6506|9951|126792,SLC1A2|HS3ST4|B3GALT6,-1.3
+Npas2,GO Biological Processes,19,GO:0010959,regulation of metal ion transport,19_GO:0051179 localization,-3.4,11,6.2,30286,394,27,4,15,6.8,3787|3788|5621|9196,KCNS1|KCNS2|PRNP|KCNAB3,-1.3
+Npas2,GO Biological Processes,19,GO:0098660,inorganic ion transmembrane transport,19_GO:0051179 localization,-3.4,7.7,5.5,30286,726,27,5,19,7.5,3737|3745|3787|3788|9196,KCNA2|KCNB1|KCNS1|KCNS2|KCNAB3,-1.3
+Npas2,GO Biological Processes,19,GO:0050796,regulation of insulin secretion,19_GO:0051179 localization,-3.4,20,7.4,30286,167,27,3,11,6,406|3745|9575,BMAL1|KCNB1|CLOCK,-1.3
+Npas2,Reactome Gene Sets,6,R-HSA-9679506,SARS-CoV Infections,,-3.3,11,6,30286,414,27,4,15,6.8,6193|6201|9672|9883,RPS5|RPS7|SDC3|POM121,-1.2
+Npas2,GO Biological Processes,19,GO:0009314,response to radiation,19_GO:0050896 response to stimulus,-3.3,11,5.9,30286,424,27,4,15,6.8,4297|6154|6506|9575,KMT2A|RPL26|SLC1A2|CLOCK,-1.2
+Npas2,GO Biological Processes,19,GO:1905475,regulation of protein localization to membrane,19_GO:0051179 localization,-3.3,19,7.1,30286,180,27,3,11,6,3745|5621|8851,KCNB1|PRNP|CDK5R1,-1.2
+Npas2,GO Biological Processes,19,GO:0006812,monoatomic cation transport,19_GO:0051179 localization,-3.2,7.2,5.2,30286,780,27,5,19,7.5,3737|3745|3787|3788|9196,KCNA2|KCNB1|KCNS1|KCNS2|KCNAB3,-1.2
+Npas2,GO Biological Processes,19,GO:0090276,regulation of peptide hormone secretion,19_GO:0051179 localization,-3.2,17,6.8,30286,197,27,3,11,6,406|3745|9575,BMAL1|KCNB1|CLOCK,-1.1
+Npas2,GO Biological Processes,19,GO:0071248,cellular response to metal ion,19_GO:0050896 response to stimulus,-3.1,17,6.7,30286,200,27,3,11,6,811|3745|5621,CALR|KCNB1|PRNP,-1.1
+Npas2,GO Biological Processes,19,GO:0002791,regulation of peptide secretion,19_GO:0051179 localization,-3.1,17,6.7,30286,200,27,3,11,6,406|3745|9575,BMAL1|KCNB1|CLOCK,-1.1
+Npas2,GO Biological Processes,19,GO:0043269,regulation of monoatomic ion transport,19_GO:0051179 localization,-3.1,9.5,5.6,30286,470,27,4,15,6.8,3787|3788|5621|9196,KCNS1|KCNS2|PRNP|KCNAB3,-1.1
+Npas2,GO Biological Processes,19,GO:0090087,regulation of peptide transport,19_GO:0051179 localization,-3.1,17,6.7,30286,202,27,3,11,6,406|3745|9575,BMAL1|KCNB1|CLOCK,-1.1
+Npas2,Reactome Gene Sets,6,R-HSA-9705683,SARS-CoV-2-host interactions,,-3.1,17,6.7,30286,203,27,3,11,6,6193|6201|9883,RPS5|RPS7|POM121,-1.1
+Npas2,GO Biological Processes,19,GO:0048167,regulation of synaptic plasticity,19_GO:0050789 regulation of biological process,-3,16,6.4,30286,216,27,3,11,6,3745|4297|5621,KCNB1|KMT2A|PRNP,-0.99
+Npas2,GO Biological Processes,19,GO:0032412,regulation of monoatomic ion transmembrane transporter activity,19_GO:0051179 localization,-3,15,6.3,30286,221,27,3,11,6,3787|3788|5621,KCNS1|KCNS2|PRNP,-0.97
+Npas2,GO Biological Processes,19,GO:0071241,cellular response to inorganic substance,19_GO:0050896 response to stimulus,-3,15,6.2,30286,229,27,3,11,6,811|3745|5621,CALR|KCNB1|PRNP,-0.93
+Npas2,GO Biological Processes,19,GO:0022898,regulation of transmembrane transporter activity,19_GO:0051179 localization,-3,15,6.2,30286,229,27,3,11,6,3787|3788|5621,KCNS1|KCNS2|PRNP,-0.93
+Npas2,GO Biological Processes,19,GO:0010035,response to inorganic substance,19_GO:0050896 response to stimulus,-2.9,8.5,5.2,30286,527,27,4,15,6.8,811|3745|4297|5621,CALR|KCNB1|KMT2A|PRNP,-0.9
+Npas2,GO Biological Processes,19,GO:0071695,anatomical structure maturation,19_GO:0032502 developmental process,-2.9,14,6.1,30286,234,27,3,11,6,1203|3745|8851,CLN5|KCNB1|CDK5R1,-0.9
+Npas2,GO Biological Processes,19,GO:0043523,regulation of neuron apoptotic process,19_GO:0050789 regulation of biological process,-2.9,14,6,30286,244,27,3,11,6,3745|5621|8851,KCNB1|PRNP|CDK5R1,-0.85
+Npas2,GO Biological Processes,19,GO:0043065,positive regulation of apoptotic process,19_GO:0048518 positive regulation of biological process,-2.9,8.1,5,30286,552,27,4,15,6.8,5621|6154|6201|8851,PRNP|RPL26|RPS7|CDK5R1,-0.84
+Npas2,GO Biological Processes,19,GO:0046883,regulation of hormone secretion,19_GO:0051179 localization,-2.8,13,5.9,30286,254,27,3,11,6,406|3745|9575,BMAL1|KCNB1|CLOCK,-0.81
+Npas2,GO Biological Processes,19,GO:1903530,regulation of secretion by cell,19_GO:0051179 localization,-2.8,7.9,5,30286,566,27,4,15,6.8,406|3737|3745|9575,BMAL1|KCNA2|KCNB1|CLOCK,-0.8
+Npas2,GO Biological Processes,19,GO:0032409,regulation of transporter activity,19_GO:0065007 biological regulation,-2.8,13,5.8,30286,260,27,3,11,6,3787|3788|5621,KCNS1|KCNS2|PRNP,-0.78
+Npas2,GO Biological Processes,19,GO:0043068,positive regulation of programmed cell death,19_GO:0048518 positive regulation of biological process,-2.8,7.8,4.9,30286,574,27,4,15,6.8,5621|6154|6201|8851,PRNP|RPL26|RPS7|CDK5R1,-0.78
+Npas2,GO Biological Processes,19,GO:0055082,intracellular chemical homeostasis,19_GO:0042592 homeostatic process,-2.8,7.8,4.9,30286,575,27,4,15,6.8,811|1203|3745|5621,CALR|CLN5|KCNB1|PRNP,-0.78
+Npas2,GO Biological Processes,19,GO:0050708,regulation of protein secretion,19_GO:0051179 localization,-2.8,13,5.7,30286,269,27,3,11,6,406|3745|9575,BMAL1|KCNB1|CLOCK,-0.75
+Npas2,GO Biological Processes,19,GO:0021537,telencephalon development,19_GO:0032502 developmental process,-2.7,12,5.6,30286,275,27,3,11,6,3737|6506|8851,KCNA2|SLC1A2|CDK5R1,-0.72
+Npas2,GO Biological Processes,19,GO:0021700,developmental maturation,19_GO:0032502 developmental process,-2.7,12,5.5,30286,286,27,3,11,6,1203|3745|8851,CLN5|KCNB1|CDK5R1,-0.68
+Npas2,GO Biological Processes,19,GO:0051046,regulation of secretion,19_GO:0051179 localization,-2.7,7.2,4.7,30286,621,27,4,15,6.8,406|3737|3745|9575,BMAL1|KCNA2|KCNB1|CLOCK,-0.67
+Npas2,Reactome Gene Sets,6,R-HSA-1474244,Extracellular matrix organization,,-2.6,11,5.3,30286,300,27,3,11,6,1301|9672|80274,COL11A1|SDC3|SCUBE1,-0.62
+Npas2,GO Biological Processes,19,GO:0042254,ribosome biogenesis,19_GO:0009987 cellular process,-2.6,11,5.2,30286,311,27,3,11,6,6154|6193|6201,RPL26|RPS5|RPS7,-0.58
+Npas2,GO Biological Processes,19,GO:0006790,sulfur compound metabolic process,19_GO:0008152 metabolic process,-2.6,11,5.2,30286,314,27,3,11,6,6506|9951|126792,SLC1A2|HS3ST4|B3GALT6,-0.57
+Npas2,GO Biological Processes,19,GO:0071214,cellular response to abiotic stimulus,19_GO:0050896 response to stimulus,-2.6,11,5.1,30286,318,27,3,11,6,811|6154|9575,CALR|RPL26|CLOCK,-0.56
+Npas2,GO Biological Processes,19,GO:0104004,cellular response to environmental stimulus,19_GO:0050896 response to stimulus,-2.6,11,5.1,30286,318,27,3,11,6,811|6154|9575,CALR|RPL26|CLOCK,-0.56
+Npas2,GO Biological Processes,19,GO:0019725,cellular homeostasis,19_GO:0042592 homeostatic process,-2.5,6.6,4.4,30286,683,27,4,15,6.8,811|1203|3745|5621,CALR|CLN5|KCNB1|PRNP,-0.53
+Npas2,GO Biological Processes,19,GO:0031647,regulation of protein stability,19_GO:0065007 biological regulation,-2.5,10,5.1,30286,326,27,3,11,6,811|5621|6201,CALR|PRNP|RPS7,-0.53
+Npas2,GO Biological Processes,19,GO:1904951,positive regulation of establishment of protein localization,19_GO:0051179 localization,-2.5,10,5.1,30286,326,27,3,11,6,3745|5621|8851,KCNB1|PRNP|CDK5R1,-0.53
+Npas2,GO Biological Processes,19,GO:0009100,glycoprotein metabolic process,19_GO:0008152 metabolic process,-2.5,10,5,30286,333,27,3,11,6,1301|9951|126792,COL11A1|HS3ST4|B3GALT6,-0.51
+Npas2,GO Biological Processes,19,GO:0030163,protein catabolic process,19_GO:0008152 metabolic process,-2.5,6.3,4.3,30286,711,27,4,15,6.8,406|811|1203|9575,BMAL1|CALR|CLN5|CLOCK,-0.48
+Npas2,GO Biological Processes,19,GO:0007420,brain development,19_GO:0032502 developmental process,-2.4,6.2,4.2,30286,729,27,4,15,6.8,1203|3737|6506|8851,CLN5|KCNA2|SLC1A2|CDK5R1,-0.44
+Npas2,GO Biological Processes,19,GO:0051090,regulation of DNA-binding transcription factor activity,19_GO:0008152 metabolic process,-2.3,8.8,4.6,30286,381,27,3,11,6,5621|9575|9759,PRNP|CLOCK|HDAC4,-0.35
+Npas2,GO Biological Processes,19,GO:0060322,head development,19_GO:0032502 developmental process,-2.3,5.8,4,30286,778,27,4,15,6.8,1203|3737|6506|8851,CLN5|KCNA2|SLC1A2|CDK5R1,-0.34
+Npas2,GO Biological Processes,19,GO:0010498,proteasomal protein catabolic process,19_GO:0008152 metabolic process,-2.3,8.7,4.6,30286,386,27,3,11,6,406|811|9575,BMAL1|CALR|CLOCK,-0.34
+Npas2,GO Biological Processes,19,GO:0030900,forebrain development,19_GO:0032502 developmental process,-2.3,8.3,4.4,30286,407,27,3,11,6,3737|6506|8851,KCNA2|SLC1A2|CDK5R1,-0.28
+Npas2,GO Biological Processes,19,GO:0030003,intracellular monoatomic cation homeostasis,19_GO:0042592 homeostatic process,-2.2,8,4.3,30286,423,27,3,11,6,811|1203|5621,CALR|CLN5|PRNP,-0.23
+Npas2,GO Biological Processes,19,GO:0009611,response to wounding,19_GO:0050896 response to stimulus,-2.2,7.9,4.3,30286,426,27,3,11,6,3745|6506|80274,KCNB1|SLC1A2|SCUBE1,-0.23
+Npas2,GO Biological Processes,19,GO:0009410,response to xenobiotic stimulus,19_GO:0050896 response to stimulus,-2.2,7.9,4.3,30286,428,27,3,11,6,811|5621|6506,CALR|PRNP|SLC1A2,-0.22
+Npas2,GO Biological Processes,19,GO:0006873,intracellular monoatomic ion homeostasis,19_GO:0042592 homeostatic process,-2.2,7.8,4.2,30286,432,27,3,11,6,811|1203|5621,CALR|CLN5|PRNP,-0.22
+Npas2,GO Biological Processes,19,GO:0051223,regulation of protein transport,19_GO:0051179 localization,-2.2,7.6,4.2,30286,440,27,3,11,6,406|3745|9575,BMAL1|KCNB1|CLOCK,-0.2
+Npas2,GO Biological Processes,19,GO:0042391,regulation of membrane potential,19_GO:0065007 biological regulation,-2.1,7.5,4.2,30286,446,27,3,11,6,3737|3745|4297,KCNA2|KCNB1|KMT2A,-0.18
+Npas2,GO Biological Processes,19,GO:1903829,positive regulation of protein localization,19_GO:0051179 localization,-2.1,7,3.9,30286,483,27,3,11,6,3745|5621|8851,KCNB1|PRNP|CDK5R1,-0.088
+Npas2,GO Biological Processes,19,GO:0022613,ribonucleoprotein complex biogenesis,19_GO:0009987 cellular process,-2,6.9,3.9,30286,489,27,3,11,6,6154|6193|6201,RPL26|RPS5|RPS7,-0.075
+Npas2,GO Biological Processes,19,GO:0050804,modulation of chemical synaptic transmission,19_GO:0050789 regulation of biological process,-2,6.8,3.9,30286,493,27,3,11,6,3745|4297|5621,KCNB1|KMT2A|PRNP,-0.068
+Npas2,GO Biological Processes,19,GO:0099177,regulation of trans-synaptic signaling,19_GO:0050789 regulation of biological process,-2,6.8,3.9,30286,494,27,3,11,6,3745|4297|5621,KCNB1|KMT2A|PRNP,-0.067
+Npas2,GO Biological Processes,19,GO:0055080,monoatomic cation homeostasis,19_GO:0042592 homeostatic process,-2,6.8,3.9,30286,497,27,3,11,6,811|1203|5621,CALR|CLN5|PRNP,-0.062
+Npas2_MCODE_ALL,CORUM,33,CORUM:306,"Ribosome, cytoplasmic",,-11,2.4e+02,34,30286,80,8,5,62,17,6139|6154|6160|6193|6201,RPL17|RPL26|RPL31|RPS5|RPS7,-7.6
+Npas2_MCODE_ALL,Reactome Gene Sets,6,R-HSA-192823,Viral mRNA Translation,,-11,2.1e+02,32,30286,90,8,5,62,17,6139|6154|6160|6193|6201,RPL17|RPL26|RPL31|RPS5|RPS7,-7.6
+Npas2_MCODE_ALL,Reactome Gene Sets,6,R-HSA-156902,Peptide chain elongation,,-11,2.1e+02,32,30286,90,8,5,62,17,6139|6154|6160|6193|6201,RPL17|RPL26|RPL31|RPS5|RPS7,-7.6
+Npas2_MCODE_ALL,Reactome Gene Sets,6,R-HSA-156842,Eukaryotic Translation Elongation,,-11,2e+02,32,30286,94,8,5,62,17,6139|6154|6160|6193|6201,RPL17|RPL26|RPL31|RPS5|RPS7,-7.6
+Npas2_MCODE_ALL,Reactome Gene Sets,6,R-HSA-72764,Eukaryotic Translation Termination,,-11,2e+02,32,30286,94,8,5,62,17,6139|6154|6160|6193|6201,RPL17|RPL26|RPL31|RPS5|RPS7,-7.6
+Npas2_MCODE_ALL,Reactome Gene Sets,6,R-HSA-2408557,Selenocysteine synthesis,,-11,2e+02,32,30286,94,8,5,62,17,6139|6154|6160|6193|6201,RPL17|RPL26|RPL31|RPS5|RPS7,-7.6
+Npas2_MCODE_ALL,Reactome Gene Sets,6,R-HSA-975956,Nonsense Mediated Decay (NMD) independent of the Exon Junction Complex (EJC),,-11,2e+02,31,30286,96,8,5,62,17,6139|6154|6160|6193|6201,RPL17|RPL26|RPL31|RPS5|RPS7,-7.6
+Npas2_MCODE_ALL,Reactome Gene Sets,6,R-HSA-72689,Formation of a pool of free 40S subunits,,-11,1.9e+02,30,30286,102,8,5,62,17,6139|6154|6160|6193|6201,RPL17|RPL26|RPL31|RPS5|RPS7,-7.6
+Npas2_MCODE_ALL,Reactome Gene Sets,6,R-HSA-9633012,Response of EIF2AK4 (GCN2) to amino acid deficiency,,-11,1.9e+02,30,30286,102,8,5,62,17,6139|6154|6160|6193|6201,RPL17|RPL26|RPL31|RPS5|RPS7,-7.6
+Npas2_MCODE_ALL,Reactome Gene Sets,6,R-HSA-156827,L13a-mediated translational silencing of Ceruloplasmin expression,,-10,1.7e+02,29,30286,112,8,5,62,17,6139|6154|6160|6193|6201,RPL17|RPL26|RPL31|RPS5|RPS7,-7.5
+Npas2_MCODE_ALL,Reactome Gene Sets,6,R-HSA-72706,GTP hydrolysis and joining of the 60S ribosomal subunit,,-10,1.7e+02,29,30286,113,8,5,62,17,6139|6154|6160|6193|6201,RPL17|RPL26|RPL31|RPS5|RPS7,-7.5
+Npas2_MCODE_ALL,Reactome Gene Sets,6,R-HSA-1799339,SRP-dependent cotranslational protein targeting to membrane,,-10,1.7e+02,29,30286,113,8,5,62,17,6139|6154|6160|6193|6201,RPL17|RPL26|RPL31|RPS5|RPS7,-7.5
+Npas2_MCODE_ALL,Reactome Gene Sets,6,R-HSA-975957,Nonsense Mediated Decay (NMD) enhanced by the Exon Junction Complex (EJC),,-10,1.6e+02,28,30286,116,8,5,62,17,6139|6154|6160|6193|6201,RPL17|RPL26|RPL31|RPS5|RPS7,-7.5
+Npas2_MCODE_ALL,Reactome Gene Sets,6,R-HSA-927802,Nonsense-Mediated Decay (NMD),,-10,1.6e+02,28,30286,116,8,5,62,17,6139|6154|6160|6193|6201,RPL17|RPL26|RPL31|RPS5|RPS7,-7.5
+Npas2_MCODE_ALL,Reactome Gene Sets,6,R-HSA-2408522,Selenoamino acid metabolism,,-10,1.6e+02,28,30286,119,8,5,62,17,6139|6154|6160|6193|6201,RPL17|RPL26|RPL31|RPS5|RPS7,-7.5
+Npas2_MCODE_ALL,Reactome Gene Sets,6,R-HSA-72737,Cap-dependent Translation Initiation,,-10,1.6e+02,28,30286,120,8,5,62,17,6139|6154|6160|6193|6201,RPL17|RPL26|RPL31|RPS5|RPS7,-7.5
+Npas2_MCODE_ALL,Reactome Gene Sets,6,R-HSA-72613,Eukaryotic Translation Initiation,,-10,1.6e+02,28,30286,120,8,5,62,17,6139|6154|6160|6193|6201,RPL17|RPL26|RPL31|RPS5|RPS7,-7.5
+Npas2_MCODE_ALL,GO Biological Processes,19,GO:0002181,cytoplasmic translation,19_GO:0008152 metabolic process,-10,1.5e+02,27,30286,127,8,5,62,17,6139|6154|6160|6193|6201,RPL17|RPL26|RPL31|RPS5|RPS7,-7.4
+Npas2_MCODE_ALL,Reactome Gene Sets,6,R-HSA-168273,Influenza Viral RNA Transcription and Replication,,-10,1.4e+02,26,30286,136,8,5,62,17,6139|6154|6160|6193|6201,RPL17|RPL26|RPL31|RPS5|RPS7,-7.3
+Npas2_MCODE_ALL,Reactome Gene Sets,6,R-HSA-9711097,Cellular response to starvation,,-9.7,1.2e+02,24,30286,157,8,5,62,17,6139|6154|6160|6193|6201,RPL17|RPL26|RPL31|RPS5|RPS7,-7
+Npas2_MCODE_ALL,Reactome Gene Sets,6,R-HSA-168255,Influenza Infection,,-9.7,1.2e+02,24,30286,157,8,5,62,17,6139|6154|6160|6193|6201,RPL17|RPL26|RPL31|RPS5|RPS7,-7
+Npas2_MCODE_ALL,KEGG Pathway,24,hsa03010,Ribosome,,-9.5,1.1e+02,23,30286,170,8,5,62,17,6139|6154|6160|6193|6201,RPL17|RPL26|RPL31|RPS5|RPS7,-6.9
+Npas2_MCODE_ALL,Reactome Gene Sets,6,R-HSA-9010553,Regulation of expression of SLITs and ROBOs,,-9.5,1.1e+02,23,30286,172,8,5,62,17,6139|6154|6160|6193|6201,RPL17|RPL26|RPL31|RPS5|RPS7,-6.9
+Npas2_MCODE_ALL,Reactome Gene Sets,6,R-HSA-6791226,Major pathway of rRNA processing in the nucleolus and cytosol,,-9.4,1e+02,22,30286,185,8,5,62,17,6139|6154|6160|6193|6201,RPL17|RPL26|RPL31|RPS5|RPS7,-6.7
+Npas2_MCODE_ALL,Reactome Gene Sets,6,R-HSA-8868773,rRNA processing in the nucleus and cytosol,,-9.2,97,22,30286,195,8,5,62,17,6139|6154|6160|6193|6201,RPL17|RPL26|RPL31|RPS5|RPS7,-6.6
+Npas2_MCODE_ALL,Reactome Gene Sets,6,R-HSA-72312,rRNA processing,,-9.1,92,21,30286,205,8,5,62,17,6139|6154|6160|6193|6201,RPL17|RPL26|RPL31|RPS5|RPS7,-6.5
+Npas2_MCODE_ALL,Reactome Gene Sets,6,R-HSA-376176,Signaling by ROBO receptors,,-9,86,21,30286,219,8,5,62,17,6139|6154|6160|6193|6201,RPL17|RPL26|RPL31|RPS5|RPS7,-6.4
+Npas2_MCODE_ALL,KEGG Pathway,24,hsa05171,Coronavirus disease - COVID-19,,-8.8,81,20,30286,233,8,5,62,17,6139|6154|6160|6193|6201,RPL17|RPL26|RPL31|RPS5|RPS7,-6.3
+Npas2_MCODE_ALL,Reactome Gene Sets,6,R-HSA-72766,Translation,,-8.4,65,18,30286,292,8,5,62,17,6139|6154|6160|6193|6201,RPL17|RPL26|RPL31|RPS5|RPS7,-5.8
+Npas2_MCODE_ALL,CORUM,33,CORUM:3055,Nop56p-associated pre-rRNA complex,,-8,1.5e+02,24,30286,104,8,4,50,18,6139|6154|6160|6201,RPL17|RPL26|RPL31|RPS7,-5.5
+Npas2_MCODE_ALL,Reactome Gene Sets,6,R-HSA-71291,Metabolism of amino acids and derivatives,,-7.9,52,16,30286,367,8,5,62,17,6139|6154|6160|6193|6201,RPL17|RPL26|RPL31|RPS5|RPS7,-5.4
+Npas2_MCODE_ALL,GO Biological Processes,19,GO:0006412,translation,19_GO:0008152 metabolic process,-7.7,48,15,30286,392,8,5,62,17,6139|6154|6160|6193|6201,RPL17|RPL26|RPL31|RPS5|RPS7,-5.2
+Npas2_MCODE_ALL,GO Biological Processes,19,GO:0043043,peptide biosynthetic process,19_GO:0008152 metabolic process,-7.6,45,15,30286,421,8,5,62,17,6139|6154|6160|6193|6201,RPL17|RPL26|RPL31|RPS5|RPS7,-5.1
+Npas2_MCODE_ALL,GO Biological Processes,19,GO:0043604,amide biosynthetic process,19_GO:0008152 metabolic process,-7,35,13,30286,542,8,5,62,17,6139|6154|6160|6193|6201,RPL17|RPL26|RPL31|RPS5|RPS7,-4.7
+Npas2_MCODE_ALL,Reactome Gene Sets,6,R-HSA-422475,Axon guidance,,-7,35,13,30286,548,8,5,62,17,6139|6154|6160|6193|6201,RPL17|RPL26|RPL31|RPS5|RPS7,-4.6
+Npas2_MCODE_ALL,GO Biological Processes,19,GO:0006518,peptide metabolic process,19_GO:0008152 metabolic process,-7,34,13,30286,551,8,5,62,17,6139|6154|6160|6193|6201,RPL17|RPL26|RPL31|RPS5|RPS7,-4.6
+Npas2_MCODE_ALL,Reactome Gene Sets,6,R-HSA-9675108,Nervous system development,,-6.9,33,13,30286,573,8,5,62,17,6139|6154|6160|6193|6201,RPL17|RPL26|RPL31|RPS5|RPS7,-4.6
+Npas2_MCODE_ALL,Reactome Gene Sets,6,R-HSA-1296072,Voltage gated Potassium channels,,-6.8,2.6e+02,28,30286,43,8,3,38,17,3745|3787|3788,KCNB1|KCNS1|KCNS2,-4.5
+Npas2_MCODE_ALL,CORUM,33,CORUM:308,"60S ribosomal subunit, cytoplasmic",,-6.7,2.4e+02,27,30286,47,8,3,38,17,6139|6154|6160,RPL17|RPL26|RPL31,-4.4
+Npas2_MCODE_ALL,Reactome Gene Sets,6,R-HSA-8953854,Metabolism of RNA,,-6.4,26,11,30286,726,8,5,62,17,6139|6154|6160|6193|6201,RPL17|RPL26|RPL31|RPS5|RPS7,-4.1
+Npas2_MCODE_ALL,Reactome Gene Sets,6,R-HSA-1296071,Potassium Channels,,-5.7,1.1e+02,18,30286,103,8,3,38,17,3745|3787|3788,KCNB1|KCNS1|KCNS2,-3.4
+Npas2_MCODE_ALL,GO Biological Processes,19,GO:0071805,potassium ion transmembrane transport,19_GO:0051179 localization,-5.1,69,14,30286,165,8,3,38,17,3745|3787|3788,KCNB1|KCNS1|KCNS2,-2.8
+Npas2_MCODE_ALL,GO Biological Processes,19,GO:0006813,potassium ion transport,19_GO:0051179 localization,-5,65,14,30286,176,8,3,38,17,3745|3787|3788,KCNB1|KCNS1|KCNS2,-2.8
+Npas2_MCODE_ALL,GO Biological Processes,19,GO:0051260,protein homooligomerization,19_GO:0009987 cellular process,-4.9,59,13,30286,193,8,3,38,17,3745|3787|3788,KCNB1|KCNS1|KCNS2,-2.7
+Npas2_MCODE_ALL,GO Biological Processes,19,GO:0051259,protein complex oligomerization,19_GO:0009987 cellular process,-4.5,45,11,30286,254,8,3,38,17,3745|3787|3788,KCNB1|KCNS1|KCNS2,-2.3
+Npas2_MCODE_ALL,GO Biological Processes,19,GO:0042254,ribosome biogenesis,19_GO:0009987 cellular process,-4.2,37,10,30286,311,8,3,38,17,6154|6193|6201,RPL26|RPS5|RPS7,-2.1
+Npas2_MCODE_ALL,Reactome Gene Sets,6,R-HSA-112316,Neuronal System,,-3.9,28,8.8,30286,410,8,3,38,17,3745|3787|3788,KCNB1|KCNS1|KCNS2,-1.7
+Npas2_MCODE_ALL,GO Biological Processes,19,GO:0022613,ribonucleoprotein complex biogenesis,19_GO:0009987 cellular process,-3.7,23,8.1,30286,489,8,3,38,17,6154|6193|6201,RPL26|RPS5|RPS7,-1.5
+Npas2_MCODE_ALL,GO Biological Processes,19,GO:0098662,inorganic cation transmembrane transport,19_GO:0051179 localization,-3.3,18,7,30286,630,8,3,38,17,3745|3787|3788,KCNB1|KCNS1|KCNS2,-1.2
+Npas2_MCODE_ALL,GO Biological Processes,19,GO:0030001,metal ion transport,19_GO:0051179 localization,-3.3,18,7,30286,634,8,3,38,17,3745|3787|3788,KCNB1|KCNS1|KCNS2,-1.2
+Npas2_MCODE_ALL,GO Biological Processes,19,GO:0098655,monoatomic cation transmembrane transport,19_GO:0051179 localization,-3.3,18,6.9,30286,646,8,3,38,17,3745|3787|3788,KCNB1|KCNS1|KCNS2,-1.2
+Npas2_MCODE_ALL,GO Biological Processes,19,GO:0098660,inorganic ion transmembrane transport,19_GO:0051179 localization,-3.2,16,6.5,30286,726,8,3,38,17,3745|3787|3788,KCNB1|KCNS1|KCNS2,-1.1
+Npas2_MCODE_ALL,GO Biological Processes,19,GO:0006812,monoatomic cation transport,19_GO:0051179 localization,-3.1,15,6.2,30286,780,8,3,38,17,3745|3787|3788,KCNB1|KCNS1|KCNS2,-1
+Npas2_SUB1_MCODE_1,CORUM,33,CORUM:306,"Ribosome, cytoplasmic",,-11,2.4e+02,34,30286,80,8,5,62,17,6139|6154|6160|6193|6201,RPL17|RPL26|RPL31|RPS5|RPS7,-7.6
+Npas2_SUB1_MCODE_1,Reactome Gene Sets,6,R-HSA-192823,Viral mRNA Translation,,-11,2.1e+02,32,30286,90,8,5,62,17,6139|6154|6160|6193|6201,RPL17|RPL26|RPL31|RPS5|RPS7,-7.6
+Npas2_SUB1_MCODE_1,Reactome Gene Sets,6,R-HSA-156902,Peptide chain elongation,,-11,2.1e+02,32,30286,90,8,5,62,17,6139|6154|6160|6193|6201,RPL17|RPL26|RPL31|RPS5|RPS7,-7.6
+Npas2_SUB1_MCODE_1,Reactome Gene Sets,6,R-HSA-156842,Eukaryotic Translation Elongation,,-11,2e+02,32,30286,94,8,5,62,17,6139|6154|6160|6193|6201,RPL17|RPL26|RPL31|RPS5|RPS7,-7.6
+Npas2_SUB1_MCODE_1,Reactome Gene Sets,6,R-HSA-2408557,Selenocysteine synthesis,,-11,2e+02,32,30286,94,8,5,62,17,6139|6154|6160|6193|6201,RPL17|RPL26|RPL31|RPS5|RPS7,-7.6
+Npas2_SUB1_MCODE_1,Reactome Gene Sets,6,R-HSA-72764,Eukaryotic Translation Termination,,-11,2e+02,32,30286,94,8,5,62,17,6139|6154|6160|6193|6201,RPL17|RPL26|RPL31|RPS5|RPS7,-7.6
+Npas2_SUB1_MCODE_1,Reactome Gene Sets,6,R-HSA-975956,Nonsense Mediated Decay (NMD) independent of the Exon Junction Complex (EJC),,-11,2e+02,31,30286,96,8,5,62,17,6139|6154|6160|6193|6201,RPL17|RPL26|RPL31|RPS5|RPS7,-7.6
+Npas2_SUB1_MCODE_1,Reactome Gene Sets,6,R-HSA-9633012,Response of EIF2AK4 (GCN2) to amino acid deficiency,,-11,1.9e+02,30,30286,102,8,5,62,17,6139|6154|6160|6193|6201,RPL17|RPL26|RPL31|RPS5|RPS7,-7.6
+Npas2_SUB1_MCODE_1,Reactome Gene Sets,6,R-HSA-72689,Formation of a pool of free 40S subunits,,-11,1.9e+02,30,30286,102,8,5,62,17,6139|6154|6160|6193|6201,RPL17|RPL26|RPL31|RPS5|RPS7,-7.6
+Npas2_SUB1_MCODE_1,Reactome Gene Sets,6,R-HSA-156827,L13a-mediated translational silencing of Ceruloplasmin expression,,-10,1.7e+02,29,30286,112,8,5,62,17,6139|6154|6160|6193|6201,RPL17|RPL26|RPL31|RPS5|RPS7,-7.5
+Npas2_SUB1_MCODE_1,Reactome Gene Sets,6,R-HSA-72706,GTP hydrolysis and joining of the 60S ribosomal subunit,,-10,1.7e+02,29,30286,113,8,5,62,17,6139|6154|6160|6193|6201,RPL17|RPL26|RPL31|RPS5|RPS7,-7.5
+Npas2_SUB1_MCODE_1,Reactome Gene Sets,6,R-HSA-1799339,SRP-dependent cotranslational protein targeting to membrane,,-10,1.7e+02,29,30286,113,8,5,62,17,6139|6154|6160|6193|6201,RPL17|RPL26|RPL31|RPS5|RPS7,-7.5
+Npas2_SUB1_MCODE_1,Reactome Gene Sets,6,R-HSA-975957,Nonsense Mediated Decay (NMD) enhanced by the Exon Junction Complex (EJC),,-10,1.6e+02,28,30286,116,8,5,62,17,6139|6154|6160|6193|6201,RPL17|RPL26|RPL31|RPS5|RPS7,-7.5
+Npas2_SUB1_MCODE_1,Reactome Gene Sets,6,R-HSA-927802,Nonsense-Mediated Decay (NMD),,-10,1.6e+02,28,30286,116,8,5,62,17,6139|6154|6160|6193|6201,RPL17|RPL26|RPL31|RPS5|RPS7,-7.5
+Npas2_SUB1_MCODE_1,Reactome Gene Sets,6,R-HSA-2408522,Selenoamino acid metabolism,,-10,1.6e+02,28,30286,119,8,5,62,17,6139|6154|6160|6193|6201,RPL17|RPL26|RPL31|RPS5|RPS7,-7.5
+Npas2_SUB1_MCODE_1,Reactome Gene Sets,6,R-HSA-72737,Cap-dependent Translation Initiation,,-10,1.6e+02,28,30286,120,8,5,62,17,6139|6154|6160|6193|6201,RPL17|RPL26|RPL31|RPS5|RPS7,-7.5
+Npas2_SUB1_MCODE_1,Reactome Gene Sets,6,R-HSA-72613,Eukaryotic Translation Initiation,,-10,1.6e+02,28,30286,120,8,5,62,17,6139|6154|6160|6193|6201,RPL17|RPL26|RPL31|RPS5|RPS7,-7.5
+Npas2_SUB1_MCODE_1,GO Biological Processes,19,GO:0002181,cytoplasmic translation,19_GO:0008152 metabolic process,-10,1.5e+02,27,30286,127,8,5,62,17,6139|6154|6160|6193|6201,RPL17|RPL26|RPL31|RPS5|RPS7,-7.4
+Npas2_SUB1_MCODE_1,Reactome Gene Sets,6,R-HSA-168273,Influenza Viral RNA Transcription and Replication,,-10,1.4e+02,26,30286,136,8,5,62,17,6139|6154|6160|6193|6201,RPL17|RPL26|RPL31|RPS5|RPS7,-7.3
+Npas2_SUB1_MCODE_1,Reactome Gene Sets,6,R-HSA-9711097,Cellular response to starvation,,-9.7,1.2e+02,24,30286,157,8,5,62,17,6139|6154|6160|6193|6201,RPL17|RPL26|RPL31|RPS5|RPS7,-7
+Npas2_SUB1_MCODE_1,Reactome Gene Sets,6,R-HSA-168255,Influenza Infection,,-9.7,1.2e+02,24,30286,157,8,5,62,17,6139|6154|6160|6193|6201,RPL17|RPL26|RPL31|RPS5|RPS7,-7
+Npas2_SUB1_MCODE_1,KEGG Pathway,24,hsa03010,Ribosome,,-9.5,1.1e+02,23,30286,170,8,5,62,17,6139|6154|6160|6193|6201,RPL17|RPL26|RPL31|RPS5|RPS7,-6.9
+Npas2_SUB1_MCODE_1,Reactome Gene Sets,6,R-HSA-9010553,Regulation of expression of SLITs and ROBOs,,-9.5,1.1e+02,23,30286,172,8,5,62,17,6139|6154|6160|6193|6201,RPL17|RPL26|RPL31|RPS5|RPS7,-6.9
+Npas2_SUB1_MCODE_1,Reactome Gene Sets,6,R-HSA-6791226,Major pathway of rRNA processing in the nucleolus and cytosol,,-9.4,1e+02,22,30286,185,8,5,62,17,6139|6154|6160|6193|6201,RPL17|RPL26|RPL31|RPS5|RPS7,-6.7
+Npas2_SUB1_MCODE_1,Reactome Gene Sets,6,R-HSA-8868773,rRNA processing in the nucleus and cytosol,,-9.2,97,22,30286,195,8,5,62,17,6139|6154|6160|6193|6201,RPL17|RPL26|RPL31|RPS5|RPS7,-6.6
+Npas2_SUB1_MCODE_1,Reactome Gene Sets,6,R-HSA-72312,rRNA processing,,-9.1,92,21,30286,205,8,5,62,17,6139|6154|6160|6193|6201,RPL17|RPL26|RPL31|RPS5|RPS7,-6.5
+Npas2_SUB1_MCODE_1,Reactome Gene Sets,6,R-HSA-376176,Signaling by ROBO receptors,,-9,86,21,30286,219,8,5,62,17,6139|6154|6160|6193|6201,RPL17|RPL26|RPL31|RPS5|RPS7,-6.4
+Npas2_SUB1_MCODE_1,KEGG Pathway,24,hsa05171,Coronavirus disease - COVID-19,,-8.8,81,20,30286,233,8,5,62,17,6139|6154|6160|6193|6201,RPL17|RPL26|RPL31|RPS5|RPS7,-6.3
+Npas2_SUB1_MCODE_1,Reactome Gene Sets,6,R-HSA-72766,Translation,,-8.4,65,18,30286,292,8,5,62,17,6139|6154|6160|6193|6201,RPL17|RPL26|RPL31|RPS5|RPS7,-5.8
+Npas2_SUB1_MCODE_1,CORUM,33,CORUM:3055,Nop56p-associated pre-rRNA complex,,-8,1.5e+02,24,30286,104,8,4,50,18,6139|6154|6160|6201,RPL17|RPL26|RPL31|RPS7,-5.5
+Npas2_SUB1_MCODE_1,Reactome Gene Sets,6,R-HSA-71291,Metabolism of amino acids and derivatives,,-7.9,52,16,30286,367,8,5,62,17,6139|6154|6160|6193|6201,RPL17|RPL26|RPL31|RPS5|RPS7,-5.4
+Npas2_SUB1_MCODE_1,GO Biological Processes,19,GO:0006412,translation,19_GO:0008152 metabolic process,-7.7,48,15,30286,392,8,5,62,17,6139|6154|6160|6193|6201,RPL17|RPL26|RPL31|RPS5|RPS7,-5.2
+Npas2_SUB1_MCODE_1,GO Biological Processes,19,GO:0043043,peptide biosynthetic process,19_GO:0008152 metabolic process,-7.6,45,15,30286,421,8,5,62,17,6139|6154|6160|6193|6201,RPL17|RPL26|RPL31|RPS5|RPS7,-5.1
+Npas2_SUB1_MCODE_1,GO Biological Processes,19,GO:0043604,amide biosynthetic process,19_GO:0008152 metabolic process,-7,35,13,30286,542,8,5,62,17,6139|6154|6160|6193|6201,RPL17|RPL26|RPL31|RPS5|RPS7,-4.7
+Npas2_SUB1_MCODE_1,Reactome Gene Sets,6,R-HSA-422475,Axon guidance,,-7,35,13,30286,548,8,5,62,17,6139|6154|6160|6193|6201,RPL17|RPL26|RPL31|RPS5|RPS7,-4.6
+Npas2_SUB1_MCODE_1,GO Biological Processes,19,GO:0006518,peptide metabolic process,19_GO:0008152 metabolic process,-7,34,13,30286,551,8,5,62,17,6139|6154|6160|6193|6201,RPL17|RPL26|RPL31|RPS5|RPS7,-4.6
+Npas2_SUB1_MCODE_1,Reactome Gene Sets,6,R-HSA-9675108,Nervous system development,,-6.9,33,13,30286,573,8,5,62,17,6139|6154|6160|6193|6201,RPL17|RPL26|RPL31|RPS5|RPS7,-4.6
+Npas2_SUB1_MCODE_1,Reactome Gene Sets,6,R-HSA-1296072,Voltage gated Potassium channels,,-6.8,2.6e+02,28,30286,43,8,3,38,17,3745|3787|3788,KCNB1|KCNS1|KCNS2,-4.5
+Npas2_SUB1_MCODE_1,CORUM,33,CORUM:308,"60S ribosomal subunit, cytoplasmic",,-6.7,2.4e+02,27,30286,47,8,3,38,17,6139|6154|6160,RPL17|RPL26|RPL31,-4.4
+Npas2_SUB1_MCODE_1,Reactome Gene Sets,6,R-HSA-8953854,Metabolism of RNA,,-6.4,26,11,30286,726,8,5,62,17,6139|6154|6160|6193|6201,RPL17|RPL26|RPL31|RPS5|RPS7,-4.1
+Npas2_SUB1_MCODE_1,Reactome Gene Sets,6,R-HSA-1296071,Potassium Channels,,-5.7,1.1e+02,18,30286,103,8,3,38,17,3745|3787|3788,KCNB1|KCNS1|KCNS2,-3.4
+Npas2_SUB1_MCODE_1,GO Biological Processes,19,GO:0071805,potassium ion transmembrane transport,19_GO:0051179 localization,-5.1,69,14,30286,165,8,3,38,17,3745|3787|3788,KCNB1|KCNS1|KCNS2,-2.8
+Npas2_SUB1_MCODE_1,GO Biological Processes,19,GO:0006813,potassium ion transport,19_GO:0051179 localization,-5,65,14,30286,176,8,3,38,17,3745|3787|3788,KCNB1|KCNS1|KCNS2,-2.8
+Npas2_SUB1_MCODE_1,GO Biological Processes,19,GO:0051260,protein homooligomerization,19_GO:0009987 cellular process,-4.9,59,13,30286,193,8,3,38,17,3745|3787|3788,KCNB1|KCNS1|KCNS2,-2.7
+Npas2_SUB1_MCODE_1,GO Biological Processes,19,GO:0051259,protein complex oligomerization,19_GO:0009987 cellular process,-4.5,45,11,30286,254,8,3,38,17,3745|3787|3788,KCNB1|KCNS1|KCNS2,-2.3
+Npas2_SUB1_MCODE_1,GO Biological Processes,19,GO:0042254,ribosome biogenesis,19_GO:0009987 cellular process,-4.2,37,10,30286,311,8,3,38,17,6154|6193|6201,RPL26|RPS5|RPS7,-2.1
+Npas2_SUB1_MCODE_1,Reactome Gene Sets,6,R-HSA-112316,Neuronal System,,-3.9,28,8.8,30286,410,8,3,38,17,3745|3787|3788,KCNB1|KCNS1|KCNS2,-1.7
+Npas2_SUB1_MCODE_1,GO Biological Processes,19,GO:0022613,ribonucleoprotein complex biogenesis,19_GO:0009987 cellular process,-3.7,23,8.1,30286,489,8,3,38,17,6154|6193|6201,RPL26|RPS5|RPS7,-1.5
+Npas2_SUB1_MCODE_1,GO Biological Processes,19,GO:0098662,inorganic cation transmembrane transport,19_GO:0051179 localization,-3.3,18,7,30286,630,8,3,38,17,3745|3787|3788,KCNB1|KCNS1|KCNS2,-1.2
+Npas2_SUB1_MCODE_1,GO Biological Processes,19,GO:0030001,metal ion transport,19_GO:0051179 localization,-3.3,18,7,30286,634,8,3,38,17,3745|3787|3788,KCNB1|KCNS1|KCNS2,-1.2
+Npas2_SUB1_MCODE_1,GO Biological Processes,19,GO:0098655,monoatomic cation transmembrane transport,19_GO:0051179 localization,-3.3,18,6.9,30286,646,8,3,38,17,3745|3787|3788,KCNB1|KCNS1|KCNS2,-1.2
+Npas2_SUB1_MCODE_1,GO Biological Processes,19,GO:0098660,inorganic ion transmembrane transport,19_GO:0051179 localization,-3.2,16,6.5,30286,726,8,3,38,17,3745|3787|3788,KCNB1|KCNS1|KCNS2,-1.1
+Npas2_SUB1_MCODE_1,GO Biological Processes,19,GO:0006812,monoatomic cation transport,19_GO:0051179 localization,-3.1,15,6.2,30286,780,8,3,38,17,3745|3787|3788,KCNB1|KCNS1|KCNS2,-1

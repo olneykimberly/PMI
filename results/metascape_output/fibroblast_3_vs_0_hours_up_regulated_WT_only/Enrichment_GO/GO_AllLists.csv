@@ -1,0 +1,27 @@
+Category,CategoryID,GO,Description,PARENT_GO,LogP,Enrichment,Z-score,#TotalGeneInLibrary,#GeneInGO,#GeneInHitList,#GeneInGOAndHitList,%InGO,STDV %InGO,GeneID,Hits,Log(q-value),GeneList
+Canonical Pathways,11,M3468,NABA ECM REGULATORS,,-5.2,32,11,30286,238,16,4,25,11,4325|5125|7092|81792,MMP16|PCSK5|TLL1|ADAMTS12,-1.2,Desi2
+GO Biological Processes,19,GO:0030198,extracellular matrix organization,19_GO:0009987 cellular process,-5,28,10,30286,274,16,4,25,11,4325|7092|81792|144165,MMP16|TLL1|ADAMTS12|PRICKLE1,-1.2,Desi2
+GO Biological Processes,19,GO:0043062,extracellular structure organization,19_GO:0009987 cellular process,-5,28,10,30286,275,16,4,25,11,4325|7092|81792|144165,MMP16|TLL1|ADAMTS12|PRICKLE1,-1.2,Desi2
+GO Biological Processes,19,GO:0045229,external encapsulating structure organization,19_GO:0009987 cellular process,-4.9,27,10,30286,276,16,4,25,11,4325|7092|81792|144165,MMP16|TLL1|ADAMTS12|PRICKLE1,-1.2,Desi2
+GO Biological Processes,19,GO:0016358,dendrite development,19_GO:0032502 developmental process,-4.6,51,12,30286,111,16,3,19,9.8,10160|51473|144165,FARP1|DCDC2|PRICKLE1,-0.96,Desi2
+Canonical Pathways,11,M5885,NABA MATRISOME ASSOCIATED,,-4.5,13,7.4,30286,751,16,5,31,12,4325|5125|7092|81792|84898,MMP16|PCSK5|TLL1|ADAMTS12|PLXDC2,-0.94,Desi2
+GO Biological Processes,19,GO:0001501,skeletal system development,19_GO:0032502 developmental process,-3.9,15,7.3,30286,501,16,4,25,11,4325|5125|7092|81792,MMP16|PCSK5|TLL1|ADAMTS12,-0.46,Desi2
+GO Biological Processes,19,GO:0016485,protein processing,19_GO:0008152 metabolic process,-3.9,30,9.2,30286,191,16,3,19,9.8,4325|5125|7092,MMP16|PCSK5|TLL1,-0.46,Desi2
+GO Biological Processes,19,GO:0001503,ossification,19_GO:0032501 multicellular organismal process,-3.4,20,7.4,30286,285,16,3,19,9.8,4325|81792|144165,MMP16|ADAMTS12|PRICKLE1,-0.0019,Desi2
+GO Biological Processes,19,GO:0032940,secretion by cell,19_GO:0051179 localization,-2.9,14,6,30286,412,16,3,19,9.8,5125|26059|144165,PCSK5|ERC2|PRICKLE1,0,Desi2
+GO Biological Processes,19,GO:0003002,regionalization,19_GO:0032502 developmental process,-2.9,14,6,30286,412,16,3,19,9.8,5125|7092|144165,PCSK5|TLL1|PRICKLE1,0,Desi2
+GO Biological Processes,19,GO:0048667,cell morphogenesis involved in neuron differentiation,19_GO:0032502 developmental process,-2.8,13,5.8,30286,440,16,3,19,9.8,10160|51473|144165,FARP1|DCDC2|PRICKLE1,0,Desi2
+GO Biological Processes,19,GO:0048568,embryonic organ development,19_GO:0032502 developmental process,-2.8,13,5.7,30286,452,16,3,19,9.8,4325|5125|144165,MMP16|PCSK5|PRICKLE1,0,Desi2
+GO Biological Processes,19,GO:0007389,pattern specification process,19_GO:0032502 developmental process,-2.8,12,5.6,30286,459,16,3,19,9.8,5125|7092|144165,PCSK5|TLL1|PRICKLE1,0,Desi2
+GO Biological Processes,19,GO:0140352,export from cell,19_GO:0051179 localization,-2.7,12,5.5,30286,476,16,3,19,9.8,5125|26059|144165,PCSK5|ERC2|PRICKLE1,0,Desi2
+GO Biological Processes,19,GO:0048812,neuron projection morphogenesis,19_GO:0032502 developmental process,-2.7,12,5.5,30286,484,16,3,19,9.8,10160|51473|144165,FARP1|DCDC2|PRICKLE1,0,Desi2
+GO Biological Processes,19,GO:0120039,plasma membrane bounded cell projection morphogenesis,19_GO:0032502 developmental process,-2.7,12,5.4,30286,489,16,3,19,9.8,10160|51473|144165,FARP1|DCDC2|PRICKLE1,0,Desi2
+GO Biological Processes,19,GO:0051604,protein maturation,19_GO:0008152 metabolic process,-2.7,12,5.4,30286,491,16,3,19,9.8,4325|5125|7092,MMP16|PCSK5|TLL1,0,Desi2
+GO Biological Processes,19,GO:0048858,cell projection morphogenesis,19_GO:0032502 developmental process,-2.7,11,5.4,30286,494,16,3,19,9.8,10160|51473|144165,FARP1|DCDC2|PRICKLE1,0,Desi2
+GO Biological Processes,19,GO:0046903,secretion,19_GO:0051179 localization,-2.6,11,5.2,30286,529,16,3,19,9.8,5125|26059|144165,PCSK5|ERC2|PRICKLE1,0,Desi2
+GO Biological Processes,19,GO:0034330,cell junction organization,19_GO:0009987 cellular process,-2.6,11,5.2,30286,533,16,3,19,9.8,10160|26059|144165,FARP1|ERC2|PRICKLE1,0,Desi2
+GO Biological Processes,19,GO:0032989,cellular anatomical entity morphogenesis,19_GO:0032502 developmental process,-2.4,9.4,4.8,30286,605,16,3,19,9.8,10160|51473|144165,FARP1|DCDC2|PRICKLE1,0,Desi2
+GO Biological Processes,19,GO:0043009,chordate embryonic development,19_GO:0032502 developmental process,-2.3,8.7,4.6,30286,650,16,3,19,9.8,4325|5125|144165,MMP16|PCSK5|PRICKLE1,0,Desi2
+GO Biological Processes,19,GO:0009792,embryo development ending in birth or egg hatching,19_GO:0032502 developmental process,-2.3,8.5,4.5,30286,671,16,3,19,9.8,4325|5125|144165,MMP16|PCSK5|PRICKLE1,0,Desi2
+GO Biological Processes,19,GO:0000902,cell morphogenesis,19_GO:0032502 developmental process,-2.3,8.3,4.5,30286,681,16,3,19,9.8,10160|51473|144165,FARP1|DCDC2|PRICKLE1,0,Desi2
+GO Biological Processes,19,GO:0031175,neuron projection development,19_GO:0032502 developmental process,-2.3,8.2,4.4,30286,691,16,3,19,9.8,10160|51473|144165,FARP1|DCDC2|PRICKLE1,0,Desi2

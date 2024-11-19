@@ -1,0 +1,7 @@
+_MEMBER_Gm973,_LogP_Gm973,GO,Description,_PATTERN_,_RANK_,CHILD_GO_Gm973
+1,-9.357846609042003,GO:0048511,rhythmic process,M1,1,GO:0048511 rhythmic process
+1,-5.161825377736992,GO:0032501,multicellular organismal process,M1,1,GO:0007622 rhythmic behavior
+1,-4.055171702321695,GO:0022414,reproductive process,M1,1,GO:0007129 homologous chromosome pairing at meiosis
+1,-3.2586024025967193,GO:0009987,cellular process,M1,1,GO:0098813 nuclear chromosome segregation
+1,-2.816864360167016,GO:0051179,localization,M1,1,GO:0006836 neurotransmitter transport
+1,-2.291446638614462,GO:0050896,response to stimulus,M1,1,GO:0006282 regulation of DNA repair

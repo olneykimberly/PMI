@@ -1,0 +1,2 @@
+Gene,Gene Symbol,Description,Biological Process (GO),Protein Function (Protein Atlas),Subcellular Location (Protein Atlas),Canonical Pathways,Hallmark Gene Sets
+50650,ARHGEF3,Rho guanine nucleotide exchange factor 3,GO:0035025 positive regulation of Rho protein signal transduction;GO:0007266 Rho protein signal transduction;GO:0051057 positive regulation of small GTPase mediated signal transduction,Predicted intracellular proteins,Cytosol (Approved),(M68)PID RHOA REG PATHWAY,(M5893)HALLMARK MITOTIC SPINDLE

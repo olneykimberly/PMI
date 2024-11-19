@@ -1,0 +1,48 @@
+_MEMBER_Abi2,_LogP_Abi2,GO,Description,_PATTERN_,_RANK_,GiniIndex
+1,-2.7,GO:0007268,chemical synaptic transmission,M1,1,0
+1,-4.4,GO:0007416,synapse assembly,M1,1,0
+1,-2.3,GO:0030162,regulation of proteolysis,M1,1,0
+1,-2,R-HSA-382551,Transport of small molecules,M1,1,0
+1,-4.3,GO:0007613,memory,M1,1,0
+1,-5.9,GO:0050808,synapse organization,M1,1,0
+1,-2.7,GO:0098771,inorganic ion homeostasis,M1,1,0
+1,-4.7,GO:0034329,cell junction assembly,M1,1,0
+1,-2.3,GO:0055082,intracellular chemical homeostasis,M1,1,0
+1,-6.6,GO:0050807,regulation of synapse organization,M1,1,0
+1,-2.1,GO:0031175,neuron projection development,M1,1,0
+1,-2,GO:0044092,negative regulation of molecular function,M1,1,0
+1,-2.6,GO:0043269,regulation of monoatomic ion transport,M1,1,0
+1,-3,GO:0008285,negative regulation of cell population proliferation,M1,1,0
+1,-3.2,GO:0007611,learning or memory,M1,1,0
+1,-6.5,GO:0050803,regulation of synapse structure or activity,M1,1,0
+1,-3.2,GO:0031344,regulation of cell projection organization,M1,1,0
+1,-2.1,GO:0051129,negative regulation of cellular component organization,M1,1,0
+1,-2.3,GO:0007610,behavior,M1,1,0
+1,-3,GO:0006869,lipid transport,M1,1,0
+1,-7.2,GO:1900272,negative regulation of long-term synaptic potentiation,M1,1,0
+1,-2.7,GO:0006873,intracellular monoatomic ion homeostasis,M1,1,0
+1,-2.5,GO:0050801,monoatomic ion homeostasis,M1,1,0
+1,-2.6,GO:0072657,protein localization to membrane,M1,1,0
+1,-3.1,GO:0050890,cognition,M1,1,0
+1,-2.7,GO:0098916,anterograde trans-synaptic signaling,M1,1,0
+1,-2.6,GO:0099536,synaptic signaling,M1,1,0
+1,-2.5,GO:0034762,regulation of transmembrane transport,M1,1,0
+1,-2.5,GO:0055080,monoatomic cation homeostasis,M1,1,0
+1,-2.4,GO:0051668,localization within membrane,M1,1,0
+1,-2.2,GO:0030001,metal ion transport,M1,1,0
+1,-2.2,R-HSA-5653656,Vesicle-mediated transport,M1,1,0
+1,-3.7,GO:0099177,regulation of trans-synaptic signaling,M1,1,0
+1,-3,GO:0034765,regulation of monoatomic ion transmembrane transport,M1,1,0
+1,-3.6,GO:0048167,regulation of synaptic plasticity,M1,1,0
+1,-2.8,GO:0010876,lipid localization,M1,1,0
+1,-3.3,GO:0120035,regulation of plasma membrane bounded cell projection organization,M1,1,0
+1,-2.7,GO:0030003,intracellular monoatomic cation homeostasis,M1,1,0
+1,-2.7,GO:0099537,trans-synaptic signaling,M1,1,0
+1,-2.1,GO:0019725,cellular homeostasis,M1,1,0
+1,-3.8,GO:0050804,modulation of chemical synaptic transmission,M1,1,0
+1,-2.9,GO:0031346,positive regulation of cell projection organization,M1,1,0
+1,-6.3,GO:0034330,cell junction organization,M1,1,0
+1,-2.4,GO:0051640,organelle localization,M1,1,0
+1,-5.6,GO:1900271,regulation of long-term synaptic potentiation,M1,1,0
+1,-2.1,GO:0098660,inorganic ion transmembrane transport,M1,1,0
+1,-2.3,GO:1902532,negative regulation of intracellular signal transduction,M1,1,0

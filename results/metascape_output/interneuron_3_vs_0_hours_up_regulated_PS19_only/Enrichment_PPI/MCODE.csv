@@ -1,0 +1,4 @@
+Cluster,Score,Type,Gene,Symbol,Network
+1,1.0,Clustered,6217,RPS16,Btg2_SUB1
+1,1.0,Clustered,6139,RPL17,Btg2_SUB1
+1,1.0,Seed,23521,RPL13A,Btg2_SUB1

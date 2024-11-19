@@ -1,0 +1,27 @@
+_MEMBER_Desi2,_LogP_Desi2,GO,Description,_PATTERN_,_RANK_,GiniIndex
+1,-2.9,GO:0003002,regionalization,M1,1,0
+1,-5,GO:0030198,extracellular matrix organization,M1,1,0
+1,-2.8,GO:0007389,pattern specification process,M1,1,0
+1,-5,GO:0043062,extracellular structure organization,M1,1,0
+1,-2.7,GO:0051604,protein maturation,M1,1,0
+1,-2.7,GO:0140352,export from cell,M1,1,0
+1,-2.7,GO:0048812,neuron projection morphogenesis,M1,1,0
+1,-2.3,GO:0031175,neuron projection development,M1,1,0
+1,-5.2,M3468,NABA ECM REGULATORS,M1,1,0
+1,-4.5,M5885,NABA MATRISOME ASSOCIATED,M1,1,0
+1,-2.3,GO:0009792,embryo development ending in birth or egg hatching,M1,1,0
+1,-2.3,GO:0043009,chordate embryonic development,M1,1,0
+1,-4.9,GO:0045229,external encapsulating structure organization,M1,1,0
+1,-2.4,GO:0032989,cellular anatomical entity morphogenesis,M1,1,0
+1,-4.6,GO:0016358,dendrite development,M1,1,0
+1,-2.3,GO:0000902,cell morphogenesis,M1,1,0
+1,-3.4,GO:0001503,ossification,M1,1,0
+1,-2.8,GO:0048667,cell morphogenesis involved in neuron differentiation,M1,1,0
+1,-2.7,GO:0120039,plasma membrane bounded cell projection morphogenesis,M1,1,0
+1,-2.6,GO:0034330,cell junction organization,M1,1,0
+1,-3.9,GO:0016485,protein processing,M1,1,0
+1,-2.9,GO:0032940,secretion by cell,M1,1,0
+1,-2.8,GO:0048568,embryonic organ development,M1,1,0
+1,-3.9,GO:0001501,skeletal system development,M1,1,0
+1,-2.7,GO:0048858,cell projection morphogenesis,M1,1,0
+1,-2.6,GO:0046903,secretion,M1,1,0

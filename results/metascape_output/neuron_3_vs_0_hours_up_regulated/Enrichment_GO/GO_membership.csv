@@ -1,0 +1,196 @@
+_MEMBER_Npas2,_LogP_Npas2,GO,Description,_PATTERN_,_RANK_,GiniIndex
+1,-2.4,GO:0006865,amino acid transport,M1,1,0
+1,-3.7,GO:0046649,lymphocyte activation,M1,1,0
+1,-4.2,GO:0043604,amide biosynthetic process,M1,1,0
+1,-3.1,GO:0033143,regulation of intracellular steroid hormone receptor signaling pathway,M1,1,0
+1,-2.8,GO:0019725,cellular homeostasis,M1,1,0
+1,-3.4,GO:0046883,regulation of hormone secretion,M1,1,0
+1,-3.1,GO:1903578,regulation of ATP metabolic process,M1,1,0
+1,-2.3,GO:1901699,cellular response to nitrogen compound,M1,1,0
+1,-5.4,R-HSA-156842,Eukaryotic Translation Elongation,M1,1,0
+1,-2.1,GO:0043409,negative regulation of MAPK cascade,M1,1,0
+1,-2.9,GO:0017157,regulation of exocytosis,M1,1,0
+1,-2.4,GO:0009314,response to radiation,M1,1,0
+1,-3.1,R-HSA-72766,Translation,M1,1,0
+1,-2.2,GO:0120035,regulation of plasma membrane bounded cell projection organization,M1,1,0
+1,-2,GO:0062012,regulation of small molecule metabolic process,M1,1,0
+1,-2.6,GO:0045936,negative regulation of phosphate metabolic process,M1,1,0
+1,-2.4,R-HSA-1630316,Glycosaminoglycan metabolism,M1,1,0
+1,-5.3,R-HSA-9633012,Response of EIF2AK4 (GCN2) to amino acid deficiency,M1,1,0
+1,-4.9,R-HSA-9675108,Nervous system development,M1,1,0
+1,-5,R-HSA-927802,Nonsense-Mediated Decay (NMD),M1,1,0
+1,-5.1,R-HSA-156827,L13a-mediated translational silencing of Ceruloplasmin expression,M1,1,0
+1,-3.9,GO:0006812,monoatomic cation transport,M1,1,0
+1,-4.2,hsa03010,Ribosome,M1,1,0
+1,-4.3,GO:0090314,positive regulation of protein targeting to membrane,M1,1,0
+1,-3.4,R-HSA-1474228,Degradation of the extracellular matrix,M1,1,0
+1,-3.1,GO:0032922,circadian regulation of gene expression,M1,1,0
+1,-2.4,GO:0048589,developmental growth,M1,1,0
+1,-2.5,GO:0031401,positive regulation of protein modification process,M1,1,0
+1,-3.1,GO:0007610,behavior,M1,1,0
+1,-2.6,GO:0097485,neuron projection guidance,M1,1,0
+1,-2.5,GO:0008654,phospholipid biosynthetic process,M1,1,0
+1,-3.5,hsa05171,Coronavirus disease - COVID-19,M1,1,0
+1,-2.5,GO:0006412,translation,M1,1,0
+1,-5.4,R-HSA-72764,Eukaryotic Translation Termination,M1,1,0
+1,-2.3,GO:0006417,regulation of translation,M1,1,0
+1,-2.1,GO:0042110,T cell activation,M1,1,0
+1,-2.9,GO:1903829,positive regulation of protein localization,M1,1,0
+1,-4.6,GO:0034765,regulation of monoatomic ion transmembrane transport,M1,1,0
+1,-4.4,GO:0051259,protein complex oligomerization,M1,1,0
+1,-2.3,GO:0021537,telencephalon development,M1,1,0
+1,-2.5,R-HSA-425407,SLC-mediated transmembrane transport,M1,1,0
+1,-2.2,GO:0001933,negative regulation of protein phosphorylation,M1,1,0
+1,-4.9,R-HSA-2408522,Selenoamino acid metabolism,M1,1,0
+1,-2.7,GO:0030148,sphingolipid biosynthetic process,M1,1,0
+1,-3.5,R-HSA-71291,Metabolism of amino acids and derivatives,M1,1,0
+1,-2.1,GO:0098739,import across plasma membrane,M1,1,0
+1,-3.6,GO:0010038,response to metal ion,M1,1,0
+1,-3.8,GO:0090087,regulation of peptide transport,M1,1,0
+1,-2.4,GO:0009410,response to xenobiotic stimulus,M1,1,0
+1,-3,GO:0051047,positive regulation of secretion,M1,1,0
+1,-4.1,GO:0090313,regulation of protein targeting to membrane,M1,1,0
+1,-5,R-HSA-975957,Nonsense Mediated Decay (NMD) enhanced by the Exon Junction Complex (EJC),M1,1,0
+1,-3.3,GO:0006954,inflammatory response,M1,1,0
+1,-3.4,GO:0098660,inorganic ion transmembrane transport,M1,1,0
+1,-6.8,GO:1903530,regulation of secretion by cell,M1,1,0
+1,-4.1,R-HSA-112316,Neuronal System,M1,1,0
+1,-2.6,GO:0060078,regulation of postsynaptic membrane potential,M1,1,0
+1,-3.8,GO:0098662,inorganic cation transmembrane transport,M1,1,0
+1,-2.3,GO:0007623,circadian rhythm,M1,1,0
+1,-3,GO:1903533,regulation of protein targeting,M1,1,0
+1,-2.6,GO:1901796,regulation of signal transduction by p53 class mediator,M1,1,0
+1,-2.3,GO:0007611,learning or memory,M1,1,0
+1,-3.4,GO:0019226,transmission of nerve impulse,M1,1,0
+1,-2.2,GO:1903531,negative regulation of secretion by cell,M1,1,0
+1,-3.7,CORUM:308,"60S ribosomal subunit, cytoplasmic",M1,1,0
+1,-3.4,R-HSA-1638091,Heparan sulfate/heparin (HS-GAG) metabolism,M1,1,0
+1,-3.2,GO:1902532,negative regulation of intracellular signal transduction,M1,1,0
+1,-5,R-HSA-72706,GTP hydrolysis and joining of the 60S ribosomal subunit,M1,1,0
+1,-2.4,hsa04728,Dopaminergic synapse,M1,1,0
+1,-2.9,GO:0006029,proteoglycan metabolic process,M1,1,0
+1,-4.3,GO:0034248,regulation of amide metabolic process,M1,1,0
+1,-6.4,GO:0051046,regulation of secretion,M1,1,0
+1,-3.9,R-HSA-8868773,rRNA processing in the nucleus and cytosol,M1,1,0
+1,-5.9,R-HSA-168273,Influenza Viral RNA Transcription and Replication,M1,1,0
+1,-3.8,M5932,HALLMARK INFLAMMATORY RESPONSE,M1,1,0
+1,-3.7,GO:0098655,monoatomic cation transmembrane transport,M1,1,0
+1,-2.9,GO:0050890,cognition,M1,1,0
+1,-2.6,GO:0010563,negative regulation of phosphorus metabolic process,M1,1,0
+1,-2.2,GO:0099536,synaptic signaling,M1,1,0
+1,-4.5,GO:0034762,regulation of transmembrane transport,M1,1,0
+1,-5.5,R-HSA-192823,Viral mRNA Translation,M1,1,0
+1,-2.3,GO:0021700,developmental maturation,M1,1,0
+1,-5.5,R-HSA-156902,Peptide chain elongation,M1,1,0
+1,-7.1,R-HSA-1296072,Voltage gated Potassium channels,M1,1,0
+1,-4.8,GO:0002181,cytoplasmic translation,M1,1,0
+1,-5.8,CORUM:306,"Ribosome, cytoplasmic",M1,1,0
+1,-2.1,GO:0006468,protein phosphorylation,M1,1,0
+1,-2.3,GO:0002252,immune effector process,M1,1,0
+1,-2.2,GO:0051345,positive regulation of hydrolase activity,M1,1,0
+1,-3.9,GO:0090276,regulation of peptide hormone secretion,M1,1,0
+1,-4.3,GO:0010959,regulation of metal ion transport,M1,1,0
+1,-2.7,GO:0060627,regulation of vesicle-mediated transport,M1,1,0
+1,-3.9,CORUM:3055,Nop56p-associated pre-rRNA complex,M1,1,0
+1,-3.6,GO:0032412,regulation of monoatomic ion transmembrane transporter activity,M1,1,0
+1,-2.8,GO:1900542,regulation of purine nucleotide metabolic process,M1,1,0
+1,-2.7,GO:0007420,brain development,M1,1,0
+1,-2.7,GO:0001775,cell activation,M1,1,0
+1,-3.8,GO:0002791,regulation of peptide secretion,M1,1,0
+1,-2.2,GO:0007612,learning,M1,1,0
+1,-2.9,GO:0009416,response to light stimulus,M1,1,0
+1,-3.3,GO:0002699,positive regulation of immune effector process,M1,1,0
+1,-2.4,GO:0031400,negative regulation of protein modification process,M1,1,0
+1,-3.7,R-HSA-376176,Signaling by ROBO receptors,M1,1,0
+1,-2.3,GO:0051338,regulation of transferase activity,M1,1,0
+1,-3.5,GO:0010035,response to inorganic substance,M1,1,0
+1,-2.9,GO:1904951,positive regulation of establishment of protein localization,M1,1,0
+1,-3.8,GO:0043269,regulation of monoatomic ion transport,M1,1,0
+1,-2.4,GO:0040007,growth,M1,1,0
+1,-2.5,GO:0060322,head development,M1,1,0
+1,-4.8,GO:0042391,regulation of membrane potential,M1,1,0
+1,-2.2,GO:0002443,leukocyte mediated immunity,M1,1,0
+1,-4,GO:0033144,negative regulation of intracellular steroid hormone receptor signaling pathway,M1,1,0
+1,-2,GO:0016310,phosphorylation,M1,1,0
+1,-5.3,R-HSA-72689,Formation of a pool of free 40S subunits,M1,1,0
+1,-2.5,GO:0055082,intracellular chemical homeostasis,M1,1,0
+1,-2.4,GO:0048511,rhythmic process,M1,1,0
+1,-2,GO:0048762,mesenchymal cell differentiation,M1,1,0
+1,-4.1,GO:0043068,positive regulation of programmed cell death,M1,1,0
+1,-3.2,GO:0043043,peptide biosynthetic process,M1,1,0
+1,-6.9,R-HSA-168255,Influenza Infection,M1,1,0
+1,-3.5,GO:0034249,negative regulation of amide metabolic process,M1,1,0
+1,-2.4,GO:1903305,regulation of regulated secretory pathway,M1,1,0
+1,-3.1,GO:0045321,leukocyte activation,M1,1,0
+1,-2,GO:0018209,peptidyl-serine modification,M1,1,0
+1,-2.8,GO:0006140,regulation of nucleotide metabolic process,M1,1,0
+1,-4.2,R-HSA-9010553,Regulation of expression of SLITs and ROBOs,M1,1,0
+1,-4.9,GO:1904062,regulation of monoatomic cation transmembrane transport,M1,1,0
+1,-2.1,GO:0018105,peptidyl-serine phosphorylation,M1,1,0
+1,-3,GO:0045921,positive regulation of exocytosis,M1,1,0
+1,-3.8,R-HSA-72312,rRNA processing,M1,1,0
+1,-4,R-HSA-6791226,Major pathway of rRNA processing in the nucleolus and cytosol,M1,1,0
+1,-4.3,GO:0070201,regulation of establishment of protein localization,M1,1,0
+1,-2.2,R-HSA-71387,Metabolism of carbohydrates,M1,1,0
+1,-5.5,GO:0071805,potassium ion transmembrane transport,M1,1,0
+1,-2.6,GO:0045596,negative regulation of cell differentiation,M1,1,0
+1,-2.6,R-HSA-425393,Transport of inorganic cations/anions and amino acids/oligopeptides,M1,1,0
+1,-5.4,R-HSA-2408557,Selenocysteine synthesis,M1,1,0
+1,-3.2,GO:0019233,sensory perception of pain,M1,1,0
+1,-4,GO:0051952,regulation of amine transport,M1,1,0
+1,-2.1,GO:0104004,cellular response to environmental stimulus,M1,1,0
+1,-4.3,R-HSA-9711097,Cellular response to starvation,M1,1,0
+1,-2.5,GO:0042752,regulation of circadian rhythm,M1,1,0
+1,-5.1,R-HSA-422475,Axon guidance,M1,1,0
+1,-4.2,GO:1901379,regulation of potassium ion transmembrane transport,M1,1,0
+1,-3.5,GO:0050433,regulation of catecholamine secretion,M1,1,0
+1,-2.1,GO:0042326,negative regulation of phosphorylation,M1,1,0
+1,-2.5,GO:0002718,regulation of cytokine production involved in immune response,M1,1,0
+1,-2.2,GO:0031344,regulation of cell projection organization,M1,1,0
+1,-4.9,R-HSA-72737,Cap-dependent Translation Initiation,M1,1,0
+1,-2.6,GO:0002697,regulation of immune effector process,M1,1,0
+1,-2.5,GO:2001257,regulation of cation channel activity,M1,1,0
+1,-2.2,GO:0030098,lymphocyte differentiation,M1,1,0
+1,-4.3,GO:0050708,regulation of protein secretion,M1,1,0
+1,-3.2,hsa04148,Efferocytosis,M1,1,0
+1,-2.3,GO:0090288,negative regulation of cellular response to growth factor stimulus,M1,1,0
+1,-5.3,GO:0006813,potassium ion transport,M1,1,0
+1,-2.3,GO:0046467,membrane lipid biosynthetic process,M1,1,0
+1,-2,GO:1903131,mononuclear cell differentiation,M1,1,0
+1,-2.9,GO:0002700,regulation of production of molecular mediator of immune response,M1,1,0
+1,-5,GO:0051899,membrane depolarization,M1,1,0
+1,-3.6,GO:0022898,regulation of transmembrane transporter activity,M1,1,0
+1,-2.6,GO:0007411,axon guidance,M1,1,0
+1,-3,R-HSA-1474244,Extracellular matrix organization,M1,1,0
+1,-2.8,GO:0001819,positive regulation of cytokine production,M1,1,0
+1,-2.1,GO:0044272,sulfur compound biosynthetic process,M1,1,0
+1,-2,R-HSA-8953854,Metabolism of RNA,M1,1,0
+1,-2.7,GO:0030163,protein catabolic process,M1,1,0
+1,-5,R-HSA-1799339,SRP-dependent cotranslational protein targeting to membrane,M1,1,0
+1,-5.2,R-HSA-1296071,Potassium Channels,M1,1,0
+1,-3.5,GO:0002702,positive regulation of production of molecular mediator of immune response,M1,1,0
+1,-2.5,GO:0002703,regulation of leukocyte mediated immunity,M1,1,0
+1,-5.4,R-HSA-975956,Nonsense Mediated Decay (NMD) independent of the Exon Junction Complex (EJC),M1,1,0
+1,-3,GO:0002720,positive regulation of cytokine production involved in immune response,M1,1,0
+1,-2.6,GO:1905477,positive regulation of protein localization to membrane,M1,1,0
+1,-2.2,GO:0140352,export from cell,M1,1,0
+1,-3.4,GO:0006518,peptide metabolic process,M1,1,0
+1,-3.9,GO:0043266,regulation of potassium ion transport,M1,1,0
+1,-2.1,GO:0006665,sphingolipid metabolic process,M1,1,0
+1,-2,GO:0051048,negative regulation of secretion,M1,1,0
+1,-4.2,GO:0050796,regulation of insulin secretion,M1,1,0
+1,-2,GO:0071478,cellular response to radiation,M1,1,0
+1,-2.2,GO:0045859,regulation of protein kinase activity,M1,1,0
+1,-5.2,GO:0001508,action potential,M1,1,0
+1,-4.2,GO:0043065,positive regulation of apoptotic process,M1,1,0
+1,-4.6,GO:0030001,metal ion transport,M1,1,0
+1,-2.6,GO:0071695,anatomical structure maturation,M1,1,0
+1,-3.1,GO:0051223,regulation of protein transport,M1,1,0
+1,-2.1,GO:0071214,cellular response to abiotic stimulus,M1,1,0
+1,-3.1,GO:1903532,positive regulation of secretion by cell,M1,1,0
+1,-4.9,R-HSA-72613,Eukaryotic Translation Initiation,M1,1,0
+1,-3.8,GO:1903307,positive regulation of regulated secretory pathway,M1,1,0
+1,-3.4,GO:0043467,regulation of generation of precursor metabolites and energy,M1,1,0
+1,-2.2,R-HSA-9694516,SARS-CoV-2 Infection,M1,1,0
+1,-3.3,GO:0032409,regulation of transporter activity,M1,1,0
+1,-5.1,GO:0051260,protein homooligomerization,M1,1,0

@@ -1,0 +1,426 @@
+_MEMBER_Kansl1l,_LogP_Kansl1l,GO,Description,_PATTERN_,_RANK_,GiniIndex
+1,-2.6,R-HSA-69481,G2/M Checkpoints,M1,1,0
+1,-2.4,M5891,HALLMARK HYPOXIA,M1,1,0
+1,-3.9,GO:0055117,regulation of cardiac muscle contraction,M1,1,0
+1,-5.3,GO:0030162,regulation of proteolysis,M1,1,0
+1,-2.4,R-HSA-4420097,VEGFA-VEGFR2 Pathway,M1,1,0
+1,-3.3,GO:0000086,G2/M transition of mitotic cell cycle,M1,1,0
+1,-3.1,R-HSA-9604323,Negative regulation of NOTCH4 signaling,M1,1,0
+1,-5,GO:0005513,detection of calcium ion,M1,1,0
+1,-4.9,R-HSA-9656223,Signaling by RAF1 mutants,M1,1,0
+1,-2.8,GO:0051926,negative regulation of calcium ion transport,M1,1,0
+1,-2.2,hsa05208,Chemical carcinogenesis - reactive oxygen species,M1,1,0
+1,-2.7,R-HSA-112315,Transmission across Chemical Synapses,M1,1,0
+1,-2.6,GO:1904427,positive regulation of calcium ion transmembrane transport,M1,1,0
+1,-3.1,R-HSA-195258,RHO GTPase Effectors,M1,1,0
+1,-3.6,R-HSA-1280218,Adaptive Immune System,M1,1,0
+1,-5.7,R-HSA-983705,Signaling by the B Cell Receptor (BCR),M1,1,0
+1,-2.3,GO:0030218,erythrocyte differentiation,M1,1,0
+1,-6.2,R-HSA-9022535,Loss of phosphorylation of MECP2 at T308,M1,1,0
+1,-4.5,hsa05022,Pathways of neurodegeneration - multiple diseases,M1,1,0
+1,-2,GO:1903322,positive regulation of protein modification by small protein conjugation or removal,M1,1,0
+1,-2,M186,PID PDGFRB PATHWAY,M1,1,0
+1,-4.8,R-HSA-442755,Activation of NMDA receptors and postsynaptic events,M1,1,0
+1,-2.2,GO:0006633,fatty acid biosynthetic process,M1,1,0
+1,-2.9,GO:2001235,positive regulation of apoptotic signaling pathway,M1,1,0
+1,-3,R-HSA-917937,Iron uptake and transport,M1,1,0
+1,-3,GO:0065004,protein-DNA complex assembly,M1,1,0
+1,-2.8,R-HSA-453279,Mitotic G1 phase and G1/S transition,M1,1,0
+1,-2.8,hsa04020,Calcium signaling pathway,M1,1,0
+1,-5.5,hsa05012,Parkinson disease,M1,1,0
+1,-2.8,GO:0048857,neural nucleus development,M1,1,0
+1,-2.9,R-HSA-3700989,Transcriptional Regulation by TP53,M1,1,0
+1,-2.1,R-HSA-69239,Synthesis of DNA,M1,1,0
+1,-4,R-HSA-1855204,Synthesis of IP3 and IP4 in the cytosol,M1,1,0
+1,-2.5,hsa05034,Alcoholism,M1,1,0
+1,-2.7,GO:0071900,regulation of protein serine/threonine kinase activity,M1,1,0
+1,-2.2,GO:1903050,regulation of proteolysis involved in protein catabolic process,M1,1,0
+1,-4,GO:0035458,cellular response to interferon-beta,M1,1,0
+1,-5.1,R-HSA-203615,eNOS activation,M1,1,0
+1,-2.7,R-HSA-70171,Glycolysis,M1,1,0
+1,-4.4,GO:0042327,positive regulation of phosphorylation,M1,1,0
+1,-4.9,GO:0035307,positive regulation of protein dephosphorylation,M1,1,0
+1,-2.1,hsa05200,Pathways in cancer,M1,1,0
+1,-2.8,GO:0050803,regulation of synapse structure or activity,M1,1,0
+1,-3.7,GO:0035456,response to interferon-beta,M1,1,0
+1,-2.5,GO:0019646,aerobic electron transport chain,M1,1,0
+1,-4.3,R-HSA-388396,GPCR downstream signalling,M1,1,0
+1,-4.4,GO:0051302,regulation of cell division,M1,1,0
+1,-4.1,R-HSA-180024,DARPP-32 events,M1,1,0
+1,-2.7,GO:0043549,regulation of kinase activity,M1,1,0
+1,-3.1,R-HSA-1428517,Aerobic respiration and respiratory electron transport,M1,1,0
+1,-2.8,GO:0006090,pyruvate metabolic process,M1,1,0
+1,-2.9,R-HSA-4086398,Ca2+ pathway,M1,1,0
+1,-3,R-HSA-114608,Platelet degranulation,M1,1,0
+1,-6,R-HSA-109582,Hemostasis,M1,1,0
+1,-2.5,GO:0030901,midbrain development,M1,1,0
+1,-3.1,R-HSA-8939211,ESR-mediated signaling,M1,1,0
+1,-3.2,R-HSA-9716542,"Signaling by Rho GTPases, Miro GTPases and RHOBTB3",M1,1,0
+1,-3.7,R-HSA-5576892,Phase 0 - rapid depolarisation,M1,1,0
+1,-3.3,R-HSA-69231,Cyclin D associated events in G1,M1,1,0
+1,-3.9,R-HSA-373076,Class A/1 (Rhodopsin-like receptors),M1,1,0
+1,-2.2,GO:2001257,regulation of cation channel activity,M1,1,0
+1,-4.9,R-HSA-442720,CREB1 phosphorylation through the activation of Adenylate Cyclase,M1,1,0
+1,-4.3,GO:0010881,regulation of cardiac muscle contraction by regulation of the release of sequestered calcium ion,M1,1,0
+1,-4.7,GO:0045937,positive regulation of phosphate metabolic process,M1,1,0
+1,-2.8,GO:0032413,negative regulation of ion transmembrane transporter activity,M1,1,0
+1,-2.6,R-HSA-168928,DDX58/IFIH1-mediated induction of interferon-alpha/beta,M1,1,0
+1,-5.1,GO:0031952,regulation of protein autophosphorylation,M1,1,0
+1,-4.2,GO:0052547,regulation of peptidase activity,M1,1,0
+1,-2.4,GO:0042773,ATP synthesis coupled electron transport,M1,1,0
+1,-2.7,hsa04110,Cell cycle,M1,1,0
+1,-2.2,GO:0006338,chromatin remodeling,M1,1,0
+1,-5,R-HSA-425561,Sodium/Calcium exchangers,M1,1,0
+1,-5.2,GO:0060315,negative regulation of ryanodine-sensitive calcium-release channel activity,M1,1,0
+1,-5.8,GO:0060322,head development,M1,1,0
+1,-2.3,hsa04066,HIF-1 signaling pathway,M1,1,0
+1,-3.9,GO:0098901,regulation of cardiac muscle cell action potential,M1,1,0
+1,-6.3,R-HSA-5621481,C-type lectin receptors (CLRs),M1,1,0
+1,-2.7,GO:0009185,ribonucleoside diphosphate metabolic process,M1,1,0
+1,-4.3,R-HSA-71387,Metabolism of carbohydrates,M1,1,0
+1,-3.8,R-HSA-9022692,Regulation of MECP2 expression and activity,M1,1,0
+1,-3.9,GO:0001934,positive regulation of protein phosphorylation,M1,1,0
+1,-2.1,GO:0022898,regulation of transmembrane transporter activity,M1,1,0
+1,-6.2,R-HSA-442982,Ras activation upon Ca2+ influx through NMDA receptor,M1,1,0
+1,-3.5,R-HSA-5673001,RAF/MAP kinase cascade,M1,1,0
+1,-3.1,GO:0072526,pyridine-containing compound catabolic process,M1,1,0
+1,-4.5,GO:0010801,negative regulation of peptidyl-threonine phosphorylation,M1,1,0
+1,-2.7,hsa04971,Gastric acid secretion,M1,1,0
+1,-2.7,GO:2000242,negative regulation of reproductive process,M1,1,0
+1,-3.3,GO:0033674,positive regulation of kinase activity,M1,1,0
+1,-3.3,R-HSA-194315,Signaling by Rho GTPases,M1,1,0
+1,-2.7,hsa05214,Glioma,M1,1,0
+1,-3.2,R-HSA-112043,PLC beta mediated events,M1,1,0
+1,-2.6,GO:0044057,regulation of system process,M1,1,0
+1,-4.1,R-HSA-70263,Gluconeogenesis,M1,1,0
+1,-6.1,R-HSA-9617324,Negative regulation of NMDA receptor-mediated neuronal transmission,M1,1,0
+1,-4.1,GO:0060314,regulation of ryanodine-sensitive calcium-release channel activity,M1,1,0
+1,-3.2,GO:0006334,nucleosome assembly,M1,1,0
+1,-2.9,GO:0009135,purine nucleoside diphosphate metabolic process,M1,1,0
+1,-2.2,GO:0097485,neuron projection guidance,M1,1,0
+1,-4.1,GO:0010882,regulation of cardiac muscle contraction by calcium ion signaling,M1,1,0
+1,-4.1,R-HSA-6802952,Signaling by BRAF and RAF1 fusions,M1,1,0
+1,-2.2,hsa01200,Carbon metabolism,M1,1,0
+1,-2.8,R-HSA-3858494,Beta-catenin independent WNT signaling,M1,1,0
+1,-3.1,GO:0009191,ribonucleoside diphosphate catabolic process,M1,1,0
+1,-3.4,R-HSA-9006934,Signaling by Receptor Tyrosine Kinases,M1,1,0
+1,-4.8,GO:0050919,negative chemotaxis,M1,1,0
+1,-2.1,R-HSA-162906,HIV Infection,M1,1,0
+1,-3.3,GO:0031396,regulation of protein ubiquitination,M1,1,0
+1,-2.4,GO:0002833,positive regulation of response to biotic stimulus,M1,1,0
+1,-5.7,R-HSA-8982491,Glycogen metabolism,M1,1,0
+1,-4.4,R-HSA-5218921,VEGFR2 mediated cell proliferation,M1,1,0
+1,-2.6,GO:0006937,regulation of muscle contraction,M1,1,0
+1,-2,R-HSA-69206,G1/S Transition,M1,1,0
+1,-2.4,GO:0045333,cellular respiration,M1,1,0
+1,-2,R-HSA-162909,Host Interactions of HIV factors,M1,1,0
+1,-3,hsa00190,Oxidative phosphorylation,M1,1,0
+1,-3.3,R-HSA-445355,Smooth Muscle Contraction,M1,1,0
+1,-2.5,GO:0009154,purine ribonucleotide catabolic process,M1,1,0
+1,-5.5,R-HSA-9619229,Activation of RAC1 downstream of NMDARs,M1,1,0
+1,-3.1,R-HSA-5578775,Ion homeostasis,M1,1,0
+1,-2.3,hsa05415,Diabetic cardiomyopathy,M1,1,0
+1,-5.3,hsa04114,Oocyte meiosis,M1,1,0
+1,-2.8,GO:0045936,negative regulation of phosphate metabolic process,M1,1,0
+1,-2.6,GO:0010952,positive regulation of peptidase activity,M1,1,0
+1,-2,GO:0051640,organelle localization,M1,1,0
+1,-3.3,R-HSA-512988,"Interleukin-3, Interleukin-5 and GM-CSF signaling",M1,1,0
+1,-2.6,R-HSA-2871837,FCERI mediated NF-kB activation,M1,1,0
+1,-4.9,R-HSA-9005891,Loss of function of MECP2 in Rett syndrome,M1,1,0
+1,-2.1,R-HSA-8878166,Transcriptional regulation by RUNX2,M1,1,0
+1,-2.2,GO:0034765,regulation of monoatomic ion transmembrane transport,M1,1,0
+1,-2.8,R-HSA-5653656,Vesicle-mediated transport,M1,1,0
+1,-2,GO:0043271,negative regulation of monoatomic ion transport,M1,1,0
+1,-2.8,GO:0010563,negative regulation of phosphorus metabolic process,M1,1,0
+1,-2.3,hsa05203,Viral carcinogenesis,M1,1,0
+1,-2.1,GO:0043523,regulation of neuron apoptotic process,M1,1,0
+1,-2.2,R-HSA-9711123,Cellular response to chemical stress,M1,1,0
+1,-2.5,R-HSA-418346,Platelet homeostasis,M1,1,0
+1,-4.7,R-HSA-6802955,Paradoxical activation of RAF signaling by kinase inactive BRAF,M1,1,0
+1,-3.6,R-HSA-2514856,The phototransduction cascade,M1,1,0
+1,-2.2,GO:0070374,positive regulation of ERK1 and ERK2 cascade,M1,1,0
+1,-3.2,GO:0009181,purine ribonucleoside diphosphate catabolic process,M1,1,0
+1,-5.5,R-HSA-5339562,Uptake and actions of bacterial toxins,M1,1,0
+1,-2.3,R-HSA-194138,Signaling by VEGF,M1,1,0
+1,-5.2,R-HSA-2025928,Calcineurin activates NFAT,M1,1,0
+1,-2.2,GO:0046660,female sex differentiation,M1,1,0
+1,-2.9,R-HSA-9678108,SARS-CoV-1 Infection,M1,1,0
+1,-3.3,GO:0046032,ADP catabolic process,M1,1,0
+1,-3.1,R-HSA-2151201,Transcriptional activation of mitochondrial biogenesis,M1,1,0
+1,-2.8,hsa00010,Glycolysis / Gluconeogenesis,M1,1,0
+1,-2.3,GO:0016052,carbohydrate catabolic process,M1,1,0
+1,-3.2,GO:1903170,negative regulation of calcium ion transmembrane transport,M1,1,0
+1,-5.3,GO:0007420,brain development,M1,1,0
+1,-6.9,GO:0051343,positive regulation of cyclic-nucleotide phosphodiesterase activity,M1,1,0
+1,-3.5,hsa05010,Alzheimer disease,M1,1,0
+1,-3.9,R-HSA-418360,Platelet calcium homeostasis,M1,1,0
+1,-4.6,GO:0019722,calcium-mediated signaling,M1,1,0
+1,-2.8,GO:0045860,positive regulation of protein kinase activity,M1,1,0
+1,-2.2,GO:0022904,respiratory electron transport chain,M1,1,0
+1,-3.5,GO:0051281,positive regulation of release of sequestered calcium ion into cytosol,M1,1,0
+1,-2.6,GO:0009132,nucleoside diphosphate metabolic process,M1,1,0
+1,-2.5,GO:0031400,negative regulation of protein modification process,M1,1,0
+1,-5.7,GO:0051342,regulation of cyclic-nucleotide phosphodiesterase activity,M1,1,0
+1,-4.7,R-HSA-6802946,Signaling by moderate kinase activity BRAF mutants,M1,1,0
+1,-5,R-HSA-9664323,FCGR3A-mediated IL10 synthesis,M1,1,0
+1,-5,GO:0051280,negative regulation of release of sequestered calcium ion into cytosol,M1,1,0
+1,-4.7,GO:0006935,chemotaxis,M1,1,0
+1,-2.4,GO:0046545,development of primary female sexual characteristics,M1,1,0
+1,-3.1,GO:0045862,positive regulation of proteolysis,M1,1,0
+1,-2.2,GO:0034101,erythrocyte homeostasis,M1,1,0
+1,-2.2,GO:0019362,pyridine nucleotide metabolic process,M1,1,0
+1,-2.3,GO:0045859,regulation of protein kinase activity,M1,1,0
+1,-2.8,hsa04720,Long-term potentiation,M1,1,0
+1,-3.9,R-HSA-9619483,Activation of AMPK downstream of NMDARs,M1,1,0
+1,-2.7,hsa01230,Biosynthesis of amino acids,M1,1,0
+1,-2.4,GO:0009144,purine nucleoside triphosphate metabolic process,M1,1,0
+1,-2.9,GO:0009179,purine ribonucleoside diphosphate metabolic process,M1,1,0
+1,-2.4,GO:0009261,ribonucleotide catabolic process,M1,1,0
+1,-2.1,GO:0032787,monocarboxylic acid metabolic process,M1,1,0
+1,-2.1,GO:0009166,nucleotide catabolic process,M1,1,0
+1,-2.5,GO:0043068,positive regulation of programmed cell death,M1,1,0
+1,-2.1,hsa04014,Ras signaling pathway,M1,1,0
+1,-3.9,R-HSA-5218920,VEGFR2 mediated vascular permeability,M1,1,0
+1,-2.3,GO:0043269,regulation of monoatomic ion transport,M1,1,0
+1,-6.5,GO:1905913,negative regulation of calcium ion export across plasma membrane,M1,1,0
+1,-5.7,GO:0010922,positive regulation of phosphatase activity,M1,1,0
+1,-3.3,M5936,HALLMARK OXIDATIVE PHOSPHORYLATION,M1,1,0
+1,-3.3,R-HSA-4570464,SUMOylation of RNA binding proteins,M1,1,0
+1,-5.2,R-HSA-2454202,Fc epsilon receptor (FCERI) signaling,M1,1,0
+1,-4.7,GO:0042330,taxis,M1,1,0
+1,-2.1,GO:0032434,regulation of proteasomal ubiquitin-dependent protein catabolic process,M1,1,0
+1,-4.3,M5953,HALLMARK KRAS SIGNALING UP,M1,1,0
+1,-5.1,GO:0031401,positive regulation of protein modification process,M1,1,0
+1,-3.7,R-HSA-9824443,Parasitic Infection Pathways,M1,1,0
+1,-2.7,GO:2001233,regulation of apoptotic signaling pathway,M1,1,0
+1,-2.7,GO:0031175,neuron projection development,M1,1,0
+1,-3.4,R-HSA-983712,Ion channel transport,M1,1,0
+1,-5.4,R-HSA-2871809,FCERI mediated Ca+2 mobilization,M1,1,0
+1,-3.1,R-HSA-5683057,MAPK family signaling cascades,M1,1,0
+1,-5.7,GO:0060316,positive regulation of ryanodine-sensitive calcium-release channel activity,M1,1,0
+1,-2.1,GO:0000902,cell morphogenesis,M1,1,0
+1,-4.9,R-HSA-9675151,Disorders of Developmental Biology,M1,1,0
+1,-2.3,GO:0008016,regulation of heart contraction,M1,1,0
+1,-4.6,GO:0035303,regulation of dephosphorylation,M1,1,0
+1,-2.5,R-HSA-8953854,Metabolism of RNA,M1,1,0
+1,-2.2,GO:0120039,plasma membrane bounded cell projection morphogenesis,M1,1,0
+1,-2.8,R-HSA-68949,Orc1 removal from chromatin,M1,1,0
+1,-2.5,GO:0045185,maintenance of protein location,M1,1,0
+1,-2.4,hsa04070,Phosphatidylinositol signaling system,M1,1,0
+1,-3.6,R-HSA-111997,CaM pathway,M1,1,0
+1,-3.9,hsa04744,Phototransduction,M1,1,0
+1,-5.2,R-HSA-438064,Post NMDA receptor activation events,M1,1,0
+1,-2.6,M223,PID BETA CATENIN NUC PATHWAY,M1,1,0
+1,-4.3,hsa05167,Kaposi sarcoma-associated herpesvirus infection,M1,1,0
+1,-2.3,GO:0009141,nucleoside triphosphate metabolic process,M1,1,0
+1,-4.6,R-HSA-76002,"Platelet activation, signaling and aggregation",M1,1,0
+1,-4.7,CORUM:5199,Kinase maturation complex 1,M1,1,0
+1,-3.1,R-HSA-109606,Intrinsic Pathway for Apoptosis,M1,1,0
+1,-3.1,GO:0071902,positive regulation of protein serine/threonine kinase activity,M1,1,0
+1,-4.1,GO:0031954,positive regulation of protein autophosphorylation,M1,1,0
+1,-5.1,R-HSA-451308,Activation of Ca-permeable Kainate Receptor,M1,1,0
+1,-3.4,GO:2000116,regulation of cysteine-type endopeptidase activity,M1,1,0
+1,-2.9,GO:0050807,regulation of synapse organization,M1,1,0
+1,-2.7,GO:1901019,regulation of calcium ion transmembrane transporter activity,M1,1,0
+1,-3.1,GO:2000241,regulation of reproductive process,M1,1,0
+1,-2.3,GO:0031398,positive regulation of protein ubiquitination,M1,1,0
+1,-2.5,R-HSA-69306,DNA Replication,M1,1,0
+1,-2.8,GO:0034767,positive regulation of monoatomic ion transmembrane transport,M1,1,0
+1,-2.4,hsa04912,GnRH signaling pathway,M1,1,0
+1,-2.4,GO:0009408,response to heat,M1,1,0
+1,-3.5,R-HSA-111996,Ca-dependent events,M1,1,0
+1,-5.4,R-HSA-983695,Antigen activates B Cell Receptor (BCR) leading to generation of second messengers,M1,1,0
+1,-5.6,R-HSA-442742,CREB1 phosphorylation through NMDA receptor-mediated activation of RAS signaling,M1,1,0
+1,-2.9,R-HSA-199991,Membrane Trafficking,M1,1,0
+1,-4.4,GO:0048678,response to axon injury,M1,1,0
+1,-5.2,GO:0035304,regulation of protein dephosphorylation,M1,1,0
+1,-4.4,R-HSA-163615,PKA activation,M1,1,0
+1,-2.5,R-HSA-69052,Switching of origins to a post-replicative state,M1,1,0
+1,-4.4,GO:0010921,regulation of phosphatase activity,M1,1,0
+1,-3.1,GO:0044839,cell cycle G2/M phase transition,M1,1,0
+1,-2.1,GO:0050920,regulation of chemotaxis,M1,1,0
+1,-3.9,R-HSA-9664433,Leishmania parasite growth and survival,M1,1,0
+1,-2.2,GO:0034762,regulation of transmembrane transport,M1,1,0
+1,-3.1,GO:0071345,cellular response to cytokine stimulus,M1,1,0
+1,-5.4,R-HSA-442729,CREB1 phosphorylation through the activation of CaMKII/CaMKK/CaMKIV cascasde,M1,1,0
+1,-2.3,GO:1901796,regulation of signal transduction by p53 class mediator,M1,1,0
+1,-2.3,GO:0048812,neuron projection morphogenesis,M1,1,0
+1,-3.4,GO:2001242,regulation of intrinsic apoptotic signaling pathway,M1,1,0
+1,-2.3,hsa04015,Rap1 signaling pathway,M1,1,0
+1,-2.4,GO:0007200,phospholipase C-activating G protein-coupled receptor signaling pathway,M1,1,0
+1,-4.7,R-HSA-5607764,CLEC7A (Dectin-1) signaling,M1,1,0
+1,-2,GO:1901292,nucleoside phosphate catabolic process,M1,1,0
+1,-4,hsa04915,Estrogen signaling pathway,M1,1,0
+1,-2.7,GO:0002831,regulation of response to biotic stimulus,M1,1,0
+1,-3.7,R-HSA-5628897,TP53 Regulates Metabolic Genes,M1,1,0
+1,-3.1,GO:0034605,cellular response to heat,M1,1,0
+1,-2.1,hsa04722,Neurotrophin signaling pathway,M1,1,0
+1,-5.2,GO:0051336,regulation of hydrolase activity,M1,1,0
+1,-2,GO:1901875,positive regulation of post-translational protein modification,M1,1,0
+1,-2.2,GO:0032412,regulation of monoatomic ion transmembrane transporter activity,M1,1,0
+1,-2.5,R-HSA-111885,Opioid Signalling,M1,1,0
+1,-4.5,GO:0051345,positive regulation of hydrolase activity,M1,1,0
+1,-4.8,GO:0010649,regulation of cell communication by electrical coupling,M1,1,0
+1,-2.2,GO:0048858,cell projection morphogenesis,M1,1,0
+1,-3.2,R-HSA-112314,Neurotransmitter receptors and postsynaptic signal transmission,M1,1,0
+1,-7.8,R-HSA-9620244,Long-term potentiation,M1,1,0
+1,-2.3,GO:0006325,chromatin organization,M1,1,0
+1,-2.5,GO:1904063,negative regulation of cation transmembrane transport,M1,1,0
+1,-3.2,GO:2001259,positive regulation of cation channel activity,M1,1,0
+1,-3,R-HSA-500792,GPCR ligand binding,M1,1,0
+1,-2.4,GO:0009199,ribonucleoside triphosphate metabolic process,M1,1,0
+1,-3.5,R-HSA-109581,Apoptosis,M1,1,0
+1,-6.1,R-HSA-438066,"Unblocking of NMDA receptors, glutamate binding and activation",M1,1,0
+1,-2.7,R-HSA-1640170,Cell Cycle,M1,1,0
+1,-2.4,R-HSA-1592230,Mitochondrial biogenesis,M1,1,0
+1,-3.5,R-HSA-9692914,SARS-CoV-1-host interactions,M1,1,0
+1,-2.2,R-HSA-72172,mRNA Splicing,M1,1,0
+1,-3.1,R-HSA-5357801,Programmed Cell Death,M1,1,0
+1,-2.4,GO:0042326,negative regulation of phosphorylation,M1,1,0
+1,-3.6,GO:0032465,regulation of cytokinesis,M1,1,0
+1,-5,R-HSA-5210891,Uptake and function of anthrax toxins,M1,1,0
+1,-3.9,R-HSA-195721,Signaling by WNT,M1,1,0
+1,-4.9,R-HSA-418359,Reduction of cytosolic Ca++ levels,M1,1,0
+1,-2.6,GO:1903169,regulation of calcium ion transmembrane transport,M1,1,0
+1,-2.1,hsa05014,Amyotrophic lateral sclerosis,M1,1,0
+1,-2.4,GO:0042391,regulation of membrane potential,M1,1,0
+1,-4.7,R-HSA-70221,Glycogen breakdown (glycogenolysis),M1,1,0
+1,-2.5,R-HSA-450531,Regulation of mRNA stability by proteins that bind AU-rich elements,M1,1,0
+1,-3.4,R-HSA-5684996,MAPK1/MAPK3 signaling,M1,1,0
+1,-2.2,GO:2000278,regulation of DNA biosynthetic process,M1,1,0
+1,-2,R-HSA-422475,Axon guidance,M1,1,0
+1,-2,GO:0050864,regulation of B cell activation,M1,1,0
+1,-5.2,R-HSA-5673000,RAF activation,M1,1,0
+1,-2.7,R-HSA-9009391,Extra-nuclear estrogen signaling,M1,1,0
+1,-3.9,R-HSA-9662851,Anti-inflammatory response favouring Leishmania parasite infection,M1,1,0
+1,-3.6,GO:0051347,positive regulation of transferase activity,M1,1,0
+1,-2.9,GO:0034728,nucleosome organization,M1,1,0
+1,-3.4,R-HSA-1489509,DAG and IP3 signaling,M1,1,0
+1,-3.2,GO:0009137,purine nucleoside diphosphate catabolic process,M1,1,0
+1,-3.6,R-HSA-111933,Calmodulin induced events,M1,1,0
+1,-2.7,GO:0009060,aerobic respiration,M1,1,0
+1,-2.2,GO:0046496,nicotinamide nucleotide metabolic process,M1,1,0
+1,-3,R-HSA-76005,Response to elevated platelet cytosolic Ca2+,M1,1,0
+1,-5,R-HSA-5607763,CLEC7A (Dectin-1) induces NFAT activation,M1,1,0
+1,-2.3,GO:0034766,negative regulation of monoatomic ion transmembrane transport,M1,1,0
+1,-4.5,R-HSA-8876725,Protein methylation,M1,1,0
+1,-2.4,GO:1903312,negative regulation of mRNA metabolic process,M1,1,0
+1,-3.8,R-HSA-6802957,Oncogenic MAPK signaling,M1,1,0
+1,-3,R-HSA-936837,Ion transport by P-type ATPases,M1,1,0
+1,-3.2,GO:0019364,pyridine nucleotide catabolic process,M1,1,0
+1,-3.8,GO:0051279,regulation of release of sequestered calcium ion into cytosol,M1,1,0
+1,-3.8,GO:0032414,positive regulation of ion transmembrane transporter activity,M1,1,0
+1,-2.2,GO:0007411,axon guidance,M1,1,0
+1,-3.8,GO:1901020,negative regulation of calcium ion transmembrane transporter activity,M1,1,0
+1,-4.7,GO:0010562,positive regulation of phosphorus metabolic process,M1,1,0
+1,-5.4,R-HSA-1445148,Translocation of SLC2A4 (GLUT4) to the plasma membrane,M1,1,0
+1,-5.7,R-HSA-9648002,RAS processing,M1,1,0
+1,-2.1,GO:0072524,pyridine-containing compound metabolic process,M1,1,0
+1,-2.4,GO:0061136,regulation of proteasomal protein catabolic process,M1,1,0
+1,-6.2,GO:1905912,regulation of calcium ion export across plasma membrane,M1,1,0
+1,-2.9,GO:1903320,regulation of protein modification by small protein conjugation or removal,M1,1,0
+1,-3.4,GO:0002027,regulation of heart rate,M1,1,0
+1,-2.1,GO:0007409,axonogenesis,M1,1,0
+1,-2.1,GO:0018205,peptidyl-lysine modification,M1,1,0
+1,-2.3,GO:0072523,purine-containing compound catabolic process,M1,1,0
+1,-4,hsa05418,Fluid shear stress and atherosclerosis,M1,1,0
+1,-2.7,GO:0098609,cell-cell adhesion,M1,1,0
+1,-3.4,GO:0006091,generation of precursor metabolites and energy,M1,1,0
+1,-2.3,hsa04916,Melanogenesis,M1,1,0
+1,-3.1,R-HSA-112040,G-protein mediated events,M1,1,0
+1,-2.4,hsa04713,Circadian entrainment,M1,1,0
+1,-2.1,R-HSA-157118,Signaling by NOTCH,M1,1,0
+1,-5.1,R-HSA-451306,Ionotropic activity of kainate receptors,M1,1,0
+1,-2.8,GO:0010950,positive regulation of endopeptidase activity,M1,1,0
+1,-2.9,R-HSA-8986944,Transcriptional Regulation by MECP2,M1,1,0
+1,-3.4,GO:0051402,neuron apoptotic process,M1,1,0
+1,-2.1,GO:0045137,development of primary sexual characteristics,M1,1,0
+1,-3,GO:0009134,nucleoside diphosphate catabolic process,M1,1,0
+1,-6.4,GO:0032516,positive regulation of phosphoprotein phosphatase activity,M1,1,0
+1,-2.5,R-HSA-9006931,Signaling by Nuclear Receptors,M1,1,0
+1,-4.3,R-HSA-111931,PKA-mediated phosphorylation of CREB,M1,1,0
+1,-4.1,R-HSA-8978934,Metabolism of cofactors,M1,1,0
+1,-4.9,R-HSA-9697154,Disorders of Nervous System Development,M1,1,0
+1,-2.6,R-HSA-9013694,Signaling by NOTCH4,M1,1,0
+1,-3.8,R-HSA-451326,Activation of kainate receptors upon glutamate binding,M1,1,0
+1,-2.8,hsa05031,Amphetamine addiction,M1,1,0
+1,-3.3,R-HSA-2672351,Stimuli-sensing channels,M1,1,0
+1,-4.5,GO:0035306,positive regulation of dephosphorylation,M1,1,0
+1,-4.7,R-HSA-202131,Metabolism of nitric oxide: NOS3 activation and regulation,M1,1,0
+1,-2.8,GO:0043408,regulation of MAPK cascade,M1,1,0
+1,-3.6,GO:0032411,positive regulation of transporter activity,M1,1,0
+1,-3.2,R-HSA-1483249,Inositol phosphate metabolism,M1,1,0
+1,-2.5,GO:0010564,regulation of cell cycle process,M1,1,0
+1,-2.4,hsa04970,Salivary secretion,M1,1,0
+1,-2.5,GO:0009205,purine ribonucleoside triphosphate metabolic process,M1,1,0
+1,-3.7,GO:1902253,regulation of intrinsic apoptotic signaling pathway by p53 class mediator,M1,1,0
+1,-3.1,GO:0034764,positive regulation of transmembrane transport,M1,1,0
+1,-2.4,R-HSA-5625740,RHO GTPases activate PKNs,M1,1,0
+1,-3.8,GO:0010880,regulation of release of sequestered calcium ion into cytosol by sarcoplasmic reticulum,M1,1,0
+1,-2.4,GO:0042775,mitochondrial ATP synthesis coupled electron transport,M1,1,0
+1,-3.2,R-HSA-418594,G alpha (i) signalling events,M1,1,0
+1,-5.4,R-HSA-9824439,Bacterial Infection Pathways,M1,1,0
+1,-5.1,R-HSA-1474151,"Tetrahydrobiopterin (BH4) synthesis, recycling, salvage and regulation",M1,1,0
+1,-3,GO:0098900,regulation of action potential,M1,1,0
+1,-2.3,hsa04625,C-type lectin receptor signaling pathway,M1,1,0
+1,-3.3,GO:0006096,glycolytic process,M1,1,0
+1,-4.1,GO:0070372,regulation of ERK1 and ERK2 cascade,M1,1,0
+1,-3.1,R-HSA-5663202,Diseases of signal transduction by growth factor receptors and second messengers,M1,1,0
+1,-4.9,R-HSA-9005895,Pervasive developmental disorders,M1,1,0
+1,-5.1,R-HSA-1168372,Downstream signaling events of B Cell Receptor (BCR),M1,1,0
+1,-4.7,R-HSA-6802949,Signaling by RAS mutants,M1,1,0
+1,-3.1,GO:0046031,ADP metabolic process,M1,1,0
+1,-2.3,R-HSA-9705683,SARS-CoV-2-host interactions,M1,1,0
+1,-2.9,GO:1901873,regulation of post-translational protein modification,M1,1,0
+1,-2.1,GO:2001056,positive regulation of cysteine-type endopeptidase activity,M1,1,0
+1,-2.7,GO:0046034,ATP metabolic process,M1,1,0
+1,-5.4,GO:0040011,locomotion,M1,1,0
+1,-4.7,R-HSA-9649948,Signaling downstream of RAS mutants,M1,1,0
+1,-3.2,GO:0006119,oxidative phosphorylation,M1,1,0
+1,-4.4,GO:0052548,regulation of endopeptidase activity,M1,1,0
+1,-2.9,GO:0051338,regulation of transferase activity,M1,1,0
+1,-3.8,R-HSA-5626467,RHO GTPases activate IQGAPs,M1,1,0
+1,-4.8,GO:0051284,positive regulation of sequestering of calcium ion,M1,1,0
+1,-3.9,GO:1901021,positive regulation of calcium ion transmembrane transporter activity,M1,1,0
+1,-3.4,GO:0021762,substantia nigra development,M1,1,0
+1,-5.3,GO:0051282,regulation of sequestering of calcium ion,M1,1,0
+1,-4.7,hsa04750,Inflammatory mediator regulation of TRP channels,M1,1,0
+1,-5.2,GO:1901844,regulation of cell communication by electrical coupling involved in cardiac conduction,M1,1,0
+1,-2.2,R-HSA-425393,Transport of inorganic cations/anions and amino acids/oligopeptides,M1,1,0
+1,-2.6,GO:0061564,axon development,M1,1,0
+1,-2.6,R-HSA-70326,Glucose metabolism,M1,1,0
+1,-3.1,hsa05417,Lipid and atherosclerosis,M1,1,0
+1,-4.2,R-HSA-5627123,RHO GTPases activate PAKs,M1,1,0
+1,-2.2,GO:0051928,positive regulation of calcium ion transport,M1,1,0
+1,-2.4,GO:0032410,negative regulation of transporter activity,M1,1,0
+1,-2.4,GO:1904062,regulation of monoatomic cation transmembrane transport,M1,1,0
+1,-3.7,R-HSA-9658195,Leishmania infection,M1,1,0
+1,-3.2,GO:0043270,positive regulation of monoatomic ion transport,M1,1,0
+1,-5.1,R-HSA-111932,CaMK IV-mediated phosphorylation of CREB,M1,1,0
+1,-3.5,GO:0006942,regulation of striated muscle contraction,M1,1,0
+1,-2.3,GO:0006195,purine nucleotide catabolic process,M1,1,0
+1,-2,R-HSA-5576891,Cardiac conduction,M1,1,0
+1,-2.7,hsa05133,Pertussis,M1,1,0
+1,-6.2,R-HSA-111957,Cam-PDE 1 activation,M1,1,0
+1,-3.9,R-HSA-372790,Signaling by GPCR,M1,1,0
+1,-2.1,hsa04080,Neuroactive ligand-receptor interaction,M1,1,0
+1,-2,GO:0051924,regulation of calcium ion transport,M1,1,0
+1,-3.4,GO:0010799,regulation of peptidyl-threonine phosphorylation,M1,1,0
+1,-3.6,R-HSA-2514859,"Inactivation, recovery and regulation of the phototransduction cascade",M1,1,0
+1,-2.8,hsa04924,Renin secretion,M1,1,0
+1,-4.7,GO:0043666,regulation of phosphoprotein phosphatase activity,M1,1,0
+1,-2.4,hsa04925,Aldosterone synthesis and secretion,M1,1,0
+1,-3.6,GO:0050848,regulation of calcium-mediated signaling,M1,1,0
+1,-2.3,hsa05170,Human immunodeficiency virus 1 infection,M1,1,0
+1,-3.3,GO:2001258,negative regulation of cation channel activity,M1,1,0
+1,-2.3,R-HSA-2187338,Visual phototransduction,M1,1,0
+1,-2.3,R-HSA-72163,mRNA Splicing - Major Pathway,M1,1,0
+1,-3,R-HSA-168643,"Nucleotide-binding domain, leucine rich repeat containing receptor (NLR) signaling pathways",M1,1,0
+1,-2,GO:0090257,regulation of muscle system process,M1,1,0
+1,-4,GO:0010800,positive regulation of peptidyl-threonine phosphorylation,M1,1,0
+1,-2.6,GO:0043065,positive regulation of apoptotic process,M1,1,0
+1,-3.3,R-HSA-69236,G1 Phase,M1,1,0
+1,-2.2,R-HSA-611105,Respiratory electron transport,M1,1,0
+1,-3.7,GO:0009266,response to temperature stimulus,M1,1,0
+1,-2.3,hsa04922,Glucagon signaling pathway,M1,1,0
+1,-2,hsa04728,Dopaminergic synapse,M1,1,0

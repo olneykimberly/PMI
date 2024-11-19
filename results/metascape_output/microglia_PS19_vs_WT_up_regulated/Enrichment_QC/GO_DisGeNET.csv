@@ -1,0 +1,2 @@
+_MEMBER_Bcl2,_LogP_Bcl2,GO,_PATTERN_,_RANK_,GiniIndex,Category,CategoryID,Description,PARENT_GO,LogP,Enrichment,Z-score,#TotalGeneInLibrary,#GeneInGO,#GeneInHitList,#GeneInGOAndHitList,%InGO,STDV %InGO,GeneID,Hits,Log(q-value),EvidenceCutoff
+1,-4.8,C0007787,M1,1,0,DisGeNET,35,Transient Ischemic Attack,,-4.8,53,12,30286,344,5,3,60,22,286|23705|115123,ANK1|CADM1|MARCHF3,-0.34,0

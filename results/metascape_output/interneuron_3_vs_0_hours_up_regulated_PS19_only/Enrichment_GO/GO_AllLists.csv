@@ -1,0 +1,41 @@
+Category,CategoryID,GO,Description,PARENT_GO,LogP,Enrichment,Z-score,#TotalGeneInLibrary,#GeneInGO,#GeneInHitList,#GeneInGOAndHitList,%InGO,STDV %InGO,GeneID,Hits,Log(q-value),GeneList
+CORUM,33,CORUM:306,"Ribosome, cytoplasmic",,-6,1.4e+02,21,30286,80,8,3,38,17,6139|6217|23521,RPL17|RPS16|RPL13A,-2.4,Btg2
+Reactome Gene Sets,6,R-HSA-192823,Viral mRNA Translation,,-5.9,1.3e+02,19,30286,90,8,3,38,17,6139|6217|23521,RPL17|RPS16|RPL13A,-2.4,Btg2
+Reactome Gene Sets,6,R-HSA-156902,Peptide chain elongation,,-5.9,1.3e+02,19,30286,90,8,3,38,17,6139|6217|23521,RPL17|RPS16|RPL13A,-2.4,Btg2
+Reactome Gene Sets,6,R-HSA-156842,Eukaryotic Translation Elongation,,-5.8,1.2e+02,19,30286,94,8,3,38,17,6139|6217|23521,RPL17|RPS16|RPL13A,-2.4,Btg2
+Reactome Gene Sets,6,R-HSA-2408557,Selenocysteine synthesis,,-5.8,1.2e+02,19,30286,94,8,3,38,17,6139|6217|23521,RPL17|RPS16|RPL13A,-2.4,Btg2
+Reactome Gene Sets,6,R-HSA-72764,Eukaryotic Translation Termination,,-5.8,1.2e+02,19,30286,94,8,3,38,17,6139|6217|23521,RPL17|RPS16|RPL13A,-2.4,Btg2
+Reactome Gene Sets,6,R-HSA-975956,Nonsense Mediated Decay (NMD) independent of the Exon Junction Complex (EJC),,-5.8,1.2e+02,19,30286,96,8,3,38,17,6139|6217|23521,RPL17|RPS16|RPL13A,-2.4,Btg2
+Reactome Gene Sets,6,R-HSA-72689,Formation of a pool of free 40S subunits,,-5.7,1.1e+02,18,30286,102,8,3,38,17,6139|6217|23521,RPL17|RPS16|RPL13A,-2.4,Btg2
+Reactome Gene Sets,6,R-HSA-9633012,Response of EIF2AK4 (GCN2) to amino acid deficiency,,-5.7,1.1e+02,18,30286,102,8,3,38,17,6139|6217|23521,RPL17|RPS16|RPL13A,-2.4,Btg2
+CORUM,33,CORUM:3055,Nop56p-associated pre-rRNA complex,,-5.7,1.1e+02,18,30286,104,8,3,38,17,6139|6217|23521,RPL17|RPS16|RPL13A,-2.4,Btg2
+Reactome Gene Sets,6,R-HSA-156827,L13a-mediated translational silencing of Ceruloplasmin expression,,-5.6,1e+02,17,30286,112,8,3,38,17,6139|6217|23521,RPL17|RPS16|RPL13A,-2.4,Btg2
+Reactome Gene Sets,6,R-HSA-72706,GTP hydrolysis and joining of the 60S ribosomal subunit,,-5.6,1e+02,17,30286,113,8,3,38,17,6139|6217|23521,RPL17|RPS16|RPL13A,-2.4,Btg2
+Reactome Gene Sets,6,R-HSA-1799339,SRP-dependent cotranslational protein targeting to membrane,,-5.6,1e+02,17,30286,113,8,3,38,17,6139|6217|23521,RPL17|RPS16|RPL13A,-2.4,Btg2
+Reactome Gene Sets,6,R-HSA-975957,Nonsense Mediated Decay (NMD) enhanced by the Exon Junction Complex (EJC),,-5.5,98,17,30286,116,8,3,38,17,6139|6217|23521,RPL17|RPS16|RPL13A,-2.4,Btg2
+Reactome Gene Sets,6,R-HSA-927802,Nonsense-Mediated Decay (NMD),,-5.5,98,17,30286,116,8,3,38,17,6139|6217|23521,RPL17|RPS16|RPL13A,-2.4,Btg2
+Reactome Gene Sets,6,R-HSA-2408522,Selenoamino acid metabolism,,-5.5,95,17,30286,119,8,3,38,17,6139|6217|23521,RPL17|RPS16|RPL13A,-2.4,Btg2
+Reactome Gene Sets,6,R-HSA-72737,Cap-dependent Translation Initiation,,-5.5,95,17,30286,120,8,3,38,17,6139|6217|23521,RPL17|RPS16|RPL13A,-2.4,Btg2
+Reactome Gene Sets,6,R-HSA-72613,Eukaryotic Translation Initiation,,-5.5,95,17,30286,120,8,3,38,17,6139|6217|23521,RPL17|RPS16|RPL13A,-2.4,Btg2
+GO Biological Processes,19,GO:0002181,cytoplasmic translation,19_GO:0008152 metabolic process,-5.4,89,16,30286,127,8,3,38,17,6139|6217|23521,RPL17|RPS16|RPL13A,-2.4,Btg2
+Reactome Gene Sets,6,R-HSA-168273,Influenza Viral RNA Transcription and Replication,,-5.3,84,16,30286,136,8,3,38,17,6139|6217|23521,RPL17|RPS16|RPL13A,-2.3,Btg2
+Reactome Gene Sets,6,R-HSA-9711097,Cellular response to starvation,,-5.1,72,15,30286,157,8,3,38,17,6139|6217|23521,RPL17|RPS16|RPL13A,-2.1,Btg2
+Reactome Gene Sets,6,R-HSA-168255,Influenza Infection,,-5.1,72,15,30286,157,8,3,38,17,6139|6217|23521,RPL17|RPS16|RPL13A,-2.1,Btg2
+KEGG Pathway,24,hsa03010,Ribosome,,-5,67,14,30286,170,8,3,38,17,6139|6217|23521,RPL17|RPS16|RPL13A,-2.1,Btg2
+Reactome Gene Sets,6,R-HSA-9010553,Regulation of expression of SLITs and ROBOs,,-5,66,14,30286,172,8,3,38,17,6139|6217|23521,RPL17|RPS16|RPL13A,-2.1,Btg2
+Reactome Gene Sets,6,R-HSA-6791226,Major pathway of rRNA processing in the nucleolus and cytosol,,-4.9,61,13,30286,185,8,3,38,17,6139|6217|23521,RPL17|RPS16|RPL13A,-2,Btg2
+Reactome Gene Sets,6,R-HSA-8868773,rRNA processing in the nucleus and cytosol,,-4.8,58,13,30286,195,8,3,38,17,6139|6217|23521,RPL17|RPS16|RPL13A,-1.9,Btg2
+Reactome Gene Sets,6,R-HSA-72312,rRNA processing,,-4.8,55,13,30286,205,8,3,38,17,6139|6217|23521,RPL17|RPS16|RPL13A,-1.9,Btg2
+Reactome Gene Sets,6,R-HSA-376176,Signaling by ROBO receptors,,-4.7,52,12,30286,219,8,3,38,17,6139|6217|23521,RPL17|RPS16|RPL13A,-1.8,Btg2
+KEGG Pathway,24,hsa05171,Coronavirus disease - COVID-19,,-4.6,49,12,30286,233,8,3,38,17,6139|6217|23521,RPL17|RPS16|RPL13A,-1.8,Btg2
+GO Biological Processes,19,GO:0034249,negative regulation of amide metabolic process,19_GO:0048519 negative regulation of biological process,-4.6,49,12,30286,234,8,3,38,17,1191|10140|23521,CLU|TOB1|RPL13A,-1.8,Btg2
+Reactome Gene Sets,6,R-HSA-72766,Translation,,-4.3,39,11,30286,292,8,3,38,17,6139|6217|23521,RPL17|RPS16|RPL13A,-1.5,Btg2
+Reactome Gene Sets,6,R-HSA-71291,Metabolism of amino acids and derivatives,,-4,31,9.4,30286,367,8,3,38,17,6139|6217|23521,RPL17|RPS16|RPL13A,-1.2,Btg2
+GO Biological Processes,19,GO:0006412,translation,19_GO:0008152 metabolic process,-3.9,29,9.1,30286,392,8,3,38,17,6139|6217|23521,RPL17|RPS16|RPL13A,-1.1,Btg2
+GO Biological Processes,19,GO:0043043,peptide biosynthetic process,19_GO:0008152 metabolic process,-3.8,27,8.7,30286,421,8,3,38,17,6139|6217|23521,RPL17|RPS16|RPL13A,-1.1,Btg2
+GO Biological Processes,19,GO:0034248,regulation of amide metabolic process,19_GO:0008152 metabolic process,-3.6,22,7.8,30286,522,8,3,38,17,1191|10140|23521,CLU|TOB1|RPL13A,-0.79,Btg2
+GO Biological Processes,19,GO:0043604,amide biosynthetic process,19_GO:0008152 metabolic process,-3.5,21,7.6,30286,542,8,3,38,17,6139|6217|23521,RPL17|RPS16|RPL13A,-0.76,Btg2
+Reactome Gene Sets,6,R-HSA-422475,Axon guidance,,-3.5,21,7.6,30286,548,8,3,38,17,6139|6217|23521,RPL17|RPS16|RPL13A,-0.76,Btg2
+GO Biological Processes,19,GO:0006518,peptide metabolic process,19_GO:0008152 metabolic process,-3.5,21,7.6,30286,551,8,3,38,17,6139|6217|23521,RPL17|RPS16|RPL13A,-0.76,Btg2
+Reactome Gene Sets,6,R-HSA-9675108,Nervous system development,,-3.5,20,7.4,30286,573,8,3,38,17,6139|6217|23521,RPL17|RPS16|RPL13A,-0.72,Btg2
+Reactome Gene Sets,6,R-HSA-8953854,Metabolism of RNA,,-3.2,16,6.5,30286,726,8,3,38,17,6139|6217|23521,RPL17|RPS16|RPL13A,-0.43,Btg2

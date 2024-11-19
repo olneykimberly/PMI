@@ -1,0 +1,2 @@
+_MEMBER_Unc5c,_LogP_Unc5c,GO,_PATTERN_,_RANK_,GiniIndex,Category,CategoryID,Description,PARENT_GO,LogP,Enrichment,Z-score,#TotalGeneInLibrary,#GeneInGO,#GeneInHitList,#GeneInGOAndHitList,%InGO,STDV %InGO,GeneID,Hits,Log(q-value),EvidenceCutoff
+1,-4.8,C0151744,M1,1,0,DisGeNET,35,Myocardial Ischemia,,-4.8,40,11,30286,756,3,3,1e+02,27,3726|6139|23237,JUNB|RPL17|ARC,-0.3,0

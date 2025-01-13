@@ -1,4 +1,7 @@
 configfile: "config.json"
+def directory(path):
+    return path
+
 
 cellranger_path = "/research/labs/neurology/fryer/m239830/tools/cellranger-8.0.0/bin/cellranger"
 

@@ -5,7 +5,7 @@ library(ggplot2)
 library(gridExtra)
 library(grid)
 library(lattice)
-library(Azimuth)
+#library(Azimuth)
 library(dittoSeq)
 library(dplyr)
 library(RColorBrewer)
@@ -26,7 +26,7 @@ SexColors <- c("#490092", "#D55E00")
 #--- references and metadata
 metadata <-
   read.delim(
-    "/research/labs/neurology/fryer/m239830/PMI/metadata.tsv")
+    "/tgen_labs/jfryer/kolney/PMI/metadata.tsv")
 
 pathToRef = c("/research/labs/neurology/fryer/projects/references/mouse/refdata-gex-GRCm39-2024-A")
 pathToRawData = c("/research/labs/neurology/fryer/projects/PMI/")

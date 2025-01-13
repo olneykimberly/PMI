@@ -55,13 +55,15 @@ mkidr DEGs UMAP UpSet density dot_plot doublet_finder feature histogram markers 
 ```
 Within the scripts folder, run the scripts in numerical order. 
 ```
-R 04_soupx_all_samples.Rmd # SoupX to determine ambient RNA. Ultimately cellbender was used, but we additionally compared with SoupX.
+R 04_soupx_all_samples.Rmd # SoupX to determine ambient RNA. 
+# Ultimately cellbender was used, but we additionally compared with SoupX.
 R 05_QC_processing_post_Cellbender.Rmd
 R 06_annotations.Rmd
 R 07_doublet_removal.Rmd
 R 08_annotations_post_doublet_removal.Rmd
 R 09_recluster.Rmd
-R 10_differential_expression_DESeq.Rmd # pseudobulking 
+R 10_differential_expression_DESeq.Rmd # pseudobulking. Main results
+# Ultimately DESeq was used, but we additionally compared with MAST.
 R 10_differential_expression_MAST.Rmd
 R 11_make_DEG_excel_and_volcano_plots.Rmd
 R 12_make_shiny.Rmd
@@ -72,5 +74,5 @@ R 13_correlation_comparisons.Rmd
 
 | Contact | Email |
 | --- | --- |
-| Kimberly Olney, PhD | olney.kimberly@mayo.edu |
+| Kimberly Olney, PhD | kolney@tgen.org |
 | John Fryer, PhD | fryer.john@mayo.edu |

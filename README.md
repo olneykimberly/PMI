@@ -4,6 +4,9 @@ A fresh perspective: Effect of post-mortem interval on cell type transcriptomic 
 Single nuclues (sn)RNAseq of Mus musculus (mouse) brains that were either harvested fresh (0 hours) or stored in the refrigerator for 3 hours to mimic a typical human post mortem interval (PMI).
 The goal of this experiment is to identify differentially expressed genes (DEGs) within brain cell types between experimental groups: 3 hours versus fresh (0 hours). 
 
+![PMI experimental setup](https://github.com/olneykimberly/PMI/manuscript_figures/experimental_setup.png)
+
+
 Explore genes among the mouse brain samples in our published [shiny app](https://fryerlab.shinyapps.io/PMI_all_cell_types/)
 
 
